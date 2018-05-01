@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
-import { User } from './user';
+import { User } from '../shared/user';
 
 @Injectable()
 export class UserService {
@@ -15,7 +15,7 @@ export class UserService {
 
   login(user: User): Observable<HttpResponse<any>> {
     const params = JSON.stringify(user);
-    return this.http.post(baseURL + '/login', params, { observe: 'response' } );
+    return this.http.post(baseURL + 'login', params, { observe: 'response' } );
   }
 
 }
