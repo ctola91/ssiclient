@@ -4,6 +4,7 @@ import { HomeComponent } from '../home/home.component';
 import { CreateComponent } from '../incidents/create/create.component';
 import { IncidentsComponent } from '../incidents/incidents.component';
 import { ReportIncidentComponent } from '../incidents/report-incident/report-incident.component';
+import {TrainersComponent} from '../trainers/trainers.component';
 
 
 export const routes: Routes = [
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'incidents', component: IncidentsComponent },
   { path: 'incidents/create', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
-  { path: 'home',  component: HomeComponent }
+  { path: 'home',  component: HomeComponent },
+  { path: 'trainers',  component: TrainersComponent }
 ];
