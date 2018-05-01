@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Trainer} from '../shared/trainer';
+import {TrainerService} from '../services/trainer.service';
 
 @Component({
   selector: 'ssi-trainers',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainersComponent implements OnInit {
 
-  constructor() { }
+  trainers: Trainer[];
+
+  constructor(private trainerService: TrainerService) { }
 
   ngOnInit() {
+    this.trainerService.getTrainers().subscribe(
+      trainers => this.trainers = trainers);
   }
 
 }
