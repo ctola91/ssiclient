@@ -40,13 +40,17 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+
+
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncidentsComponent } from './incidents/incidents.component';
 import { CreateComponent } from './incidents/create/create.component';
 import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
-import {AppRoutingModule} from './app-routing/app-routing.module';
-import {UserService} from './services/user.service';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,7 @@ import {UserService} from './services/user.service';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
+    HomeComponent,
     ReportIncidentComponent,
     IncidentsComponent,
     CreateComponent
