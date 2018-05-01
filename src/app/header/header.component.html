@@ -4,8 +4,8 @@
 
 <mat-toolbar color="primary">
   <span><img src="../../assets/images/ssi.png" height=30 width=41></span>
-  <a mat-button routerLink="home" ><span class="fa fa-home fa-lg"></span> Home</a>
-  <a mat-button routerLink="incidents"><span class="fa fa-info fa-lg"></span> Incidents</a>
+  <a mat-button routerLink="/home" ><span class="fa fa-home fa-lg"></span> Home</a>
+  <a mat-button routerLink="/incidents"><span class="fa fa-info fa-lg"></span> Incidents</a>
 
   <!--Menu program Sso-->
   <button mat-button [matMenuTriggerFor]="programSSO"><span class="fa fa-bullhorn"></span> Progam SSO</button>
@@ -25,6 +25,6 @@
     <button mat-menu-item routerLink="/functions">Position functions</button>
     <button mat-menu-item routerLink="/requirements">Position requirements</button>
   </mat-menu>
-  <a mat-button routerLink="about"><span class="fa fa-info fa-lg"></span>About</a>
+  <a mat-button routerLink="/about"><span class="fa fa-info fa-lg"></span>About</a>
 
 </mat-toolbar>
