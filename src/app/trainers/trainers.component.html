@@ -1,0 +1,31 @@
+<!--
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Incidentes</h1>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button mat-button routerLink="/incidents/create">Add new incident</button>
+    <button mat-button routerLink="/incidents/report">Report</button>
+  </div>
+  <div fxFlex>
+    <div>
+      <mat-table #table [dataSource]="incidents">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-cell *matCellDef="let incident">{{incident.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+          <mat-cell *matCellDef="let incident">{{incident.description}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
+-->
