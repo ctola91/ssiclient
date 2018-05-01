@@ -5,4 +5,5 @@ export interface Trainer {
   speciality: string;
   skillDescription: string;
   image: string;
+  /*activitiesSsos:*/
 }
