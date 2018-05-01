@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import {STATUS_CODES} from "../shared/appconstants";
+import {STATUS_CODES} from '../shared/appconstants';
 
 @Component({
   selector: 'ssi-login',
@@ -35,5 +35,4 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-
 }
