@@ -53,6 +53,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserService } from './services/user.service';
 import { TrainersComponent } from './trainers/trainers.component';
 import { AboutComponent } from './about/about.component';
+import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AboutComponent } from './about/about.component';
     IncidentsComponent,
     CreateComponent,
     TrainersComponent,
-    AboutComponent
+    AboutComponent,
+    TreeComponent
   ],
   imports: [
     BrowserModule,
