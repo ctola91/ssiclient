@@ -1,6 +1,10 @@
+
+
+
+
 <mat-toolbar color="primary">
   <span><img src="../../assets/images/ssi.png" height=30 width=41></span>
-  <a mat-button ><span class="fa fa-home fa-lg"></span> Home</a>
+  <a mat-button routerLink="home" ><span class="fa fa-home fa-lg"></span> Home</a>
   <a mat-button routerLink="incidents"><span class="fa fa-info fa-lg"></span> Incidents</a>
 
   <!--Menu program Sso-->
@@ -11,5 +15,16 @@
     <button mat-menu-item>Activities</button>
     <button mat-menu-item>Resources</button>
   </mat-menu>
+
+  <!--Menu Organizational structure-->
+  <button mat-button [matMenuTriggerFor]="organizationalStructure"><span class="fa fa-bullhorn"></span>organizationalStructure</button>
+  <mat-menu #organizationalStructure="matMenu">
+    <button routerLink="/tree" mat-menu-item>Tree organizational structure </button>
+    <button routerLink="/departments" mat-menu-item>Departments</button>
+    <button mat-menu-item routerLink="/positions">Positions</button>
+    <button mat-menu-item routerLink="/functions">Position functions</button>
+    <button mat-menu-item routerLink="/requirements">Position requirements</button>
+  </mat-menu>
+  <a mat-button routerLink="about"><span class="fa fa-info fa-lg"></span>About</a>
 
 </mat-toolbar>
