@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import {STATUS_CODES} from "../shared/appconstants";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'ssi-login',
@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,8 +29,10 @@ export class LoginComponent implements OnInit {
     this.userService.login(user)
       .subscribe(
         result => {
-          const keys = result.headers.keys();
-          console.log(keys);
+          if (result.body.success === 'true') {
+            localStorage.setItem('token', result.body.token);
+            this.router.navigate(['home']);
+          }
         },
         error => {
           console.log(<any>error);
