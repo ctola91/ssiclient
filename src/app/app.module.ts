@@ -51,6 +51,13 @@ import { CreateComponent } from './incidents/create/create.component';
 import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserService } from './services/user.service';
+import { TrainersComponent } from './trainers/trainers.component';
+import { AboutComponent } from './about/about.component';
+import { TreeComponent } from './tree/tree.component';
+import { DepartmentsComponent } from './departments/departments.component';
+import { PositionsComponent } from './positions/positions.component';
+import { FunctionsComponent } from './functions/functions.component';
+import { RequirementsComponent } from './requirements/requirements.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +68,14 @@ import { UserService } from './services/user.service';
     HomeComponent,
     ReportIncidentComponent,
     IncidentsComponent,
-    CreateComponent
+    CreateComponent,
+    TrainersComponent,
+    AboutComponent,
+    TreeComponent,
+    DepartmentsComponent,
+    PositionsComponent,
+    FunctionsComponent,
+    RequirementsComponent
   ],
   imports: [
     BrowserModule,
