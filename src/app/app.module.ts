@@ -61,6 +61,7 @@ import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
 import {TrainerService} from './services/trainer.service';
+import {IncidentService} from './incidents/shared/incident.service';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,7 @@ import {TrainerService} from './services/trainer.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PersonalService, TrainerService],
+  providers: [UserService, PersonalService, TrainerService, IncidentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

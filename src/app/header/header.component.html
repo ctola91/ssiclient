@@ -7,11 +7,12 @@
   <a mat-button routerLink="/home" *ngIf="showMenu"><span class="fa fa-home fa-lg"></span> Inicio</a>
 
   <!--Menu program Sso-->
-  <button mat-button [matMenuTriggerFor]="incidents"><span class="fa fa-bullhorn"></span> Incidentes</button>
-  <mat-menu #incidents="matMenu">
-    <button routerLink="/incidents" mat-menu-item>Accidentes</button>
-    <button mat-menu-item>Enfermedades</button>
-  </mat-menu>
+  <button mat-button routerLink="/incidents"><span class="fa fa-bullhorn"></span> Incidentes</button>
+  <!--<button mat-button [matMenuTriggerFor]="incidents"><span class="fa fa-bullhorn"></span> Incidentes</button>-->
+  <!--<mat-menu #incidents="matMenu">-->
+    <!--<button routerLink="/incidents" mat-menu-item>Accidentes</button>-->
+    <!--<button mat-menu-item>Enfermedades</button>-->
+  <!--</mat-menu>-->
 
   <a mat-button *ngIf="showMenu"><span class="fa fa-info fa-lg"></span> Equipamiento</a>
   <a mat-button *ngIf="showMenu"><span class="fa fa-info fa-lg"></span> Personal</a>
