@@ -11,6 +11,7 @@ import {DepartmentsComponent} from '../departments/departments.component';
 import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
+import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'incidents/create', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
+  { path: 'personal/create',  component: CreatePersonalComponent },
   { path: 'trainers',  component: TrainersComponent },
   { path: 'about',  component: AboutComponent },
   { path: 'tree',  component: TreeComponent },
