@@ -10,7 +10,7 @@ import {Personal} from '../shared/Personal';
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
-  displayedColumns = ['Nombre', 'Apellido', 'Email', 'Direccion', 'Telefono'];
+  displayedColumns = ['Nombre', 'Apellido', 'Email', 'Direccion', 'Telefono', 'Accion'];
   dataSource: MatTableDataSource<PersonalData>;
   personals: PersonalData[] = [];
   personal: Personal;
@@ -20,17 +20,17 @@ export class PersonalComponent implements OnInit {
 
   constructor(private personalService: PersonalService) {
 
-
-
-    this.personalService.getListPersonals()
-        .subscribe(this.processPersonalData.bind(this),
-                   this.processErrorData.bind(this));
-
+    this.loadDataTable();
   }
 
   ngOnInit() {
   }
 
+  private loadDataTable(): void {
+    this.personalService.getListPersonals()
+      .subscribe(this.processPersonalData.bind(this),
+        this.processErrorData.bind(this));
+  }
 
   initDatatable() {
     this.dataSource.paginator = this.paginator;
@@ -53,5 +53,11 @@ export class PersonalComponent implements OnInit {
 
   private processErrorData(err) {
     console.log(err);
+  }
+
+  deletePersonal(personal: Personal): void {
+
+    this.personalService.deletePersonal(personal)
+        .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
   }
 }
