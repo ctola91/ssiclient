@@ -60,6 +60,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
+import {TrainerService} from './services/trainer.service';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,7 @@ import { RequirementsComponent } from './requirements/requirements.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PersonalService],
+  providers: [UserService, PersonalService, TrainerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

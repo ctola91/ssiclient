@@ -11,6 +11,8 @@ export class TrainersComponent implements OnInit {
 
   trainers: Trainer[];
 
+  displayedColumns = ['image', 'name', 'ci', 'speciality', 'skillsDescriptions'];
+
   constructor(private trainerService: TrainerService) { }
 
   ngOnInit() {
