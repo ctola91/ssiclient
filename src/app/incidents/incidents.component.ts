@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IncidentService } from './shared/incident.service';
 
 @Component({
   selector: 'ssi-incidents',
@@ -6,29 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./incidents.component.scss']
 })
 export class IncidentsComponent implements OnInit {
-  incidents = [
-    {
-      id: 1,
-      description: 'Hello World'
-    },
-    {
-      id: 2,
-      description: 'Hello World'
-    },
-    {
-      id: 3,
-      description: 'Hello World'
-    },
-    {
-      id: 4,
-      description: 'Hello World'
-    }
-  ];
-  displayedColumns = ['id', 'description'];
+  incidents: any = [];
+  displayedColumns = ['incidentId', 'code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName'];
 
-  constructor() { }
+  constructor(
+    private incidentService: IncidentService
+  ) {
+    this.loadData();
+  }
 
   ngOnInit() {
+  }
+
+  loadData() {
+    this.incidentService.getIncidentList()
+      .subscribe(result => {
+          this.incidents = result.data;
+          console.log(this.incidents);
+      }, err => {
+        console.log(err);
+      });
   }
 
 }

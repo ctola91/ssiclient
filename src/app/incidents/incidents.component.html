@@ -14,14 +14,34 @@
       <mat-card>
         <mat-card-content>
           <mat-table #table [dataSource]="incidents">
-            <ng-container matColumnDef="id">
+            <ng-container matColumnDef="incidentId">
               <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.id}}</mat-cell>
+              <mat-cell *matCellDef="let incident">{{incident.incidentId}}</mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="description">
-              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.description}}</mat-cell>
+            <ng-container matColumnDef="code">
+              <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+              <mat-cell *matCellDef="let incident">{{incident.code}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="area">
+              <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
+              <mat-cell *matCellDef="let incident">{{incident.area}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="incidentDetailName">
+              <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+              <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="incidentDetailStatus">
+              <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+              <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailStatus}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="incidentTypeName">
+              <mat-header-cell *matHeaderCellDef>Tipo de Incident</mat-header-cell>
+              <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

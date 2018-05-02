@@ -3,7 +3,7 @@ export interface Trainer {
   name: string;
   ci: string;
   speciality: string;
-  skillDescription: string;
+  skillsDescriptions: string;
   image: string;
   /*activitiesSsos:*/
 }

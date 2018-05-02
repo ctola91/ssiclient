@@ -10,7 +10,7 @@ export class CreateComponent implements OnInit {
 
   incidentForm: FormGroup;
   types = [
-    'type 1', 'type 2', 'type 3'
+    'pendiente', 'reportado', 'entregado', 'rechazado'
   ];
 
   constructor(private formBuilder: FormBuilder) {

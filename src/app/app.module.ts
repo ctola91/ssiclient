@@ -61,6 +61,8 @@ import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
 import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
+import {TrainerService} from './services/trainer.service';
+import {IncidentService} from './incidents/shared/incident.service';
 
 @NgModule({
   declarations: [
@@ -101,7 +103,7 @@ import { CreatePersonalComponent } from './personal/create-personal/create-perso
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PersonalService],
+  providers: [UserService, PersonalService, TrainerService, IncidentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
