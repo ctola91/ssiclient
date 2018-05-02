@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import {
+  MatAutocompleteModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
@@ -35,12 +37,13 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-import {MatButtonToggleModule} from '@angular/material';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserService } from './services/user.service';
 import { HomeComponent } from './home/home.component';
+import { PersonalComponent } from './personal/personal.component';
+import { PersonalService } from './services/personal.service';
 
 
 
@@ -50,7 +53,6 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { CreateComponent } from './incidents/create/create.component';
 import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { UserService } from './services/user.service';
 import { TrainersComponent } from './trainers/trainers.component';
 import { AboutComponent } from './about/about.component';
 import { TreeComponent } from './tree/tree.component';
@@ -69,6 +71,7 @@ import { RequirementsComponent } from './requirements/requirements.component';
     ReportIncidentComponent,
     IncidentsComponent,
     CreateComponent,
+    PersonalComponent,
     TrainersComponent,
     AboutComponent,
     TreeComponent,
@@ -76,6 +79,7 @@ import { RequirementsComponent } from './requirements/requirements.component';
     PositionsComponent,
     FunctionsComponent,
     RequirementsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -89,9 +93,13 @@ import { RequirementsComponent } from './requirements/requirements.component';
     MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule,
     MatTabsModule, MatToolbarModule, MatTooltipModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, PersonalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
