@@ -63,6 +63,7 @@ import { RequirementsComponent } from './requirements/requirements.component';
 import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
+import { CreateTrainerComponent } from './trainers/create-trainer/create-trainer.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import {IncidentService} from './incidents/shared/incident.service';
     PositionsComponent,
     FunctionsComponent,
     RequirementsComponent,
-    CreatePersonalComponent
+    CreatePersonalComponent,
+    CreateTrainerComponent
 
   ],
   imports: [
