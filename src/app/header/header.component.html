@@ -1,5 +1,9 @@
-<mat-toolbar color="primary">
-  <span><img src="../../assets/images/ssi.png" height=30 width=41></span>
-  <a mat-button ><span class="fa fa-home fa-lg"></span> Home</a>
-  <a mat-button routerLink="incidents"><span class="fa fa-info fa-lg"></span> Incidents</a>
+<mat-toolbar color="primary" fullscreen>
+  <span>SSI-D</span>
+  <a mat-button routerLink="/home"><span class="fa fa-home fa-lg"></span> Personal</a>
+  <a mat-button routerLink="/about"><span class="fa fa-info fa-lg"></span> Equipamiento</a>
+  <a mat-button routerLink="/catalog"><span class="fa fa-list fa-lg"></span> Incidentes</a>
+  <a mat-button routerLink="/contactus"><span class="fa fa-address-card fa-lg"></span> Capacitaciones</a>
+  <span class="flex-spacer"></span>
+  <a mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Logout</a>
 </mat-toolbar>
