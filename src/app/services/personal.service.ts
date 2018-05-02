@@ -5,18 +5,16 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import { baseURL } from '../shared/baseurl';
-import { User } from '../shared/user';
+import { baseURL, API_URL } from '../shared/baseurl';
 
 @Injectable()
-export class UserService {
+export class PersonalService {
 
   constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<any> {
-    const params = JSON.stringify(user);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(baseURL + '/login', params, { headers: headers } );
+  getListPersonals(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/personal', { headers: headers});
   }
-
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {baseURLApiV1} from '../shared/baseurl';
+import {baseURL, API_URL} from '../shared/baseurl';
 
 @Injectable()
 export class TrainerService {
@@ -16,7 +16,7 @@ export class TrainerService {
       })
     };
 
-    return this.http.get(baseURLApiV1 + 'trainerssso', httpOptions )
+    return this.http.get(baseURL + API_URL + '/trainerssso', httpOptions )
       .map((res) => {
         return res;
       }).catch(error => {
