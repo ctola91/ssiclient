@@ -13,7 +13,14 @@
     <button mat-menu-item>Enfermedades</button>
   </mat-menu>
 
-  <a mat-button *ngIf="showMenu"><span class="fa fa-info fa-lg"></span> Equipamiento</a>
+  <!--Menu Equipments-->
+  <button mat-button [matMenuTriggerFor]="equipments"><span class="fa fa-bullhorn"></span>Equipamiento</button>
+  <mat-menu #equipments="matMenu">
+    <button routerLink="/equipments" mat-menu-item>Equipamiento</button>
+    <button routerLink="/equipments/inventory" mat-menu-item>Inventario</button>
+    <button routerLink="/equipments/kardex" mat-menu-item>Kardex</button>
+  </mat-menu>
+
   <a mat-button *ngIf="showMenu"><span class="fa fa-info fa-lg"></span> Personal</a>
 
   <!--Menu program Sso-->

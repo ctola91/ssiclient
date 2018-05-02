@@ -11,6 +11,7 @@ import {DepartmentsComponent} from '../departments/departments.component';
 import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
+import {EquipmentComponent} from '../equipment/equipment.component';
 
 
 export const routes: Routes = [
@@ -26,5 +27,6 @@ export const routes: Routes = [
   { path: 'departments',  component: DepartmentsComponent },
   { path: 'positions',  component: PositionsComponent },
   { path: 'functions',  component: FunctionsComponent },
-  { path: 'requirements',  component: RequirementsComponent }
+  { path: 'requirements',  component: RequirementsComponent },
+  { path: 'equipments', component: EquipmentComponent}
 ];

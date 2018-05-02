@@ -61,6 +61,8 @@ import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
 import {TrainerService} from './services/trainer.service';
+import { EquipmentComponent } from './equipment/equipment.component';
+import {EquipmentService} from './services/equipment.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ import {TrainerService} from './services/trainer.service';
     DepartmentsComponent,
     PositionsComponent,
     FunctionsComponent,
-    RequirementsComponent
+    RequirementsComponent,
+    EquipmentComponent
 
   ],
   imports: [
@@ -100,7 +103,7 @@ import {TrainerService} from './services/trainer.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PersonalService, TrainerService],
+  providers: [UserService, PersonalService, TrainerService, EquipmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
