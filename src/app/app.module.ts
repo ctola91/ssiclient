@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TreeModule } from 'angular-tree-component';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -45,8 +46,6 @@ import { HomeComponent } from './home/home.component';
 import { PersonalComponent } from './personal/personal.component';
 import { PersonalService } from './services/personal.service';
 
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncidentsComponent } from './incidents/incidents.component';
@@ -62,6 +61,7 @@ import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
+import {PositionService} from './services/position.service';
 
 @NgModule({
   declarations: [
@@ -99,9 +99,11 @@ import {IncidentService} from './incidents/shared/incident.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TreeModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService],
+  providers: [UserService, PersonalService, TrainerService, IncidentService
+    , PositionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

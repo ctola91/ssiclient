@@ -1,8 +1,26 @@
 <div fullscreen>
   <ssi-header></ssi-header>
-  <p>
-    tree works!
-  </p>
+  <div class="container"
+       fxLayout="column"
+       fxLayoutGap="10px">
+
+    <div fxFlex>
+      <h1>Estructura organizacional</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxFlex>
+      <div style="height: 450px">
+        <tree-root [nodes]="nodes" [options]="options">
+          <ng-template #treeNodeTemplate let-node>
+            <span class="fa fa-user-circle-o fa-lg"></span>
+            {{ node.data.name }}
+            <!--<a mat-button routerLink="['./position/', '{{node.data.id}}']">{{ node.data.name }}</a>-->
+          </ng-template>
+        </tree-root>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
   <ssi-footer></ssi-footer>
 </div>
 
