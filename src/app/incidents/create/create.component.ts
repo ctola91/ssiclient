@@ -24,8 +24,8 @@ export class CreateComponent implements OnInit {
     this.incidentForm = this.formBuilder.group({
       code: ['', Validators.required],
       type: ['', Validators.required],
-      reincident: ['', Validators.required],
-      treatment: ['', Validators.required],
+      reincident: [''],
+      treatment: [''],
       description: ['', Validators.required]
     });
   }
