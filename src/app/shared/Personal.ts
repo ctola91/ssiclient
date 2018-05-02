@@ -1,4 +1,5 @@
 export interface Personal {
+  id: number;
   name: string;
   lastName: string;
   email: string;

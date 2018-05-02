@@ -6,8 +6,8 @@
       <h1>Personal</h1>
     </div>
     <div fxFlex fxLayout="row">
-      <button mat-button routerLink="/personal/create">Agregar nuevo persnal</button>
-      <button mat-button routerLink="/personal/report">Reporte</button>
+      <button mat-raised-button routerLink="/personal/create" color="primary">Agregar nuevo persnal</button>
+
     </div>
     <div class="example-header">
       <mat-form-field>
@@ -48,6 +48,14 @@
           <mat-cell *matCellDef="let row"> {{row.cellphone}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button (click)="deletePersonal(row)" color="warn">
+              Eliminar
+            </button>
+          </mat-cell>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
