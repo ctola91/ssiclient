@@ -1,0 +1,73 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>About Us</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="70">
+        <h2>Our History</h2>
+        <p>Started in 2013, SSI quickly established itself as a safety icon par excellence in USA. With its
+          unique brand of world fusion safety that can be found nowhere else, it enjoys patronage from the
+          A-list clientele in USA. Featuring four of the best three-star Award CEO in the world, you never
+          know what will arrive on your mind the next time you visit us.</p>
+        <p>The enterprise traces its humble beginnings to <em>The BUILDING SEC CBA</em>, a successful chain
+          started by our CEO, Msc. Valentin Laime, that featured for the first time the world's best
+          enterprises in building safety.</p>
+      </div>
+      <div fxFlex="30">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+              <h2>Facts At a Glance</h2>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <dl>
+              <dt>Started</dt>
+              <dd>1 Jan. 2013</dd>
+              <dt>Major Stake Holder</dt>
+              <dd>Jatun SRL.</dd>
+              <dt>Last Year's Turnover</dt>
+              <dd>$2,478,220</dd>
+              <dt>Employees</dt>
+              <dd>240</dd>
+            </dl>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-card>
+      <blockquote>
+        <h3>You better cut the budget in four pieces because
+          I'm not willing enough to to invest in six.</h3>
+        <footer>-- Carlos Gomez,
+          <cite>The Wisdom of Carlos Gomez,
+            Diversion Books, 2014</cite>
+        </footer>
+      </blockquote>
+    </mat-card>
+  </div>
+
+
+  <div fxFlex>
+    <h2>Employees</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let employee of employees">
+        <img matListAvatar data-src="data:image/JPEG;base64,{{employee.image}}" alt={{employee.name}}>
+        <h3 matLine>{{employee.name}}</h3>
+        <h3 matLine>{{employee.jobPosition}}</h3>
+        <h3 matLine>{{employee.jobDescription}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
