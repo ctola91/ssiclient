@@ -53,6 +53,7 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { CreateComponent } from './incidents/create/create.component';
 import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { TrainersComponent } from './trainers/trainers.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     ReportIncidentComponent,
     IncidentsComponent,
     CreateComponent,
-    PersonalComponent
+    PersonalComponent,
+    TrainersComponent
   ],
   imports: [
     BrowserModule,

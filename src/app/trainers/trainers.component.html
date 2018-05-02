@@ -1,0 +1,38 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Trainers</h1>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button mat-button routerLink="/incidents/create">Add new trainer</button>
+  </div>
+  <div fxFlex>
+    <div>
+      <mat-table #table [dataSource]="trainers">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+          <mat-cell *matCellDef="let trainer">{{trainer.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *matCellDef="let trainer">{{trainer.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ci">
+          <mat-header-cell *matHeaderCellDef>C.I.</mat-header-cell>
+          <mat-cell *matCellDef="let trainer">{{trainer.ci}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="skillDescription">
+          <mat-header-cell *matHeaderCellDef>C.I.</mat-header-cell>
+          <mat-cell *matCellDef="let trainer">{{trainer.skillDescription}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
