@@ -51,6 +51,7 @@ import { CreateComponent } from './incidents/create/create.component';
 import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UserService } from './services/user.service';
+import { TrainersComponent } from './trainers/trainers.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UserService } from './services/user.service';
     HomeComponent,
     ReportIncidentComponent,
     IncidentsComponent,
-    CreateComponent
+    CreateComponent,
+    TrainersComponent
   ],
   imports: [
     BrowserModule,
