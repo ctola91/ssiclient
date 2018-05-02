@@ -2,62 +2,13 @@
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex fxFlexOffset="20px" class="form-size">
-    <h3>Registrar nuevo Personal</h3>
-     <form novalidate [formGroup]="personalForm" (ngSubmit)="onSubmit()" id="form">
-    <p>
-      <mat-input-container class="half-width"
-                           dividerColor="{{(personalForm.get('firstname').hasError('required') && personalForm.get('firstname').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="firstname" placeholder="Nombre" type="text" required>
-        <mat-hint>
-                <span [hidden]="!(personalForm.get('firstname').hasError('required') && personalForm.get('firstname').touched)">
-                  Nombre es requerido</span>
-        </mat-hint>
-      </mat-input-container>
-      <mat-input-container class="half-width"
-                           dividerColor="{{(personalForm.get('lastname').hasError('required') && personalForm.get('lastname').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="lastname" placeholder="Apellido" type="text" required>
-        <mat-hint>
-                <span [hidden]="!(personalForm.get('lastname').hasError('required') && personalForm.get('lastname').touched)">
-                  Apellido es requerido</span>
-        </mat-hint>
-      </mat-input-container>
+    <div fxFlex>
+      <h1>Personal</h1>
+    </div>
+    <div fxFlex fxLayout="row">
+      <button mat-raised-button routerLink="/personal/create" color="primary">Agregar nuevo persnal</button>
 
-      <mat-input-container class="half-width"
-                           dividerColor="{{(personalForm.get('email').hasError('required') && personalForm.get('email').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="email" placeholder="Email" type="email" required>
-        <mat-hint>
-                <span [hidden]="!(personalForm.get('email').hasError('required') && personalForm.get('email').touched)">
-                  Email es requerido</span>
-        </mat-hint>
-      </mat-input-container>
-      <mat-input-container class="half-width"
-                           dividerColor="{{(personalForm.get('address').hasError('required') && personalForm.get('address').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="address" placeholder="Direccion" type="text" required>
-        <mat-hint>
-                <span [hidden]="!(personalForm.get('address').hasError('required') && personalForm.get('address').touched)">
-                  Direccion es required</span>
-        </mat-hint>
-      </mat-input-container>
-       <mat-input-container class="half-width"
-                            dividerColor="{{(personalForm.get('cellphone').hasError('required') && personalForm.get('cellphone').touched) ? 'warn' : 'primary'}}">
-         <input matInput formControlName="cellphone" placeholder="Telefono" type="tel" required>
-         <mat-hint>
-              <span [hidden]="!(personalForm.get('cellphone').hasError('required') && personalForm.get('cellphone').touched)">
-                Email es requerido</span>
-         </mat-hint>
-       </mat-input-container>
-         <mat-form-field>
-           <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Fecha Nacimiento"  required>
-           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-           <mat-datepicker #picker></mat-datepicker>
-         </mat-form-field>
-
-     </p>
-
-    <button type="submit"  mat-raised-button color="primary" [disabled]="personalForm.invalid">Enviar</button>
-  </form>
-  </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+    </div>
     <div class="example-header">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -71,13 +22,13 @@
         <!-- ID Column -->
         <ng-container matColumnDef="Nombre">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.firstname}} </mat-cell>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container matColumnDef="Apellido">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.lastname}} </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
@@ -97,6 +48,14 @@
           <mat-cell *matCellDef="let row"> {{row.cellphone}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button (click)="deletePersonal(row)" color="warn">
+              Eliminar
+            </button>
+          </mat-cell>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>

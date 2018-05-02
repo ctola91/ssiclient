@@ -60,7 +60,9 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
+import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
+import {IncidentService} from './incidents/shared/incident.service';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
 
@@ -82,6 +84,7 @@ import {EquipmentService} from './services/equipment.service';
     PositionsComponent,
     FunctionsComponent,
     RequirementsComponent,
+    CreatePersonalComponent,
     EquipmentComponent
 
   ],
@@ -103,7 +106,7 @@ import {EquipmentService} from './services/equipment.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, PersonalService, TrainerService, EquipmentService],
+  providers: [UserService, PersonalService, TrainerService, IncidentService, EquipmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
