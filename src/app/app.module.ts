@@ -59,6 +59,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
+import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
 import {PositionService} from './services/position.service';
@@ -80,7 +81,8 @@ import {PositionService} from './services/position.service';
     DepartmentsComponent,
     PositionsComponent,
     FunctionsComponent,
-    RequirementsComponent
+    RequirementsComponent,
+    CreatePersonalComponent
 
   ],
   imports: [
