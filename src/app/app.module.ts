@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -33,19 +37,22 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserService } from './services/user.service';
 import { HomeComponent } from './home/home.component';
+import { PersonalComponent } from './personal/personal.component';
+import { PersonalService } from './services/personal.service';
 
 
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IncidentsComponent } from './incidents/incidents.component';
+import { CreateComponent } from './incidents/create/create.component';
+import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -53,11 +60,18 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ReportIncidentComponent,
+    IncidentsComponent,
+    CreateComponent,
+    PersonalComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule,
     MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
     MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
@@ -70,7 +84,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, PersonalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
