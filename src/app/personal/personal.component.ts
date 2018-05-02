@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { PersonalData } from '../shared/PersonalData';
 import { PersonalService } from '../services/personal.service';
+import {Personal} from '../shared/Personal';
 
 @Component({
   selector: 'ssi-personal',
@@ -13,42 +13,26 @@ export class PersonalComponent implements OnInit {
   displayedColumns = ['Nombre', 'Apellido', 'Email', 'Direccion', 'Telefono'];
   dataSource: MatTableDataSource<PersonalData>;
   personals: PersonalData[] = [];
+  personal: Personal;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  personalForm: FormGroup;
+  constructor(private personalService: PersonalService) {
 
-  constructor(private fb: FormBuilder,
-              private personalService: PersonalService) {
-    this.createForm();
 
 
     this.personalService.getListPersonals()
-      .subscribe(this.processPersonalData.bind(this), this.processErrorData.bind(this));
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.personals);
+        .subscribe(this.processPersonalData.bind(this),
+                   this.processErrorData.bind(this));
+
   }
 
   ngOnInit() {
   }
 
-  private createForm() {
-    this.personalForm = this.fb.group({
-      firstname: ['', Validators.required ],
-      lastname: ['', Validators.required ],
-      email: ['', Validators.required ],
-      cellphone: ['', Validators.required ],
-      address: ['', Validators.required],
-      birthdate: ['', Validators.required]
-    });
-  }
 
-  onSubmit() {
-    console.log('Send data');
-  }
-
-  ngAfterViewInit() {
+  initDatatable() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -62,7 +46,8 @@ export class PersonalComponent implements OnInit {
   private processPersonalData(personal: any) {
     if ( personal.status === 'ok') {
       this.personals = personal.data;
-      console.log(this.personals);
+      this.dataSource = new MatTableDataSource(this.personals);
+      this.initDatatable();
     }
   }
 

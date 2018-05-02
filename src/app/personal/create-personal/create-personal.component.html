@@ -1,0 +1,70 @@
+<ssi-header></ssi-header>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Nuevo Personal</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/home" color="accent">Atras</button>
+    <button mat-button routerLink="/personal/report" color="accent">Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="personalForm" (ngSubmit)="onSubmit()" id="form">
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(personalForm.get('firstname').hasError('required') && personalForm.get('firstname').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="firstname"  placeholder="Nombre" type="text" required>
+        <mat-hint>
+                <span [hidden]="!(personalForm.get('firstname').hasError('required') && personalForm.get('firstname').touched)">
+                  Nombre es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(personalForm.get('lastname').hasError('required') && personalForm.get('lastname').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="lastname"  placeholder="Apellido" type="text" required>
+        <mat-hint>
+                <span [hidden]="!(personalForm.get('lastname').hasError('required') && personalForm.get('lastname').touched)">
+                  Apellido es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+    </p>
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(personalForm.get('email').hasError('required') && personalForm.get('email').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="email" placeholder="Email" type="email" required>
+        <mat-hint>
+                <span [hidden]="!(personalForm.get('email').hasError('required') && personalForm.get('email').touched)">
+                  Email es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(personalForm.get('address').hasError('required') && personalForm.get('address').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="address" placeholder="Direccion" type="text" required>
+        <mat-hint>
+                <span [hidden]="!(personalForm.get('address').hasError('required') && personalForm.get('address').touched)">
+                  Direccion es required</span>
+        </mat-hint>
+      </mat-input-container>
+
+    </p>
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(personalForm.get('cellphone').hasError('required') && personalForm.get('cellphone').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="cellphone"  placeholder="Telefono" type="tel" required>
+        <mat-hint>
+              <span [hidden]="!(personalForm.get('cellphone').hasError('required') && personalForm.get('cellphone').touched)">
+                Email es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Fecha Nacimiento"  required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </p>
+
+    <button type="submit"  mat-raised-button color="primary" [disabled]="personalForm.invalid">Enviar</button>
+  </form>
+  </div>
+</div>

@@ -60,6 +60,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FunctionsComponent } from './functions/functions.component';
 import { RequirementsComponent } from './requirements/requirements.component';
+import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { RequirementsComponent } from './requirements/requirements.component';
     DepartmentsComponent,
     PositionsComponent,
     FunctionsComponent,
-    RequirementsComponent
+    RequirementsComponent,
+    CreatePersonalComponent
 
   ],
   imports: [
