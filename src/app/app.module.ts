@@ -46,6 +46,7 @@ import {UserService} from './services/user.service';
 import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
+import { ContractService } from './services/contract.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -74,6 +75,12 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
+import {ContractComponent} from './contracts/contract.component';
+import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
+import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
+import {ContractDataParameters} from './shared/ContractDataParameters';
+
+
 
 
 @NgModule({
@@ -102,7 +109,10 @@ import {EquipmentService} from './services/equipment.service';
     DeparmentEditComponent,
     DeparmentDeleteComponent,
     AssignComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    ContractComponent,
+    CreateContractComponent,
+    UpdateContractComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,7 +135,8 @@ import {EquipmentService} from './services/equipment.service';
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService
     , PositionService
-    , DepartmentService, EquipmentService
+    , DepartmentService, EquipmentService,
+    ContractService, ContractDataParameters
   ],
   bootstrap: [AppComponent]
 })
