@@ -18,11 +18,14 @@ import {CreateTrainerComponent} from '../trainers/create-trainer/create-trainer.
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
 import {AssignComponent} from '../personal/assign/assign.component';
 import {EquipmentComponent} from '../equipment/equipment.component';
+import {CreateProgramssoComponent} from '../programsso/create-programsso/create-programsso.component';
+import {ProgramssoComponent} from '../programsso/programsso.component';
 import {ContractComponent} from '../contracts/contract.component';
 import {CreateContractComponent} from '../contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from '../contracts/update-contract/update-contract.component';
 import {PositionCreateComponent} from '../positions/position-create/position-create.component';
 import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
+import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 
 
 export const routes: Routes = [
@@ -30,6 +33,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'incidents', component: IncidentsComponent },
   { path: 'incidents/create', component: CreateComponent},
+  { path: 'incidents/update/:id', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
   { path: 'personal/create',  component: CreatePersonalComponent },
@@ -49,8 +53,11 @@ export const routes: Routes = [
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
   { path: 'equipments', component: EquipmentComponent},
+  { path: 'programsso',  component: ProgramssoComponent },
+  { path: 'programsso/create', component: CreateProgramssoComponent},
+  { path: 'programsso/update/:id', component: CreateTrainerComponent},
   { path: 'contracts',  component: ContractComponent },
   { path: 'contracts/create',  component: CreateContractComponent },
-  { path: 'contracts/update',  component: UpdateContractComponent }
-
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'equipments/create',  component: CreateEquipmentComponent }
 ];

@@ -8,25 +8,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 
 @Injectable()
-export class EquipmentService {
+export class KardexService {
 
   constructor(private http: HttpClient) { }
 
-  getListEquipaments(): Observable<any> {
+  getListKardex(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/equipament', { headers: headers}).map((res) => {
-      return res;
-    }).catch(error => {
-      console.log('error: ' + error);
-      return error;
-    });
-  }
-  saveEquipament(data: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/equipament', { headers: headers}).map((res) => {
+    return this.http.get(baseURL + API_URL + '/kardexequipament', { headers: headers}).map((res) => {
       return res;
     }).catch(error => {
       console.log('error: ' + error);

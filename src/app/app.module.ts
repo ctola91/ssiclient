@@ -86,6 +86,13 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
 import { PositionCreateComponent } from './positions/position-create/position-create.component';
 import { PositionEditComponent } from './positions/position-edit/position-edit.component';
+import {ProgramssoComponent} from './programsso/programsso.component';
+import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
+import {ProgramssoService} from './services/programsso.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
 
 @NgModule({
   declarations: [
@@ -120,6 +127,11 @@ import { PositionEditComponent } from './positions/position-edit/position-edit.c
     PositionDeleteComponent,
     PositionCreateComponent,
     PositionEditComponent,
+    ProgramssoComponent,
+    CreateProgramssoComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -143,9 +155,9 @@ import { PositionEditComponent } from './positions/position-edit/position-edit.c
     NgxChartsModule
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
-    , PositionService
-    , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters
+    , PositionService, ContractService, ContractDataParameters, ProgramssoService
+    , DepartmentService, EquipmentService, KardexService
+
   ],
   bootstrap: [AppComponent]
 })
