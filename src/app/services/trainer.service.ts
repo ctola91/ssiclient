@@ -21,7 +21,7 @@ export class TrainerService {
 
     return this.http.get(baseURL + API_URL + '/trainerssso', httpOptions )
       .map((res: ResponseService) => {
-        if (res.status === 'ok'){
+        if (res.status === 'ok') {
           return res.data;
         } else {
           console.log('error: ' + res.status);
@@ -43,12 +43,12 @@ export class TrainerService {
         if (res.status === 'ok') {
           return res.data;
         } else {
-          console.log('error: ' + res.status);
-          return [];
-        }
-      }).catch(error => {
-        console.log('error: ' + error);
-        return error;
+                  console.log('error: ' + res.status);
+                  return [];
+                }
+              }).catch(error => {
+                console.log('error: ' + error);
+                return error;
       });
   }
 
@@ -66,7 +66,7 @@ export class TrainerService {
     const headers = new HttpHeaders().set('Authorization', token);
 
     return this.http.get(baseURL + API_URL + '/trainerssso/' + id, { headers: headers})
-      .map((res : ResponseService) => {
+      .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
         } else {

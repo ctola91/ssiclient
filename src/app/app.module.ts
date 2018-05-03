@@ -70,6 +70,8 @@ import { DeparmentDetailComponent } from './departments/deparment-detail/deparme
 import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
 import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import {EquipmentService} from './services/equipment.service';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,8 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
     DeparmentDetailComponent,
     DeparmentCreateComponent,
     DeparmentEditComponent,
-    DeparmentDeleteComponent
+    DeparmentDeleteComponent,
+    EquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +121,7 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService
     , PositionService
-    , DepartmentService
+    , DepartmentService, EquipmentService
   ],
   bootstrap: [AppComponent]
 })
