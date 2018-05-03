@@ -11,16 +11,16 @@
 
         <ng-container matColumnDef="Id">
           <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{ row.accidentId }} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Fecha">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.dateAt | date:'dd-MM-yyyy'}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.fecha | date:'dd-MM-yyyy'}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="Descripcion">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.descripcion}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
