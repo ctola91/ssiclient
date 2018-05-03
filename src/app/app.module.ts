@@ -47,6 +47,10 @@ import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
 import { ContractService } from './services/contract.service';
+import { RequirementsService } from './services/requirements.service';
+import { FunctionsService } from './services/functions.service';
+
+
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -81,6 +85,10 @@ import {ContractComponent} from './contracts/contract.component';
 import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
 import {ContractDataParameters} from './shared/ContractDataParameters';
+import {RequirementsDataParameters} from './shared/RequirementsDataParameters';
+import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
+
+
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
@@ -95,6 +103,7 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
+import {CreateRequirementsComponent} from './requirements/create-requirements/create-requirements.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +145,8 @@ import {AccidentService} from './services/accident.service';
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent
+    AccidentComponent,
+    CreateRequirementsComponent
 
   ],
   imports: [
@@ -180,6 +190,10 @@ import {AccidentService} from './services/accident.service';
     , ProgramssoService
     , DepartmentService
     , AccidentService
+    , RequirementsService
+    , RequirementsDataParameters
+    , FunctionsService
+    , FunctionsDataParameters
   ],
   bootstrap: [AppComponent]
 })

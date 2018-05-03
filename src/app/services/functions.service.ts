@@ -6,34 +6,34 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
-import {Contract} from '../shared/Contract';
+import {Functions} from '../shared/Functions';
 
 @Injectable()
-export class ContractService {
+export class FunctionsService {
 
   constructor(private http: HttpClient) { }
 
-  getListContracts(): Observable<any> {
+  getAllFunctionPositions(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/contract', { headers: headers});
+    return this.http.get(baseURL + API_URL + '/function', { headers: headers});
   }
 
-  saveContract(data: any): Observable<any> {
+  createFunctionPosition(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
                                      .set('Content-Type', 'application/json');
     console.log(params);
-    return this.http.post(baseURL + API_URL + '/contract', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/functions', params, { headers: headers} );
   }
 
-  deleteContract(contract: Contract): Observable<any> {
-    const params = JSON.stringify(contract);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-
-    return this.http.delete(baseURL + API_URL + '/contract/' + contract.id, { headers: headers});
-  }
+  // deletePersonal(personal: Personal): Observable<any> {
+  //   const params = JSON.stringify(personal);
+  //   const token = localStorage.getItem('token');
+  //   const headers = new HttpHeaders().set('Authorization', token)
+  //     .set('Content-Type', 'application/json');
+  //
+  //   return this.http.delete(baseURL + API_URL + '/personal/' + personal.id, { headers: headers});
+  // }
 }

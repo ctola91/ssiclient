@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { PersonalData } from '../shared/PersonalData';
-import { PersonalService } from '../services/personal.service';
-import {Personal} from '../shared/Personal';
 import {ContractService} from '../services/contract.service';
 import {ContractData} from '../shared/ContractData';
 import {Contract} from '../shared/Contract';
@@ -15,7 +12,7 @@ import {ContractDataParameters} from '../shared/ContractDataParameters';
   styleUrls: ['./contract.component.scss']
 })
 export class ContractComponent implements OnInit {
-  displayedColumns = ['Nombre', 'Apellido', 'Email', 'Direccion', 'Telefono', 'Accion'];
+  displayedColumns = ['Codigo', 'Ciudad', 'Fecha', 'Salario', 'Tipo', 'Accion'];
   dataSource: MatTableDataSource<ContractData>;
   contracts: ContractData[] = [];
   contract: Contract;
@@ -60,9 +57,9 @@ export class ContractComponent implements OnInit {
     console.log(err);
   }
 
-  // deletePersonal(personal: Personal): void {
+  // deleteContract(contract: Contract): void {
   //
-  //   this.contractService.deletePersonal(personal)
+  //   this.contractService.deleteContract(contract)
   //       .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
   // }
   editContract(contract: Contract): void {
