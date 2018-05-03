@@ -1,23 +1,46 @@
-<div fxFlex *ngIf="departmentEdit">
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Editar Departamento</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/departments" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/departments/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
   <mat-card>
-    <mat-card-title-group>
-      <mat-card-title>
-        <h3>Editar departamento</h3>
-      </mat-card-title>
-    </mat-card-title-group>
-    <mat-card-content>
-      <p>{{departmentEdit.id}}</p>
-    </mat-card-content>
-    <mat-card-content>
-      <p>Nombre:</p>
-      <input value="{{departmentEdit.name}}" />
-    </mat-card-content>
-    <mat-card-content>
-      <p>Descripción:</p>
-      <input value="{{departmentEdit.description}}" />
-    </mat-card-content>
-    <mat-card-content>
-      <button>Guardar</button>
-    </mat-card-content>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <form novalidate [formGroup]="departmentForm" (ngSubmit)="onSubmit()" id="form">
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(departmentForm.get('name').hasError('required') && departmentForm.get('name').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(departmentForm.get('name').hasError('required') && departmentForm.get('name').touched)">
+                  Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(departmentForm.get('description').hasError('required') && departmentForm.get('description').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="description" placeholder="Descripción" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(departmentForm.get('description').hasError('required') && departmentForm.get('description').touched)">
+                  Descripción es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="departmentForm.invalid">Enviar</button>
+      </form>
+    </div>
   </mat-card>
+  <mat-divider></mat-divider>
 </div>
+
+<ssi-footer></ssi-footer>

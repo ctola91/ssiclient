@@ -9,10 +9,12 @@
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-button (click)="onCreate(true)" color="primary"><span
-        class="fa fa-chevron-right fa-lg"></span>
+      <button mat-raised-button routerLink="/departments/create" color="primary">
+        <span class="fa fa-chevron-right fa-lg"></span>
         Crear nuevo departamento
       </button>
+      <button mat-raised-button routerLink="/departments/report" color="primary">
+        <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
     </div>
     <mat-divider></mat-divider>
     <div class="container"
@@ -31,9 +33,9 @@
           <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
             <mat-cell *matCellDef="let department">
-              <a mat-button (click)="onSelect(department)"><span class="fa fa-eye fa-lg"></span> Ver</a> |
-              <a mat-button (click)="onEdit(department)"><span class="fa fa-edit fa-lg"></span> Edit</a> |
-              <a mat-button (click)="onDelete(department)"><span class="fa fa-trash fa-lg"></span> Delete</a>
+              <a mat-raised-button (click)="onSelect(department)" color="primary"><span class="fa fa-eye fa-lg"></span> Ver</a> |
+              <a mat-raised-button routerLink="/departments/update/{{department.id}}"><span class="fa fa-edit fa-lg"></span> Editar</a> |
+              <a mat-raised-button (click)="onDelete(department)" color="warn"><span class="fa fa-trash fa-lg"></span> Eliminar</a>
             </mat-cell>
           </ng-container>
 
@@ -44,9 +46,7 @@
 
       <div fxFlex="50">
         <ssi-deparment-detail [departmentDetail]="selectedDepartment"></ssi-deparment-detail>
-        <ssi-deparment-edit [departmentEdit]="editDepartment"></ssi-deparment-edit>
-        <ssi-deparment-delete [departmentDelete]="deleteDepartment"></ssi-deparment-delete>
-        <ssi-deparment-create *ngIf="esCreate"></ssi-deparment-create>
+        <ssi-deparment-delete [departmentDelete]="deleteDepartment" (onDelete)="doSomething($event)"></ssi-deparment-delete>
       </div>
     </div>
     <mat-divider></mat-divider>

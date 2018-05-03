@@ -83,6 +83,9 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
+import { PositionCreateComponent } from './positions/position-create/position-create.component';
+import { PositionEditComponent } from './positions/position-edit/position-edit.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +117,9 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    PositionDeleteComponent,
+    PositionCreateComponent,
+    PositionEditComponent,
   ],
   imports: [
     BrowserModule,
