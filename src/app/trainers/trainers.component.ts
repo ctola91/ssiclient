@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Trainer} from '../shared/trainer';
 import {TrainerService} from '../services/trainer.service';
-import {Personal} from '../shared/Personal';
 import {ResponseService} from '../shared/responseService';
 import {ActivatedRoute, Router} from '@angular/router';
 
