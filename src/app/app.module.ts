@@ -71,10 +71,11 @@ import { DeparmentDetailComponent } from './departments/deparment-detail/deparme
 import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
 import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import {AreaService} from './services/area.service';
+
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
-
 
 @NgModule({
   declarations: [
@@ -123,7 +124,7 @@ import {EquipmentService} from './services/equipment.service';
     HttpClientModule,
     TreeModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService
+  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService
     , DepartmentService, EquipmentService
   ],
