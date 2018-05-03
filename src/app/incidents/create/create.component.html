@@ -5,8 +5,8 @@
     <h1>Create Incidente</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/incidents" color="accent">Back</button>
-    <button mat-button routerLink="/incidents/report" color="accent">Report</button>
+    <button mat-button routerLink="/incidents" color="accent">Atras</button>
+    <button mat-button routerLink="/incidents/report" color="accent">Reportes</button>
   </div>
   <mat-card>
     <form [formGroup]="incidentForm" (ngSubmit)="saveData()">
@@ -23,9 +23,34 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
-        <mat-checkbox name="reincident" formControlName="reincident" fxFlex="50%">Reincident</mat-checkbox>
-        <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Treatment</mat-checkbox>
+      <div fxFlex fxLayout="row">
+        <mat-form-field fxFlex="50%">
+          <mat-select placeholder="Selecciona un estado" formControlName="status">
+            <mat-option *ngFor="let status of statusList" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-select placeholder="Selecciona un Area" formControlName="area">
+            <mat-option *ngFor="let area of areas" [value]="area.name">
+              {{ area.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex fxLayout="row">
+        <mat-form-field fxFlex="50%">
+          <mat-select placeholder="Reportado por:" formControlName="reportedBy">
+            <mat-option *ngFor="let personal of personalList" [value]="personal.firstname">
+              {{ personal.firstname }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
+          <mat-checkbox name="reincident" formControlName="reincident" fxFlex="50%">Reincident</mat-checkbox>
+          <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Treatment</mat-checkbox>
+        </div>
       </div>
       <div fxFlex="100%" fxLayout="row">
         <mat-form-field fxFlex="100%">

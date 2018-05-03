@@ -78,4 +78,23 @@ export class TrainerService {
         return error;
       });
   }
+
+  updateTrainer(data: any, id: number): Observable<any> {
+    const params = JSON.stringify(data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.put(baseURL + API_URL + '/trainerssso/' + id, params, { headers: headers})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
+  }
 }

@@ -46,6 +46,7 @@ import {UserService} from './services/user.service';
 import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
+import { ContractService } from './services/contract.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -71,10 +72,17 @@ import { DeparmentDetailComponent } from './departments/deparment-detail/deparme
 import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
 import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import {AreaService} from './services/area.service';
+
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
-
+import {ContractComponent} from './contracts/contract.component';
+import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
+import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
+import {ContractDataParameters} from './shared/ContractDataParameters';
+import {ToastrModule} from 'ngx-toastr';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -102,7 +110,10 @@ import {EquipmentService} from './services/equipment.service';
     DeparmentEditComponent,
     DeparmentDeleteComponent,
     AssignComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    ContractComponent,
+    CreateContractComponent,
+    UpdateContractComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,11 +132,14 @@ import {EquipmentService} from './services/equipment.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TreeModule
+    TreeModule,
+    ToastrModule.forRoot(),
+    NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService
+  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService
-    , DepartmentService, EquipmentService
+    , DepartmentService, EquipmentService,
+    ContractService, ContractDataParameters
   ],
   bootstrap: [AppComponent]
 })
