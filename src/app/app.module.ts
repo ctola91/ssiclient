@@ -76,6 +76,8 @@ import {AreaService} from './services/area.service';
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
+import {ToastrModule} from 'ngx-toastr';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,9 @@ import {EquipmentService} from './services/equipment.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TreeModule
+    TreeModule,
+    ToastrModule.forRoot(),
+    NgxChartsModule
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService

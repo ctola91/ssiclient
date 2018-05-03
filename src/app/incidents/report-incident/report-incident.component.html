@@ -1,5 +1,43 @@
 <ssi-header></ssi-header>
-<p>
-  report-incident works!
-</p>
+<div class="container"
+     fxLayoutGap="10px" fxLayout="column">
+  <div fxFlex>
+    <h1>Reportes de Incidentes</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/incidents" color="accent">Atras</button>
+    <button mat-button routerLink="/incidents/create" color="accent">Agregar nuevo incidente</button>
+  </div>
+  <mat-card>
+    <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
+      <div fxFlex>
+        <h2>Grafico de Barras</h2>
+      </div>
+      <div fxFlex="100%">
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [results]="data"
+          xAxis="true"
+          yAxis="true"
+          legend="true"
+          legendTitle="Tipos de Incidente"
+          showXAxisLabel="true"
+          showYAxisLabel="true"
+          xAxisLabel="Cantidad"
+          yAxisLabel="Numero de Incidentes">
+        </ngx-charts-bar-vertical>
+      </div>
+      <div fxFlex>
+        <h2>Grafico de Torta</h2>
+      </div>
+      <div fxFlex="100%">
+        <ngx-charts-pie-chart
+          [view]="view"
+          [results]="data"
+          legendTitle="Tipos de Incidente">
+        </ngx-charts-pie-chart>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
 <ssi-footer></ssi-footer>
