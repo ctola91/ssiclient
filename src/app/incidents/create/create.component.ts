@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IncidentService} from '../shared/incident.service';
 import {AreaService} from '../../services/area.service';
 import {PersonalService} from '../../services/personal.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-create',
@@ -24,7 +25,8 @@ export class CreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private incidentService: IncidentService,
     private areaService: AreaService,
-    private personalService: PersonalService
+    private personalService: PersonalService,
+    private toastr: ToastrService
     ) {
     this.createForm();
 }
@@ -34,12 +36,14 @@ export class CreateComponent implements OnInit {
       .subscribe((res) => {
         this.areas = res.data;
       }, (error) => {
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
         console.log(error);
       });
     this.personalService.getListPersonals()
       .subscribe((res) => {
         this.personalList = res.data;
       }, (error) => {
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
         console.log(error);
       });
   }
@@ -58,7 +62,6 @@ export class CreateComponent implements OnInit {
   }
 
   saveData() {
-    console.log(this.incidentForm.value);
     const data = {
       code: this.incidentForm.value.code,
       reportedBy: this.incidentForm.value.reportedBy,
@@ -71,18 +74,17 @@ export class CreateComponent implements OnInit {
       incidentSubType: '',
       status: this.incidentForm.value.status
     };
-    console.log('saved');
     this.incidentService.createNewIncident(data)
       .subscribe((incident: any) => {
-        console.log(incident);
+        this.toastr.success('El incidente se guardo satisfactoriamente', incident.status);
       }, (error) => {
         console.log(error);
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
       });
     this.incidentForm.reset();
   }
 
   cancelForm() {
-    console.log('cancel');
     this.incidentForm.reset();
   }
 }

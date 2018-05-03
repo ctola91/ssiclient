@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidentService } from './shared/incident.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-incidents',
@@ -11,7 +12,8 @@ export class IncidentsComponent implements OnInit {
   displayedColumns = ['incidentId', 'code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName'];
 
   constructor(
-    private incidentService: IncidentService
+    private incidentService: IncidentService,
+    private toastr: ToastrService
   ) {
     this.loadData();
   }
@@ -26,6 +28,7 @@ export class IncidentsComponent implements OnInit {
           console.log(this.incidents);
       }, err => {
         console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
       });
   }
 

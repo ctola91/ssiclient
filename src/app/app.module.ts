@@ -81,8 +81,8 @@ import {ContractComponent} from './contracts/contract.component';
 import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
 import {ContractDataParameters} from './shared/ContractDataParameters';
-
-
+import {ToastrModule} from 'ngx-toastr';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -132,7 +132,9 @@ import {ContractDataParameters} from './shared/ContractDataParameters';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TreeModule
+    TreeModule,
+    ToastrModule.forRoot(),
+    NgxChartsModule
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService
