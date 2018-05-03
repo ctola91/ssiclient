@@ -13,7 +13,7 @@ export class EquipmentService {
 
   constructor(private http: HttpClient) { }
 
-  getEquipments(): Observable<any> {
+  /*getEquipments(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')
@@ -33,5 +33,15 @@ export class EquipmentService {
         console.log('error: ' + error);
         return error;
       });
+  }*/
+  getListEquipaments(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/equipament', { headers: headers}).map((res) => {
+      return res;
+    }).catch(error => {
+      console.log('error: ' + error);
+      return error;
+    });
   }
 }

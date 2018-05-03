@@ -22,7 +22,7 @@ export class TrainerService {
         if(res.status === 'ok'){
           return res.data;
         }
-        else{
+        else {
           console.log('error: ' + res.status);
           return [];
         }
