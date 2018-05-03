@@ -6,8 +6,8 @@
     <h1>Incidents</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/incidents/create">Add new incident</button>
-    <button mat-button routerLink="/incidents/report">Report</button>
+    <button mat-button routerLink="/incidents/create">Agregar nuevo Incidente</button>
+    <button mat-button routerLink="/incidents/report">Reportes</button>
   </div>
   <div fxFlex>
     <div>
@@ -42,6 +42,18 @@
             <ng-container matColumnDef="incidentTypeName">
               <mat-header-cell *matHeaderCellDef>Tipo de Incident</mat-header-cell>
               <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Accion">
+              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-cell *matCellDef="let incident">
+                <button mat-raised-button routerLink="/incidents/update/{{incident.incidentId}}" color="primary">
+                  Editar
+                </button>
+                <button mat-raised-button (click)="deleteIncident(incident)" color="warn">
+                  Eliminar
+                </button>
+              </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

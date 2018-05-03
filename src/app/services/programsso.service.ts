@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {API_URL, baseURL} from '../shared/baseurl';
 import {Observable} from 'rxjs/Observable';
-import {baseURL, API_URL} from '../shared/baseurl';
-import {log} from 'util';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ResponseService} from '../shared/responseService';
-import {Personal} from '../shared/Personal';
-import {Trainer} from '../shared/trainer';
+import {ProgramSso} from '../shared/programSso';
 
 @Injectable()
-export class TrainerService {
+export class ProgramssoService {
 
   constructor(private http: HttpClient) { }
 
-  getTrainers(): Observable<any> {
+  getProgramsSso(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')
       })
     };
 
-    return this.http.get(baseURL + API_URL + '/trainerssso', httpOptions )
+    return this.http.get(baseURL + API_URL + '/programssso', httpOptions )
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -33,39 +31,39 @@ export class TrainerService {
       });
   }
 
-  saveTrainer(data: any): Observable<any> {
+  saveProgramSso(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/trainerssso', params, { headers: headers})
+    return this.http.post(baseURL + API_URL + '/programssso', params, { headers: headers})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
         } else {
-                  console.log('error: ' + res.status);
-                  return [];
-                }
-              }).catch(error => {
-                console.log('error: ' + error);
-                return error;
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
       });
   }
 
-  deleteTrainer(trainer: Trainer): Observable<any> {
-    const params = JSON.stringify(trainer);
+  deleteProgramSso(programSso: ProgramSso): Observable<any> {
+    const params = JSON.stringify(programSso);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
 
-    return this.http.delete(baseURL + API_URL + '/trainerssso/' + trainer.id, { headers: headers});
+    return this.http.delete(baseURL + API_URL + '/programssso/' + programSso.id, { headers: headers});
   }
 
-  findTrainerById(id: number): Observable<any> {
+  findProgramSsoById(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
 
-    return this.http.get(baseURL + API_URL + '/trainerssso/' + id, { headers: headers})
+    return this.http.get(baseURL + API_URL + '/programssso/' + id, { headers: headers})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -79,12 +77,12 @@ export class TrainerService {
       });
   }
 
-  updateTrainer(data: any, id: number): Observable<any> {
+  updateProgramSso(data: any, id: number): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/trainerssso/' + id, params, { headers: headers})
+    return this.http.put(baseURL + API_URL + '/programssso/' + id, params, { headers: headers})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -97,4 +95,5 @@ export class TrainerService {
         return error;
       });
   }
+
 }

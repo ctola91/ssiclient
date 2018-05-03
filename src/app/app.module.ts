@@ -46,6 +46,7 @@ import {UserService} from './services/user.service';
 import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
+import { ContractService } from './services/contract.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -71,14 +72,24 @@ import { DeparmentDetailComponent } from './departments/deparment-detail/deparme
 import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
 import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import {AreaService} from './services/area.service';
+
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
+import {ContractComponent} from './contracts/contract.component';
+import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
+import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
+import {ContractDataParameters} from './shared/ContractDataParameters';
+import {ToastrModule} from 'ngx-toastr';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ProgramssoComponent} from './programsso/programsso.component';
+import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
+import {ProgramssoService} from './services/programsso.service';
 import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
 import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
 import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
-
 
 @NgModule({
   declarations: [
@@ -107,9 +118,14 @@ import {KardexService} from './services/kardex.service';
     DeparmentDeleteComponent,
     AssignComponent,
     EquipmentComponent,
+    ContractComponent,
+    CreateContractComponent,
+    UpdateContractComponent,
+    ProgramssoComponent,
+    CreateProgramssoComponent,
     CreateEquipmentComponent,
     DetailEquipmentComponent,
-    KardexEquipmentComponent,
+    KardexEquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -128,11 +144,14 @@ import {KardexService} from './services/kardex.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TreeModule
+    TreeModule,
+    ToastrModule.forRoot(),
+    NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService
-    , PositionService
+  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
+    , PositionService, ContractService, ContractDataParameters, ProgramssoService
     , DepartmentService, EquipmentService, KardexService
+
   ],
   bootstrap: [AppComponent]
 })

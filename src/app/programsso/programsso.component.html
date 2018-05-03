@@ -1,0 +1,69 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Programas SSO</h1>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button mat-button routerLink="/programsso/create" color="primary">Agregar programa Sso</button>
+  </div>
+  <div fxFlex>
+    <div>
+      <mat-table #table [dataSource]="programsSso">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoObjetive">
+          <mat-header-cell *matHeaderCellDef>Objetivo</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoObjetive}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoIndicator">
+          <mat-header-cell *matHeaderCellDef>Indicador</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoIndicator}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoGoal">
+          <mat-header-cell *matHeaderCellDef>Meta</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoGoal}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoExecutionTime">
+          <mat-header-cell *matHeaderCellDef>Tiempo ejecución</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoExecutionTime}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoResponsable">
+          <mat-header-cell *matHeaderCellDef>Responsable</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoResponsable}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssoTotalCost">
+          <mat-header-cell *matHeaderCellDef>Costo total</mat-header-cell>
+          <mat-cell *matCellDef="let programSso">{{programSso.ssoTotalCost}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+          <mat-cell *matCellDef="let programSso">
+            <button mat-raised-button (click)="deleteProgramSso(programSso)" color="warn">
+              Eliminar
+            </button>
+            <button mat-raised-button routerLink="/programsso/update/{{programSso.id}}" color="primary">
+              Modificar
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let programSso; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
+
+<ssi-footer></ssi-footer>

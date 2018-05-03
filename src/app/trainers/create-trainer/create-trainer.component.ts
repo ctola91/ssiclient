@@ -65,8 +65,14 @@ export class CreateTrainerComponent implements OnInit {
   }
 
   onSubmit() {
-    this.trainerService.saveTrainer(this.trainerForm.value)
-      .subscribe(this.processData.bind(this), this.processError.bind(this));
+    if (this.isUpdate) {
+      this.trainerService.updateTrainer(this.trainerForm.value, this.trainer.id)
+        .subscribe(this.processData.bind(this), this.processError.bind(this));
+    } else {
+      this.trainerService.saveTrainer(this.trainerForm.value)
+        .subscribe(this.processData.bind(this), this.processError.bind(this));
+    }
+
   }
 
   private processData(response: any) {
