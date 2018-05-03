@@ -16,19 +16,19 @@
 </div>
 
 
-<!--<div fxFlex *ngIf="departmentDetail.positions">-->
-  <!--<mat-card>-->
-    <!--<mat-card-title-group>-->
-      <!--<mat-card-title>-->
-        <!--<h3>Cargos</h3>-->
-      <!--</mat-card-title>-->
-    <!--</mat-card-title-group>-->
-    <!--<mat-card-content>-->
-      <!--<mat-list dense>-->
-        <!--<mat-list-item *ngFor="let position of departmentDetail.positions">-->
-          <!--{{position.name}}-->
-        <!--</mat-list-item>-->
-      <!--</mat-list>-->
-    <!--</mat-card-content>-->
-  <!--</mat-card>-->
-<!--</div>-->
+<div fxFlex *ngIf="departmentDetail.positions">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3>Cargos</h3>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <mat-list dense>
+        <mat-list-item *ngFor="let position of departmentDetail.positions">
+          <span class="fa fa-chevron-right fa-lg"></span>{{position.name}}
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
