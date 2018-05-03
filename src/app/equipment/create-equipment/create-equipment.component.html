@@ -1,0 +1,57 @@
+<div class="container">
+  <ssi-header></ssi-header>
+  <div class="container"
+       fxLayoutGap="10px">
+    <div fxFlex="100%">
+      <h1>Nuevo Equipamiento</h1>
+    </div>
+    <div fxFlex>
+      <button mat-button routerLink="/home" color="accent">Atras</button>
+      <button mat-button routerLink="/personal/report" color="accent">Reporte</button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <form novalidate [formGroup]="CreForm" (ngSubmit)="onSubmit()" id="form">
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(CreForm.get('firstname').hasError('required') && CreForm.get('firstname').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+            <mat-hint>
+                  <span [hidden]="!(CreForm.get('name').hasError('required') && CreForm.get('name').touched)">
+                    Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(CreForm.get('type').hasError('required') && CreForm.get('type').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="type"  placeholder="Tipo" type="text" required>
+            <mat-hint>
+                  <span [hidden]="!(CreForm.get('type').hasError('required') && CreForm.get('type').touched)">
+                    Ttipo es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(CreForm.get('description').hasError('required') && CreForm.get('description').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="description" placeholder="Descripcion" type="text" required>
+            <mat-hint>
+                  <span [hidden]="!(CreForm.get('description').hasError('required') && CreForm.get('description').touched)">
+                    Descripcion es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(CreForm.get('image').hasError('required') && CreForm.get('image').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="image" placeholder="Imagen" type="text" required>
+            <mat-hint>
+                  <span [hidden]="!(CreForm.get('image').hasError('required') && CreForm.get('image').touched)">
+                    Imagen es Requerida</span>
+            </mat-hint>
+          </mat-input-container>
+
+        </p>
+
+        <button type="submit"  mat-raised-button color="primary" [disabled]="CreForm.invalid">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <ssi-footer></ssi-footer>
+</div>

@@ -21,6 +21,7 @@ import {ProgramssoComponent} from '../programsso/programsso.component';
 import {ContractComponent} from '../contracts/contract.component';
 import {CreateContractComponent} from '../contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from '../contracts/update-contract/update-contract.component';
+import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 
 
 export const routes: Routes = [
@@ -49,5 +50,6 @@ export const routes: Routes = [
   { path: 'programsso/update/:id', component: CreateTrainerComponent},
   { path: 'contracts',  component: ContractComponent },
   { path: 'contracts/create',  component: CreateContractComponent },
-  { path: 'contracts/update',  component: UpdateContractComponent }
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'equipments/create',  component: CreateEquipmentComponent }
 ];

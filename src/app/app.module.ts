@@ -86,6 +86,10 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
 
 @NgModule({
   declarations: [
@@ -118,7 +122,10 @@ import {ProgramssoService} from './services/programsso.service';
     CreateContractComponent,
     UpdateContractComponent,
     ProgramssoComponent,
-    CreateProgramssoComponent
+    CreateProgramssoComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -142,9 +149,9 @@ import {ProgramssoService} from './services/programsso.service';
     NgxChartsModule
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
-    , PositionService
-    , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters, ProgramssoService
+    , PositionService, ContractService, ContractDataParameters, ProgramssoService
+    , DepartmentService, EquipmentService, KardexService
+
   ],
   bootstrap: [AppComponent]
 })

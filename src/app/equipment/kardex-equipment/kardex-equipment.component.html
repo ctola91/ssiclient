@@ -1,0 +1,41 @@
+<div class="container"
+     fxFlex *ngIf="equipmentKardex"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Tarjeta de exixtencias</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="container"
+       fxLayout="row"
+       fxLayoutGap="10px">
+    <div fxFlex="100%">
+      <div>
+        <mat-table #table [dataSource]="kardexs">
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+            <mat-cell *matCellDef="let kardex">{{kardex.dateKardex | date}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="entry">
+            <mat-header-cell *matHeaderCellDef>Entradas</mat-header-cell>
+            <mat-cell *matCellDef="let kardex">{{kardex.entryKardex}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="outlay">
+            <mat-header-cell *matHeaderCellDef>Salidas</mat-header-cell>
+            <mat-cell *matCellDef="let kardex">{{kardex.outlayKardex}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="balance">
+            <mat-header-cell *matHeaderCellDef>Saldo en Existencia</mat-header-cell>
+            <mat-cell *matCellDef="let kardex">{{kardex.balanceKardex}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let kardex; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+
