@@ -1,10 +1,11 @@
 
-
-
-
 <mat-toolbar color="primary">
   <span>SSI-D</span>
-  <a mat-button routerLink="/home" *ngIf="showMenu"><span class="fa fa-home fa-lg"></span> Inicio</a>
+  <button mat-button [matMenuTriggerFor]="personalMenu"><span class="fa fa-user fa-lg"></span> Personal</button>
+  <mat-menu #personalMenu="matMenu">
+    <button routerLink="/home" mat-menu-item>Personal</button>
+    <button routerLink="/assign" mat-menu-item>Assignacion</button>
+  </mat-menu>
 
   <!--Menu program Sso-->
   <button mat-button routerLink="/incidents"><span class="fa fa-bullhorn"></span> Incidentes</button>
@@ -14,8 +15,13 @@
     <!--<button mat-menu-item>Enfermedades</button>-->
   <!--</mat-menu>-->
 
-  <a mat-button *ngIf="showMenu"><span class="fa fa-wrench fa-lg"></span> Equipamiento</a>
-  <a mat-button *ngIf="showMenu"><span class="fa fa-user fa-lg"></span> Personal</a>
+  <!--Menu Equipments-->
+  <button mat-button [matMenuTriggerFor]="equipments"><span class="fa fa-bullhorn"></span>Equipamiento</button>
+  <mat-menu #equipments="matMenu">
+    <button routerLink="/equipments" mat-menu-item>Equipamiento</button>
+    <button routerLink="/equipments/inventory" mat-menu-item>Inventario</button>
+    <button routerLink="/equipments/kardex" mat-menu-item>Kardex</button>
+  </mat-menu>
 
   <!--Menu program Sso-->
   <button mat-button [matMenuTriggerFor]="programSSO"><span class="fa fa-shield"></span> Progama SSO</button>

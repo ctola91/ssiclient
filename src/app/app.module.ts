@@ -36,7 +36,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HeaderComponent} from './header/header.component';
@@ -72,6 +73,10 @@ import { DeparmentEditComponent } from './departments/deparment-edit/deparment-e
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
 import {AreaService} from './services/area.service';
 
+import { AssignComponent } from './personal/assign/assign.component';
+import { EquipmentComponent } from './equipment/equipment.component';
+import {EquipmentService} from './services/equipment.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +101,9 @@ import {AreaService} from './services/area.service';
     DeparmentDetailComponent,
     DeparmentCreateComponent,
     DeparmentEditComponent,
-    DeparmentDeleteComponent
+    DeparmentDeleteComponent,
+    AssignComponent,
+    EquipmentComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +115,7 @@ import {AreaService} from './services/area.service';
     MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
     MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
     MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule,
-    MatTabsModule, MatToolbarModule, MatTooltipModule,
+    MatTabsModule, MatToolbarModule, MatTooltipModule, MatStepperModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,
@@ -119,7 +126,7 @@ import {AreaService} from './services/area.service';
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService
-    , DepartmentService
+    , DepartmentService, EquipmentService
   ],
   bootstrap: [AppComponent]
 })
