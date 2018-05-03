@@ -83,6 +83,9 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ProgramssoComponent} from './programsso/programsso.component';
+import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
+import {ProgramssoService} from './services/programsso.service';
 
 @NgModule({
   declarations: [
@@ -114,6 +117,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    ProgramssoComponent,
+    CreateProgramssoComponent
   ],
   imports: [
     BrowserModule,
@@ -139,7 +144,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
   providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
     , PositionService
     , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters
+    ContractService, ContractDataParameters, ProgramssoService
   ],
   bootstrap: [AppComponent]
 })
