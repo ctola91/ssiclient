@@ -1,0 +1,72 @@
+<ssi-header></ssi-header>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <div fxFlex>
+      <h1>Contratos</h1>
+    </div>
+    <div fxFlex fxLayout="row">
+      <button mat-raised-button routerLink="/contracts/create" color="primary">Agregar nuevo contrato</button>
+
+    </div>
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="Nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.code}} </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Apellido">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container matColumnDef="Direccion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Salario </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.salary}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Telefono">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button (click)="deletePersonal(row)" color="warn">
+              Eliminar
+            </button>
+            <button mat-raised-button (click)="editContract(row)" color="warn">
+              Editar
+            </button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+
+</div>
