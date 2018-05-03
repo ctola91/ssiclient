@@ -7,7 +7,7 @@
     <h1>Capacitadores</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/incidents/create">Agregar capacitador</button>
+    <button mat-button routerLink="/trainers/create" color="primary">Agregar capacitador</button>
   </div>
   <div fxFlex>
     <div>
@@ -15,10 +15,10 @@
         <ng-container matColumnDef="image">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let trainer">
-            <img height="200px" data-src="data:image/png;base64,{{trainer.image}}" alt={{trainer.name}}>
-            <mat-grid-tile-footer>
+            <img matListAvatar height="200px" data-src="data:image/png;base64,{{trainer.image}}" alt={{trainer.name}}>
+           <!-- <mat-grid-tile-footer>
               <h1 mat-line>{{trainer.name | uppercase}}</h1>
-            </mat-grid-tile-footer>
+            </mat-grid-tile-footer>-->
           </mat-cell>
         </ng-container>
 
@@ -45,6 +45,18 @@
         <ng-container matColumnDef="skillsDescriptions">
           <mat-header-cell *matHeaderCellDef>Habilidades</mat-header-cell>
           <mat-cell *matCellDef="let trainer">{{trainer.skillsDescriptions}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+          <mat-cell *matCellDef="let trainer">
+            <button mat-raised-button (click)="deleteTrainer(trainer)" color="warn">
+              Eliminar
+            </button>
+            <button mat-raised-button routerLink="/trainers/update/{{trainer.id}}" color="primary">
+              Modificar
+            </button>
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

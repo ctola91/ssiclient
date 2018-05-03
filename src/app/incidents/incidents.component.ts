@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidentService } from './shared/incident.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-incidents',
@@ -8,10 +9,11 @@ import { IncidentService } from './shared/incident.service';
 })
 export class IncidentsComponent implements OnInit {
   incidents: any = [];
-  displayedColumns = ['incidentId', 'code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName'];
+  displayedColumns = ['code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName', 'Accion'];
 
   constructor(
-    private incidentService: IncidentService
+    private incidentService: IncidentService,
+    private toastr: ToastrService
   ) {
     this.loadData();
   }
@@ -26,7 +28,18 @@ export class IncidentsComponent implements OnInit {
           console.log(this.incidents);
       }, err => {
         console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
       });
   }
 
+  deleteIncident(incident: any) {
+    this.incidentService.deleteIncident(incident)
+      .subscribe(result => {
+        this.loadData();
+        this.toastr.success('El incidente fue eliminado satisfactoriamente', result.status);
+      }, error => {
+        console.log(error);
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
+      });
+  }
 }

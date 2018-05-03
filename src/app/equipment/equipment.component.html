@@ -1,0 +1,37 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Equipamientos</h1>
+  </div>
+  <div fxFlex fxLayout="column">
+    <button mat-button routerLink="/equipments/create">Agregar Equipamiento</button>
+  </div>
+  <div fxFlex>
+    <div>
+      <mat-table #table [dataSource]="equipments">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+          <mat-cell *matCellDef="let equipment">{{equipment.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+          <mat-cell *matCellDef="let equipment">{{equipment.type}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+          <mat-cell *matCellDef="let equipment">{{equipment.description}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
+
+<ssi-footer></ssi-footer>

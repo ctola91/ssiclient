@@ -12,7 +12,16 @@ import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
 import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
+import {CreateTrainerComponent} from '../trainers/create-trainer/create-trainer.component';
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
+import {AssignComponent} from '../personal/assign/assign.component';
+import {EquipmentComponent} from '../equipment/equipment.component';
+import {CreateProgramssoComponent} from '../programsso/create-programsso/create-programsso.component';
+import {ProgramssoComponent} from '../programsso/programsso.component';
+import {ContractComponent} from '../contracts/contract.component';
+import {CreateContractComponent} from '../contracts/create-contract/create-contract.component';
+import {UpdateContractComponent} from '../contracts/update-contract/update-contract.component';
+
 import {AccidentComponent} from '../accident/accident.component';
 
 export const routes: Routes = [
@@ -20,16 +29,28 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'incidents', component: IncidentsComponent },
   { path: 'incidents/create', component: CreateComponent},
+  { path: 'incidents/update/:id', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
   { path: 'personal/create',  component: CreatePersonalComponent },
+  { path: 'assign',  component: AssignComponent },
   { path: 'trainers',  component: TrainersComponent },
+  { path: 'trainers/create', component: CreateTrainerComponent},
+  { path: 'trainers/update/:id', component: CreateTrainerComponent},
   { path: 'about',  component: AboutComponent },
   { path: 'organizational-structure',  component: TreeComponent },
   { path: 'departments',  component: DepartmentsComponent },
   { path: 'positions',  component: PositionsComponent },
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
+  { path: 'position-detail/:id',  component: PositionDetailComponent },
+  { path: 'equipments', component: EquipmentComponent},
+  { path: 'programsso',  component: ProgramssoComponent },
+  { path: 'programsso/create', component: CreateProgramssoComponent},
+  { path: 'programsso/update/:id', component: CreateTrainerComponent},
+  { path: 'contracts',  component: ContractComponent },
+  { path: 'contracts/create',  component: CreateContractComponent },
+  { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'accident',  component: AccidentComponent },
 ];
