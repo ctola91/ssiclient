@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TreeModule } from 'angular-tree-component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TreeModule} from 'angular-tree-component';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './login/login.component';
 
 import {
   MatAutocompleteModule,
@@ -39,30 +39,36 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { UserService } from './services/user.service';
-import { HomeComponent } from './home/home.component';
-import { PersonalComponent } from './personal/personal.component';
-import { PersonalService } from './services/personal.service';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {UserService} from './services/user.service';
+import {HomeComponent} from './home/home.component';
+import {PersonalComponent} from './personal/personal.component';
+import {PersonalService} from './services/personal.service';
 
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IncidentsComponent } from './incidents/incidents.component';
-import { CreateComponent } from './incidents/create/create.component';
-import { ReportIncidentComponent } from './incidents/report-incident/report-incident.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { TrainersComponent } from './trainers/trainers.component';
-import { AboutComponent } from './about/about.component';
-import { TreeComponent } from './tree/tree.component';
-import { DepartmentsComponent } from './departments/departments.component';
-import { PositionsComponent } from './positions/positions.component';
-import { FunctionsComponent } from './functions/functions.component';
-import { RequirementsComponent } from './requirements/requirements.component';
-import { CreatePersonalComponent } from './personal/create-personal/create-personal.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {IncidentsComponent} from './incidents/incidents.component';
+import {CreateComponent} from './incidents/create/create.component';
+import {ReportIncidentComponent} from './incidents/report-incident/report-incident.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import {TrainersComponent} from './trainers/trainers.component';
+import {AboutComponent} from './about/about.component';
+import {TreeComponent} from './tree/tree.component';
+import {DepartmentsComponent} from './departments/departments.component';
+import {PositionsComponent} from './positions/positions.component';
+import {FunctionsComponent} from './functions/functions.component';
+import {RequirementsComponent} from './requirements/requirements.component';
+import {CreatePersonalComponent} from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
 import {PositionService} from './services/position.service';
+import {PositionDetailComponent} from './positions/position-detail/position-detail.component';
+import {DepartmentService} from './services/department.service';
+import { DeparmentDetailComponent } from './departments/deparment-detail/deparment-detail.component';
+import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
+import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
+import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +88,12 @@ import {PositionService} from './services/position.service';
     PositionsComponent,
     FunctionsComponent,
     RequirementsComponent,
-    CreatePersonalComponent
+    CreatePersonalComponent,
+    PositionDetailComponent,
+    DeparmentDetailComponent,
+    DeparmentCreateComponent,
+    DeparmentEditComponent,
+    DeparmentDeleteComponent
 
   ],
   imports: [
@@ -105,7 +116,10 @@ import {PositionService} from './services/position.service';
     TreeModule
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService
-    , PositionService],
+    , PositionService
+    , DepartmentService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
