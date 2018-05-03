@@ -13,7 +13,7 @@ import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
 import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
-
+import {AccidentComponent} from '../accident/accident.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -30,5 +30,6 @@ export const routes: Routes = [
   { path: 'positions',  component: PositionsComponent },
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
-  { path: 'position-detail/:id',  component: PositionDetailComponent }
+  { path: 'position-detail/:id',  component: PositionDetailComponent },
+  { path: 'accident',  component: AccidentComponent },
 ];
