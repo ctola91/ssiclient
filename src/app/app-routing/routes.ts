@@ -26,7 +26,7 @@ import {UpdateContractComponent} from '../contracts/update-contract/update-contr
 import {PositionCreateComponent} from '../positions/position-create/position-create.component';
 import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
 import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
-
+import {AccidentComponent} from '../accident/accident.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -59,5 +59,8 @@ export const routes: Routes = [
   { path: 'contracts',  component: ContractComponent },
   { path: 'contracts/create',  component: CreateContractComponent },
   { path: 'contracts/update',  component: UpdateContractComponent },
-  { path: 'equipments/create',  component: CreateEquipmentComponent }
+  { path: 'equipments/create',  component: CreateEquipmentComponent },
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'position-detail/:id',  component: PositionDetailComponent },
+  { path: 'accident',  component: AccidentComponent },
 ];

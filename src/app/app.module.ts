@@ -93,6 +93,8 @@ import { CreateEquipmentComponent } from './equipment/create-equipment/create-eq
 import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
 import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
+import { AccidentComponent } from './accident/accident.component';
+import {AccidentService} from './services/accident.service';
 
 @NgModule({
   declarations: [
@@ -131,7 +133,11 @@ import {KardexService} from './services/kardex.service';
     CreateProgramssoComponent,
     CreateEquipmentComponent,
     DetailEquipmentComponent,
-    KardexEquipmentComponent
+    KardexEquipmentComponent,
+    CreateProgramssoComponent,
+    DeparmentDeleteComponent,
+    AccidentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -154,10 +160,26 @@ import {KardexService} from './services/kardex.service';
     ToastrModule.forRoot(),
     NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
-    , PositionService, ContractService, ContractDataParameters, ProgramssoService
-    , DepartmentService, EquipmentService, KardexService
-
+  providers: [UserService
+    , PersonalService
+    , TrainerService
+    , IncidentService
+    , AreaService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , KardexService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , DepartmentService
+    , AccidentService
   ],
   bootstrap: [AppComponent]
 })
