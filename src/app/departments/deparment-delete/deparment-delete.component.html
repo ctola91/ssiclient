@@ -1,25 +1,25 @@
-
 <div fxFlex *ngIf="departmentDelete">
   <mat-card>
     <mat-card-title-group>
       <mat-card-title>
-        <h3 style="color: red;">Eliminar departamento</h3>
+        <h3 color="warn">Eliminar departamento</h3>
       </mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-      <p>Id: {{departmentDelete.id}}</p>
-    </mat-card-content>
-    <mat-card-content>
       <p>Nombre:</p>
-      <input value="{{departmentDelete.name}}" />
+      {{departmentDelete.name}}
     </mat-card-content>
     <mat-card-content>
       <p>Descripción:</p>
-      <input value="{{departmentDelete.description}}" />
+      {{departmentDelete.description}}
     </mat-card-content>
     <mat-card-content>
-      <p style="color: red;">Seguro que quiere eliminar el departamento?</p>
-      <button>Eliminar</button>
+      <p style="color: red;" mat-line *ngIf="departmentDelete.positions.length == 0">
+        Seguro que quiere eliminar el departamento?</p>
+      <p style="color: blue;" mat-line *ngIf="departmentDelete.positions.length > 0">
+        No se permite borrar porque contiene {{departmentDelete.positions.length}} Cargos asociados</p>
+      <button *ngIf="departmentDelete.positions.length == 0" mat-raised-button
+              (click)="deleteDepartment(departmentDelete)" color="warn">Eliminar</button>
     </mat-card-content>
   </mat-card>
 </div>

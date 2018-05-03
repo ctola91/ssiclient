@@ -1,3 +1,8 @@
+
+
+
+
+
 import {Component, Input, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Position} from '../../shared/position';

@@ -1,8 +1,40 @@
 <div fullscreen>
   <ssi-header></ssi-header>
-  <p>
-  position-detail works!
-  </p>
+  <div fxFlex="100%">
+    <h1>Detalle Cargo</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/positions" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/positions/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex *ngIf="positionDetail">
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title>
+          <h3>{{positionDetail.name | uppercase}}</h3>
+        </mat-card-title>
+      </mat-card-title-group>
+      <mat-card-content>
+        <p mat-line>Nivel:</p>
+        <p>{{positionDetail.level}}</p>
+      </mat-card-content>
+      <mat-card-content *ngIf="positionDetail.nameParentPosition">
+        <p mat-line>Depende de:</p>
+        <p>{{positionDetail.nameParentPosition}}</p>
+      </mat-card-content>
+      <mat-card-content>
+        <p mat-line>Descripción:</p>
+        <p>{{positionDetail.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
+  <button mat-raised-button routerLink="/organizational-structure" color="primary">
+    <span class="fa fa-chevron-right fa-lg"></span> Ir a Organización estructural de la empresa</button>
+  <mat-divider></mat-divider>
   <ssi-footer></ssi-footer>
 </div>

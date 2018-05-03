@@ -83,6 +83,9 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
+import { PositionCreateComponent } from './positions/position-create/position-create.component';
+import { PositionEditComponent } from './positions/position-edit/position-edit.component';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
@@ -123,6 +126,9 @@ import {AccidentService} from './services/accident.service';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    PositionDeleteComponent,
+    PositionCreateComponent,
+    PositionEditComponent,
     ProgramssoComponent,
     CreateProgramssoComponent,
     CreateEquipmentComponent,
