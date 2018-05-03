@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AccidentData} from '../shared/AccidentData';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
+import {AccidentData} from '../shared/AccidentData';
 import {AccidentService} from '../services/accident.service';
 import {Accident} from '../shared/Accident';
 
@@ -47,5 +46,12 @@ export class AccidentComponent implements OnInit {
 
   private processErrorData(err) {
     console.log(err);
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+    console.log(this.dataSource.filter);
   }
 }
