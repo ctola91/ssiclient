@@ -25,6 +25,7 @@ export class CreateTrainerComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      console.log(params);
       if (params['id'] !== undefined) {
         this.title = 'Modificar capacitador';
         this.isUpdate = true;
@@ -40,7 +41,17 @@ export class CreateTrainerComponent implements OnInit {
   }
 
   private findTrainer() {
-    this.trainerService.findTrainerById(this.idTrainer).subscribe(trainer  => this.trainer = trainer);
+    this.trainerService.findTrainerById(this.idTrainer).subscribe(trainer  => {
+      this.trainer = trainer;
+      if (this.isUpdate) {
+        this.trainerForm.patchValue({
+          name: trainer.name,
+          ci: trainer.ci,
+          speciality: trainer.speciality,
+          skillsDescriptions: trainer.skillsDescriptions
+        });
+      }
+    });
   }
 
   private createForm() {
