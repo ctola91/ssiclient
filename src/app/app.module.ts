@@ -36,7 +36,8 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HeaderComponent} from './header/header.component';
@@ -70,6 +71,7 @@ import { DeparmentDetailComponent } from './departments/deparment-detail/deparme
 import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
 import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
 import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import { AssignComponent } from './personal/assign/assign.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,8 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
     DeparmentDetailComponent,
     DeparmentCreateComponent,
     DeparmentEditComponent,
-    DeparmentDeleteComponent
+    DeparmentDeleteComponent,
+    AssignComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +110,7 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
     MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
     MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule,
     MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule,
-    MatTabsModule, MatToolbarModule, MatTooltipModule,
+    MatTabsModule, MatToolbarModule, MatTooltipModule, MatStepperModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,
