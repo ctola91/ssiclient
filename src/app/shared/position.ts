@@ -3,4 +3,6 @@ export interface Position {
   name: string;
   description: string;
   level: number;
+  nameParentPosition: string;
+  idParentPosition: number;
 }
