@@ -1,7 +1,11 @@
 
 <mat-toolbar color="primary">
   <span>SSI-D</span>
-  <a mat-button routerLink="/home" *ngIf="showMenu"><span class="fa fa-home fa-lg"></span> Inicio</a>
+  <button mat-button [matMenuTriggerFor]="personalMenu"><span class="fa fa-user fa-lg"></span> Personal</button>
+  <mat-menu #personalMenu="matMenu">
+    <button routerLink="/home" mat-menu-item>Personal</button>
+    <button routerLink="/assign" mat-menu-item>Assignacion</button>
+  </mat-menu>
 
   <!--Menu program Sso-->
   <button mat-button routerLink="/incidents"><span class="fa fa-bullhorn"></span> Incidentes</button>

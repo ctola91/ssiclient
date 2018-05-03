@@ -14,6 +14,7 @@ import {RequirementsComponent} from '../requirements/requirements.component';
 import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
 import {CreateTrainerComponent} from '../trainers/create-trainer/create-trainer.component';
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
+import {AssignComponent} from '../personal/assign/assign.component';
 import {EquipmentComponent} from '../equipment/equipment.component';
 
 
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
   { path: 'personal/create',  component: CreatePersonalComponent },
+  { path: 'assign',  component: AssignComponent },
   { path: 'trainers',  component: TrainersComponent },
   { path: 'trainers/create', component: CreateTrainerComponent},
   { path: 'trainers/update/:id', component: CreateTrainerComponent},
