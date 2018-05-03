@@ -44,6 +44,18 @@
               <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="Accion">
+              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-cell *matCellDef="let incident">
+                <button mat-raised-button routerLink="/incidents/update/{{incident.incidentId}}" color="primary">
+                  Editar
+                </button>
+                <button mat-raised-button (click)="deleteIncident(incident)" color="warn">
+                  Eliminar
+                </button>
+              </mat-cell>
+            </ng-container>
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           </mat-table>

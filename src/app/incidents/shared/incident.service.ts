@@ -13,6 +13,12 @@ export class IncidentService {
 
   constructor(private http: HttpClient) { }
 
+  getIncidentById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/incidents/' + id, {headers: headers});
+  }
+
   getIncidentList(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
@@ -25,5 +31,21 @@ export class IncidentService {
       .set('Authorization', token)
       .set('Content-Type', 'application/json');
     return this.http.post(baseURL + API_URL + '/incidents', data, { headers: headers } );
+  }
+
+  updateIncident(data: any, id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.put(baseURL + API_URL + '/incidents/' + id, data, {headers: headers});
+  }
+
+  deleteIncident(data: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.delete(baseURL + API_URL + '/incidents/' + data.incidentId, {headers: headers});
   }
 }
