@@ -1,0 +1,25 @@
+
+<div fxFlex *ngIf="departmentDelete">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3 style="color: red;">Eliminar departamento</h3>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>Id: {{departmentDelete.id}}</p>
+    </mat-card-content>
+    <mat-card-content>
+      <p>Nombre:</p>
+      <input value="{{departmentDelete.name}}" />
+    </mat-card-content>
+    <mat-card-content>
+      <p>Descripción:</p>
+      <input value="{{departmentDelete.description}}" />
+    </mat-card-content>
+    <mat-card-content>
+      <p style="color: red;">Seguro que quiere eliminar el departamento?</p>
+      <button>Eliminar</button>
+    </mat-card-content>
+  </mat-card>
+</div>

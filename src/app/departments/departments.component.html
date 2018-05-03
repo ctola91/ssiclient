@@ -1,8 +1,55 @@
 <div fullscreen>
   <ssi-header></ssi-header>
-  <p>
-    departments works!
-  </p>
+  <div class="container"
+       fxLayout="column"
+       fxLayoutGap="10px">
+
+    <div fxFlex>
+      <h1>Departamentos de la empresa</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxFlex>
+      <button mat-button (click)="onCreate(true)" color="primary"><span
+        class="fa fa-chevron-right fa-lg"></span>
+        Crear nuevo departamento
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container"
+         fxLayout="row"
+         fxLayout.sm="column"
+         fxLayout.xs="column"
+         fxLayoutAlign.gt-md="space-around center"
+         fxLayoutGap="10px">
+      <div fxFlex="50">
+        <mat-table #table [dataSource]="departments">
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Nombre departamento</mat-header-cell>
+            <mat-cell *matCellDef="let department">{{department.name}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let department">
+              <a mat-button (click)="onSelect(department)"><span class="fa fa-eye fa-lg"></span> Ver</a> |
+              <a mat-button (click)="onEdit(department)"><span class="fa fa-edit fa-lg"></span> Edit</a> |
+              <a mat-button (click)="onDelete(department)"><span class="fa fa-trash fa-lg"></span> Delete</a>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+
+      <div fxFlex="50">
+        <ssi-deparment-detail [departmentDetail]="selectedDepartment"></ssi-deparment-detail>
+        <ssi-deparment-edit [departmentEdit]="editDepartment"></ssi-deparment-edit>
+        <ssi-deparment-delete [departmentDelete]="deleteDepartment"></ssi-deparment-delete>
+        <ssi-deparment-create *ngIf="esCreate"></ssi-deparment-create>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
   <ssi-footer></ssi-footer>
 </div>
-

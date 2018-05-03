@@ -1,0 +1,23 @@
+<div fxFlex *ngIf="departmentEdit">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3>Editar departamento</h3>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>{{departmentEdit.id}}</p>
+    </mat-card-content>
+    <mat-card-content>
+      <p>Nombre:</p>
+      <input value="{{departmentEdit.name}}" />
+    </mat-card-content>
+    <mat-card-content>
+      <p>Descripción:</p>
+      <input value="{{departmentEdit.description}}" />
+    </mat-card-content>
+    <mat-card-content>
+      <button>Guardar</button>
+    </mat-card-content>
+  </mat-card>
+</div>

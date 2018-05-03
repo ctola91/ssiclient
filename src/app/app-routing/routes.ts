@@ -12,6 +12,7 @@ import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
 import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
+import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
 
 
 export const routes: Routes = [
@@ -24,9 +25,10 @@ export const routes: Routes = [
   { path: 'personal/create',  component: CreatePersonalComponent },
   { path: 'trainers',  component: TrainersComponent },
   { path: 'about',  component: AboutComponent },
-  { path: 'tree',  component: TreeComponent },
+  { path: 'organizational-structure',  component: TreeComponent },
   { path: 'departments',  component: DepartmentsComponent },
   { path: 'positions',  component: PositionsComponent },
   { path: 'functions',  component: FunctionsComponent },
-  { path: 'requirements',  component: RequirementsComponent }
+  { path: 'requirements',  component: RequirementsComponent },
+  { path: 'position-detail/:id',  component: PositionDetailComponent }
 ];
