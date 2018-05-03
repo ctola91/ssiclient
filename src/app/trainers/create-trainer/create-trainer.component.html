@@ -1,0 +1,74 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>{{title}}</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/trainers" color="accent">Atras</button>
+    <button mat-button routerLink="/trainers/report" color="accent">Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="trainerForm" (ngSubmit)="onSubmit()" id="form">
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched)">
+                  Nombre es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ci"  placeholder="Cedula identidad" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched)">
+                  Cedula identidad es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="speciality" placeholder="Especialidad" type="email" required>
+          <mat-hint>
+                <span [hidden]="!(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched)">
+                  Especialidad es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="skillsDescriptions" placeholder="Descripción de habilidades" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched)">
+                  Descripción de habilidades es required</span>
+          </mat-hint>
+        </mat-input-container>
+
+      </p>
+     <!-- <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="cellphone"  placeholder="Telefono" type="tel" required>
+          <mat-hint>
+              <span [hidden]="!(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched)">
+                Email es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Fecha Nacimiento"  required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </p>-->
+
+      <button type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">Enviar</button>
+    </form>
+  </div>
+</div>
+
+
+<ssi-footer></ssi-footer>

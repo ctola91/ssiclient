@@ -12,6 +12,7 @@ import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
 import {CreatePersonalComponent} from '../personal/create-personal/create-personal.component';
+import {CreateTrainerComponent} from '../trainers/create-trainer/create-trainer.component';
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
 import {EquipmentComponent} from '../equipment/equipment.component';
 
@@ -25,6 +26,8 @@ export const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: 'personal/create',  component: CreatePersonalComponent },
   { path: 'trainers',  component: TrainersComponent },
+  { path: 'trainers/create', component: CreateTrainerComponent},
+  { path: 'trainers/update/:id', component: CreateTrainerComponent},
   { path: 'about',  component: AboutComponent },
   { path: 'organizational-structure',  component: TreeComponent },
   { path: 'departments',  component: DepartmentsComponent },

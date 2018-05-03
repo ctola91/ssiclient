@@ -62,6 +62,7 @@ import {RequirementsComponent} from './requirements/requirements.component';
 import {CreatePersonalComponent} from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
+import { CreateTrainerComponent } from './trainers/create-trainer/create-trainer.component';
 import {PositionService} from './services/position.service';
 import {PositionDetailComponent} from './positions/position-detail/position-detail.component';
 import {DepartmentService} from './services/department.service';
@@ -91,6 +92,7 @@ import {EquipmentService} from './services/equipment.service';
     FunctionsComponent,
     RequirementsComponent,
     CreatePersonalComponent,
+    CreateTrainerComponent,
     PositionDetailComponent,
     DeparmentDetailComponent,
     DeparmentCreateComponent,
