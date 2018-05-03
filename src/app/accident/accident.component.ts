@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AccidentData} from '../shared/AccidentData';
-import {MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 import {AccidentService} from '../services/accident.service';
 import {Accident} from '../shared/Accident';
@@ -11,10 +11,14 @@ import {Accident} from '../shared/Accident';
   styleUrls: ['./accident.component.scss']
 })
 export class AccidentComponent implements OnInit {
-  displayedColumns = ['Id', 'Fecha', 'Descripcion'];
+  displayedColumns = ['Id', 'Personal', 'Fecha', 'Hora', 'Bajamedica', 'Lugaratencion', 'Descripcion'];
   dataSource: MatTableDataSource<AccidentData>;
   accidents: AccidentData[] = [];
   accident: Accident;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private accidentService: AccidentService) {
     this.loadDataTable();
   }
@@ -32,9 +36,13 @@ export class AccidentComponent implements OnInit {
     if (accident.status === 'ok') {
       this.accidents = accident.data;
       this.dataSource = new MatTableDataSource(this.accidents);
-      console.log(this.accidents);
-      console.log(this.dataSource);
+      this.initDatatable();
     }
+  }
+
+  initDatatable() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   private processErrorData(err) {
