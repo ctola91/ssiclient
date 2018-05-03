@@ -21,7 +21,6 @@ export class PositionService {
     return this.http.get(baseURL + API_URL + '/position/tree/tree', httpOptions)
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
-          console.log('data' + res.data);
           return res.data;
         } else {
           console.log('error: ' + res.status);
@@ -34,4 +33,25 @@ export class PositionService {
       });
   }
 
+  getPositionById(id: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+
+    return this.http.get(baseURL + API_URL + '/position/' + id, httpOptions)
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          console.log('data' + res.data);
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
+  }
 }
