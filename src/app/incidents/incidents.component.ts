@@ -9,7 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class IncidentsComponent implements OnInit {
   incidents: any = [];
-  displayedColumns = ['incidentId', 'code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName'];
+  displayedColumns = ['code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName', 'Accion'];
 
   constructor(
     private incidentService: IncidentService,
@@ -32,4 +32,14 @@ export class IncidentsComponent implements OnInit {
       });
   }
 
+  deleteIncident(incident: any) {
+    this.incidentService.deleteIncident(incident)
+      .subscribe(result => {
+        this.loadData();
+        this.toastr.success('El incidente fue eliminado satisfactoriamente', result.status);
+      }, error => {
+        console.log(error);
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
+      });
+  }
 }

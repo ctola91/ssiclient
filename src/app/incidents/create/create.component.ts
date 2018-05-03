@@ -4,6 +4,7 @@ import {IncidentService} from '../shared/incident.service';
 import {AreaService} from '../../services/area.service';
 import {PersonalService} from '../../services/personal.service';
 import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'ssi-create',
@@ -11,9 +12,11 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
+  id: number;
   incidentForm: FormGroup;
   areas: any[];
   personalList: any[];
+  isUpdate = false;
   types = [
     'enfermedad', 'accidente', 'incidente'
   ];
@@ -26,10 +29,12 @@ export class CreateComponent implements OnInit {
     private incidentService: IncidentService,
     private areaService: AreaService,
     private personalService: PersonalService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
     ) {
-    this.createForm();
-}
+      this.createForm();
+    }
 
   ngOnInit() {
     this.areaService.getAreaList()
@@ -46,6 +51,18 @@ export class CreateComponent implements OnInit {
         this.toastr.error(error, 'Ha ocurrido un error inesperado');
         console.log(error);
       });
+    this.route.params.subscribe(params => {
+      if (params.id !== undefined) {
+        this.incidentService.getIncidentById(params.id)
+          .subscribe((res) => {
+            this.id = params.id;
+            this.isUpdate = true;
+            this.loadIncident(res.data);
+          }, error => {
+            console.log(error);
+          });
+      }
+    });
   }
 
   createForm() {
@@ -74,17 +91,47 @@ export class CreateComponent implements OnInit {
       incidentSubType: '',
       status: this.incidentForm.value.status
     };
-    this.incidentService.createNewIncident(data)
-      .subscribe((incident: any) => {
-        this.toastr.success('El incidente se guardo satisfactoriamente', incident.status);
-      }, (error) => {
-        console.log(error);
-        this.toastr.error(error, 'Ha ocurrido un error inesperado');
-      });
+    if (!this.isUpdate) {
+      this.incidentService.createNewIncident(data)
+        .subscribe((incident: any) => {
+          this.toastr.success('El incidente se guardo satisfactoriamente', incident.status);
+        }, (error) => {
+          console.log(error);
+          this.toastr.error(error, 'Ha ocurrido un error inesperado');
+        });
+    } else {
+      this.incidentService.updateIncident(data, this.id)
+        .subscribe(response => {
+          this.toastr.success('El incidente fue actualizado satisfactoriamente', response.status);
+          this.router.navigateByUrl('/incidents');
+        }, error => {
+          console.log(error);
+          this.toastr.error(error, 'Ha ocurrido un error inesperado');
+        });
+    }
     this.incidentForm.reset();
+    const form: HTMLFormElement =
+      <HTMLFormElement>document.getElementById('form');
+    form.reset();
+  }
+
+  loadIncident(data: any) {
+    this.incidentForm.patchValue({
+      code: data.code,
+      reportedBy: data.reportedBy,
+      area: data.area,
+      reincident: data.reincident,
+      treatment: data.treatment,
+      type: data.incidentType.incidentTypeName,
+      description: data.incidentDetail.incidentDetailName,
+      status: data.incidentDetail.incidentDetailStatus
+    });
   }
 
   cancelForm() {
     this.incidentForm.reset();
+    const form: HTMLFormElement =
+      <HTMLFormElement>document.getElementById('form');
+    form.reset();
   }
 }
