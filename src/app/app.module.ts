@@ -74,6 +74,10 @@ import { DeparmentDeleteComponent } from './departments/deparment-delete/deparme
 import { AssignComponent } from './personal/assign/assign.component';
 import { EquipmentComponent } from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
 
 
 @NgModule({
@@ -102,7 +106,10 @@ import {EquipmentService} from './services/equipment.service';
     DeparmentEditComponent,
     DeparmentDeleteComponent,
     AssignComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,7 +132,7 @@ import {EquipmentService} from './services/equipment.service';
   ],
   providers: [UserService, PersonalService, TrainerService, IncidentService
     , PositionService
-    , DepartmentService, EquipmentService
+    , DepartmentService, EquipmentService, KardexService
   ],
   bootstrap: [AppComponent]
 })

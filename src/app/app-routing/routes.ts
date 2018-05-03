@@ -16,6 +16,7 @@ import {CreateTrainerComponent} from '../trainers/create-trainer/create-trainer.
 import {PositionDetailComponent} from '../positions/position-detail/position-detail.component';
 import {AssignComponent} from '../personal/assign/assign.component';
 import {EquipmentComponent} from '../equipment/equipment.component';
+import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 
 
 export const routes: Routes = [
@@ -37,6 +38,7 @@ export const routes: Routes = [
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
   { path: 'position-detail/:id',  component: PositionDetailComponent },
-  { path: 'equipments', component: EquipmentComponent}
+  { path: 'equipments', component: EquipmentComponent},
+  { path: 'equipments/create',  component: CreateEquipmentComponent },
 
 ];
