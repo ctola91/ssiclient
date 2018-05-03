@@ -86,6 +86,10 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
 
@@ -121,6 +125,10 @@ import {AccidentService} from './services/accident.service';
     UpdateContractComponent,
     ProgramssoComponent,
     CreateProgramssoComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent,
+    CreateProgramssoComponent,
     DeparmentDeleteComponent,
     AccidentComponent
 
@@ -146,10 +154,24 @@ import {AccidentService} from './services/accident.service';
     ToastrModule.forRoot(),
     NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
+  providers: [UserService
+    , PersonalService
+    , TrainerService
+    , IncidentService
+    , AreaService
     , PositionService
-    , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters, ProgramssoService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , KardexService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
     , DepartmentService
     , AccidentService
   ],

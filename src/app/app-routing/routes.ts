@@ -21,7 +21,7 @@ import {ProgramssoComponent} from '../programsso/programsso.component';
 import {ContractComponent} from '../contracts/contract.component';
 import {CreateContractComponent} from '../contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from '../contracts/update-contract/update-contract.component';
-
+import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 import {AccidentComponent} from '../accident/accident.component';
 
 export const routes: Routes = [
@@ -43,13 +43,14 @@ export const routes: Routes = [
   { path: 'positions',  component: PositionsComponent },
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
-  { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'equipments', component: EquipmentComponent},
   { path: 'programsso',  component: ProgramssoComponent },
   { path: 'programsso/create', component: CreateProgramssoComponent},
   { path: 'programsso/update/:id', component: CreateTrainerComponent},
   { path: 'contracts',  component: ContractComponent },
   { path: 'contracts/create',  component: CreateContractComponent },
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'equipments/create',  component: CreateEquipmentComponent },
   { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'accident',  component: AccidentComponent },
