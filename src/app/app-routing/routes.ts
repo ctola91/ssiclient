@@ -8,6 +8,8 @@ import {TrainersComponent} from '../trainers/trainers.component';
 import {AboutComponent} from '../about/about.component';
 import {TreeComponent} from '../tree/tree.component';
 import {DepartmentsComponent} from '../departments/departments.component';
+import {DeparmentCreateComponent} from '../departments/deparment-create/deparment-create.component';
+import {DeparmentEditComponent} from '../departments/deparment-edit/deparment-edit.component';
 import {PositionsComponent} from '../positions/positions.component';
 import {FunctionsComponent} from '../functions/functions.component';
 import {RequirementsComponent} from '../requirements/requirements.component';
@@ -21,6 +23,12 @@ import {ProgramssoComponent} from '../programsso/programsso.component';
 import {ContractComponent} from '../contracts/contract.component';
 import {CreateContractComponent} from '../contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from '../contracts/update-contract/update-contract.component';
+import {PositionCreateComponent} from '../positions/position-create/position-create.component';
+import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
+import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
+import {AccidentComponent} from '../accident/accident.component';
+import {ResourcesComponent} from '../resources/resources.component';
+import {CreateResourceComponent} from '../resources/create/create.resource.component';
 
 
 export const routes: Routes = [
@@ -28,6 +36,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'incidents', component: IncidentsComponent },
   { path: 'incidents/create', component: CreateComponent},
+  { path: 'incidents/update/:id', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
   { path: 'personal/create',  component: CreatePersonalComponent },
@@ -38,15 +47,25 @@ export const routes: Routes = [
   { path: 'about',  component: AboutComponent },
   { path: 'organizational-structure',  component: TreeComponent },
   { path: 'departments',  component: DepartmentsComponent },
+  { path: 'departments/create', component: DeparmentCreateComponent},
+  { path: 'departments/update/:id', component: DeparmentEditComponent},
   { path: 'positions',  component: PositionsComponent },
+  { path: 'positions/create', component: PositionCreateComponent},
+  { path: 'positions/update/:id', component: PositionEditComponent},
+  { path: 'positions/detail/:id',  component: PositionDetailComponent },
   { path: 'functions',  component: FunctionsComponent },
   { path: 'requirements',  component: RequirementsComponent },
-  { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'equipments', component: EquipmentComponent},
   { path: 'programsso',  component: ProgramssoComponent },
   { path: 'programsso/create', component: CreateProgramssoComponent},
   { path: 'programsso/update/:id', component: CreateTrainerComponent},
   { path: 'contracts',  component: ContractComponent },
   { path: 'contracts/create',  component: CreateContractComponent },
-  { path: 'contracts/update',  component: UpdateContractComponent }
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'equipments/create',  component: CreateEquipmentComponent },
+  { path: 'contracts/update',  component: UpdateContractComponent },
+  { path: 'position-detail/:id',  component: PositionDetailComponent },
+  { path: 'accident',  component: AccidentComponent },
+  { path: 'resources',  component: ResourcesComponent },
+  { path: 'resources/create', component: CreateResourceComponent},
 ];

@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TreeModule} from 'angular-tree-component';
+import {TreeModule} from "angular-tree-component";
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -83,9 +83,22 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
+import { PositionCreateComponent } from './positions/position-create/position-create.component';
+import { PositionEditComponent } from './positions/position-edit/position-edit.component';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
+import { AccidentComponent } from './accident/accident.component';
+import {AccidentService} from './services/accident.service';
+import { ResourcesComponent } from './resources/resources.component';
+import {ResourceService} from './services/resource.service';
+import {CreateResourceComponent} from './resources/create/create.resource.component';
+
 
 @NgModule({
   declarations: [
@@ -117,8 +130,20 @@ import {ProgramssoService} from './services/programsso.service';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    PositionDeleteComponent,
+    PositionCreateComponent,
+    PositionEditComponent,
     ProgramssoComponent,
-    CreateProgramssoComponent
+    CreateProgramssoComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent,
+    CreateProgramssoComponent,
+    DeparmentDeleteComponent,
+    AccidentComponent,
+    ResourcesComponent,
+    CreateResourceComponent
+
   ],
   imports: [
     BrowserModule,
@@ -141,10 +166,27 @@ import {ProgramssoService} from './services/programsso.service';
     ToastrModule.forRoot(),
     NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
+  providers: [UserService
+    , PersonalService
+    , TrainerService
+    , IncidentService
+    , AreaService
     , PositionService
-    , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters, ProgramssoService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , KardexService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , DepartmentService
+    , AccidentService
+    , ResourceService
   ],
   bootstrap: [AppComponent]
 })

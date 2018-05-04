@@ -13,9 +13,7 @@ export class DepartmentsComponent implements OnInit {
   departments: Department[];
 
   selectedDepartment: Department;
-  editDepartment: Department;
   deleteDepartment: Department;
-  esCreate = false;
   esDelete = false;
 
   displayedColumns = ['name', 'actions'];
@@ -31,33 +29,20 @@ export class DepartmentsComponent implements OnInit {
 
   onSelect(department: Department) {
     this.esDelete = false;
-    this.esCreate = false;
-    this.editDepartment = null;
     this.deleteDepartment = null;
     this.selectedDepartment = department;
   }
 
-  onEdit(department: Department) {
-    this.esDelete = false;
-    this.esCreate = false;
-    this.selectedDepartment = null;
-    this.deleteDepartment = null;
-    this.editDepartment = department;
-  }
-
-  onCreate(department: Department) {
-    this.esDelete = false;
-    this.esCreate = true;
-    this.selectedDepartment = null;
-    this.deleteDepartment = null;
-    this.editDepartment = null;
-  }
-
   onDelete(department: Department) {
     this.esDelete = true;
-    this.esCreate = false;
     this.selectedDepartment = null;
-    this.editDepartment = null;
     this.deleteDepartment = department;
+  }
+
+  public doSomething(status: string): void {
+    console.log('Status: ', status);
+    this.departmentService.getDepartments().subscribe(
+      departments => this.departments = departments);
+    this.deleteDepartment = null;
   }
 }

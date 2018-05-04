@@ -1,0 +1,33 @@
+<div fxFlex *ngIf="positionDelete">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3 color="warn">Eliminar cargo</h3>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>Nombre:</p>
+      {{positionDelete.name}}
+    </mat-card-content>
+    <mat-card-content>
+      <p>Nivel:</p>
+      {{positionDelete.level}}
+    </mat-card-content>
+    <mat-card-content>
+      <p>Cargo padre:</p>
+      {{positionDelete.nameParentPosition}}
+    </mat-card-content>
+    <mat-card-content>
+      <p>Descripción:</p>
+      {{positionDelete.description}}
+    </mat-card-content>
+    <mat-card-content>
+      <p style="color: red;" mat-line *ngIf="haveChildren == false">
+        Seguro que quiere eliminar el cargo?</p>
+      <p style="color: blue;" mat-line *ngIf="haveChildren == true">
+        No se permite borrar porque contiene Cargos hijos asociados</p>
+      <button *ngIf="haveChildren == false" mat-raised-button
+              (click)="deletePosition(positionDelete)" color="warn">Eliminar</button>
+    </mat-card-content>
+  </mat-card>
+</div>
