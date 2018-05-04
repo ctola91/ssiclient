@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TreeModule} from 'angular-tree-component';
+import {TreeModule} from "angular-tree-component";
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -95,6 +95,10 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
+import { ResourcesComponent } from './resources/resources.component';
+import {ResourceService} from './services/resource.service';
+import {CreateResourceComponent} from './resources/create/create.resource.component';
+
 
 @NgModule({
   declarations: [
@@ -136,7 +140,9 @@ import {AccidentService} from './services/accident.service';
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent
+    AccidentComponent,
+    ResourcesComponent,
+    CreateResourceComponent
 
   ],
   imports: [
@@ -180,6 +186,7 @@ import {AccidentService} from './services/accident.service';
     , ProgramssoService
     , DepartmentService
     , AccidentService
+    , ResourceService
   ],
   bootstrap: [AppComponent]
 })
