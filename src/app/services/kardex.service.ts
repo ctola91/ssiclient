@@ -22,4 +22,15 @@ export class KardexService {
       return error;
     });
   }
+
+  getListKardexById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/kardexequipament/equip' + id, { headers: headers}).map((res) => {
+      return res;
+    }).catch(error => {
+      console.log('error: ' + error);
+      return error;
+    });
+  }
 }
