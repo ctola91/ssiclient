@@ -9,10 +9,10 @@
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-button [routerLink]="['/departments']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
+      <button mat-raised-button [routerLink]="['/departments']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
         Departamentos
       </button>
-      <button mat-button [routerLink]="['/positions']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
+      <button mat-raised-button [routerLink]="['/positions']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
         Cargos
       </button>
     </div>
@@ -23,7 +23,7 @@
           <ng-template #treeNodeTemplate let-node>
             <span class="fa fa-user-circle-o fa-lg"></span>
             {{ node.data.name }}
-            <!--<button mat-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
+            <!--<button mat-raised-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
           </ng-template>
         </tree-root>
       </div>

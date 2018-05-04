@@ -83,6 +83,9 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
+import { PositionCreateComponent } from './positions/position-create/position-create.component';
+import { PositionEditComponent } from './positions/position-edit/position-edit.component';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
@@ -90,6 +93,8 @@ import { CreateEquipmentComponent } from './equipment/create-equipment/create-eq
 import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
 import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
+import { AccidentComponent } from './accident/accident.component';
+import {AccidentService} from './services/accident.service';
 
 @NgModule({
   declarations: [
@@ -121,11 +126,18 @@ import {KardexService} from './services/kardex.service';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    PositionDeleteComponent,
+    PositionCreateComponent,
+    PositionEditComponent,
     ProgramssoComponent,
     CreateProgramssoComponent,
     CreateEquipmentComponent,
     DetailEquipmentComponent,
-    KardexEquipmentComponent
+    KardexEquipmentComponent,
+    CreateProgramssoComponent,
+    DeparmentDeleteComponent,
+    AccidentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -148,10 +160,26 @@ import {KardexService} from './services/kardex.service';
     ToastrModule.forRoot(),
     NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
-    , PositionService, ContractService, ContractDataParameters, ProgramssoService
-    , DepartmentService, EquipmentService, KardexService
-
+  providers: [UserService
+    , PersonalService
+    , TrainerService
+    , IncidentService
+    , AreaService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , KardexService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , DepartmentService
+    , AccidentService
   ],
   bootstrap: [AppComponent]
 })
