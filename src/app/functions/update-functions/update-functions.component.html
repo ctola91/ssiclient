@@ -2,7 +2,7 @@
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>Nuevo requisito</h1>
+    <h1>Editar Requisito</h1>
   </div>
   <div fxFlex>
     <button mat-button routerLink="/requirements" color="accent">Atras</button>
@@ -10,6 +10,17 @@
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <form novalidate [formGroup]="contractForm" (ngSubmit)="onSubmit()" id="form">
+
+
+      <!--<div style="display:none;">-->
+      <!--<mat-input-container class="half-width"-->
+                           <!--dividerColor="{{(contractForm.get('code').hasError('required') && contractForm.get('code').touched) ? 'warn' : 'primary'}}">-->
+        <!--<input matInput formControlName="id"  placeholder="Id" type="text" required>-->
+
+      <!--</mat-input-container>-->
+      <!--</div>-->
+
+
     <p>
       <mat-input-container class="half-width"
                            dividerColor="{{(contractForm.get('name').hasError('required') && contractForm.get('name').touched) ? 'warn' : 'primary'}}">
@@ -19,18 +30,14 @@
                   Nombre es requerido</span>
         </mat-hint>
       </mat-input-container>
-
-    </p>
-    <p>
       <mat-input-container class="half-width"
                            dividerColor="{{(contractForm.get('description').hasError('required') && contractForm.get('description').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="description" placeholder="description" type="text" required>
+        <input matInput formControlName="description"  placeholder="Descripcion" type="text" required>
         <mat-hint>
                 <span [hidden]="!(contractForm.get('description').hasError('required') && contractForm.get('description').touched)">
-                  description es requerido</span>
+                  Apellido es requerido</span>
         </mat-hint>
       </mat-input-container>
-
     </p>
 
       <p>
@@ -44,8 +51,6 @@
                   Posicion</span>
         </mat-hint>
       </p>
-
-
     <button type="submit"  mat-raised-button color="primary" [disabled]="contractForm.invalid">Enviar</button>
   </form>
   </div>

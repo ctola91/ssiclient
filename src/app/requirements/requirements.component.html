@@ -43,10 +43,10 @@
         <ng-container matColumnDef="Accion">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <button mat-raised-button (click)="editContract(row)" color="warn">
+            <button mat-raised-button (click)="deleteRequirement(row)" color="warn">
               Eliminar
             </button>
-            <button mat-raised-button (click)="editContract(row)" color="primary">
+            <button mat-raised-button (click)="editRequirement(row)" color="primary">
               Editar
             </button>
           </mat-cell>

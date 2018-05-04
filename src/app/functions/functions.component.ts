@@ -7,6 +7,7 @@ import {FunctionsData} from '../shared/FunctionsData';
 import {Functions} from '../shared/Functions';
 import {FunctionsService} from '../services/functions.service';
 import {FunctionsDataParameters} from '../shared/FunctionsDataParameters';
+import {Contract} from '../shared/Contract';
 
 @Component({
   selector: 'ssi-function',
@@ -59,18 +60,18 @@ export class FunctionsComponent implements OnInit {
     console.log(err);
   }
 
-  // deletePersonal(personal: Personal): void {
-  //
-  //   this.contractService.deletePersonal(personal)
-  //       .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-  // }
-  // editContract(contract: Contract): void {
-  //
-  //   // this.contractService.deletePersonal(personal)
-  //   //     .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-  //
-  //   this.contractDataParameters.contractUpdate = contract;
-  //
-  //   this.router.navigate(['contracts/update']);
-  // }
+  deleteFunctions(personal: Functions): void {
+
+    this.functionsService.deleteFunctions(personal)
+        .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
+  }
+  editFunctions(contract: Functions): void {
+
+    // this.contractService.deletePersonal(personal)
+    //     .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
+
+    this.functionsDataParameters.functionsUpdate = contract;
+
+    this.router.navigate(['functions/update']);
+  }
 }

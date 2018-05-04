@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateContractComponent } from './update-contract.component';
+import { CreateContractComponent } from './update-functions.component';
 
 describe('CreateFunctionsComponent', () => {
   let component: CreateContractComponent;

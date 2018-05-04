@@ -19,21 +19,29 @@ export class FunctionsService {
     return this.http.get(baseURL + API_URL + '/function', { headers: headers});
   }
 
-  createFunctionPosition(data: any): Observable<any> {
+    saveFunctions(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
                                      .set('Content-Type', 'application/json');
     console.log(params);
-    return this.http.post(baseURL + API_URL + '/functions', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/function', params, { headers: headers} );
   }
 
-  // deletePersonal(personal: Personal): Observable<any> {
-  //   const params = JSON.stringify(personal);
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders().set('Authorization', token)
-  //     .set('Content-Type', 'application/json');
-  //
-  //   return this.http.delete(baseURL + API_URL + '/personal/' + personal.id, { headers: headers});
-  // }
+  deleteFunctions(personal: Functions): Observable<any> {
+    const params = JSON.stringify(personal);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+
+    return this.http.delete(baseURL + API_URL + '/function/' + personal.id, { headers: headers});
+  }
+  updateFunctions(data: any): Observable<any> {
+    const params = JSON.stringify(data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    console.log(params);
+    return this.http.post(baseURL + API_URL + '/function', params, { headers: headers} );
+  }
 }

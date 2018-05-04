@@ -7,7 +7,7 @@
       <h1>Funciones</h1>
     </div>
     <div fxFlex fxLayout="row">
-      <button mat-raised-button routerLink="/requirements/create" color="primary">Nueva Funcion</button>
+      <button mat-raised-button routerLink="/functions/create" color="primary">Nueva Funcion</button>
 
     </div>
     <div class="example-header">
@@ -35,7 +35,7 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="Cargo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Cargo </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.positionName}} </mat-cell>
         </ng-container>
 
 
@@ -43,10 +43,10 @@
         <ng-container matColumnDef="Accion">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <button mat-raised-button (click)="editContract(row)" color="warn">
+            <button mat-raised-button (click)="deleteFunctions(row)" color="warn">
               Eliminar
             </button>
-            <button mat-raised-button (click)="editContract(row)" color="primary">
+            <button mat-raised-button (click)="editFunctions(row)" color="primary">
               Editar
             </button>
           </mat-cell>

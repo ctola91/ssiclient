@@ -5,6 +5,8 @@ import {RequirementsData} from '../shared/RequirementsData';
 import {Requirements} from '../shared/Requirements';
 import {RequirementsService} from '../services/requirements.service';
 import {RequirementsDataParameters} from '../shared/RequirementsDataParameters';
+import {Functions} from '../shared/Functions';
+import {Contract} from '../shared/Contract';
 
 @Component({
   selector: 'ssi-contract',
@@ -57,18 +59,18 @@ export class RequirementsComponent implements OnInit {
     console.log(err);
   }
 
-  // deletePersonal(personal: Requirements): void {
-  //
-  //   this.contractService.deletePersonal(personal)
-  //       .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-  // }
-  // // editContract(contract: Contract): void {
-  // //
-  //   // this.contractService.deletePersonal(personal)
-  //   //     .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-  //
-  //   this.contractDataParameters.contractUpdate = contract;
-  //
-  //   this.router.navigate(['contracts/update']);
-  // }
+  deleteRequirement(personal: Requirements): void {
+
+    this.requirementsService.deleteRequirement(personal)
+        .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
+  }
+  editRequirement(contract: Requirements): void {
+
+    // this.contractService.deletePersonal(personal)
+    //     .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
+
+    this.requirementsDataParameters.requirementsUpdate = contract;
+
+    this.router.navigate(['requirements/update']);
+  }
 }

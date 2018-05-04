@@ -5,6 +5,7 @@ import {ContractData} from '../shared/ContractData';
 import {Contract} from '../shared/Contract';
 import {Router} from '@angular/router';
 import {ContractDataParameters} from '../shared/ContractDataParameters';
+import {Requirements} from '../shared/Requirements';
 
 @Component({
   selector: 'ssi-contract',
@@ -57,11 +58,11 @@ export class ContractComponent implements OnInit {
     console.log(err);
   }
 
-  // deleteContract(contract: Contract): void {
-  //
-  //   this.contractService.deleteContract(contract)
-  //       .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-  // }
+  deleteContract(personal: Contract): void {
+
+    this.contractService.deleteContract(personal)
+      .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
+  }
   editContract(contract: Contract): void {
 
     // this.contractService.deletePersonal(personal)
