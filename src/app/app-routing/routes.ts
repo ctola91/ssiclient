@@ -27,6 +27,9 @@ import {PositionCreateComponent} from '../positions/position-create/position-cre
 import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
 import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 import {AccidentComponent} from '../accident/accident.component';
+import {AreasComponent} from '../areas/areas.component';
+import {AreaCreateComponent} from '../areas/area-create/area-create.component';
+import {AreaEditComponent} from '../areas/area-edit/area-edit.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -63,4 +66,7 @@ export const routes: Routes = [
   { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'accident',  component: AccidentComponent },
+  { path: 'areas',  component: AreasComponent },
+  { path: 'areas/create', component: AreaCreateComponent},
+  { path: 'areas/update/:id', component: AreaEditComponent}
 ];

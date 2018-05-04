@@ -95,6 +95,11 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
+import { AreasComponent } from './areas/areas.component';
+import { AreaCreateComponent } from './areas/area-create/area-create.component';
+import { AreaEditComponent } from './areas/area-edit/area-edit.component';
+import { AreaDetailComponent } from './areas/area-detail/area-detail.component';
+import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +141,12 @@ import {AccidentService} from './services/accident.service';
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent
+    AccidentComponent,
+    AreasComponent,
+    AreaCreateComponent,
+    AreaEditComponent,
+    AreaDetailComponent,
+    AreaDeleteComponent
 
   ],
   imports: [

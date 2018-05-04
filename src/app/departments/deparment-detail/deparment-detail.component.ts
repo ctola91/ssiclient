@@ -1,11 +1,5 @@
-
-
-
-
-
 import {Component, Input, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
-import {Position} from '../../shared/position';
 import {Department} from '../../shared/department';
 import {DepartmentService} from '../../services/department.service';
 
