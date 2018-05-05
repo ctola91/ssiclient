@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TreeModule} from "angular-tree-component";
+import {TreeModule} from 'angular-tree-component';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -95,10 +95,15 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
-import { ResourcesComponent } from './resources/resources.component';
-import {ResourceService} from './services/resource.service';
-import {CreateResourceComponent} from './resources/create/create.resource.component';
+//import { ResourcesComponent } from './resources/resources.component';
+//import {ResourceService} from './services/resource.service';
+//import {CreateResourceComponent} from './resources/create/create.resource.component';
 
+import { AreasComponent } from './areas/areas.component';
+import { AreaCreateComponent } from './areas/area-create/area-create.component';
+import { AreaEditComponent } from './areas/area-edit/area-edit.component';
+import { AreaDetailComponent } from './areas/area-detail/area-detail.component';
+import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
 
 @NgModule({
   declarations: [
@@ -141,8 +146,14 @@ import {CreateResourceComponent} from './resources/create/create.resource.compon
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
     AccidentComponent,
-    ResourcesComponent,
-    CreateResourceComponent
+    //ResourcesComponent,
+    //CreateResourceComponent
+    AccidentComponent,
+    AreasComponent,
+    AreaCreateComponent,
+    AreaEditComponent,
+    AreaDetailComponent,
+    AreaDeleteComponent
 
   ],
   imports: [
@@ -186,7 +197,6 @@ import {CreateResourceComponent} from './resources/create/create.resource.compon
     , ProgramssoService
     , DepartmentService
     , AccidentService
-    , ResourceService
   ],
   bootstrap: [AppComponent]
 })
