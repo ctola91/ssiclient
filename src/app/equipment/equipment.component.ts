@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Equipment} from '../shared/Equipment';
 import {EquipmentService} from '../services/equipment.service';
 import {MatTableDataSource} from '@angular/material';
-import {Department} from '../shared/department';
 
 @Component({
   selector: 'ssi-equipment',
@@ -25,6 +24,20 @@ export class EquipmentComponent implements OnInit {
 
     this.equipmentService.getListEquipaments().subscribe(value => this.equipments = value);
     this.equipmentsTable = new MatTableDataSource(this.equipments);
+    /*
+       .subscribe(this.processData.bind(this), this.processError.bind(this));
+  }
+
+  private processData(response: any) {
+    if(response !== null){
+      this.router.navigate(['home']);
+    }
+  }
+
+  private processError(err) {
+    console.log(err);
+  }
+     */
 
   }
 

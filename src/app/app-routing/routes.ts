@@ -27,6 +27,10 @@ import {PositionCreateComponent} from '../positions/position-create/position-cre
 import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
 import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
 import {AccidentComponent} from '../accident/accident.component';
+import {KardexComponent} from '../kardex/kardex.component';
+import {InventoryComponent} from '../inventory/inventory.component';
+import {CreateInventoryComponent} from '../inventory/create-inventory/create-inventory.component';
+import {CrateKardexComponent} from '../kardex/crate-kardex/crate-kardex.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -63,4 +67,8 @@ export const routes: Routes = [
   { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'position-detail/:id',  component: PositionDetailComponent },
   { path: 'accident',  component: AccidentComponent },
+  { path: 'kardex',  component: KardexComponent },
+  { path: 'inventory',  component: InventoryComponent },
+  { path: 'inventory/create',  component: CreateInventoryComponent },
+  { path: 'kardex/create',  component: CrateKardexComponent }
 ];

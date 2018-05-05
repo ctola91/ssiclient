@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
+import {Kardex} from '../shared/Kardex';
 
 @Injectable()
 export class KardexService {
@@ -31,6 +32,30 @@ export class KardexService {
     }).catch(error => {
       console.log('error: ' + error);
       return error;
+    });
+  }
+  saveKardex(data: any): Observable<any> {
+    const params = JSON.stringify(data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+                                     .set('Content-Type', 'application/json');
+    return this.http.post(baseURL + API_URL + '/kardex', params, { headers: headers}).map((res) => {
+      return res;
+    }).catch(error => {
+      console.log('error: ' + error);
+      return error;
+    });
+  }
+  deleteKardex(kardex: Kardex): Observable<any> {
+    const params = JSON.stringify(kardex);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.delete(baseURL + API_URL + '/kardex/' + kardex.id, { headers: headers}).map((res) => {
+      return res;
+    }).catch(err => {
+      console.log('error:' + err);
+      return err;
     });
   }
 }

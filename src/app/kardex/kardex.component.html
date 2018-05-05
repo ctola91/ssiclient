@@ -1,17 +1,23 @@
+<ssi-header></ssi-header>
 <div class="container"
-     fxFlex *ngIf="equipmentKardex"
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Tarjeta de existencias</h1>
+    <h1>Kardex</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-button routerLink="/kardex/create" color="primary"><span
+      class="fa fa-chevron-right fa-lg"></span>
+      Crear nuevo Kardex
+    </button>
   </div>
   <mat-divider></mat-divider>
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="100%">
+    <div fxFlex="50%">
       <div>
-        <!--<mat-table #table [dataSource]="changeMatriz(kardexs, equipmentKardex.id)">-->
         <mat-table #table [dataSource]="kardexs">
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
@@ -33,11 +39,28 @@
             <mat-cell *matCellDef="let kardex">{{kardex.balanceKardex}}</mat-cell>
           </ng-container>
 
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+            <mat-cell *matCellDef="let kardex">
+              <button mat-raised-button routerLink="/kardex/update/{{kardex.id}}" color="primary">
+                Editar
+              </button>
+              <button mat-raised-button (click)="onSelect(kardex)" color="primary">
+                Ver
+              </button>
+            </mat-cell>
+          </ng-container>
+
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let kardex; columns: displayedColumns;"></mat-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
+    </div>
+    <div fxFlex="50%">
+      <!--<ssi-detail-kardex [kardexDetail]="selectedEqui"></ssi-detail-kardex>-->
+
     </div>
   </div>
 </div>
 
+<ssi-footer></ssi-footer>

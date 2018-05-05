@@ -95,6 +95,11 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
+import { InventoryComponent } from './inventory/inventory.component';
+import { KardexComponent } from './kardex/kardex.component';
+import {InventoryService} from './services/inventory.service';
+import { CreateInventoryComponent } from './inventory/create-inventory/create-inventory.component';
+import { CrateKardexComponent } from './kardex/crate-kardex/crate-kardex.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +141,11 @@ import {AccidentService} from './services/accident.service';
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent
+    AccidentComponent,
+    InventoryComponent,
+    KardexComponent,
+    CreateInventoryComponent,
+    CrateKardexComponent
 
   ],
   imports: [
@@ -180,6 +189,7 @@ import {AccidentService} from './services/accident.service';
     , ProgramssoService
     , DepartmentService
     , AccidentService
+    , InventoryService
   ],
   bootstrap: [AppComponent]
 })
