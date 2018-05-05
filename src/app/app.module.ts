@@ -95,11 +95,16 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
-import { InventoryComponent } from './inventory/inventory.component';
-import { KardexComponent } from './kardex/kardex.component';
+import {InventoryComponent} from './inventory/inventory.component';
+import {KardexComponent} from './kardex/kardex.component';
+import {CreateInventoryComponent} from './inventory/create-inventory/create-inventory.component';
+import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component';
 import {InventoryService} from './services/inventory.service';
-import { CreateInventoryComponent } from './inventory/create-inventory/create-inventory.component';
-import { CrateKardexComponent } from './kardex/crate-kardex/crate-kardex.component';
+/*
+import { ResourcesComponent } from './resources/resources.component';
+import {ResourceService} from './services/resource.service';
+import {CreateResourceComponent} from './resources/create/create.resource.component';
+*/
 
 @NgModule({
   declarations: [
@@ -146,7 +151,6 @@ import { CrateKardexComponent } from './kardex/crate-kardex/crate-kardex.compone
     KardexComponent,
     CreateInventoryComponent,
     CrateKardexComponent
-
   ],
   imports: [
     BrowserModule,
