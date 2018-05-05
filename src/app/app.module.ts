@@ -96,9 +96,9 @@ import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
 import {AppUtil} from './shared/AppUtil';
-//import { ResourcesComponent } from './resources/resources.component';
-//import {ResourceService} from './services/resource.service';
-//import {CreateResourceComponent} from './resources/create/create.resource.component';
+import { ResourcesComponent } from './resources/resources.component';
+import {ResourceService} from './services/resource.service';
+import {CreateResourceComponent} from './resources/create/create.resource.component';
 import { AreasComponent } from './areas/areas.component';
 import { AreaCreateComponent } from './areas/area-create/area-create.component';
 import { AreaEditComponent } from './areas/area-edit/area-edit.component';
@@ -109,12 +109,6 @@ import {KardexComponent} from './kardex/kardex.component';
 import {CreateInventoryComponent} from './inventory/create-inventory/create-inventory.component';
 import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component';
 import {InventoryService} from './services/inventory.service';
-/*
-import { ResourcesComponent } from './resources/resources.component';
-import {ResourceService} from './services/resource.service';
-import {CreateResourceComponent} from './resources/create/create.resource.component';
-*/
-
 
 @NgModule({
   declarations: [
@@ -157,9 +151,8 @@ import {CreateResourceComponent} from './resources/create/create.resource.compon
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
     AccidentComponent,
-    /*//ResourcesComponent,
-    //CreateResourceComponent
-    AccidentComponent,
+    ResourcesComponent,
+    CreateResourceComponent,
     AreasComponent,
     AreaCreateComponent,
     AreaEditComponent,
@@ -218,8 +211,8 @@ import {CreateResourceComponent} from './resources/create/create.resource.compon
     , DepartmentService
     , AccidentService
     , AppUtil
+    , ResourceService
     , InventoryService
-
   ],
   bootstrap: [AppComponent]
 })

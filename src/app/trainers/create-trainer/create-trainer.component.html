@@ -6,8 +6,12 @@
     <h1>{{title}}</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/trainers" color="accent">Atras</button>
-    <button mat-button routerLink="/trainers/report" color="accent">Reporte</button>
+    <button mat-raised-button routerLink="/trainers" color="accent">
+      <span class="fa fa-chevron-circle-left fa-lg"></span>
+      Atras</button>
+    <button mat-raised-button routerLink="/trainers/report" color="accent">
+      <span class="fa fa-pie-chart fa-lg"></span>
+      Reporte</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <form novalidate [formGroup]="trainerForm" (ngSubmit)="onSubmit()" id="form">
@@ -43,29 +47,14 @@
           <input matInput formControlName="skillsDescriptions" placeholder="Descripción de habilidades" type="text" required>
           <mat-hint>
                 <span [hidden]="!(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched)">
-                  Descripción de habilidades es required</span>
+                  Descripción de habilidades es requerido</span>
           </mat-hint>
         </mat-input-container>
 
       </p>
-     <!-- <p>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="cellphone"  placeholder="Telefono" type="tel" required>
-          <mat-hint>
-              <span [hidden]="!(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched)">
-                Email es requerido</span>
-          </mat-hint>
-        </mat-input-container>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Fecha Nacimiento"  required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-      </p>-->
-
-      <button type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">Enviar</button>
+      <button type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">
+        <span class="fa fa-floppy-o fa-lg"></span>
+        Guardar</button>
     </form>
   </div>
 </div>

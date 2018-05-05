@@ -7,8 +7,11 @@
     <h1>Capacitadores</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/trainers/create" color="primary">Agregar capacitador</button>
+    <button mat-raised-button routerLink="/trainers/create" color="primary">
+      <span class="fa fa-floppy-o fa-lg"></span>
+      Agregar capacitador</button>
   </div>
+
   <div fxFlex>
     <div>
       <mat-table #table [dataSource]="trainers">
@@ -51,9 +54,11 @@
           <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
           <mat-cell *matCellDef="let trainer">
             <button mat-raised-button (click)="deleteTrainer(trainer)" color="warn">
+              <span class="fa fa-trash fa-lg"></span>
               Eliminar
             </button>
             <button mat-raised-button routerLink="/trainers/update/{{trainer.id}}" color="primary">
+              <span class="fa fa-edit fa-lg"></span>
               Modificar
             </button>
           </mat-cell>
