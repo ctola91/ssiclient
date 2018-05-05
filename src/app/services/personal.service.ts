@@ -8,34 +8,30 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Personal} from '../shared/Personal';
 import {ResponseService} from '../shared/responseService';
+import {AppUtil} from '../shared/AppUtil';
 
 @Injectable()
 export class PersonalService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil) { }
 
   getListPersonals(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/personal', { headers: headers});
+    return this.http.get(baseURL + API_URL + '/personal', { headers: this.appUtil.getHeader() });
   }
 
   savePersonal(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-                                     .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/personal/save', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/personal/save', params, { headers: this.appUtil.getHeader()} );
   }
 
   deletePersonal(personal: Personal): Observable<any> {
     const params = JSON.stringify(personal);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-
-    return this.http.delete(baseURL + API_URL + '/personal/' + personal.id, { headers: headers});
+    return this.http.delete(baseURL + API_URL + '/personal/' + personal.id, { headers: this.appUtil.getHeader()});
   }
+
+
+
 
   getIfHavePersonalByArea(id: number): Observable<any> {
     const httpOptions = {

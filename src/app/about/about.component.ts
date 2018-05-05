@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Personal} from '../shared/personal';
+import {Personal} from '../shared/Personal';
 
 @Component({
   selector: 'ssi-about',

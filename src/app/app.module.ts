@@ -95,6 +95,7 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
+import {AppUtil} from './shared/AppUtil';
 //import { ResourcesComponent } from './resources/resources.component';
 //import {ResourceService} from './services/resource.service';
 //import {CreateResourceComponent} from './resources/create/create.resource.component';
@@ -197,6 +198,7 @@ import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
     , ProgramssoService
     , DepartmentService
     , AccidentService
+    , AppUtil
   ],
   bootstrap: [AppComponent]
 })

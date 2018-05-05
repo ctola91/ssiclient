@@ -7,6 +7,9 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 
+import {ResponseService} from '../shared/responseService';
+import {Equipment} from '../shared/Equipment';
+
 @Injectable()
 export class EquipmentService {
 
@@ -22,6 +25,13 @@ export class EquipmentService {
       return error;
     });
   }
+
+  getListEquipamentsData(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/equipament', {headers: headers});
+  }
+
   saveEquipament(data: any): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
