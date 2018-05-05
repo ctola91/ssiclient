@@ -1,39 +1,48 @@
 <ssi-header></ssi-header>
+
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>Nuevo Recurso</h1>
+    <h1>{{title}}</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/resource" color="accent">Atras</button>
-    <button mat-button routerLink="/resource/report" color="accent">Reporte</button>
+    <button mat-button routerLink="/resources" color="accent">Atras</button>
+    <button mat-button routerLink="/resources/report" color="accent">Reporte</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <form novalidate [formGroup]="resourceForm" (ngSubmit)="onSubmit()" id="form">
       <p>
         <mat-input-container class="half-width"
-                             dividerColor="{{(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="detail"  placeholder="Detalle" type="text" required>
+                             dividerColor="{{(resourceForm.get('detailResource').hasError('required') && resourceForm.get('detailResource').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="detailResource"  placeholder="Detalle de recurso" type="text" required>
           <mat-hint>
-                <span [hidden]="!(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched)">
+                <span [hidden]="!(resourceForm.get('detailResource').hasError('required') && resourceForm.get('detailResource').touched)">
                   Detalle es requerido</span>
           </mat-hint>
         </mat-input-container>
-
-      </p>
-      <p>
         <mat-input-container class="half-width"
-                             dividerColor="{{(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="cost" placeholder="Costo" type="cost" required>
+                             dividerColor="{{(resourceForm.get('costResource').hasError('required') && resourceForm.get('costResource').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="costResource"  placeholder="Costo" type="text" required>
           <mat-hint>
-                <span [hidden]="!(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched)">
+                <span [hidden]="!(resourceForm.get('costResource').hasError('required') && resourceForm.get('costResource').touched)">
                   Costo es requerido</span>
           </mat-hint>
         </mat-input-container>
 
       </p>
 
+      <!--<mat-select placeholder="Seleccionar actividad" formControlName="actividadName">
+        <mat-option *ngFor="let activity of activity" [value]="activity.activityName">
+          {{ activity.activityName }}
+        </mat-option>
+      </mat-select>-->
+
+
+
       <button type="submit"  mat-raised-button color="primary" [disabled]="resourceForm.invalid">Enviar</button>
     </form>
   </div>
 </div>
+
+
+<ssi-footer></ssi-footer>

@@ -7,32 +7,62 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Resource} from '../shared/resource';
+import {ResponseService} from '../shared/responseService';
 
 @Injectable()
 export class ResourceService {
+  appUtil: any;
 
   constructor(private http: HttpClient) { }
 
   getListResources(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/resource', { headers: headers});
+    return this.http.get(baseURL + API_URL + '/resource', { headers: this.appUtil.getHeader()});
   }
 
   saveResource(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/resource/save', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/resource/save', params, { headers: this.appUtil.getHeader()} );
   }
 
   deleteResource(resource: Resource): Observable<any> {
     const params = JSON.stringify(resource);
+    return this.http.delete(baseURL + API_URL + '/resource/' + resource.idResource, { headers: this.appUtil.getHeader()});
+}
+
+  findResourceById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+
+    return this.http.get(baseURL + API_URL + '/resource/' + id, { headers: headers})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
+  }
+
+  updateResource(data: any, id: number): Observable<any> {
+    const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-
-    return this.http.delete(baseURL + API_URL + '/resource/' + resource.idResource, { headers: headers});
+    return this.http.put(baseURL + API_URL + '/resource/' + id, params, { headers: headers})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
   }
 }

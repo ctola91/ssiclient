@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateResourceComponent } from './create.resource.component';
 
-describe('CreateResource', () => {
+describe('CreateResourceComponent', () => {
   let component: CreateResourceComponent;
   let fixture: ComponentFixture<CreateResourceComponent>;
 

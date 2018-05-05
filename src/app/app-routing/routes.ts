@@ -37,6 +37,7 @@ import {InventoryComponent} from '../inventory/inventory.component';
 import {CrateKardexComponent} from '../kardex/crate-kardex/crate-kardex.component';
 import {CreateInventoryComponent} from '../inventory/create-inventory/create-inventory.component';
 import {KardexComponent} from '../kardex/kardex.component';
+import {ActivitiesComponent} from '../activities/activities.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -81,6 +82,7 @@ export const routes: Routes = [
   { path: 'kardex', component: KardexComponent},
   { path: 'inventory', component: InventoryComponent},
   { path: 'kardex/create', component: CrateKardexComponent},
-  { path: 'inventory/create', component: CreateInventoryComponent}
+  { path: 'inventory/create', component: CreateInventoryComponent},
+  { path: 'activities',  component: ActivitiesComponent }
 
 ];
