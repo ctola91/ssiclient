@@ -6,4 +6,5 @@ export interface Personal {
   address: string;
   telephone: number;
   datebirth: string;
+  image: string;
 }

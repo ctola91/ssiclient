@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TreeModule} from 'angular-tree-component';
+import {TreeModule} from "angular-tree-component";
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -47,10 +47,6 @@ import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
 import { ContractService } from './services/contract.service';
-import { RequirementsService } from './services/requirements.service';
-import { FunctionsService } from './services/functions.service';
-
-
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -85,10 +81,6 @@ import {ContractComponent} from './contracts/contract.component';
 import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
 import {UpdateContractComponent} from './contracts/update-contract/update-contract.component';
 import {ContractDataParameters} from './shared/ContractDataParameters';
-import {RequirementsDataParameters} from './shared/RequirementsDataParameters';
-import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
-
-
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
@@ -103,7 +95,10 @@ import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-eq
 import {KardexService} from './services/kardex.service';
 import { AccidentComponent } from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
-import {CreateRequirementsComponent} from './requirements/create-requirements/create-requirements.component';
+import { ResourcesComponent } from './resources/resources.component';
+import {ResourceService} from './services/resource.service';
+import {CreateResourceComponent} from './resources/create/create.resource.component';
+
 
 @NgModule({
   declarations: [
@@ -146,7 +141,8 @@ import {CreateRequirementsComponent} from './requirements/create-requirements/cr
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
     AccidentComponent,
-    CreateRequirementsComponent
+    ResourcesComponent,
+    CreateResourceComponent
 
   ],
   imports: [
@@ -190,10 +186,7 @@ import {CreateRequirementsComponent} from './requirements/create-requirements/cr
     , ProgramssoService
     , DepartmentService
     , AccidentService
-    , RequirementsService
-    , RequirementsDataParameters
-    , FunctionsService
-    , FunctionsDataParameters
+    , ResourceService
   ],
   bootstrap: [AppComponent]
 })
