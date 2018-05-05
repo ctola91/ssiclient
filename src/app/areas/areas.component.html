@@ -1,0 +1,56 @@
+<div fullscreen>
+  <ssi-header></ssi-header>
+  <div class="container"
+       fxLayout="column"
+       fxLayoutGap="10px">
+
+    <div fxFlex>
+      <h1>Areas de trabajo</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxFlex>
+      <button mat-raised-button routerLink="/areas/create" color="primary">
+        <span class="fa fa-chevron-right fa-lg"></span>
+        Crear nueva area de trabajo
+      </button>
+      <button mat-raised-button routerLink="/areas/report" color="primary">
+        <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container"
+         fxLayout="row"
+         fxLayout.sm="column"
+         fxLayout.xs="column"
+         fxLayoutAlign.gt-md="space-around center"
+         fxLayoutGap="10px">
+      <div fxFlex="60">
+        <mat-table #table [dataSource]="areas">
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef fxFlex="30">Nombre area</mat-header-cell>
+            <mat-cell *matCellDef="let area" fxFlex="30">{{area.name}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef fxFlex="40">Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let area" fxFlex="40">
+              <a mat-raised-button (click)="onSelected(area)" color="primary"><span class="fa fa-eye fa-lg"></span> Ver</a> |
+              <a mat-raised-button routerLink="/areas/update/{{area.id}}"><span class="fa fa-edit fa-lg"></span> Editar</a> |
+              <a mat-raised-button (click)="onDelete(area)" color="warn"><span class="fa fa-trash fa-lg"></span> Eliminar</a>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns" fxFlex></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" fxFlex></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+
+      <div fxFlex="40">
+        <ssi-area-delete [areaDelete]="deleteArea" [havePersonal]="havePersonal" (onDelete)="doSomething($event)"></ssi-area-delete>
+        <ssi-area-detail [areaDetail]="selectedArea"></ssi-area-detail>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <ssi-footer></ssi-footer>
+</div>

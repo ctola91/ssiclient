@@ -1,0 +1,12 @@
+<div fxFlex *ngIf="areaDetail">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3>{{areaDetail.name | uppercase}}</h3>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>{{areaDetail.description}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
