@@ -1,3 +1,4 @@
+<!--
 <div class="container">
   <ssi-header></ssi-header>
   <div class="container"
@@ -63,3 +64,74 @@
   </div>
   <ssi-footer></ssi-footer>
 </div>
+-->
+
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Crear nuevo Equipamiento</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/equipments" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/equipments/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="newEquiForm" (ngSubmit)="onSubmit()" id="form">
+      <p>
+        <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('name').hasError('required') && newEquiForm.get('name').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(newEquiForm.get('name').hasError('required') && newEquiForm.get('name').touched)">
+                  Nombre es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="type"  placeholder="Tipo" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched)">
+                  Tipo es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <!--<mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="description"  placeholder="Descripcion" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched)">
+                  Descripcion es requerido</span>
+          </mat-hint>
+        </mat-input-container>-->
+        <mat-input-container class="full-width">
+          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+        </mat-input-container>
+      </p>
+      </p>
+      <p>
+        <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('image').hasError('required')&& newEquiForm.get('image').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(newEquiForm.get('image').hasError('required') && newEquiForm.get('image').touched)">
+                  Imagen es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <button type="submit"  mat-raised-button color="primary" [disabled]="newEquiForm.invalid">Enviar</button>
+
+    </form>
+  </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+
+
+<ssi-footer></ssi-footer>
+
