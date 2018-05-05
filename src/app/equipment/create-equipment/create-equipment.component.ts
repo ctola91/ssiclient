@@ -18,25 +18,30 @@ export class CreateEquipmentComponent implements OnInit {
               private equiService: EquipmentService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.createForm();
+              this.createForm();
   }
 
   ngOnInit() {
-    /*this.equipmentService.getListEquipaments().subscribe(value => this.equipments = value);
-    this.equipmentsTable = new MatTableDataSource(this.equipments);*/
+  }
+
+  onSubmit() {
+    this.equiService.saveEquipament(this.CreForm).subscribe(this.processData.bind(this), this.processError.bind(this));
+  }
+
+  private processData(response: any) {
+    this.router.navigate(['equipment']);
+  }
+  private processError(err) {
+    console.log(err);
   }
 
   private createForm() {
     this.CreForm = this.fb.group({
       name: ['', Validators.required ],
+      area: ['', Validators.required ],
       type: ['', Validators.required ],
       description: ['', Validators.required ],
       image: ['', Validators.required ],
     });
-  }
-
-  onSubmit() {
-    this.equiService.saveEquipament(this.CreForm.value)
-      .subscribe(value => this.newEquipment = value);
   }
 }

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Equipment} from '../shared/Equipment';
 import {EquipmentService} from '../services/equipment.service';
 import {MatTableDataSource} from '@angular/material';
-import {Department} from '../shared/department';
 
 @Component({
   selector: 'ssi-equipment',
