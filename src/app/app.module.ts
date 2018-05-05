@@ -46,7 +46,7 @@ import {UserService} from './services/user.service';
 import {HomeComponent} from './home/home.component';
 import {PersonalComponent} from './personal/personal.component';
 import {PersonalService} from './services/personal.service';
-import { ContractService } from './services/contract.service';
+import {ContractService} from './services/contract.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -64,18 +64,18 @@ import {RequirementsComponent} from './requirements/requirements.component';
 import {CreatePersonalComponent} from './personal/create-personal/create-personal.component';
 import {TrainerService} from './services/trainer.service';
 import {IncidentService} from './incidents/shared/incident.service';
-import { CreateTrainerComponent } from './trainers/create-trainer/create-trainer.component';
+import {CreateTrainerComponent} from './trainers/create-trainer/create-trainer.component';
 import {PositionService} from './services/position.service';
 import {PositionDetailComponent} from './positions/position-detail/position-detail.component';
 import {DepartmentService} from './services/department.service';
-import { DeparmentDetailComponent } from './departments/deparment-detail/deparment-detail.component';
-import { DeparmentCreateComponent } from './departments/deparment-create/deparment-create.component';
-import { DeparmentEditComponent } from './departments/deparment-edit/deparment-edit.component';
-import { DeparmentDeleteComponent } from './departments/deparment-delete/deparment-delete.component';
+import {DeparmentDetailComponent} from './departments/deparment-detail/deparment-detail.component';
+import {DeparmentCreateComponent} from './departments/deparment-create/deparment-create.component';
+import {DeparmentEditComponent} from './departments/deparment-edit/deparment-edit.component';
+import {DeparmentDeleteComponent} from './departments/deparment-delete/deparment-delete.component';
 import {AreaService} from './services/area.service';
 
-import { AssignComponent } from './personal/assign/assign.component';
-import { EquipmentComponent } from './equipment/equipment.component';
+import {AssignComponent} from './personal/assign/assign.component';
+import {EquipmentComponent} from './equipment/equipment.component';
 import {EquipmentService} from './services/equipment.service';
 import {ContractComponent} from './contracts/contract.component';
 import {CreateContractComponent} from './contracts/create-contract/create-contract.component';
@@ -83,27 +83,27 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
-import { PositionCreateComponent } from './positions/position-create/position-create.component';
-import { PositionEditComponent } from './positions/position-edit/position-edit.component';
+import {PositionDeleteComponent} from './positions/position-delete/position-delete.component';
+import {PositionCreateComponent} from './positions/position-create/position-create.component';
+import {PositionEditComponent} from './positions/position-edit/position-edit.component';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
-import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
-import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
-import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {CreateEquipmentComponent} from './equipment/create-equipment/create-equipment.component';
+import {DetailEquipmentComponent} from './equipment/detail-equipment/detail-equipment.component';
+import {KardexEquipmentComponent} from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
-import { AccidentComponent } from './accident/accident.component';
+import {AccidentComponent} from './accident/accident.component';
 import {AccidentService} from './services/accident.service';
 import {AppUtil} from './shared/AppUtil';
-import { ResourcesComponent } from './resources/resources.component';
+import {ResourcesComponent} from './resources/resources.component';
 import {ResourceService} from './services/resource.service';
 import {CreateResourceComponent} from './resources/create/create.resource.component';
-import { AreasComponent } from './areas/areas.component';
-import { AreaCreateComponent } from './areas/area-create/area-create.component';
-import { AreaEditComponent } from './areas/area-edit/area-edit.component';
-import { AreaDetailComponent } from './areas/area-detail/area-detail.component';
-import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
+import {AreasComponent} from './areas/areas.component';
+import {AreaCreateComponent} from './areas/area-create/area-create.component';
+import {AreaEditComponent} from './areas/area-edit/area-edit.component';
+import {AreaDetailComponent} from './areas/area-detail/area-detail.component';
+import {AreaDeleteComponent} from './areas/area-delete/area-delete.component';
 import {InventoryComponent} from './inventory/inventory.component';
 import {KardexComponent} from './kardex/kardex.component';
 import {CreateInventoryComponent} from './inventory/create-inventory/create-inventory.component';
@@ -153,12 +153,6 @@ import {InventoryService} from './services/inventory.service';
     AccidentComponent,
     ResourcesComponent,
     CreateResourceComponent,
-    AreasComponent,
-    AreaCreateComponent,
-    AreaEditComponent,
-    AreaDetailComponent,
-    AreaDeleteComponent*/
-    AccidentComponent,
     AreasComponent,
     AreaCreateComponent,
     AreaEditComponent,
