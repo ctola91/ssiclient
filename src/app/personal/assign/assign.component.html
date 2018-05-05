@@ -4,37 +4,5 @@
     <div fxFlex="100%">
       <h1>Asignacion de Equipo al Personal</h1>
     </div>
-    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Seleccionar un personal</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Nombre Personal" formControlName="personalName" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Siguiente</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Seleccionar un Equipo</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Nombre Equipo" formControlName="nameEquipament" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Atras</button>
-            <button mat-button matStepperNext>Siguiente</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Equipo Asignado</ng-template>
-          La asignacion ha terminado
-        <div>
-          <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button (click)="stepper.reset()">Reiniciar</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
+
 </div>
