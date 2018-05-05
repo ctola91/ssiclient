@@ -6,7 +6,6 @@
   </div>
   <div fxFlex>
     <button mat-button routerLink="/home" color="accent">Atras</button>
-    <button mat-button routerLink="/personal/report" color="accent">Reporte</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <form novalidate [formGroup]="personalForm" (ngSubmit)="onSubmit()" id="form">
@@ -63,6 +62,21 @@
       </mat-form-field>
 
     </p>
+      <p>
+        <mat-form-field  dividerColor="{{(personalForm.get('areaPersonal').hasError('required') && personalForm.get('areaPersonal').touched) ? 'warn' : 'primary'}}">
+          <mat-select placeholder="Seleccionar el area" formControlName="areaPersonal">
+            <mat-option *ngFor="let area of listAreas" [value]="area">
+              {{ area.name }}
+            </mat-option>
+          </mat-select>
+          <mat-hint>
+              <span [hidden]="!(personalForm.get('areaPersonal').hasError('required') && personalForm.get('areaPersonal').touched)">
+                El area es requerida</span>
+          </mat-hint>
+        </mat-form-field>
+
+      </p>
+
 
     <button type="submit"  mat-raised-button color="primary" [disabled]="personalForm.invalid">Enviar</button>
   </form>
