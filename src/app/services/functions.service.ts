@@ -6,34 +6,42 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
-import {Contract} from '../shared/Contract';
-import {Requirements} from '../shared/Requirements';
+import {Functions} from '../shared/Functions';
 
 @Injectable()
-export class ContractService {
+export class FunctionsService {
 
   constructor(private http: HttpClient) { }
 
-  getListContracts(): Observable<any> {
+  getAllFunctionPositions(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/contract', { headers: headers});
+    return this.http.get(baseURL + API_URL + '/function', { headers: headers});
   }
 
-  saveContract(data: any): Observable<any> {
+    saveFunctions(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
                                      .set('Content-Type', 'application/json');
     console.log(params);
-    return this.http.post(baseURL + API_URL + '/contract', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/function', params, { headers: headers} );
   }
-  deleteContract(personal: Contract): Observable<any> {
+
+  deleteFunctions(personal: Functions): Observable<any> {
     const params = JSON.stringify(personal);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
 
-    return this.http.delete(baseURL + API_URL + '/contract/' + personal.id, { headers: headers});
+    return this.http.delete(baseURL + API_URL + '/function/' + personal.id, { headers: headers});
+  }
+  updateFunctions(data: any): Observable<any> {
+    const params = JSON.stringify(data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    console.log(params);
+    return this.http.post(baseURL + API_URL + '/function', params, { headers: headers} );
   }
 }
