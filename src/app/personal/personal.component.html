@@ -54,6 +54,12 @@
             <button mat-raised-button (click)="deletePersonal(row)" color="warn">
               Eliminar
             </button>
+            <button mat-raised-button (click)="editPersonal(row)" color="primary">
+              Editar
+            </button>
+            <!--<button mat-raised-button (click)="assignPersonal(row)" color="accent">-->
+              <!--Asignar-->
+            <!--</button>-->
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
