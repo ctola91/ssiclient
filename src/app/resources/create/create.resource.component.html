@@ -1,0 +1,39 @@
+<ssi-header></ssi-header>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Nuevo Recurso</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/resource" color="accent">Atras</button>
+    <button mat-button routerLink="/resource/report" color="accent">Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="resourceForm" (ngSubmit)="onSubmit()" id="form">
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="detail"  placeholder="Detalle" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched)">
+                  Detalle es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+
+      </p>
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="cost" placeholder="Costo" type="cost" required>
+          <mat-hint>
+                <span [hidden]="!(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched)">
+                  Costo es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+
+      </p>
+
+      <button type="submit"  mat-raised-button color="primary" [disabled]="resourceForm.invalid">Enviar</button>
+    </form>
+  </div>
+</div>

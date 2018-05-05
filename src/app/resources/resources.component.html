@@ -1,0 +1,39 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Recursos</h1>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button mat-button routerLink="/resources/create" color="primary">Agregar recurso</button>
+  </div>
+  <div fxFlex>
+    <div>
+
+      <mat-table #table [dataSource]="resources">
+
+        <ng-container matColumnDef="idResource">
+          <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+          <mat-cell *matCellDef="let resource">{{resource.idResource}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="costResource">
+          <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
+          <mat-cell *matCellDef="let resource">{{resource.costResource}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="detailResource">
+         <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
+         <mat-cell *matCellDef="let resource">{{resource.detailResource}}</mat-cell>
+       </ng-container>
+
+           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+         </mat-table>
+       </div>
+     </div>
+   </div>
+
+   <ssi-footer></ssi-footer>
