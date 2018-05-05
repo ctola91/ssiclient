@@ -7,7 +7,9 @@
     <h1>Programas SSO</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/programsso/create" color="primary">Agregar programa Sso</button>
+    <button mat-raised-button routerLink="/programsso/create" color="primary">
+      <span class="fa fa-floppy-o fa-lg"></span>
+      Agregar programa Sso</button>
   </div>
   <div fxFlex>
     <div>
@@ -51,9 +53,11 @@
           <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
           <mat-cell *matCellDef="let programSso">
             <button mat-raised-button (click)="deleteProgramSso(programSso)" color="warn">
+              <span class="fa fa-trash fa-lg"></span>
               Eliminar
             </button>
             <button mat-raised-button routerLink="/programsso/update/{{programSso.id}}" color="primary">
+              <span class="fa fa-edit fa-lg"></span>
               Modificar
             </button>
           </mat-cell>

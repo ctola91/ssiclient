@@ -1,7 +1,81 @@
 <ssi-header></ssi-header>
 
-<p>
-  create-programsso works!
-</p>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>{{title}}</h1>
+  </div>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/programsso" color="accent">
+      <span class="fa fa-chevron-circle-left fa-lg"></span>
+      Atras</button>
+    <button mat-raised-button routerLink="/programsso/report" color="accent">
+      <span class="fa fa-pie-chart fa-lg"></span>
+      Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="programssoForm" (ngSubmit)="onSubmit()" id="form">
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoObjetive').hasError('required') && programssoForm.get('ssoObjetive').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoObjetive"  placeholder="Objetivo del programa" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoObjetive').hasError('required') && programssoForm.get('ssoObjetive').touched)">
+                  Objetivo es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoIndicator').hasError('required') && programssoForm.get('ssoIndicator').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoIndicator"  placeholder="Indicador" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoIndicator').hasError('required') && programssoForm.get('ssoIndicator').touched)">
+                  Indicador es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoGoal').hasError('required') && programssoForm.get('ssoGoal').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoGoal" placeholder="Meta" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoGoal').hasError('required') && programssoForm.get('ssoGoal').touched)">
+                  Meta es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoExecutionTime').hasError('required') && programssoForm.get('ssoExecutionTime').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoExecutionTime" placeholder="Tiempo de ejecución" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoExecutionTime').hasError('required') && programssoForm.get('ssoExecutionTime').touched)">
+                  Tiempo de ejecución es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+
+      </p>
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoResponsable').hasError('required') && programssoForm.get('ssoResponsable').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoResponsable" placeholder="Responsable" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoResponsable').hasError('required') && programssoForm.get('ssoResponsable').touched)">
+                  Responsable es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(programssoForm.get('ssoTotalCost').hasError('required') && programssoForm.get('ssoTotalCost').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="ssoTotalCost" placeholder="Costo total" type="number" required>
+          <mat-hint>
+                <span [hidden]="!(programssoForm.get('ssoTotalCost').hasError('required') && programssoForm.get('ssoTotalCost').touched)">
+                  Costo total es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+
+      </p>
+      <button type="submit"  mat-raised-button color="primary" [disabled]="programssoForm.invalid">
+        <span class="fa fa-floppy-o fa-lg"></span>
+        Guardar</button>
+    </form>
+  </div>
+</div>
 
 <ssi-footer></ssi-footer>
