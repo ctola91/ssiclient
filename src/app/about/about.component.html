@@ -6,35 +6,40 @@
 
     <div fxFlex>
       <div>
-        <h3>Acerca de nosotros</h3>
+        <h2>Acerca de nosotros</h2>
         <hr>
       </div>
     </div>
 
     <div fxFlex>
       <div fxLayout="column" fxLayout.gt-sm="row">
-        <div fxFlex="70">
-          <h2>Grupo D - Diplomado "Experto en desarrollo de aplicaciones empresariales"</h2>
-          <p>El presente proyecto corresponde al módulo 2, donde se desarrolla un sistema de seguridad industrial
-            (SSI-D), en el cual se trata de abarcar todos los aspectos necesarios para
-            <cite>Gestionar el manejo de información sobre accidentes y enfermedades laborales
-              para ayudar a minimizar incidentes en la empresa constructora G&D</cite>
-            en este caso a través de una plataforma web.</p>
-          <p>Con lo que se intenta<br/>
-            • Establecer las funciones que debe desempeñar cada empleado según el cargo que ocupe dentro la
-            empresa.<br/>
-            • Administrar la asignación de equipamiento de seguridad a los empleados según las funciones que desempeñen.<br/>
-            • Registrar las capacitaciones que se realizan al personal genérico o especifico del cargo.<br/>
-            • Registrar accidentes o enfermedades laborales que ocurren en la empresa.<br/>
-            • Obtener información relevante de incidentes ocurridos al personal de la empresa para determinar
-            indicadores y evaluar riesgos.<br/>
-            • Control periódico en las áreas de trabajo referente a seguridad y salud ocupacional.
-          </p>
-        </div>
-        <div fxFlex="30">
+        <div fxFlex="60">
           <mat-card>
             <mat-card-content>
-              <img src="../../assets/images/ssi.png" width="250px" />
+              <h2>Grupo D - Diplomado "Experto en desarrollo de aplicaciones empresariales"</h2>
+              <p>El presente proyecto corresponde al módulo 2, donde se desarrolla un sistema de seguridad industrial
+                (SSI-D), en el cual se trata de abarcar todos los aspectos necesarios para
+                <cite>Gestionar el manejo de información sobre accidentes y enfermedades laborales
+                  para ayudar a minimizar incidentes en la empresa constructora G&D</cite>
+                en este caso a través de una plataforma web.</p>
+              <p>Con lo que se intenta<br/>
+                • Establecer las funciones que debe desempeñar cada empleado según el cargo que ocupe dentro la
+                empresa.<br/>
+                • Administrar la asignación de equipamiento de seguridad a los empleados según las funciones que
+                desempeñen.<br/>
+                • Registrar las capacitaciones que se realizan al personal genérico o especifico del cargo.<br/>
+                • Registrar accidentes o enfermedades laborales que ocurren en la empresa.<br/>
+                • Obtener información relevante de incidentes ocurridos al personal de la empresa para determinar
+                indicadores y evaluar riesgos.<br/>
+                • Control periódico en las áreas de trabajo referente a seguridad y salud ocupacional.
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div fxFlex="40" align="center">
+          <mat-card style="padding: 0;">
+            <mat-card-content>
+              <img src="../../assets/images/ssi.png" width="250px"/>
             </mat-card-content>
           </mat-card>
         </div>
@@ -42,7 +47,7 @@
     </div>
 
     <div fxFlex>
-      <mat-card>
+      <mat-card style="padding: 5px 12px;">
         <blockquote>
           <h2>Integrantes del grupo</h2>
           <div class="container"
@@ -56,7 +61,7 @@
                 <mat-list-item *ngFor="let employee of employees">
                   <img matListAvatar data-src="{{employee.image}}" alt="">
                   <h3 matLine>{{employee.name}}</h3>
-                  <h3 matLine><cite>{{employee.email}}</cite></h3>
+                  <h3 matLine class="btn-mail"><cite>{{employee.email}}</cite></h3>
                 </mat-list-item>
               </mat-list>
             </div>
@@ -65,7 +70,7 @@
                 <mat-list-item *ngFor="let employee of employees2">
                   <img matListAvatar data-src="{{employee.image}}" alt="">
                   <h3 matLine>{{employee.name}}</h3>
-                  <h3 matLine><cite>{{employee.email}}</cite></h3>
+                  <h3 matLine><cite class="btn-mail">{{employee.email}}</cite></h3>
                 </mat-list-item>
               </mat-list>
             </div>

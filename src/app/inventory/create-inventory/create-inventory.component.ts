@@ -18,7 +18,7 @@ export class CreateInventoryComponent implements OnInit {
               private inventoryService: InventoryService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.createForm();
+              this.createForm();
   }
 
   ngOnInit() {

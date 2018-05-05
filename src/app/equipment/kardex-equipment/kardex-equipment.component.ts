@@ -3,8 +3,6 @@ import {Equipment} from '../../shared/Equipment';
 import {MatTableDataSource} from '@angular/material';
 import {Kardex} from '../../shared/Kardex';
 import {KardexService} from '../../services/kardex.service';
-import {forEach} from '@angular/router/src/utils/collection';
-import {Jsonp} from '@angular/http';
 
 @Component({
   selector: 'ssi-kardex-equipment',
@@ -26,7 +24,7 @@ export class KardexEquipmentComponent implements OnInit {
 
   ngOnInit() {
     this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
-    this.kardexsTable = new MatTableDataSource(this.kardexs);
+    // this.kardexsTable = new MatTableDataSource(this.kardexs);
     // this.kardexService.getListKardexById(this.equipmentKardex.id).subscribe(value => this.kardexs = value );
   }
 
@@ -36,7 +34,7 @@ export class KardexEquipmentComponent implements OnInit {
     console.log('id de equipment' + id);
     for (let i = 0; i <= kardexViejo.length; i++) {
       if (this.nuevo[i].idEquipament !== id) {
-        kardexViejo.splice(i,1);
+        kardexViejo.splice(i, 1);
         console.log('iteracion ' + i);
         console.log(kardexViejo.toString());
         console.log(kardexViejo.length);

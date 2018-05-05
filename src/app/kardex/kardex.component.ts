@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {KardexService} from '../services/kardex.service';
 import {Kardex} from '../shared/Kardex';
-import {Inventory} from '../shared/Inventory';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'ssi-kardex',
@@ -11,11 +11,14 @@ import {Inventory} from '../shared/Inventory';
 export class KardexComponent implements OnInit {
   kardexs: Kardex [];
   kardexSelect: Kardex;
-  displayedColumns: ['date', 'entry', 'outlay', 'balance', 'action'];
-  constructor(private kardexSercive: KardexService) { }
+  kardexsTable: MatTableDataSource<Kardex>;
+  displayedColumns = ['date', 'entry', 'outlay', 'balance', 'action'];
+  constructor(private kardexService: KardexService) { }
 
   ngOnInit() {
-    this.kardexSercive.getListKardex().subscribe(value => this.kardexs = value);
+    /*this.kardexSercive.getListKardex().subscribe(value => this.kardexs1 = value);*/
+    this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
+
   }
   onSelect(kardex: Kardex) {
     this.kardexSelect = kardex;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Inventory} from '../shared/Inventory';
 import {InventoryService} from '../services/inventory.service';
-import {Equipment} from '../shared/Equipment';
 
 @Component({
   selector: 'ssi-inventory',
@@ -24,7 +23,7 @@ export class InventoryComponent implements OnInit {
   }
 
   changeActive(bool: boolean): string {
-    if(bool) {
+    if (bool) {
       return 'Activo';
     } else {
       return 'Inactivo';

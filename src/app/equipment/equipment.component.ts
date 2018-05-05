@@ -24,20 +24,6 @@ export class EquipmentComponent implements OnInit {
 
     this.equipmentService.getListEquipaments().subscribe(value => this.equipments = value);
     this.equipmentsTable = new MatTableDataSource(this.equipments);
-    /*
-       .subscribe(this.processData.bind(this), this.processError.bind(this));
-  }
-
-  private processData(response: any) {
-    if(response !== null){
-      this.router.navigate(['home']);
-    }
-  }
-
-  private processError(err) {
-    console.log(err);
-  }
-     */
 
   }
 

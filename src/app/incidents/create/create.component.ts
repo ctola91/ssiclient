@@ -39,7 +39,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
     this.areaService.getAreaList()
       .subscribe((res) => {
-        this.areas = res.data;
+        this.areas = res;
       }, (error) => {
         this.toastr.error(error, 'Ha ocurrido un error inesperado');
         console.log(error);
