@@ -1,0 +1,46 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Editar Cargo</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/areas" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/areas/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <form novalidate [formGroup]="areaForm" (ngSubmit)="onSubmit()" id="form">
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(areaForm.get('name').hasError('required') && areaForm.get('name').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(areaForm.get('name').hasError('required') && areaForm.get('name').touched)">
+                  Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(areaForm.get('description').hasError('required') && areaForm.get('description').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="description" placeholder="Descripción" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(areaForm.get('description').hasError('required') && areaForm.get('description').touched)">
+                  Descripción es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="areaForm.invalid">Enviar</button>
+      </form>
+    </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+
+<ssi-footer></ssi-footer>

@@ -83,9 +83,28 @@ import {UpdateContractComponent} from './contracts/update-contract/update-contra
 import {ContractDataParameters} from './shared/ContractDataParameters';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { PositionDeleteComponent } from './positions/position-delete/position-delete.component';
+import { PositionCreateComponent } from './positions/position-create/position-create.component';
+import { PositionEditComponent } from './positions/position-edit/position-edit.component';
 import {ProgramssoComponent} from './programsso/programsso.component';
 import {CreateProgramssoComponent} from './programsso/create-programsso/create-programsso.component';
 import {ProgramssoService} from './services/programsso.service';
+import { CreateEquipmentComponent } from './equipment/create-equipment/create-equipment.component';
+import { DetailEquipmentComponent } from './equipment/detail-equipment/detail-equipment.component';
+import { KardexEquipmentComponent } from './equipment/kardex-equipment/kardex-equipment.component';
+import {KardexService} from './services/kardex.service';
+import { AccidentComponent } from './accident/accident.component';
+import {AccidentService} from './services/accident.service';
+import {AppUtil} from './shared/AppUtil';
+//import { ResourcesComponent } from './resources/resources.component';
+//import {ResourceService} from './services/resource.service';
+//import {CreateResourceComponent} from './resources/create/create.resource.component';
+
+import { AreasComponent } from './areas/areas.component';
+import { AreaCreateComponent } from './areas/area-create/area-create.component';
+import { AreaEditComponent } from './areas/area-edit/area-edit.component';
+import { AreaDetailComponent } from './areas/area-detail/area-detail.component';
+import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
 
 @NgModule({
   declarations: [
@@ -117,8 +136,26 @@ import {ProgramssoService} from './services/programsso.service';
     ContractComponent,
     CreateContractComponent,
     UpdateContractComponent,
+    PositionDeleteComponent,
+    PositionCreateComponent,
+    PositionEditComponent,
     ProgramssoComponent,
-    CreateProgramssoComponent
+    CreateProgramssoComponent,
+    CreateEquipmentComponent,
+    DetailEquipmentComponent,
+    KardexEquipmentComponent,
+    CreateProgramssoComponent,
+    DeparmentDeleteComponent,
+    AccidentComponent,
+    //ResourcesComponent,
+    //CreateResourceComponent
+    AccidentComponent,
+    AreasComponent,
+    AreaCreateComponent,
+    AreaEditComponent,
+    AreaDetailComponent,
+    AreaDeleteComponent
+
   ],
   imports: [
     BrowserModule,
@@ -141,10 +178,27 @@ import {ProgramssoService} from './services/programsso.service';
     ToastrModule.forRoot(),
     NgxChartsModule
   ],
-  providers: [UserService, PersonalService, TrainerService, IncidentService, AreaService
+  providers: [UserService
+    , PersonalService
+    , TrainerService
+    , IncidentService
+    , AreaService
     , PositionService
-    , DepartmentService, EquipmentService,
-    ContractService, ContractDataParameters, ProgramssoService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , KardexService
+    , PositionService
+    , DepartmentService
+    , EquipmentService
+    , ContractService
+    , ContractDataParameters
+    , ProgramssoService
+    , DepartmentService
+    , AccidentService
+    , AppUtil
   ],
   bootstrap: [AppComponent]
 })

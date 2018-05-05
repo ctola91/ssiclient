@@ -17,7 +17,7 @@
   <!--</mat-menu>-->
 
   <!--Menu Equipments-->
-  <button mat-button [matMenuTriggerFor]="equipments"><span class="fa fa-bullhorn"></span>Equipamiento</button>
+  <button mat-button [matMenuTriggerFor]="equipments"><span class="fa fa-wrench"></span> Equipamiento</button>
   <mat-menu #equipments="matMenu">
     <button routerLink="/equipments" mat-menu-item>Equipamiento</button>
     <button routerLink="/equipments/inventory" mat-menu-item>Inventario</button>
@@ -30,7 +30,7 @@
     <button routerLink="/trainers" mat-menu-item>Capacitadores</button>
     <button routerLink="/programsso" mat-menu-item>Programas</button>
     <button mat-menu-item>Actividades</button>
-    <button mat-menu-item>Recursos</button>
+    <button routerLink="/resources" mat-menu-item>Recursos</button>
   </mat-menu>
 
   <!--Menu Organizational structure-->
@@ -39,6 +39,7 @@
     <button routerLink="/organizational-structure" mat-menu-item>Estructura organizacional</button>
     <button routerLink="/departments" mat-menu-item>Departamentos de la empresa</button>
     <button mat-menu-item routerLink="/positions">Cargos de la empresa</button>
+    <button mat-menu-item routerLink="/areas">Areas de trabajo</button>
     <button mat-menu-item routerLink="/functions">Funciones de cargos</button>
     <button mat-menu-item routerLink="/requirements">Requisitos de cargos</button>
   </mat-menu>
@@ -47,7 +48,7 @@
   <button mat-button [matMenuTriggerFor]="reports"><span class="fa fa-print"></span> Reportes</button>
   <mat-menu #reports="matMenu">
     <button mat-menu-item>Reporte de personal</button>
-    <button mat-menu-item>Reporte de accidentes</button>
+    <button mat-menu-item routerLink="/accident/">Reporte de accidentes</button>
     <button mat-menu-item>Reporte de enfermedades</button>
     <button mat-menu-item>Reporte de capacitaciones</button>
     <button mat-menu-item>Reporte de equipamiento</button>

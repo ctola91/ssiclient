@@ -1,0 +1,66 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Crear nuevo Cargo</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/positions" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/positions/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <form novalidate [formGroup]="positionForm" (ngSubmit)="onSubmit()" id="form">
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(positionForm.get('name').hasError('required') && positionForm.get('name').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(positionForm.get('name').hasError('required') && positionForm.get('name').touched)">
+                  Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(positionForm.get('level').hasError('required') && positionForm.get('level').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="level"  placeholder="Nivel" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(positionForm.get('level').hasError('required') && positionForm.get('level').touched)">
+                  Nivel es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(positionForm.get('description').hasError('required') && positionForm.get('description').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="description" placeholder="Descripción" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(positionForm.get('description').hasError('required') && positionForm.get('description').touched)">
+                  Descripción es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-select placeholder="Seleccionar padre" formControlName="idParentPosition">
+            <mat-option *ngFor="let position of positions" [value]="position.id">
+              {{ position.name }}
+            </mat-option>
+          </mat-select>
+          <mat-hint>
+                <span [hidden]="!(positionForm.get('idParentPosition').hasError('required') && positionForm.get('idParentPosition').touched)">
+                  Cargo padre es requerido</span>
+          </mat-hint>
+        </p>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="positionForm.invalid">Enviar</button>
+      </form>
+    </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+
+
+<ssi-footer></ssi-footer>

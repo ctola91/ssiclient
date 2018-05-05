@@ -6,30 +6,51 @@
   <div fxFlex>
     <h1>Equipamientos</h1>
   </div>
-  <div fxFlex fxLayout="column">
-    <button mat-button routerLink="/equipments/create">Agregar Equipamiento</button>
-  </div>
+  <mat-divider></mat-divider>
   <div fxFlex>
-    <div>
-      <mat-table #table [dataSource]="equipments">
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
-          <mat-cell *matCellDef="let equipment">{{equipment.name}}</mat-cell>
-        </ng-container>
+    <button mat-button routerLink="/equipments/create" color="primary"><span
+      class="fa fa-chevron-right fa-lg"></span>
+      Crear nuevo equipamiento
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="container"
+       fxLayout="row"
+       fxLayoutGap="10px">
+    <div fxFlex="50%">
+      <div>
+        <mat-table #table [dataSource]="equipments">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let equipment">{{equipment.name}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="type">
-          <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
-          <mat-cell *matCellDef="let equipment">{{equipment.type}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef>Tipo</mat-header-cell>
+            <mat-cell *matCellDef="let equipment">{{equipment.type}}</mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
-          <mat-cell *matCellDef="let equipment">{{equipment.description}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+            <mat-cell *matCellDef="let equipment">{{equipment.description}}</mat-cell>
+          </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let equipment">
+              <a mat-button (click)="onSelect(equipment)">Ver</a> |
+              <a mat-button (click)="onKardex(equipment)"> Kardex</a> |
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <ssi-detail-equipment [equipmentDetail]="selectedEqui"></ssi-detail-equipment>
+      <ssi-kardex-equipment [equipmentKardex]="kardexEqui"></ssi-kardex-equipment>
     </div>
   </div>
 </div>
