@@ -99,12 +99,16 @@ import {AppUtil} from './shared/AppUtil';
 import { ResourcesComponent } from './resources/resources.component';
 import {ResourceService} from './services/resource.service';
 import {CreateResourceComponent} from './resources/create/create.resource.component';
-
 import { AreasComponent } from './areas/areas.component';
 import { AreaCreateComponent } from './areas/area-create/area-create.component';
 import { AreaEditComponent } from './areas/area-edit/area-edit.component';
 import { AreaDetailComponent } from './areas/area-detail/area-detail.component';
 import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
+import {InventoryComponent} from './inventory/inventory.component';
+import {KardexComponent} from './kardex/kardex.component';
+import {CreateInventoryComponent} from './inventory/create-inventory/create-inventory.component';
+import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component';
+import {InventoryService} from './services/inventory.service';
 
 @NgModule({
   declarations: [
@@ -153,8 +157,17 @@ import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
     AreaCreateComponent,
     AreaEditComponent,
     AreaDetailComponent,
-    AreaDeleteComponent
-
+    AreaDeleteComponent*/
+    AccidentComponent,
+    AreasComponent,
+    AreaCreateComponent,
+    AreaEditComponent,
+    AreaDetailComponent,
+    AreaDeleteComponent,
+    KardexComponent,
+    InventoryComponent,
+    CreateInventoryComponent,
+    CrateKardexComponent
   ],
   imports: [
     BrowserModule,
@@ -199,6 +212,7 @@ import { AreaDeleteComponent } from './areas/area-delete/area-delete.component';
     , AccidentService
     , AppUtil
     , ResourceService
+    , InventoryService
   ],
   bootstrap: [AppComponent]
 })

@@ -6,8 +6,8 @@
       <h1>Nuevo Equipamiento</h1>
     </div>
     <div fxFlex>
-      <button mat-button routerLink="/home" color="accent">Atras</button>
-      <button mat-button routerLink="/personal/report" color="accent">Reporte</button>
+      <button mat-button routerLink="/equipment" color="accent">Atras</button>
+      <button mat-button routerLink="/equipment/report" color="accent">Reporte</button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
       <form novalidate [formGroup]="CreForm" (ngSubmit)="onSubmit()" id="form">
@@ -18,6 +18,14 @@
             <mat-hint>
                   <span [hidden]="!(CreForm.get('name').hasError('required') && CreForm.get('name').touched)">
                     Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+          <mat-input-container class="half-width"
+                               dividerColor="{{(CreForm.get('code').hasError('required') && CreForm.get('code').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="area"  placeholder="Area" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(contractForm.get('area').hasError('required') && contractForm.get('area').touched)">
+                  Area es requerido</span>
             </mat-hint>
           </mat-input-container>
           <mat-input-container class="half-width"
