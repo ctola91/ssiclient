@@ -33,6 +33,7 @@ import {AccidentComponent} from '../accident/accident.component';
 import {AreasComponent} from '../areas/areas.component';
 import {AreaCreateComponent} from '../areas/area-create/area-create.component';
 import {AreaEditComponent} from '../areas/area-edit/area-edit.component';
+import {PersonalComponent} from "../personal/personal.component";
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -42,7 +43,9 @@ export const routes: Routes = [
   { path: 'incidents/update/:id', component: CreateComponent},
   { path: 'incidents/report', component: ReportIncidentComponent},
   { path: 'home',  component: HomeComponent },
+  { path: 'personal', component: PersonalComponent},
   { path: 'personal/create',  component: CreatePersonalComponent },
+  { path: 'personal/update/:id',  component: CreatePersonalComponent },
   { path: 'assign',  component: AssignComponent },
   { path: 'trainers',  component: TrainersComponent },
   { path: 'trainers/create', component: CreateTrainerComponent},
