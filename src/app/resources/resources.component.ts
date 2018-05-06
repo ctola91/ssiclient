@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Resource} from '../shared/resource';
 import {ResourceService} from '../services/resource.service';
-import {ResponseService} from '../shared/responseService';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-resources',
@@ -9,33 +8,38 @@ import {ResponseService} from '../shared/responseService';
   styleUrls: ['./resources.component.scss']
 })
 export class ResourcesComponent implements OnInit {
+  resources: any = [];
+  displayedColumns = ['code', 'cost', 'detail', 'action'];
 
-  resource: Resource[];
-
-  displayedColumns = ['idResource', 'costResource', 'detailResource'];
-
-  constructor(private resourceService: ResourceService) { }
+  constructor(
+    private resourceService: ResourceService,
+    private toastr: ToastrService
+  ) {
+    this.loadData();
+  }
 
   ngOnInit() {
-    this.resourceService.getListResources().subscribe(
-      resource => this.resource = resource);
   }
 
-  deleteResource(resource: Resource): void {
+  loadData() {
+    this.resourceService.getListResources()
+      .subscribe(result => {
+        this.resources = result.data;
+        console.log(this.resources);
+      }, err => {
+        console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
+      });
+  }
 
+  deleteResource(resource: any) {
     this.resourceService.deleteResource(resource)
-      .subscribe(this.processData.bind(this), this.processError.bind(this));
-  }
-
-  private processData(response: ResponseService) {
-    console.log(response.status);
-    if (response.status === 'deleted') {
-      this.resourceService.getListResources().subscribe(
-        resource => this.resource = resource);
-    }
-  }
-
-  private processError(err) {
-    console.log(err);
+      .subscribe(result => {
+        this.loadData();
+        this.toastr.success('El recurso fue eliminado satisfactoriamente', result.status);
+      }, error => {
+        console.log(error);
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
+      });
   }
 }
