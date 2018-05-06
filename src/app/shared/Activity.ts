@@ -3,7 +3,7 @@ export interface Activity {
   activityNumber: number;
   activityDetail: string;
   activityGoal: string;
-  activityTime: Date;
+  activityTime: string;
   activityType: string;
 }
 

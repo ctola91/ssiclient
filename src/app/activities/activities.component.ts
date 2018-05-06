@@ -10,7 +10,7 @@ import {ResponseService} from '../shared/responseService';
 })
 export class ActivitiesComponent implements OnInit {
 
-  activity: Activity[];
+  activities: Activity[];
 
   displayedColumns = ['activityId', 'activityNumber', 'activityDetail', 'activityGoal', 'activityTime', 'activityType'];
 
@@ -18,7 +18,7 @@ export class ActivitiesComponent implements OnInit {
 
   ngOnInit() {
     this.activityService.getListActivities().subscribe(
-      activity => this.activity = activity);
+      activities => this.activities = activities);
   }
 
   deleteActivity(activity: Activity): void {
@@ -31,7 +31,7 @@ export class ActivitiesComponent implements OnInit {
     console.log(response.status);
     if (response.status === 'deleted') {
       this.activityService.getListActivities().subscribe(
-        activity => this.activity = activity);
+        activities => this.activities = activities);
     }
   }
 

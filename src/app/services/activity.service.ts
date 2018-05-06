@@ -8,12 +8,13 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Activity} from '../shared/activity';
 import {ResponseService} from '../shared/responseService';
+import {AppUtil} from '../shared/AppUtil';
 
 @Injectable()
 export class ActivityService {
-  appUtil: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil) { }
 
   getListActivities(): Observable<any> {
     return this.http.get(baseURL + API_URL + '/activities', { headers: this.appUtil.getHeader()});

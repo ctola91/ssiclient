@@ -17,7 +17,7 @@ export class ResourceService {
               private appUtil: AppUtil) { }
 
   getListResources(): Observable<any> {
-    return this.http.get(baseURL + API_URL + '/resources', { headers: this.appUtil.getHeader()});
+    return this.http.get(baseURL + API_URL + '/resource', { headers: this.appUtil.getHeader()});
   }
 
   saveResource(data: any): Observable<any> {

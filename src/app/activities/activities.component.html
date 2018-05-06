@@ -35,8 +35,8 @@
         </ng-container>
 
         <ng-container matColumnDef="activityTime">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Tiempo de Duracion </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.fecha | date:'HH:mm'}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef> Tiempo de Duracion </mat-header-cell>
+          <mat-cell *matCellDef="let activity"> {{activity.fecha | date:'HH:mm'}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="activityType">
@@ -46,7 +46,7 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let activity; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
   </div>
