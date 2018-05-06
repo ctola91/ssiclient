@@ -28,7 +28,7 @@
             <ng-container matColumnDef="action">
               <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
               <mat-cell *matCellDef="let resource">
-                <button mat-raised-button routerLink="/resources/update/{{resource.idResource}}" color="primary">
+                <button mat-raised-button routerLink="/resources/update/{{resource.id}}" color="primary">
                   Editar
                 </button>
                 <button mat-raised-button (click)="deleteResource(resource)" color="warn">
