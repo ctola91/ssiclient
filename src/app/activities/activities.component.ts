@@ -9,7 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ActivitiesComponent implements OnInit {
   activities: any = [];
-  displayedColumns = ['activityId', 'activityNumber', 'activityDetail', 'activityGoal' , 'activityTime' , 'activityType' , 'Action'];
+  displayedColumns = [ 'activityNumber', 'activityDetail', 'activityGoal' , 'activityTime' , 'activityType' , 'Action'];
 
   constructor(
     private activityService: ActivityService,
