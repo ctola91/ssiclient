@@ -111,6 +111,8 @@ import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component
 import {InventoryService} from './services/inventory.service';
 import {ActivityService} from './services/activity.service';
 import { ActivitiesComponent } from './activities/activities.component';
+import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
+import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
 
 @NgModule({
   declarations: [
@@ -164,7 +166,9 @@ import { ActivitiesComponent } from './activities/activities.component';
     InventoryComponent,
     CreateInventoryComponent,
     CrateKardexComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    AddPersonalActivitiesComponent,
+    ReportProgramssoComponent
   ],
   imports: [
     BrowserModule,

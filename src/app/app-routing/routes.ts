@@ -33,12 +33,13 @@ import {AreasComponent} from '../areas/areas.component';
 import {AreaCreateComponent} from '../areas/area-create/area-create.component';
 import {AreaEditComponent} from '../areas/area-edit/area-edit.component';
 import {PersonalComponent} from '../personal/personal.component';
-import {Inventory} from '../shared/Inventory';
 import {InventoryComponent} from '../inventory/inventory.component';
 import {CrateKardexComponent} from '../kardex/crate-kardex/crate-kardex.component';
 import {CreateInventoryComponent} from '../inventory/create-inventory/create-inventory.component';
 import {KardexComponent} from '../kardex/kardex.component';
 import {ActivitiesComponent} from '../activities/activities.component';
+import {ReportProgramssoComponent} from '../programsso/report-programsso/report-programsso.component';
+import {AddPersonalActivitiesComponent} from '../activities/add-personal-activities/add-personal-activities.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -86,6 +87,7 @@ export const routes: Routes = [
   { path: 'inventory', component: InventoryComponent},
   { path: 'kardex/create', component: CrateKardexComponent},
   { path: 'inventory/create', component: CreateInventoryComponent},
-  { path: 'activities',  component: ActivitiesComponent }
-
+  { path: 'activities',  component: ActivitiesComponent },
+  { path: 'programsso/reportprogramsso/:id', component: ReportProgramssoComponent},
+  { path: 'activities/addpersonalactivitisso/:id', component: AddPersonalActivitiesComponent}
 ];
