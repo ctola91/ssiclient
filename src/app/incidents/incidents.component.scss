@@ -1,0 +1,28 @@
+.current span {
+  position: absolute;
+  transform: translate(10px, 82%);
+}
+mat-card-content {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+.severity {
+  width: calc(100% - 10px);
+  color: #fff;
+  padding: 8px 0;
+  text-align: center;
+  &.alta {
+    background: #F44336;
+  }
+  &.media {
+    background: #4CAF50;
+  }
+  &.baja {
+    background: #FFC107;
+  }
+
+}

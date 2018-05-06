@@ -12,6 +12,16 @@
   <mat-card>
     <form [formGroup]="incidentForm" (ngSubmit)="saveData()" id="form">
     <mat-card-content>
+      <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
+        <div>
+          <span>Gravedad: </span>
+        </div>
+        <mat-radio-group formControlName="severity">
+          <mat-radio-button value="alta">Alta</mat-radio-button>
+          <mat-radio-button value="media">Media</mat-radio-button>
+          <mat-radio-button value="baja">Baja</mat-radio-button>
+        </mat-radio-group>
+      </div>
       <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
         <mat-form-field fxFlex="50%">
           <input matInput name="code" formControlName="code" placeholder="Code">
@@ -49,8 +59,41 @@
           </mat-select>
         </mat-form-field>
         <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
-          <mat-checkbox name="reincident" formControlName="reincident" fxFlex="50%">Reincident</mat-checkbox>
-          <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Treatment</mat-checkbox>
+          <mat-checkbox name="reincident" formControlName="reincident" fxFlex="50%">Reincidente</mat-checkbox>
+          <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Tratamiento</mat-checkbox>
+        </div>
+      </div>
+      <div fxFlex fxLayout="row">
+        <div fxFlex="50%" fxLayout="row">
+          <mat-form-field fxFlex="30%">
+            <input type="number" matInput id="recurrence" name="recurrence" formControlName="recurrence" placeholder="Probabilidad de recurrencia" value="40" [readonly]="true">
+          </mat-form-field>
+          <mat-slider
+            class="example-margin"
+            [max]="100"
+            [min]="0"
+            [step]="1"
+            [thumbLabel]="true"
+            [tickInterval]="tickInterval"
+            fxFlex="50%"
+            (change)="updateRecurrence($event)"
+            [value]="current"
+          fxFlex="70%">
+          </mat-slider>
+        </div>
+        <div fxFlex="50%" fxLayoutAlign="center">
+          <div class="current">
+            <span>{{current}}%</span>
+            <round-progress
+              [current]="current"
+              [max]="100"
+              [color]="getColor(current)"
+              [radius]="25"
+              [stroke]="5"
+              [duration]="800"
+              [animation]="'easeInOutQuart'"
+              [animationDelay]="0"></round-progress>
+          </div>
         </div>
       </div>
       <div fxFlex="100%" fxLayout="row">
