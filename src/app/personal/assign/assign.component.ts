@@ -29,19 +29,19 @@ export class AssignComponent implements OnInit {
   formPersonalAssign: FormGroup;
 
   personals: any;
-  currentPersonal = {id: 0, createdOn: '', updatedOn: 0,
-                        version: 0, name: '', lastName: '', photo: null,
-                         email: '', address: '', cellphone: '7556622', telephone: null,
-                        active: true, birthdate: '', area: {
-                                        id: 0,
-                                        createdOn: 0,
-                                        updatedOn: null,
-                                        version: 0,
-                                        name: '',
-                                        description: ''
-                                     },
-                                  activitiesSsos: []};
-
+  // currentPersonal = {id: 0, createdOn: '', updatedOn: 0,
+  //                       version: 0, name: '', lastName: '', photo: null,
+  //                        email: '', address: '', cellphone: '7556622', telephone: null,
+  //                       active: true, birthdate: '', area: {
+  //                                       id: 0,
+  //                                       createdOn: 0,
+  //                                       updatedOn: null,
+  //                                       version: 0,
+  //                                       name: '',
+  //                                       description: ''
+  //                                    },
+  //                                 activitiesSsos: []};
+  currentPersonal = '';
 
   /**
    *

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Activity} from '../../shared/activity';
+import {Activity} from '../../shared/Activity';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActivityService} from '../../services/activity.service';
 import {ToastrService} from 'ngx-toastr';
