@@ -3,6 +3,7 @@ import {Equipment} from '../../shared/Equipment';
 import {MatTableDataSource} from '@angular/material';
 import {Kardex} from '../../shared/Kardex';
 import {KardexService} from '../../services/kardex.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ssi-kardex-equipment',
@@ -10,9 +11,7 @@ import {KardexService} from '../../services/kardex.service';
   styleUrls: ['./kardex-equipment.component.scss']
 })
 export class KardexEquipmentComponent implements OnInit {
-
-  @Input()
-  equipmentKardex: Equipment;
+  id_Equipment: number;
   public nuevo: Kardex [] = new Array();
   private numero = 0;
 
@@ -20,20 +19,21 @@ export class KardexEquipmentComponent implements OnInit {
   kardexsTable: MatTableDataSource<Kardex>;
   displayedColumns = ['date', 'entry', 'outlay', 'balance'];
 
-  constructor(private kardexService: KardexService) {}
+  constructor(private kardexService: KardexService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
+    this.id_Equipment = this.route.snapshot.params['id'];
+     this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
     // this.kardexsTable = new MatTableDataSource(this.kardexs);
-    // this.kardexService.getListKardexById(this.equipmentKardex.id).subscribe(value => this.kardexs = value );
+    //this.kardexService.getListKardexById(this.id_Equipment).subscribe(value => this.kardexs = value );
   }
 
-  changeMatriz(kardexViejo: Kardex [], id: number): Kardex [] {
+  changeMatriz(kardexViejo: Kardex []): Kardex [] {
     this.nuevo = kardexViejo;
-    this.numero = id;
-    console.log('id de equipment' + id);
+    this.numero = this.id_Equipment;
+    console.log('id de equipment' + this.numero);
     for (let i = 0; i <= kardexViejo.length; i++) {
-      if (this.nuevo[i].idEquipament !== id) {
+      if (this.nuevo[i].idEquipament !== this.numero) {
         kardexViejo.splice(i, 1);
         console.log('iteracion ' + i);
         console.log(kardexViejo.toString());

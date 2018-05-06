@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Equipment} from '../../shared/Equipment';
@@ -13,10 +13,16 @@ export class CreateEquipmentComponent implements OnInit {
   newEquiForm: FormGroup;
   newEquipment: Equipment;
 
+  datos = [
+    {name: 'Equipo', value: 1},
+    {name: 'Implemento', value: 2},
+  ];
+
   constructor(private fb: FormBuilder,
               private equipmentService: EquipmentService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.createForm();
   }
 
   ngOnInit() {
@@ -24,12 +30,14 @@ export class CreateEquipmentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.equipmentService.saveEquipament(this.newEquiForm.value).subscribe(this.processData.bind(this), this.processError.bind(this));
+    this.equipmentService.saveEquipament(this.newEquiForm.value)
+      .subscribe(this.processData.bind(this), this.processError.bind(this));
   }
 
   private processData(response: any) {
     this.router.navigate(['equipments']);
   }
+
   private processError(err) {
     console.log(err);
   }
@@ -39,7 +47,7 @@ export class CreateEquipmentComponent implements OnInit {
       name: ['', Validators.required ],
       type: ['', Validators.required ],
       description: ['', Validators.required ],
-      image: ['', Validators.required ],
+      image: [''],
     });
   }
 }

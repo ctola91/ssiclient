@@ -4,20 +4,16 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ResponseService} from '../shared/responseService';
 import {ProgramSso} from '../shared/programSso';
+import {AppUtil} from '../shared/AppUtil';
 
 @Injectable()
 export class ProgramssoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil) { }
 
   getProgramsSso(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token')
-      })
-    };
-
-    return this.http.get(baseURL + API_URL + '/programssso', httpOptions )
+    return this.http.get(baseURL + API_URL + '/programssso', { headers: this.appUtil.getHeader()} )
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -33,10 +29,7 @@ export class ProgramssoService {
 
   saveProgramSso(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/programssso', params, { headers: headers})
+    return this.http.post(baseURL + API_URL + '/programssso', params, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -51,19 +44,11 @@ export class ProgramssoService {
   }
 
   deleteProgramSso(programSso: ProgramSso): Observable<any> {
-    const params = JSON.stringify(programSso);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-
-    return this.http.delete(baseURL + API_URL + '/programssso/' + programSso.id, { headers: headers});
+    return this.http.delete(baseURL + API_URL + '/programssso/' + programSso.id, { headers: this.appUtil.getHeader()});
   }
 
   findProgramSsoById(id: number): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token);
-
-    return this.http.get(baseURL + API_URL + '/programssso/' + id, { headers: headers})
+    return this.http.get(baseURL + API_URL + '/programssso/' + id, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -79,10 +64,7 @@ export class ProgramssoService {
 
   updateProgramSso(data: any, id: number): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/programssso/' + id, params, { headers: headers})
+    return this.http.put(baseURL + API_URL + '/programssso/' + id, params, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;

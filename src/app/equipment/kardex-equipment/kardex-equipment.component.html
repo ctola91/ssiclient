@@ -1,5 +1,5 @@
+<ssi-header></ssi-header>
 <div class="container"
-     fxFlex *ngIf="equipmentKardex"
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
@@ -11,7 +11,7 @@
        fxLayoutGap="10px">
     <div fxFlex="100%">
       <div>
-        <!--<mat-table #table [dataSource]="changeMatriz(kardexs, equipmentKardex.id)">-->
+        <!--<mat-table #table [dataSource]="changeMatriz(kardexs)">-->
         <mat-table #table [dataSource]="kardexs">
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
@@ -40,4 +40,4 @@
     </div>
   </div>
 </div>
-
+<ssi-footer></ssi-footer>

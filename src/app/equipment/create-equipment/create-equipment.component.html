@@ -1,76 +1,8 @@
-<!--
-<div class="container">
-  <ssi-header></ssi-header>
-  <div class="container"
-       fxLayoutGap="10px">
-    <div fxFlex="100%">
-      <h1>Nuevo Equipamiento</h1>
-    </div>
-    <div fxFlex>
-      <button mat-button routerLink="/equipment" color="accent">Atras</button>
-      <button mat-button routerLink="/equipment/report" color="accent">Reporte</button>
-    </div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <form novalidate [formGroup]="CreForm" (ngSubmit)="onSubmit()" id="form">
-        <p>
-          <mat-input-container class="half-width"
-                               dividerColor="{{(CreForm.get('firstname').hasError('required') && CreForm.get('firstname').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
-            <mat-hint>
-                  <span [hidden]="!(CreForm.get('name').hasError('required') && CreForm.get('name').touched)">
-                    Nombre es requerido</span>
-            </mat-hint>
-          </mat-input-container>
-          <mat-input-container class="half-width"
-                               dividerColor="{{(CreForm.get('code').hasError('required') && CreForm.get('code').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="area"  placeholder="Area" type="text" required>
-            <mat-hint>
-                <span [hidden]="!(contractForm.get('area').hasError('required') && contractForm.get('area').touched)">
-                  Area es requerido</span>
-            </mat-hint>
-          </mat-input-container>
-          <mat-input-container class="half-width"
-                               dividerColor="{{(CreForm.get('type').hasError('required') && CreForm.get('type').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="type"  placeholder="Tipo" type="text" required>
-            <mat-hint>
-                  <span [hidden]="!(CreForm.get('type').hasError('required') && CreForm.get('type').touched)">
-                    Ttipo es requerido</span>
-            </mat-hint>
-          </mat-input-container>
-        </p>
-        <p>
-          <mat-input-container class="half-width"
-                               dividerColor="{{(CreForm.get('description').hasError('required') && CreForm.get('description').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="description" placeholder="Descripcion" type="text" required>
-            <mat-hint>
-                  <span [hidden]="!(CreForm.get('description').hasError('required') && CreForm.get('description').touched)">
-                    Descripcion es requerido</span>
-            </mat-hint>
-          </mat-input-container>
-          <mat-input-container class="half-width"
-                               dividerColor="{{(CreForm.get('image').hasError('required') && CreForm.get('image').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="image" placeholder="Imagen" type="text" required>
-            <mat-hint>
-                  <span [hidden]="!(CreForm.get('image').hasError('required') && CreForm.get('image').touched)">
-                    Imagen es Requerida</span>
-            </mat-hint>
-          </mat-input-container>
-
-        </p>
-
-        <button type="submit"  mat-raised-button color="primary" [disabled]="CreForm.invalid">Enviar</button>
-      </form>
-    </div>
-  </div>
-  <ssi-footer></ssi-footer>
-</div>
--->
-
 <ssi-header></ssi-header>
 
 <div class="container"
      fxLayoutGap="10px">
-  <div fxFlex="100%">
+  <div fxFlex="40%">
     <h1>Crear nuevo Equipamiento</h1>
   </div>
   <mat-divider></mat-divider>
@@ -81,8 +13,7 @@
       <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
   </div>
   <mat-divider></mat-divider>
-  <mat-card>
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <div fxFlex fxLayoutAlign="center center">
     <form novalidate [formGroup]="newEquiForm" (ngSubmit)="onSubmit()" id="form">
       <p>
         <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('name').hasError('required') && newEquiForm.get('name').touched) ? 'warn' : 'primary'}}">
@@ -94,26 +25,26 @@
         </mat-input-container>
       </p>
       <p>
-        <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="type"  placeholder="Tipo" type="text" required>
+        <mat-form-field  dividerColor="{{(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched) ? 'warn' : 'primary'}}">
+          <mat-select formControlName="type" placeholder="Seleccione tipo">
+            <mat-option *ngFor="let dato of datos" [value]="dato.value">
+              {{ dato.name }}
+            </mat-option>
+          </mat-select>
           <mat-hint>
-                <span [hidden]="!(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched)">
-                  Tipo es requerido</span>
+              <span [hidden]="!(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched)">
+                El tipo es requerido</span>
           </mat-hint>
-        </mat-input-container>
+        </mat-form-field>
       </p>
       <p>
-        <!--<mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="description"  placeholder="Descripcion" type="text" required>
-          <mat-hint>
-                <span [hidden]="!(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched)">
-                  Descripcion es requerido</span>
-          </mat-hint>
-        </mat-input-container>-->
-        <mat-input-container class="full-width">
-          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+        <mat-input-container class="full-width" dividerColor="{{(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched) ? 'warn' : 'primary'}}">
+          <textarea matInput formControlName="description" placeholder="Descripcion corta" rows=5></textarea>
+            <mat-hint>
+              <span [hidden]="!(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched)">
+                Descripcion es requerido</span>
+            </mat-hint>
         </mat-input-container>
-      </p>
       </p>
       <p>
         <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('image').hasError('required')&& newEquiForm.get('image').touched) ? 'warn' : 'primary'}}">
@@ -128,7 +59,6 @@
 
     </form>
   </div>
-  </mat-card>
   <mat-divider></mat-divider>
 </div>
 

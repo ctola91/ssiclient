@@ -1,0 +1,70 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="40%">
+    <h1>Modificar Equipamiento: </h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/equipments" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
+    <button mat-raised-button routerLink="/equipments/report" color="primary">
+      <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-card fxFlex="50%">
+    <div >
+      <form novalidate [formGroup]="upEquiForm" (ngSubmit)="onSubmit()" id="form">
+        <p>
+          <mat-input-container class="half-width" dividerColor="{{(upEquiForm.get('name').hasError('required') && upEquiForm.get('name').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(upEquiForm.get('name').hasError('required') && upEquiForm.get('name').touched)">
+                  Nombre es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-form-field  dividerColor="{{(upEquiForm.get('type').hasError('required') && upEquiForm.get('type').touched) ? 'warn' : 'primary'}}">
+            <mat-select formControlName="type" placeholder="Seleccione tipo">
+              <mat-option *ngFor="let dato of datos" [value]="dato.value">
+                {{ dato.name }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>
+              <span [hidden]="!(upEquiForm.get('type').hasError('required') && upEquiForm.get('type').touched)">
+                El tipo es requerido</span>
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-input-container class="full-width" dividerColor="{{(upEquiForm.get('description').hasError('required') && upEquiForm.get('description').touched) ? 'warn' : 'primary'}}">
+            <textarea matInput formControlName="description" placeholder="Descripcion corta" rows=5></textarea>
+            <mat-hint>
+              <span [hidden]="!(upEquiForm.get('description').hasError('required') && upEquiForm.get('description').touched)">
+                Descripcion es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <p>
+          <mat-input-container class="half-width" dividerColor="{{(upEquiForm.get('image').hasError('required')&& upEquiForm.get('image').touched) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>
+            <mat-hint>
+                <span [hidden]="!(upEquiForm.get('image').hasError('required') && upEquiForm.get('image').touched)">
+                  Imagen es requerido</span>
+            </mat-hint>
+          </mat-input-container>
+        </p>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="upEquiForm.invalid">Enviar</button>
+
+      </form>
+    </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+
+
+<ssi-footer></ssi-footer>
+
+

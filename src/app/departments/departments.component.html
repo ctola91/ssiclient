@@ -23,7 +23,7 @@
          fxLayout.xs="column"
          fxLayoutAlign.gt-md="space-around center"
          fxLayoutGap="10px">
-      <div fxFlex="50">
+      <div fxFlex="60">
         <mat-table #table [dataSource]="departments">
 
           <ng-container matColumnDef="name">
@@ -44,7 +44,7 @@
         </mat-table>
       </div>
 
-      <div fxFlex="50">
+      <div fxFlex="40">
         <ssi-deparment-detail [departmentDetail]="selectedDepartment"></ssi-deparment-detail>
         <ssi-deparment-delete [departmentDelete]="deleteDepartment" (onDelete)="doSomething($event)"></ssi-deparment-delete>
       </div>
