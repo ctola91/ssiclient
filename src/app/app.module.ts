@@ -118,10 +118,17 @@ import { LogoutComponent } from './logout/logout.component';
 import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
 import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
 import { PersonalContractPositionComponent } from './personal/personal-contract-position/personal-contract-position.component';
+import { RequirementsService } from './services/requirements.service';
+import {RequirementsDataParameters} from './shared/RequirementsDataParameters';
+import {UpdateRequirementsComponent} from './requirements/update-requirements/update-requirements.component';
+import {CreateRequirementsComponent} from './requirements/create-requirements/create-requirements.component';
+import { FunctionsService } from './services/functions.service';
+import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
+import {CreateFunctionsComponent} from './functions/create-functions/create-functions.component';
+import {UpdateFunctionsComponent} from './functions/update-functions/update-functions.component';
 import {CreateActivityComponent} from './activities/create/create.activity.component';
 import {ReportResourceComponent} from './resources/report/report.resource.component';
 import {ReportActivityComponent} from './activities/report/report.activity.component';
-
 
 @NgModule({
   declarations: [
@@ -140,7 +147,6 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
     DepartmentsComponent,
     PositionsComponent,
     FunctionsComponent,
-    RequirementsComponent,
     CreatePersonalComponent,
     CreateTrainerComponent,
     PositionDetailComponent,
@@ -184,6 +190,12 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
     ReportManualFunctionsComponent,
     ReportPositionsComponent,
     PersonalContractPositionComponent,
+    RequirementsComponent,
+    CreateRequirementsComponent,
+    UpdateRequirementsComponent,
+    FunctionsComponent,
+    CreateFunctionsComponent,
+    UpdateFunctionsComponent,
     ActivitiesComponent,
     ReportResourceComponent,
     ReportActivityComponent,
@@ -234,6 +246,11 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
     , ResourceService
     , InventoryService
     , ActivityService
+    , RequirementsService
+    , RequirementsDataParameters
+    , FunctionsService
+    , FunctionsDataParameters
+
   ],
   bootstrap: [AppComponent]
 })
