@@ -118,6 +118,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
 import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
 import { PersonalContractPositionComponent } from './personal/personal-contract-position/personal-contract-position.component';
+import {CreateActivityComponent} from './activities/create/create.activity.component';
+import {ReportResourceComponent} from './resources/report/report.resource.component';
+import {ReportActivityComponent} from './activities/report/report.activity.component';
+
 
 @NgModule({
   declarations: [
@@ -179,7 +183,11 @@ import { PersonalContractPositionComponent } from './personal/personal-contract-
     LogoutComponent,
     ReportManualFunctionsComponent,
     ReportPositionsComponent,
-    PersonalContractPositionComponent
+    PersonalContractPositionComponent,
+    ActivitiesComponent,
+    ReportResourceComponent,
+    ReportActivityComponent,
+    CreateActivityComponent
   ],
   imports: [
     BrowserModule,
