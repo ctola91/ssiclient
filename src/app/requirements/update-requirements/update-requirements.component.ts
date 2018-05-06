@@ -48,11 +48,7 @@ export class UpdateRequirementsComponent implements OnInit {
   }
 
   private processData(response: any) {
-    // if(response !== null){
-    //   this.router.navigate(['home']);
-    //
-    // }
-    this.router.navigate(['requirements']);
+   this.router.navigate(['requirements']);
 
   }
 

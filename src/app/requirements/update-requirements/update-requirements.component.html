@@ -12,15 +12,6 @@
     <form novalidate [formGroup]="contractForm" (ngSubmit)="onSubmit()" id="form">
 
 
-      <!--<div style="display:none;">-->
-      <!--<mat-input-container class="half-width"-->
-                           <!--dividerColor="{{(contractForm.get('code').hasError('required') && contractForm.get('code').touched) ? 'warn' : 'primary'}}">-->
-        <!--<input matInput formControlName="id"  placeholder="Id" type="text" required>-->
-
-      <!--</mat-input-container>-->
-      <!--</div>-->
-
-
     <p>
       <mat-input-container class="half-width"
                            dividerColor="{{(contractForm.get('name').hasError('required') && contractForm.get('name').touched) ? 'warn' : 'primary'}}">
@@ -35,7 +26,7 @@
         <input matInput formControlName="description"  placeholder="Descripcion" type="text" required>
         <mat-hint>
                 <span [hidden]="!(contractForm.get('description').hasError('required') && contractForm.get('description').touched)">
-                  Apellido es requerido</span>
+                  Descripcion es requerido</span>
         </mat-hint>
       </mat-input-container>
     </p>
