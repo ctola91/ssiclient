@@ -5,11 +5,10 @@ import {RequirementsData} from '../shared/RequirementsData';
 import {Requirements} from '../shared/Requirements';
 import {RequirementsService} from '../services/requirements.service';
 import {RequirementsDataParameters} from '../shared/RequirementsDataParameters';
-import {Functions} from '../shared/Functions';
-import {Contract} from '../shared/Contract';
+
 
 @Component({
-  selector: 'ssi-contract',
+  selector: 'ssi-requirements',
   templateUrl: './requirements.component.html',
   styleUrls: ['./requirements.component.scss']
 })
@@ -65,12 +64,7 @@ export class RequirementsComponent implements OnInit {
         .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
   }
   editRequirement(contract: Requirements): void {
-
-    // this.contractService.deletePersonal(personal)
-    //     .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
-
     this.requirementsDataParameters.requirementsUpdate = contract;
-
     this.router.navigate(['requirements/update']);
   }
 }
