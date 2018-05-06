@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourceService } from '../../services/resource.service';
-import { Resource } from '../../shared/Resource';
+import { Resource } from '../../shared/resource';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

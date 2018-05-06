@@ -6,13 +6,15 @@
     <div fxFlex>
       <h1>Personal</h1>
     </div>
+    <hr>
     <div fxFlex fxLayout="row">
       <button mat-raised-button routerLink="/personal/create" color="primary">Agregar nuevo persnal</button>
 
     </div>
-    <div class="example-header">
+    <br>
+    <div >
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Personal">
       </mat-form-field>
     </div>
 

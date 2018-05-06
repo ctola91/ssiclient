@@ -4,5 +4,70 @@
     <div fxFlex="100%">
       <h1>Asignacion de Equipo al Personal</h1>
     </div>
+  <hr>
+  <mat-card>
+    <mat-card-content>
+      <h1>Datos del Personal</h1>
+      <hr>
+      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex="30%">
+            <input matInput placeholder="Input">
+        </mat-form-field>
+        <mat-form-field fxFlex="30%">
+            <input matInput placeholder="Input">
+        </mat-form-field>
+        <mat-form-field fxFlex="30%">
+          <input matInput placeholder="Input">
+        </mat-form-field>
+      </div>
+      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex="30%">
+          <input matInput placeholder="Input">
+        </mat-form-field>
 
+      </div>
+      <h1>List de equipos</h1>
+      <hr>
+      <mat-form-field>
+        <input matInput type="text" (keypress)="doFilter($event.target.value)" placeholder="Buscar Equipo">
+      </mat-form-field>
+      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+
+        <mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="seleccionar">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name" >
+            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.description}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          <!--<mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>-->
+        </mat-table>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
 </div>
+
+<ssi-footer></ssi-footer>
