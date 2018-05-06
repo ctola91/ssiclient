@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Resource} from '../../shared/resource';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceService} from '../../services/resource.service';
+import {ToastrService} from 'ngx-toastr';
+import {ActivityService} from '../../services/activity.service';
 
 @Component({
   selector: 'ssi-create-resource',
@@ -16,11 +18,16 @@ export class CreateResourceComponent implements OnInit {
   title: String;
   idResource: number;
   isUpdate: boolean;
+  activities: any[];
+
 
   constructor(private fb: FormBuilder,
               private resourceService: ResourceService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService,
+              private activityService: ActivityService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -38,6 +45,8 @@ export class CreateResourceComponent implements OnInit {
     });
 
     this.createForm();
+
+
   }
 
   private findResource() {
@@ -52,10 +61,12 @@ export class CreateResourceComponent implements OnInit {
     });
   }
 
-  private createForm() {
-    this.resourceForm = this.fb.group({
+  createForm() {
+    this.resourceForm = this.formBuilder.group({
+      idResource: ['', Validators.required],
       costResource: ['', Validators.required],
-      detailResource: ['', Validators.required]
+      detailResource: ['', Validators.required],
+      activityDetail: ['', Validators.required]
     });
   }
 
@@ -69,7 +80,43 @@ export class CreateResourceComponent implements OnInit {
     }
 
   }
+  saveData() {
+    const data = {
+      idResource: this.resourceForm.value.id,
+      costResource: this.resourceForm.value.costResource,
+      detailResource: this.resourceForm.value.detailResource,
+      activityType: this.resourceForm.value.activityType
+    };
+    if (!this.isUpdate) {
+      this.resourceService.createNewResource(data)
+        .subscribe((resourc: any) => {
+          this.toastr.success('El recurso se guardo satisfactoriamente', resourc.status);
+        }, (error) => {
+          console.log(error);
+          this.toastr.error(error, 'Ha ocurrido un error inesperado');
+        });
+    } else {
+      this.resourceService.updateResource(data, this.idResource)
+        .subscribe(response => {
+          this.toastr.success('El recurso fue actualizado satisfactoriamente', response.status);
+          this.router.navigateByUrl('/resources');
+        }, error => {
+          console.log(error);
+          this.toastr.error(error, 'Ha ocurrido un error inesperado');
+        });
+    }
+    this.resourceForm.reset();
+    const form: HTMLFormElement =
+      <HTMLFormElement>document.getElementById('form');
+    form.reset();
+  }
 
+  cancelForm() {
+    this.resourceForm.reset();
+    const form: HTMLFormElement =
+      <HTMLFormElement>document.getElementById('form');
+    form.reset();
+  }
   private processData(response: any) {
     if (response !== null) {
       this.router.navigate(['resource']);

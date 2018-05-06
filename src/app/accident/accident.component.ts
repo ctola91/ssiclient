@@ -10,7 +10,19 @@ import {Accident} from '../shared/Accident';
   styleUrls: ['./accident.component.scss']
 })
 export class AccidentComponent implements OnInit {
-  displayedColumns = ['Id', 'Personal', 'Fecha', 'Hora', 'Bajamedica', 'Lugaratencion', 'Descripcion'];
+displayedColumns = ['Id',
+                    'Personal',
+                    'Reportado',
+                    'Fecha',
+                    'Hora', 
+                    'FormAccident',
+                    'TypeLesion',
+                    'BodyLesion',
+                    'Agente',
+                    'TypeAccident',
+                    'Lugaratencion',
+                    'Bajamedica',
+                    'Descripcion'];
   dataSource: MatTableDataSource<AccidentData>;
   accidents: AccidentData[] = [];
   accident: Accident;

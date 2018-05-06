@@ -23,7 +23,7 @@
          fxLayout.xs="column"
          fxLayoutAlign.gt-md="space-around center"
          fxLayoutGap="10px">
-      <div fxFlex="60">
+      <div fxFlex="65">
         <mat-table #table [dataSource]="positions">
 
           <ng-container matColumnDef="name">
@@ -53,7 +53,7 @@
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
 
-      <div fxFlex="40">
+      <div fxFlex="35">
         <ssi-position-delete [positionDelete]="deletePosition" [haveChildren]="haveChildren" (onDelete)="doSomething($event)"></ssi-position-delete>
       </div>
     </div>

@@ -5,27 +5,68 @@
        fxLayoutGap="10px">
 
     <div fxFlex>
-      <h1>Estructura organizacional</h1>
+      <h1 style="margin-bottom: 0px; margin-top: 0px;">Estructura organizacional</h1>
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-raised-button [routerLink]="['/departments']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
+      <button mat-raised-button [routerLink]="['/departments']" color="primary"><span
+        class="fa fa-chevron-right fa-lg"></span>
         Departamentos
       </button>
-      <button mat-raised-button [routerLink]="['/positions']" color="primary"><span class="fa fa-chevron-right fa-lg"></span>
-        Cargos
+      <button mat-raised-button [routerLink]="['/positions']" color="primary"><span
+        class="fa fa-chevron-right fa-lg"></span>
+        Cargos laborales
+      </button>
+      <button mat-raised-button [routerLink]="['/areas']" color="primary"><span
+        class="fa fa-chevron-right fa-lg"></span>
+        Areas de trabajo
       </button>
     </div>
     <mat-divider></mat-divider>
-    <div fxFlex>
-      <div style="height: 420px">
-        <tree-root [nodes]="nodes" [options]="options">
-          <ng-template #treeNodeTemplate let-node>
-            <span class="fa fa-user-circle-o fa-lg"></span>
-            {{ node.data.name }}
-            <!--<button mat-raised-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
-          </ng-template>
-        </tree-root>
+    <div class="container"
+         fxLayout="row"
+         fxLayout.sm="column"
+         fxLayout.xs="column"
+         fxLayoutAlign.gt-md="space-around center"
+         fxLayoutGap="10px">
+      <!-- Arbol de Departamentos -->
+      <div fxFlex="33">
+        <h2 style="magin-top: 0px;" color="primar">Departamentos</h2>
+        <div style="height: 420px">
+          <tree-root [nodes]="nodesDptos" [options]="options">
+            <ng-template #treeNodeTemplate let-node>
+              <span class="fa fa-user-circle-o fa-lg"></span>
+              {{ node.data.name }}
+              <!--<button mat-raised-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
+            </ng-template>
+          </tree-root>
+        </div>
+      </div>
+      <!-- Arbol de Cargos -->
+      <div fxFlex="33">
+        <h2 style="magin-top: 0px;">Cargos laborales</h2>
+        <div style="height: 400px">
+          <tree-root [nodes]="nodes" [options]="options">
+            <ng-template #treeNodeTemplate let-node>
+              <span class="fa fa-user-circle-o fa-lg"></span>
+              {{ node.data.name }}
+              <!--<button mat-raised-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
+            </ng-template>
+          </tree-root>
+        </div>
+      </div>
+      <!-- Arbol de Areas de Trabajo -->
+      <div fxFlex="33">
+        <h2 style="magin-top: 0px;">Areas de trabajo</h2>
+        <div style="height: 420px">
+          <tree-root [nodes]="nodesAreas" [options]="options">
+            <ng-template #treeNodeTemplate let-node>
+              <span class="fa fa-user-circle-o fa-lg"></span>
+              {{ node.data.name }}
+              <!--<button mat-raised-button [routerLink]="['/position', node.data.id]"><span>{{ node.data.name }}</span></button>-->
+            </ng-template>
+          </tree-root>
+        </div>
       </div>
     </div>
 
