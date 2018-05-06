@@ -66,4 +66,12 @@ export class ActivityService {
         return error;
       });
   }
+
+  createNewActivity(data: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.post(baseURL + API_URL + '/resources', data, { headers: headers } );
+  }
 }

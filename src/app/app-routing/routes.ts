@@ -47,6 +47,9 @@ import {LogoutComponent} from '../logout/logout.component';
 import {ReportManualFunctionsComponent} from '../positions/report-manual-functions/report-manual-functions.component';
 import {ReportPositionsComponent} from '../positions/report-positions/report-positions.component';
 import {PersonalContractPositionComponent} from '../personal/personal-contract-position/personal-contract-position.component';
+import {CreateActivityComponent} from '../activities/create/create.activity.component';
+import {ReportResourceComponent} from '../resources/report/report.resource.component';
+import {ReportActivityComponent} from '../activities/report/report.activity.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -104,9 +107,11 @@ export const routes: Routes = [
   { path: 'reporte/recursos-sso', component: TreeComponent},
   { path: 'reporte/equipamiento', component: TreeComponent},
   { path: 'reporte/inventario', component: TreeComponent},
-  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent}
+  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent},
   { path: 'equipments/detail/:id',  component: DetailEquipmentComponent },
   { path: 'equipments/kardex/:id',  component: KardexEquipmentComponent },
-  { path: 'equipments/update/:id',  component: UpdateComponent }
-
+  { path: 'equipments/update/:id',  component: UpdateComponent },
+  { path: 'activities/create', component: CreateActivityComponent},
+  { path: 'resources/report', component: ReportResourceComponent},
+  { path: 'activities/report', component: ReportActivityComponent},
 ];

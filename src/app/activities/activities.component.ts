@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Activity} from '../shared/Activity';
 import {ActivityService} from '../services/activity.service';
-import {ResponseService} from '../shared/responseService';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-activities',
@@ -9,33 +8,38 @@ import {ResponseService} from '../shared/responseService';
   styleUrls: ['./activities.component.scss']
 })
 export class ActivitiesComponent implements OnInit {
+  activities: any = [];
+  displayedColumns = ['activityId', 'activityNumber', 'activityDetail', 'activityGoal' , 'activityTime' , 'activityType' , 'Action'];
 
-  activities: Activity[];
-
-  displayedColumns = ['activityId', 'activityNumber', 'activityDetail', 'activityGoal', 'activityTime', 'activityType'];
-
-  constructor(private activityService: ActivityService) { }
+  constructor(
+    private activityService: ActivityService,
+    private toastr: ToastrService
+  ) {
+    this.loadData();
+  }
 
   ngOnInit() {
-    this.activityService.getListActivities().subscribe(
-      activities => this.activities = activities);
   }
 
-  deleteActivity(activity: Activity): void {
+  loadData() {
+    this.activityService.getListActivities()
+      .subscribe(result => {
+        this.activities = result.data;
+        console.log(this.activities);
+      }, err => {
+        console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
+      });
+  }
 
+  deleteActivity(activity: any) {
     this.activityService.deleteActivity(activity)
-      .subscribe(this.processData.bind(this), this.processError.bind(this));
-  }
-
-  private processData(response: ResponseService) {
-    console.log(response.status);
-    if (response.status === 'deleted') {
-      this.activityService.getListActivities().subscribe(
-        activities => this.activities = activities);
-    }
-  }
-
-  private processError(err) {
-    console.log(err);
+      .subscribe(result => {
+        this.loadData();
+        this.toastr.success('La actividad fue eliminada satisfactoriamente', result.status);
+      }, error => {
+        console.log(error);
+        this.toastr.error(error, 'Ha ocurrido un error inesperado');
+      });
   }
 }

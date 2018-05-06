@@ -1,5 +1,4 @@
 <ssi-header></ssi-header>
-
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
@@ -7,50 +6,62 @@
     <h1>Actividades</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/activities/create" color="primary">Agregar actividad</button>
+    <button mat-button routerLink="/activities/create">Agregar nueva actividad</button>
+    <button mat-button routerLink="/activities/report">Reportes</button>
   </div>
   <div fxFlex>
     <div>
+      <mat-card>
+        <mat-card-content>
+          <mat-table #table [dataSource]="activities">
+            <ng-container matColumnDef="activityId">
+              <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityId}}</mat-cell>
+            </ng-container>
 
-      <mat-table #table [dataSource]="activity">
+            <ng-container matColumnDef="activityNumber">
+              <mat-header-cell *matHeaderCellDef>Numero de Actividad</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityNumber}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityId">
-          <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
-          <mat-cell *matCellDef="let activity">{{activity.activityId}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="activityDetail">
+              <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityDetail}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityNumber">
-          <mat-header-cell *matHeaderCellDef>Numero de Actividad</mat-header-cell>
-          <mat-cell *matCellDef="let activity">{{activity.activityNumber}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="activityGoal">
+              <mat-header-cell *matHeaderCellDef>Meta de la actividad</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityGoal}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityDetail">
-          <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
-          <mat-cell *matCellDef="let activity">{{activity.activityDetail}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="activityTime">
+              <mat-header-cell *matHeaderCellDef>Duracion de la actividad</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityTime}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityGoal">
-          <mat-header-cell *matHeaderCellDef>Meta</mat-header-cell>
-          <mat-cell *matCellDef="let activity">{{activity.activityGoal}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="activityType">
+              <mat-header-cell *matHeaderCellDef>Tipo de Actividad</mat-header-cell>
+              <mat-cell *matCellDef="let activity">{{activity.activityType}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityTime">
-          <mat-header-cell *matHeaderCellDef> Tiempo de Duracion </mat-header-cell>
-          <mat-cell *matCellDef="let activity"> {{activity.fecha | date:'HH:mm'}} </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="Action">
+              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-cell *matCellDef="let activity">
+                <button mat-raised-button routerLink="/resources/update/{{activity.activityId}}" color="primary">
+                  Editar
+                </button>
+                <button mat-raised-button (click)="deleteActivity(activity)" color="warn">
+                  Eliminar
+                </button>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="activityType">
-          <mat-header-cell *matHeaderCellDef>Tipo de Actividad</mat-header-cell>
-          <mat-cell *matCellDef="let activity">{{activity.activityType}}</mat-cell>
-        </ng-container>
-
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let activity; columns: displayedColumns;"></mat-row>
-      </mat-table>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>
-
 <ssi-footer></ssi-footer>
-
