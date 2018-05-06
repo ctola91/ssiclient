@@ -30,8 +30,14 @@ export class PersonalService {
     return this.http.delete(baseURL + API_URL + '/personal/' + personal.id, { headers: this.appUtil.getHeader()});
   }
 
+  getPersonalById(id: number): Observable<any> {
+    return this.http.get(baseURL + API_URL + '/personal/getPersonalById/' + id, { headers: this.appUtil.getHeader() });
+  }
 
-
+  updatePersonal(personal: any, id: number): Observable<any> {
+    const params = JSON.stringify(personal);
+    return this.http.put(baseURL + API_URL + '/personal/update/' + id, params, { headers: this.appUtil.getHeader() });
+  }
 
   getIfHavePersonalByArea(id: number): Observable<any> {
     const httpOptions = {
