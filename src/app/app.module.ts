@@ -174,7 +174,7 @@ import { PersonalContractPositionComponent } from './personal/personal-contract-
     ActivitiesComponent,
     AddPersonalActivitiesComponent,
     ReportProgramssoComponent,
-    UpdateComponent
+    UpdateComponent,
     ReportProgramssoComponent,
     LogoutComponent,
     ReportManualFunctionsComponent,

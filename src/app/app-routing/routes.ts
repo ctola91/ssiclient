@@ -104,7 +104,7 @@ export const routes: Routes = [
   { path: 'reporte/recursos-sso', component: TreeComponent},
   { path: 'reporte/equipamiento', component: TreeComponent},
   { path: 'reporte/inventario', component: TreeComponent},
-  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent}
+  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent},
   { path: 'equipments/detail/:id',  component: DetailEquipmentComponent },
   { path: 'equipments/kardex/:id',  component: KardexEquipmentComponent },
   { path: 'equipments/update/:id',  component: UpdateComponent }
