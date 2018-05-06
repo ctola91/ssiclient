@@ -126,7 +126,9 @@ import { FunctionsService } from './services/functions.service';
 import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
 import {CreateFunctionsComponent} from './functions/create-functions/create-functions.component';
 import {UpdateFunctionsComponent} from './functions/update-functions/update-functions.component';
-
+import {CreateActivityComponent} from './activities/create/create.activity.component';
+import {ReportResourceComponent} from './resources/report/report.resource.component';
+import {ReportActivityComponent} from './activities/report/report.activity.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +147,6 @@ import {UpdateFunctionsComponent} from './functions/update-functions/update-func
     DepartmentsComponent,
     PositionsComponent,
     FunctionsComponent,
-    RequirementsComponent,
     CreatePersonalComponent,
     CreateTrainerComponent,
     PositionDetailComponent,
@@ -195,8 +196,10 @@ import {UpdateFunctionsComponent} from './functions/update-functions/update-func
     FunctionsComponent,
     CreateFunctionsComponent,
     UpdateFunctionsComponent,
-
-
+    ActivitiesComponent,
+    ReportResourceComponent,
+    ReportActivityComponent,
+    CreateActivityComponent
   ],
   imports: [
     BrowserModule,

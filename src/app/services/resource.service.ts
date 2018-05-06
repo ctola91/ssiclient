@@ -17,24 +17,24 @@ export class ResourceService {
               private appUtil: AppUtil) { }
 
   getListResources(): Observable<any> {
-    return this.http.get(baseURL + API_URL + '/resource', { headers: this.appUtil.getHeader()});
+    return this.http.get(baseURL + API_URL + '/resources', { headers: this.appUtil.getHeader()});
   }
 
   saveResource(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    return this.http.post(baseURL + API_URL + '/resource/save', params, { headers: this.appUtil.getHeader()} );
+    return this.http.post(baseURL + API_URL + '/resources/save', params, { headers: this.appUtil.getHeader()} );
   }
 
   deleteResource(resource: Resource): Observable<any> {
     const params = JSON.stringify(resource);
-    return this.http.delete(baseURL + API_URL + '/resource/' + resource.idResource, { headers: this.appUtil.getHeader()});
+    return this.http.delete(baseURL + API_URL + '/resources/' + resource.idResource, { headers: this.appUtil.getHeader()});
 }
 
   findResourceById(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
 
-    return this.http.get(baseURL + API_URL + '/resource/' + id, { headers: headers})
+    return this.http.get(baseURL + API_URL + '/resources/' + id, { headers: headers})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -53,7 +53,7 @@ export class ResourceService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/resource/' + id, params, { headers: headers})
+    return this.http.put(baseURL + API_URL + '/resources/' + id, params, { headers: headers})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;

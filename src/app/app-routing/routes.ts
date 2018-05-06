@@ -51,6 +51,9 @@ import {CreateFunctionsComponent} from '../functions/create-functions/create-fun
 import {UpdateFunctionsComponent} from '../functions/update-functions/update-functions.component';
 import {CreateRequirementsComponent} from '../requirements/create-requirements/create-requirements.component';
 import {UpdateRequirementsComponent} from '../requirements/update-requirements/update-requirements.component';
+import {CreateActivityComponent} from '../activities/create/create.activity.component';
+import {ReportResourceComponent} from '../resources/report/report.resource.component';
+import {ReportActivityComponent} from '../activities/report/report.activity.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -114,11 +117,9 @@ export const routes: Routes = [
   { path: 'equipments/update/:id',  component: UpdateComponent },
   { path: 'functions/create',  component: CreateFunctionsComponent},
   { path: 'functions/update',  component: UpdateFunctionsComponent},
-
-  { path: 'requirements',  component: ContractComponent },
   { path: 'requirements/create',  component: CreateRequirementsComponent},
   { path: 'requirements/update',  component: UpdateRequirementsComponent},
-
-
-
+  { path: 'activities/create', component: CreateActivityComponent},
+  { path: 'resources/report', component: ReportResourceComponent},
+  { path: 'activities/report', component: ReportActivityComponent}
 ];
