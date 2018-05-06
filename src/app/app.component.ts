@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'ssi-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ssi';
+
+  constructor(private route: ActivatedRoute,
+              private router: Router) {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['login']);
+    }
+  }
 }
