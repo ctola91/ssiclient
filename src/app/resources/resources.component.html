@@ -1,39 +1,52 @@
 <ssi-header></ssi-header>
-
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Recursos</h1>
+    <h1>Resources</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/resources/create" color="primary">Agregar recurso</button>
+    <button mat-button routerLink="/resources/create">Agregar nuevo recurso</button>
+    <button mat-button routerLink="/resources/report">Reportes</button>
   </div>
   <div fxFlex>
     <div>
+      <mat-card>
+        <mat-card-content>
+          <mat-table #table [dataSource]="resources">
+            <ng-container matColumnDef="code">
+              <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+              <mat-cell *matCellDef="let resource">{{resource.idResource}}</mat-cell>
+            </ng-container>
 
-      <mat-table #table [dataSource]="resource">
+            <ng-container matColumnDef="cost">
+              <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
+              <mat-cell *matCellDef="let resource">{{resource.costResource}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="idResource">
-          <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
-          <mat-cell *matCellDef="let resource">{{resource.idResource}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="detail">
+              <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
+              <mat-cell *matCellDef="let resource">{{resource.detailResource}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="costResource">
-          <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
-          <mat-cell *matCellDef="let resource">{{resource.costResource}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-cell *matCellDef="let resource">
+                <button mat-raised-button routerLink="/resources/update/{{resource.idResource}}" color="primary">
+                  Editar
+                </button>
+                <button mat-raised-button (click)="deleteResource(resource)" color="warn">
+                  Eliminar
+                </button>
+              </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="detailResource">
-         <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
-         <mat-cell *matCellDef="let resource">{{resource.detailResource}}</mat-cell>
-       </ng-container>
-
-           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-         </mat-table>
-       </div>
-     </div>
-   </div>
-
-   <ssi-footer></ssi-footer>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<ssi-footer></ssi-footer>

@@ -8,15 +8,16 @@ import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Resource} from '../shared/resource';
 import {ResponseService} from '../shared/responseService';
+import {AppUtil} from '../shared/AppUtil';
 
 @Injectable()
 export class ResourceService {
-  appUtil: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil) { }
 
   getListResources(): Observable<any> {
-    return this.http.get(baseURL + API_URL + '/resource', { headers: this.appUtil.getHeader()});
+    return this.http.get(baseURL + API_URL + '/resources', { headers: this.appUtil.getHeader()});
   }
 
   saveResource(data: any): Observable<any> {
@@ -64,5 +65,13 @@ export class ResourceService {
         console.log('error: ' + error);
         return error;
       });
+  }
+
+  createNewResource(data: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.post(baseURL + API_URL + '/resources', data, { headers: headers } );
   }
 }
