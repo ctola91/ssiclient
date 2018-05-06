@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Activity} from '../shared/activity';
+import {Activity} from '../shared/Activity';
 import {ActivityService} from '../services/activity.service';
 import {ResponseService} from '../shared/responseService';
 

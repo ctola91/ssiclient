@@ -4,6 +4,10 @@ import {EquipmentService} from '../../services/equipment.service';
 import {PersonalService} from '../../services/personal.service';
 import {Equipment} from '../../shared/Equipment';
 import {Personal} from '../../shared/Personal';
+import {MatTableDataSource} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
+import {ERROR_MSG} from '../../shared/Messages';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-assign',
@@ -12,68 +16,55 @@ import {Personal} from '../../shared/Personal';
 })
 export class AssignComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  listEquipaments: Equipment[];
-  listPersonals: Personal[];
+  displayedColumns = ['seleccionar', 'name', 'description'];
+  dataSource = new MatTableDataSource<Equipment>();
+
+  initialSelection = [];
+  allowMultiSelect = true;
+  selection = new SelectionModel<Equipment>(this.allowMultiSelect, this.initialSelection);
 
   constructor(private fb: FormBuilder,
               private equipamentService: EquipmentService,
-              private personalService: PersonalService) {
-    this.createForm();
+              private personalService: PersonalService,
+              private toastService: ToastrService) {
+    // this.createForm();
   }
 
   ngOnInit() {
-    this.getListEquipaments();
-    this.getListPersonals();
+
+    this.equipamentService.getListEquipaments().subscribe(
+      this.processEquipamentService.bind(this),
+      this.processError.bind(this));
 
   }
-
-  private getListPersonals() {
-    this.personalService.getListPersonals()
-      .subscribe(this.processPersonals.bind(this), this.errorData.bind(this));
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
-  private getListEquipaments(): void {
-    this.equipamentService.getListEquipamentsData()
-         .subscribe(this.processData.bind(this), this.errorData.bind(this));
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  private processPersonals(personals: any): void {
-    if ( personals.status === 'ok' ) {
-      this.listPersonals = personals.data;
+  private processEquipamentService(equipament: any): void {
+    if( equipament !== null){
+      this.dataSource.data = equipament;
     }
   }
 
-  private processData(equipaments: any) {
-    if ( equipaments.length > 0 ) {
-      this.listEquipaments = equipaments;
-    }
-
-  }
-
-  private errorData(err){
+  private processError(err) {
     console.log(err);
+    this.toastService.error(err, ERROR_MSG);
   }
 
-  private createForm(): void {
-    this.firstFormGroup = this.fb.group({
-      personalName: ['', Validators.required ],
-     // personalOptions: new FormControl()
-    });
-
-    this.secondFormGroup = this.fb.group({
-      nameEquipament: ['', Validators.required],
-     // equipamentOptions: new FormControl()
-    });
-  }
-
-  firstStep() {
-    console.log(this.firstFormGroup.value);
-  }
-
-  secondStep() {
-    console.log(this.secondFormGroup.value);
+  private doFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
 }
