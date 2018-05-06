@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
-import {Activity} from '../shared/activity';
+import {Activity} from '../shared/Activity';
 import {ResponseService} from '../shared/responseService';
 import {AppUtil} from '../shared/AppUtil';
 
@@ -27,7 +27,7 @@ export class ActivityService {
 
   deleteActivity(activity: Activity): Observable<any> {
     const params = JSON.stringify(activity);
-    return this.http.delete(baseURL + API_URL + '/activities/' + activity.activityId, { headers: this.appUtil.getHeader()});
+    return this.http.delete(baseURL + API_URL + '/activities/' + activity.id, { headers: this.appUtil.getHeader()});
   }
 
   findActivityById(id: number): Observable<any> {
@@ -72,6 +72,6 @@ export class ActivityService {
     const headers = new HttpHeaders()
       .set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/resources', data, { headers: headers } );
+    return this.http.post(baseURL + API_URL + '/activities', data, { headers: headers } );
   }
 }

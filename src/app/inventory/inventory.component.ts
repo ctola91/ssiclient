@@ -11,7 +11,7 @@ export class InventoryComponent implements OnInit {
   inventories: Inventory [];
   inventorySelec: Inventory;
 
-  displayedColumns = ['status', 'active', 'asisgmentDate', 'accion'];
+  displayedColumns = ['personal', 'equipment', 'status', 'active', 'asisgmentDate'];
 
   constructor(private inventoryService: InventoryService) { }
 

@@ -72,7 +72,7 @@ export class CreateResourceComponent implements OnInit {
 
   onSubmit() {
     if (this.isUpdate) {
-      this.resourceService.updateResource(this.resourceForm.value, this.resource.idResource)
+      this.resourceService.updateResource(this.resourceForm.value, this.resource.id)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
       this.resourceService.saveResource(this.resourceForm.value)

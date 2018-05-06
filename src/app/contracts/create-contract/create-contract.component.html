@@ -16,7 +16,7 @@
         <input matInput formControlName="code"  placeholder="Codigo" type="text" required>
         <mat-hint>
                 <span [hidden]="!(contractForm.get('code').hasError('required') && contractForm.get('code').touched)">
-                  Nombre es requerido</span>
+                  Codigo es requerido</span>
         </mat-hint>
       </mat-input-container>
       <mat-input-container class="half-width"
@@ -24,7 +24,7 @@
         <input matInput formControlName="city"  placeholder="Ciudad" type="text" required>
         <mat-hint>
                 <span [hidden]="!(contractForm.get('city').hasError('required') && contractForm.get('city').touched)">
-                  Apellido es requerido</span>
+                  Ciudad es requerido</span>
         </mat-hint>
       </mat-input-container>
     </p>
@@ -42,7 +42,7 @@
         <input matInput formControlName="type" placeholder="tipo" type="text" required>
         <mat-hint>
                 <span [hidden]="!(contractForm.get('type').hasError('required') && contractForm.get('type').touched)">
-                  Direccion es required</span>
+                  Tipo es required</span>
         </mat-hint>
       </mat-input-container>
 
@@ -53,7 +53,7 @@
         <input matInput formControlName="salary"  placeholder="Salario" type="tel" required>
         <mat-hint>
               <span [hidden]="!(contractForm.get('salary').hasError('required') && contractForm.get('salary').touched)">
-                Email es requerido</span>
+                Salario es requerido</span>
         </mat-hint>
       </mat-input-container>
       <mat-form-field>

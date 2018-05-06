@@ -8,7 +8,7 @@
   </div>
   <mat-divider></mat-divider>
   <div fxFlex>
-    <button mat-button routerLink="/row/create" color="primary"><span
+    <button mat-button routerLink="/kardex/create" color="primary"><span
       class="fa fa-chevron-right fa-lg"></span>
       Crear nuevo kardex
     </button>
@@ -17,12 +17,22 @@
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="50%">
+    <div fxFlex="80%">
       <div>
         <mat-table #table [dataSource]="kardexs">
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.dateKardex}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.dateKardex | date}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="voucher">
+            <mat-header-cell *matHeaderCellDef>N° de Vale</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.entryKardex+89}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="department">
+            <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
+            <mat-cell *matCellDef="let row">Area {{row.entryKardex}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="entry">
@@ -56,10 +66,6 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
-    </div>
-    <div fxFlex="50%">
-      <!--&lt;!&ndash;<ssi-detail-row [rowDetail]="selectedEqui"></ssi-detail-row>&ndash;&gt;-->
-
     </div>
   </div>
 </div>

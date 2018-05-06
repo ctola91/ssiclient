@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Activity} from '../../shared/activity';
+import {Activity} from '../../shared/Activity';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ActivityService} from '../../services/activity.service';
 import {ToastrService} from 'ngx-toastr';
 import {ProgramssoService} from '../../services/programsso.service';
+import {ProgramSso} from '../../shared/programSso';
+import {Trainer} from '../../shared/trainer';
+import {TrainerService} from '../../services/trainer.service';
 
 @Component({
   selector: 'ssi-create-activity',
@@ -18,7 +21,8 @@ export class CreateActivityComponent implements OnInit {
   title: String;
   activityId: number;
   isUpdate: boolean;
-  programs: any[];
+  programs: ProgramSso[];
+  trainers: Trainer[];
 
 
   constructor(private fb: FormBuilder,
@@ -26,7 +30,8 @@ export class CreateActivityComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private toastr: ToastrService,
-              private programssoService: ProgramssoService,
+              private programSsoService: ProgramssoService,
+              private trainersService: TrainerService,
               private formBuilder: FormBuilder) {
   }
 
@@ -46,7 +51,11 @@ export class CreateActivityComponent implements OnInit {
 
     this.createForm();
 
+    this.programSsoService.getProgramsSso().subscribe(
+      programsSso => this.programs = programsSso);
 
+    this.trainersService.getTrainers().subscribe(
+      trainers => this.trainers = trainers);
   }
 
   private findResource() {
@@ -78,7 +87,7 @@ export class CreateActivityComponent implements OnInit {
 
   onSubmit() {
     if (this.isUpdate) {
-      this.activityService.updateActivity(this.activityForm.value, this.activity.activityId)
+      this.activityService.updateActivity(this.activityForm.value, this.activity.id)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
       this.activityService.saveActivity(this.activityForm.value)

@@ -14,10 +14,6 @@
       <mat-card>
         <mat-card-content>
           <mat-table #table [dataSource]="resources">
-            <ng-container matColumnDef="code">
-              <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-              <mat-cell *matCellDef="let resource">{{resource.idResource}}</mat-cell>
-            </ng-container>
 
             <ng-container matColumnDef="cost">
               <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
@@ -32,7 +28,7 @@
             <ng-container matColumnDef="action">
               <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
               <mat-cell *matCellDef="let resource">
-                <button mat-raised-button routerLink="/resources/update/{{resource.idResource}}" color="primary">
+                <button mat-raised-button routerLink="/resources/update/{{resource.id}}" color="primary">
                   Editar
                 </button>
                 <button mat-raised-button (click)="deleteResource(resource)" color="warn">
