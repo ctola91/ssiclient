@@ -47,6 +47,10 @@ import {LogoutComponent} from '../logout/logout.component';
 import {ReportManualFunctionsComponent} from '../positions/report-manual-functions/report-manual-functions.component';
 import {ReportPositionsComponent} from '../positions/report-positions/report-positions.component';
 import {PersonalContractPositionComponent} from '../personal/personal-contract-position/personal-contract-position.component';
+import {CreateFunctionsComponent} from '../functions/create-functions/create-functions.component';
+import {UpdateFunctionsComponent} from '../functions/update-functions/update-functions.component';
+import {CreateRequirementsComponent} from '../requirements/create-requirements/create-requirements.component';
+import {UpdateRequirementsComponent} from '../requirements/update-requirements/update-requirements.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -104,9 +108,17 @@ export const routes: Routes = [
   { path: 'reporte/recursos-sso', component: TreeComponent},
   { path: 'reporte/equipamiento', component: TreeComponent},
   { path: 'reporte/inventario', component: TreeComponent},
-  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent}
+  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent},
   { path: 'equipments/detail/:id',  component: DetailEquipmentComponent },
   { path: 'equipments/kardex/:id',  component: KardexEquipmentComponent },
-  { path: 'equipments/update/:id',  component: UpdateComponent }
+  { path: 'equipments/update/:id',  component: UpdateComponent },
+  { path: 'functions/create',  component: CreateFunctionsComponent},
+  { path: 'functions/update',  component: UpdateFunctionsComponent},
+
+  { path: 'requirements',  component: ContractComponent },
+  { path: 'requirements/create',  component: CreateRequirementsComponent},
+  { path: 'requirements/update',  component: UpdateRequirementsComponent},
+
+
 
 ];

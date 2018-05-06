@@ -118,6 +118,15 @@ import { LogoutComponent } from './logout/logout.component';
 import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
 import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
 import { PersonalContractPositionComponent } from './personal/personal-contract-position/personal-contract-position.component';
+import { RequirementsService } from './services/requirements.service';
+import {RequirementsDataParameters} from './shared/RequirementsDataParameters';
+import {UpdateRequirementsComponent} from './requirements/update-requirements/update-requirements.component';
+import {CreateRequirementsComponent} from './requirements/create-requirements/create-requirements.component';
+import { FunctionsService } from './services/functions.service';
+import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
+import {CreateFunctionsComponent} from './functions/create-functions/create-functions.component';
+import {UpdateFunctionsComponent} from './functions/update-functions/update-functions.component';
+
 
 @NgModule({
   declarations: [
@@ -174,12 +183,20 @@ import { PersonalContractPositionComponent } from './personal/personal-contract-
     ActivitiesComponent,
     AddPersonalActivitiesComponent,
     ReportProgramssoComponent,
-    UpdateComponent
+    UpdateComponent,
     ReportProgramssoComponent,
     LogoutComponent,
     ReportManualFunctionsComponent,
     ReportPositionsComponent,
-    PersonalContractPositionComponent
+    PersonalContractPositionComponent,
+    RequirementsComponent,
+    CreateRequirementsComponent,
+    UpdateRequirementsComponent,
+    FunctionsComponent,
+    CreateFunctionsComponent,
+    UpdateFunctionsComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -226,6 +243,11 @@ import { PersonalContractPositionComponent } from './personal/personal-contract-
     , ResourceService
     , InventoryService
     , ActivityService
+    , RequirementsService
+    , RequirementsDataParameters
+    , FunctionsService
+    , FunctionsDataParameters
+
   ],
   bootstrap: [AppComponent]
 })
