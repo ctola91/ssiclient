@@ -154,6 +154,7 @@ export class CreateComponent implements OnInit {
     const form: HTMLFormElement =
       <HTMLFormElement>document.getElementById('form');
     form.reset();
+    this.router.navigateByUrl('/incidents');
   }
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;

@@ -2,14 +2,19 @@
   position: absolute;
   transform: translate(10px, 82%);
 }
-mat-card-content {
-  width: 100%;
-  overflow-x: auto;
+
+@media (max-width: 799px) {
+  .current {
+    text-align: center;
+  }
+  .current span {
+    position: relative;
+  }
+  round-progress {
+    padding: 0 10px;
+  }
 }
 
-table {
-  width: 100%;
-}
 .severity {
   width: calc(100% - 10px);
   color: #fff;

@@ -12,17 +12,14 @@ export class IncidentsComponent implements OnInit {
   displayedColumns = [
     'dateAt',
     'code',
+    'severity',
     'area',
     'incidentDetailName',
     'incidentDetailStatus',
     'incidentTypeName',
-    'Recurren' +
-    '' +
-    '' +
-    'ce',
-    'severity',
-      'Accion'];
-    current = 76;
+    'Recurrence',
+    'Accion'];
+  current = 76;
   max = 100;
 
   constructor(

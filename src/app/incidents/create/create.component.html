@@ -12,7 +12,7 @@
   <mat-card>
     <form [formGroup]="incidentForm" (ngSubmit)="saveData()" id="form">
     <mat-card-content>
-      <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="50%" fxFlex.xs="100%" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
         <div>
           <span>Gravedad: </span>
         </div>
@@ -22,19 +22,19 @@
           <mat-radio-button value="baja">Baja</mat-radio-button>
         </mat-radio-group>
       </div>
-      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="100%" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
         <mat-form-field fxFlex="50%">
           <input matInput name="code" formControlName="code" placeholder="Code">
         </mat-form-field>
         <mat-form-field fxFlex="50%">
-          <mat-select placeholder="Select Type" formControlName="type">
+          <mat-select placeholder="Selecciona un tipo de incidente" formControlName="type">
             <mat-option *ngFor="let type of types" [value]="type">
               {{ type }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div fxFlex fxLayout="row">
+      <div fxFlex fxLayout="row" fxLayout.xs="column">
         <mat-form-field fxFlex="50%">
           <mat-select placeholder="Selecciona un estado" formControlName="status">
             <mat-option *ngFor="let status of statusList" [value]="status">
@@ -50,7 +50,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div fxFlex fxLayout="row">
+      <div fxFlex fxLayout="row" fxLayout.xs="column">
         <mat-form-field fxFlex="50%">
           <mat-select placeholder="Reportado por:" formControlName="reportedBy">
             <mat-option *ngFor="let personal of personalList" [value]="personal.firstname">
@@ -63,7 +63,7 @@
           <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Tratamiento</mat-checkbox>
         </div>
       </div>
-      <div fxFlex fxLayout="row">
+      <div fxFlex fxLayout="row" fxLayout.xs="column">
         <div fxFlex="50%" fxLayout="row">
           <mat-form-field fxFlex="30%">
             <input type="number" matInput id="recurrence" name="recurrence" formControlName="recurrence" placeholder="Probabilidad de recurrencia" value="40" [readonly]="true">
@@ -98,7 +98,7 @@
       </div>
       <div fxFlex="100%" fxLayout="row">
         <mat-form-field fxFlex="100%">
-          <textarea matInput formControlName="description" placeholder="Description" rows="6"></textarea>
+          <textarea matInput formControlName="description" placeholder="Descripción" rows="6"></textarea>
         </mat-form-field>
       </div>
     </mat-card-content>

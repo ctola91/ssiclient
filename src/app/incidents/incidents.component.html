@@ -13,6 +13,7 @@
     <div>
       <mat-card>
         <mat-card-content>
+          <div class="responsive_table">
             <mat-table #table [dataSource]="incidents">
               <ng-container matColumnDef="dateAt">
                 <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
@@ -27,6 +28,13 @@
               <ng-container matColumnDef="area">
                 <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
                 <mat-cell *matCellDef="let incident">{{incident.area}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="severity">
+                <mat-header-cell *matHeaderCellDef>Gravedad</mat-header-cell>
+                <mat-cell *matCellDef="let incident">
+                  <div class="severity" ngClass="{{incident.severity}}">{{ incident.severity | uppercase }}</div>
+                </mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="incidentDetailName">
@@ -62,21 +70,14 @@
                 </mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="severity">
-                <mat-header-cell *matHeaderCellDef>Gravedad</mat-header-cell>
-                <mat-cell *matCellDef="let incident">
-                  <div class="severity" ngClass="{{incident.severity}}">{{ incident.severity | uppercase }}</div>
-                </mat-cell>
-              </ng-container>
-
               <ng-container matColumnDef="Accion">
                 <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
                 <mat-cell *matCellDef="let incident">
                   <button mat-icon-button routerLink="/incidents/update/{{incident.incidentId}}" color="primary">
-                    <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Editar">edit</mat-icon>
                   </button>
                   <button mat-icon-button (click)="deleteIncident(incident)" color="warn">
-                    <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Eliminar">delete</mat-icon>
                   </button>
                 </mat-cell>
               </ng-container>
@@ -84,6 +85,7 @@
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

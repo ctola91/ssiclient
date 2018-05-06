@@ -16,3 +16,12 @@ mat-card {
 h1{
   font-family: Roboto,"Helvetica Neue",sans-serif;
 }
+@media(max-width: 800px) {
+  .responsive_table {
+    overflow-x: auto !important;
+  }
+
+  .mat-table {
+    min-width:800px;
+  }
+}
