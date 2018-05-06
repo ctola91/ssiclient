@@ -2,24 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {baseURL, API_URL} from '../shared/baseurl';
-import {log} from 'util';
 import {ResponseService} from '../shared/responseService';
-import {Personal} from '../shared/Personal';
 import {Trainer} from '../shared/trainer';
+import {AppUtil} from '../shared/AppUtil';
 
 @Injectable()
 export class TrainerService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil) { }
 
   getTrainers(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token')
-      })
-    };
 
-    return this.http.get(baseURL + API_URL + '/trainerssso', httpOptions )
+    return this.http.get(baseURL + API_URL + '/trainerssso',{ headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -35,10 +30,7 @@ export class TrainerService {
 
   saveTrainer(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/trainerssso', params, { headers: headers})
+    return this.http.post(baseURL + API_URL + '/trainerssso', params, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -53,19 +45,12 @@ export class TrainerService {
   }
 
   deleteTrainer(trainer: Trainer): Observable<any> {
-    const params = JSON.stringify(trainer);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-
-    return this.http.delete(baseURL + API_URL + '/trainerssso/' + trainer.id, { headers: headers});
+    return this.http.delete(baseURL + API_URL + '/trainerssso/' + trainer.id, { headers: this.appUtil.getHeader()});
   }
 
   findTrainerById(id: number): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token);
 
-    return this.http.get(baseURL + API_URL + '/trainerssso/' + id, { headers: headers})
+    return this.http.get(baseURL + API_URL + '/trainerssso/' + id, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -81,10 +66,7 @@ export class TrainerService {
 
   updateTrainer(data: any, id: number): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/trainerssso/' + id, params, { headers: headers})
+    return this.http.put(baseURL + API_URL + '/trainerssso/' + id, params, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;

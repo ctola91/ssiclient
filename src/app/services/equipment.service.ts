@@ -6,9 +6,11 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
+import {Personal} from '../shared/Personal';
+import {Inventory} from '../shared/Inventory';
+import {Equipment} from '../shared/Equipment';
 
 import {ResponseService} from '../shared/responseService';
-import {Equipment} from '../shared/Equipment';
 
 @Injectable()
 export class EquipmentService {
@@ -33,14 +35,27 @@ export class EquipmentService {
   }
 
   saveEquipament(data: any): Observable<any> {
+    const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/equipament', { headers: headers}).map((res) => {
+                                     .set('Content-Type', 'application/json');
+    return this.http.post(baseURL + API_URL + '/equipament', params, { headers: headers}).map((res) => {
       return res;
     }).catch(error => {
       console.log('error: ' + error);
       return error;
+    });
+  }
+  deleteEquipment(equipment: Equipment): Observable<any> {
+    const params = JSON.stringify(equipment);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.delete(baseURL + API_URL + '/equipment/' + equipment.id, { headers: headers}).map((res) => {
+      return res;
+    }).catch(err => {
+      console.log('error:' + err);
+      return err;
     });
   }
 }

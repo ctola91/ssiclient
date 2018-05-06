@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Equipment} from '../../shared/Equipment';
@@ -14,6 +14,12 @@ export class CreateEquipmentComponent implements OnInit {
   CreForm: FormGroup;
   newEquipment: Equipment;
 
+  types = [
+    {name: 'Tipo 1', value: 1},
+    {name: 'Tipo 2', value: 2},
+    {name: 'Tipo 3', value: 3}
+  ];
+
   constructor(private fb: FormBuilder,
               private equiService: EquipmentService,
               private route: ActivatedRoute,
@@ -22,21 +28,28 @@ export class CreateEquipmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.equipmentService.getListEquipaments().subscribe(value => this.equipments = value);
-    this.equipmentsTable = new MatTableDataSource(this.equipments);*/
-  }
-
-  private createForm() {
-    this.CreForm = this.fb.group({
-      name: ['', Validators.required ],
-      type: ['', Validators.required ],
-      description: ['', Validators.required ],
-      image: ['', Validators.required ],
-    });
   }
 
   onSubmit() {
     this.equiService.saveEquipament(this.CreForm.value)
-      .subscribe(value => this.newEquipment = value);
+      .subscribe(this.processData.bind(this), this.processError.bind(this));
+  }
+
+  private processData(response: any) {
+    this.router.navigate(['equipments']);
+  }
+
+  private processError(err) {
+    console.log(err);
+  }
+
+  private createForm() {
+    this.CreForm = this.fb.group({
+      name: ['', Validators.required],
+      //area: ['', Validators.required ],
+      type: ['', Validators.required],
+      description: ['', Validators.required],
+      image: [''],
+    });
   }
 }

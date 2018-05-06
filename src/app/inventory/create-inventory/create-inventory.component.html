@@ -1,0 +1,64 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Crear Inventario</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/inventory" color="accent">Atras</button>
+    <button mat-button routerLink="/inventory/report" color="accent">Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="inventoryForm" (ngSubmit)="onSubmit()" id="form">
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(inventoryForm.get('equipment').hasError('required') && inventoryForm.get('equipment').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="equipment"  placeholder="Area" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(inventoryForm.get('equipment').hasError('required') && inventoryForm.get('equipment').touched)">
+                  Equipamiento</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(inventoryForm.get('personal').hasError('required') && inventoryForm.get('personal').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="personal"  placeholder="Personal" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(inventoryForm.get('personal').hasError('required') && inventoryForm.get('personal').touched)">
+                  Personal</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(inventoryForm.get('status').hasError('required') && inventoryForm.get('status').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="status"  placeholder="Estado" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(inventoryForm.get('status').hasError('required') && inventoryForm.get('status').touched)">
+                  Estado es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(inventoryForm.get('active').hasError('required') && inventoryForm.get('active').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="active"  placeholder="Est. de funcionamiento" type="text" required>
+          <mat-hint>
+                <span [hidden]="!(inventoryForm.get('active').hasError('required') && inventoryForm.get('active').touched)">
+                  Estado de funcionamiento requerido</span>
+          </mat-hint>
+        </mat-input-container>
+      </p>
+      <p>
+        <mat-input-container class="half-width"
+                             dividerColor="{{(inventoryForm.get('dateasignent').hasError('required') && inventoryForm.get('dateasignent').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="dateasignent" placeholder="Fecha de asignacion" type="email" required>
+          <mat-hint>
+                <span [hidden]="!(inventoryForm.get('dateasignent').hasError('required') && inventoryForm.get('dateasignent').touched)">
+                  Fecha de asignacion es requerido</span>
+          </mat-hint>
+        </mat-input-container>
+
+      <button type="submit"  mat-raised-button color="primary" [disabled]="inventoryForm.invalid">Enviar</button>
+    </form>
+  </div>
+</div>
+
+
+<ssi-footer></ssi-footer>

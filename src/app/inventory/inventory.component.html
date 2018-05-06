@@ -1,0 +1,61 @@
+<ssi-header></ssi-header>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Inventarios</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <button mat-button routerLink="/inventory/create" color="primary"><span
+      class="fa fa-chevron-right fa-lg"></span>
+      Crear nuevo Inventario
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="container"
+       fxLayout="row"
+       fxLayoutGap="10px">
+    <div fxFlex="50%">
+      <div>
+        <mat-table #table [dataSource]="inventories">
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+            <mat-cell *matCellDef="let inventory">{{inventory.status}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="active">
+            <mat-header-cell *matHeaderCellDef>Activo</mat-header-cell>
+            <mat-cell *matCellDef="let inventory">{{changeActive(inventory.active)}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="asisgmentDate">
+            <mat-header-cell *matHeaderCellDef>Fecha de Asignacion</mat-header-cell>
+            <mat-cell *matCellDef="let inventory">{{inventory.dateAsignament | date}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="accion">
+            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+            <mat-cell *matCellDef="let inventory">
+              <button mat-raised-button routerLink="/inventory/update/{{inventory.id}}" color="primary">
+                Editar
+              </button>
+              <button mat-raised-button (click)="onSelect(inventory)" color="primary">
+                Ver
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <!--<ssi-detail-inventory [inventoryDetail]="selectedEqui"></ssi-detail-inventory>-->
+
+    </div>
+  </div>
+</div>
+
+<ssi-footer></ssi-footer>
