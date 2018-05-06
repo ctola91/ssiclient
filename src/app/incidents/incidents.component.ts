@@ -9,7 +9,18 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class IncidentsComponent implements OnInit {
   incidents: any = [];
-  displayedColumns = ['code', 'area', 'incidentDetailName', 'incidentDetailStatus', 'incidentTypeName', 'Accion'];
+  displayedColumns = [
+    'dateAt',
+    'code',
+    'severity',
+    'area',
+    'incidentDetailName',
+    'incidentDetailStatus',
+    'incidentTypeName',
+    'Recurrence',
+    'Accion'];
+  current = 76;
+  max = 100;
 
   constructor(
     private incidentService: IncidentService,
@@ -41,5 +52,20 @@ export class IncidentsComponent implements OnInit {
         console.log(error);
         this.toastr.error(error, 'Ha ocurrido un error inesperado');
       });
+  }
+
+  getColor(num: number): string {
+    if (num < 30 ) {
+      return '#F44336';
+    }
+    if (num >= 31 && num < 50) {
+      return '#FFC107';
+    }
+    if (num >= 50 && num < 74) {
+      return '#4CAF50';
+    }
+    if (num >= 75 && num <= 100) {
+      return '#3F51B5';
+    }
   }
 }
