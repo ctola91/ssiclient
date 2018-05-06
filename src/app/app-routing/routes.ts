@@ -37,6 +37,9 @@ import {InventoryComponent} from '../inventory/inventory.component';
 import {CrateKardexComponent} from '../kardex/crate-kardex/crate-kardex.component';
 import {CreateInventoryComponent} from '../inventory/create-inventory/create-inventory.component';
 import {KardexComponent} from '../kardex/kardex.component';
+import {DetailEquipmentComponent} from '../equipment/detail-equipment/detail-equipment.component';
+import {KardexEquipmentComponent} from '../equipment/kardex-equipment/kardex-equipment.component';
+import {UpdateComponent} from '../equipment/update/update.component';
 import {ActivitiesComponent} from '../activities/activities.component';
 import {ReportProgramssoComponent} from '../programsso/report-programsso/report-programsso.component';
 import {AddPersonalActivitiesComponent} from '../activities/add-personal-activities/add-personal-activities.component';
@@ -102,4 +105,8 @@ export const routes: Routes = [
   { path: 'reporte/equipamiento', component: TreeComponent},
   { path: 'reporte/inventario', component: TreeComponent},
   { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent}
+  { path: 'equipments/detail/:id',  component: DetailEquipmentComponent },
+  { path: 'equipments/kardex/:id',  component: KardexEquipmentComponent },
+  { path: 'equipments/update/:id',  component: UpdateComponent }
+
 ];

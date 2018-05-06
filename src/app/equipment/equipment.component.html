@@ -17,7 +17,7 @@
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="50%">
+    <div fxFlex="80%">
       <div>
         <mat-table #table [dataSource]="equipments">
           <ng-container matColumnDef="name">
@@ -38,8 +38,9 @@
           <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
             <mat-cell *matCellDef="let equipment">
-              <a mat-button (click)="onSelect(equipment)">Ver</a> |
-              <a mat-button (click)="onKardex(equipment)"> Kardex</a> |
+              <a mat-button [routerLink]="['detail', equipment.id]">Ver</a> |
+              <a mat-button [routerLink]="['update', equipment.id]"> Modificar</a> |
+              <a mat-button [routerLink]="['kardex', equipment.id]"> Ver Kardex</a> |
             </mat-cell>
           </ng-container>
 
@@ -48,11 +49,6 @@
         </mat-table>
       </div>
     </div>
-    <div fxFlex="50%">
-      <ssi-detail-equipment [equipmentDetail]="selectedEqui"></ssi-detail-equipment>
-      <ssi-kardex-equipment [equipmentKardex]="kardexEqui"></ssi-kardex-equipment>
-    </div>
   </div>
 </div>
-
 <ssi-footer></ssi-footer>

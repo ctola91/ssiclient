@@ -113,6 +113,7 @@ import {ActivityService} from './services/activity.service';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
 import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
+import { UpdateComponent } from './equipment/update/update.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
 import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
@@ -172,6 +173,8 @@ import { PersonalContractPositionComponent } from './personal/personal-contract-
     CrateKardexComponent,
     ActivitiesComponent,
     AddPersonalActivitiesComponent,
+    ReportProgramssoComponent,
+    UpdateComponent
     ReportProgramssoComponent,
     LogoutComponent,
     ReportManualFunctionsComponent,

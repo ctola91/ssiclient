@@ -34,6 +34,12 @@ export class EquipmentService {
     return this.http.get(baseURL + API_URL + '/equipament', {headers: headers});
   }
 
+  getEquipmentById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/equipament/' + id , {headers: headers});
+  }
+
   saveEquipament(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
@@ -52,6 +58,18 @@ export class EquipmentService {
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
     return this.http.delete(baseURL + API_URL + '/equipment/' + equipment.id, { headers: headers}).map((res) => {
+      return res;
+    }).catch(err => {
+      console.log('error:' + err);
+      return err;
+    });
+  }
+  updateEquipment(data: any, id: number): Observable<any> {
+    const params = JSON.stringify(data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
+    return this.http.put(baseURL + API_URL + '/equipment/' + id, params, {headers: headers}).map((res) => {
       return res;
     }).catch(err => {
       console.log('error:' + err);
