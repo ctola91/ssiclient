@@ -12,7 +12,7 @@ export class KardexComponent implements OnInit {
   kardexs: Kardex [];
   kardexSelect: Kardex;
   kardexsTable: MatTableDataSource<Kardex>;
-  displayedColumns = ['date', 'entry', 'outlay', 'balance', 'action'];
+  displayedColumns = ['date', 'voucher', 'department', 'entry', 'outlay', 'balance'];
   constructor(private kardexService: KardexService) { }
 
   ngOnInit() {
