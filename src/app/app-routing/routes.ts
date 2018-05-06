@@ -40,6 +40,10 @@ import {KardexComponent} from '../kardex/kardex.component';
 import {ActivitiesComponent} from '../activities/activities.component';
 import {ReportProgramssoComponent} from '../programsso/report-programsso/report-programsso.component';
 import {AddPersonalActivitiesComponent} from '../activities/add-personal-activities/add-personal-activities.component';
+import {LogoutComponent} from '../logout/logout.component';
+import {ReportManualFunctionsComponent} from '../positions/report-manual-functions/report-manual-functions.component';
+import {ReportPositionsComponent} from '../positions/report-positions/report-positions.component';
+import {PersonalContractPositionComponent} from '../personal/personal-contract-position/personal-contract-position.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -75,9 +79,7 @@ export const routes: Routes = [
   { path: 'contracts/create',  component: CreateContractComponent },
   { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'equipments/create',  component: CreateEquipmentComponent },
-  { path: 'contracts/update',  component: UpdateContractComponent },
-  { path: 'position-detail/:id',  component: PositionDetailComponent },
-  { path: 'accident',  component: AccidentComponent },
+  { path: 'reporte/accident',  component: AccidentComponent },
   { path: 'resources',  component: ResourcesComponent },
   { path: 'resources/create', component: CreateResourceComponent},
   { path: 'areas',  component: AreasComponent },
@@ -89,5 +91,15 @@ export const routes: Routes = [
   { path: 'inventory/create', component: CreateInventoryComponent},
   { path: 'activities',  component: ActivitiesComponent },
   { path: 'programsso/reportprogramsso/:id', component: ReportProgramssoComponent},
-  { path: 'activities/addpersonalactivitisso/:id', component: AddPersonalActivitiesComponent}
+  { path: 'activities/addpersonalactivitisso/:id', component: AddPersonalActivitiesComponent},
+  { path: 'logout', component: LogoutComponent},
+  { path: 'reporte/cargos-empresa', component: ReportPositionsComponent},
+  { path: 'reporte/manual-funciones', component: ReportManualFunctionsComponent},
+  { path: 'reporte/personal', component: TreeComponent},
+  { path: 'reporte/iperc', component: TreeComponent},
+  { path: 'reporte/programa-sso', component: TreeComponent},
+  { path: 'reporte/recursos-sso', component: TreeComponent},
+  { path: 'reporte/equipamiento', component: TreeComponent},
+  { path: 'reporte/inventario', component: TreeComponent},
+  { path: 'personal/personal-contract-position', component: PersonalContractPositionComponent}
 ];

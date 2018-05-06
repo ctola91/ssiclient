@@ -113,6 +113,10 @@ import {ActivityService} from './services/activity.service';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
 import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
+import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
+import { PersonalContractPositionComponent } from './personal/personal-contract-position/personal-contract-position.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +172,11 @@ import { ReportProgramssoComponent } from './programsso/report-programsso/report
     CrateKardexComponent,
     ActivitiesComponent,
     AddPersonalActivitiesComponent,
-    ReportProgramssoComponent
+    ReportProgramssoComponent,
+    LogoutComponent,
+    ReportManualFunctionsComponent,
+    ReportPositionsComponent,
+    PersonalContractPositionComponent
   ],
   imports: [
     BrowserModule,
