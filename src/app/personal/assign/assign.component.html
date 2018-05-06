@@ -9,23 +9,43 @@
     <mat-card-content>
       <h1>Datos del Personal</h1>
       <hr>
-      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30%">
-            <input matInput placeholder="Input">
-        </mat-form-field>
-        <mat-form-field fxFlex="30%">
-            <input matInput placeholder="Input">
-        </mat-form-field>
-        <mat-form-field fxFlex="30%">
-          <input matInput placeholder="Input">
-        </mat-form-field>
-      </div>
-      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30%">
-          <input matInput placeholder="Input">
-        </mat-form-field>
+      <form #f="ngForm" (ngSubmit)="onSubmit()" id="form">
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+            <!--<input matInput placeholder="Personal" aria-label="Personal" [matAutocomplete]="auto" [formControl]="personalCtrl">-->
+            <!--<mat-autocomplete #auto="matAutocomplete">-->
+              <!--<mat-option *ngFor="let personal of filteredPersonal | async" [value]="personal.name">-->
+                <!--<img style="vertical-align:middle;" aria-hidden src="../assets/images/daniel.png" height="25" />-->
+                <!--<span>{{ personal.name }}</span> |-->
+                <!--<small>Apellido: {{personal.lastName}}</small>-->
+              <!--</mat-option>-->
+            <!--</mat-autocomplete>-->
 
-      </div>
+            <mat-form-field fxFlex="30%">
+              <input matInput placeholder="Personal" [matAutocomplete]="auto" name="personal" #personal="ngModel" [(ngModel)]="currentPersonal" (ngModelChange)="doFilterPersonal()">
+            </mat-form-field>
+
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let personal of personals | async" [value]="personal.name">
+                <img style="vertical-align:middle;" aria-hidden src="../assets/images/daniel.png" height="25" />
+                <span>{{ personal.name }}</span> |
+                <small>Apellido: {{personal.lastName}}</small>
+              </mat-option>
+            </mat-autocomplete>
+
+          <mat-form-field fxFlex="30%">
+              <input matInput placeholder="Input">
+          </mat-form-field>
+          <mat-form-field fxFlex="30%">
+            <input matInput placeholder="Input">
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="30%">
+            <input matInput placeholder="Input">
+          </mat-form-field>
+
+        </div>
+      </form>
       <h1>List de equipos</h1>
       <hr>
       <mat-form-field>

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
-import {Activity} from '../shared/activity';
+import {Activity} from '../shared/Activity';
 import {ResponseService} from '../shared/responseService';
 import {AppUtil} from '../shared/AppUtil';
 
