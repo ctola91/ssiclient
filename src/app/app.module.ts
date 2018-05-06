@@ -113,6 +113,7 @@ import {ActivityService} from './services/activity.service';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
 import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
+import { UpdateComponent } from './equipment/update/update.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,8 @@ import { ReportProgramssoComponent } from './programsso/report-programsso/report
     CrateKardexComponent,
     ActivitiesComponent,
     AddPersonalActivitiesComponent,
-    ReportProgramssoComponent
+    ReportProgramssoComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Equipment} from '../../shared/Equipment';
 import {EquipmentService} from '../../services/equipment.service';
-import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'ssi-create-equipment',
@@ -11,27 +10,27 @@ import {MatTableDataSource} from '@angular/material';
   styleUrls: ['./create-equipment.component.scss']
 })
 export class CreateEquipmentComponent implements OnInit {
-  CreForm: FormGroup;
+  newEquiForm: FormGroup;
   newEquipment: Equipment;
 
-  types = [
-    {name: 'Tipo 1', value: 1},
-    {name: 'Tipo 2', value: 2},
-    {name: 'Tipo 3', value: 3}
+  datos = [
+    {name: 'Equipo', value: 1},
+    {name: 'Implemento', value: 2},
   ];
 
   constructor(private fb: FormBuilder,
-              private equiService: EquipmentService,
+              private equipmentService: EquipmentService,
               private route: ActivatedRoute,
               private router: Router) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.createForm();
   }
 
   onSubmit() {
-    this.equiService.saveEquipament(this.CreForm.value)
+    this.equipmentService.saveEquipament(this.newEquiForm.value)
       .subscribe(this.processData.bind(this), this.processError.bind(this));
   }
 
@@ -44,11 +43,10 @@ export class CreateEquipmentComponent implements OnInit {
   }
 
   private createForm() {
-    this.CreForm = this.fb.group({
-      name: ['', Validators.required],
-      //area: ['', Validators.required ],
-      type: ['', Validators.required],
-      description: ['', Validators.required],
+    this.newEquiForm = this.fb.group({
+      name: ['', Validators.required ],
+      type: ['', Validators.required ],
+      description: ['', Validators.required ],
       image: [''],
     });
   }
