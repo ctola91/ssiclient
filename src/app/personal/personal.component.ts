@@ -3,6 +3,8 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { PersonalData } from '../shared/PersonalData';
 import { PersonalService } from '../services/personal.service';
 import {Personal} from '../shared/Personal';
+import {ToastrService} from 'ngx-toastr';
+import {ERROR_MSG, MSG_PERSONAL_DELETED, TITLE_MSG_PERSONAL} from '../shared/Messages';
 
 @Component({
   selector: 'ssi-personal',
@@ -18,7 +20,8 @@ export class PersonalComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private personalService: PersonalService) {
+  constructor(private personalService: PersonalService,
+              private toastService: ToastrService) {
 
     this.loadDataTable();
   }
@@ -53,10 +56,11 @@ export class PersonalComponent implements OnInit {
 
   private processErrorData(err) {
     console.log(err);
+    this.toastService.error(err, ERROR_MSG);
   }
 
   deletePersonal(personal: Personal): void {
-
+    this.toastService.info(MSG_PERSONAL_DELETED, TITLE_MSG_PERSONAL);
     this.personalService.deletePersonal(personal)
         .subscribe(this.loadDataTable.bind(this), this.processErrorData.bind(this));
   }

@@ -109,6 +109,10 @@ import {KardexComponent} from './kardex/kardex.component';
 import {CreateInventoryComponent} from './inventory/create-inventory/create-inventory.component';
 import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component';
 import {InventoryService} from './services/inventory.service';
+import {ActivityService} from './services/activity.service';
+import { ActivitiesComponent } from './activities/activities.component';
+import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
+import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
 import { UpdateComponent } from './equipment/update/update.component';
 
 @NgModule({
@@ -163,6 +167,9 @@ import { UpdateComponent } from './equipment/update/update.component';
     InventoryComponent,
     CreateInventoryComponent,
     CrateKardexComponent,
+    ActivitiesComponent,
+    AddPersonalActivitiesComponent,
+    ReportProgramssoComponent,
     UpdateComponent
   ],
   imports: [
@@ -209,6 +216,7 @@ import { UpdateComponent } from './equipment/update/update.component';
     , AppUtil
     , ResourceService
     , InventoryService
+    , ActivityService
   ],
   bootstrap: [AppComponent]
 })

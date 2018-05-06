@@ -2,38 +2,44 @@
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>Nuevo Recurso</h1>
+    <h1 *ngIf="!isUpdate">Crear Recurso</h1>
+    <h1 *ngIf="isUpdate">Editar Recurso</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/resource" color="accent">Atras</button>
-    <button mat-button routerLink="/resource/report" color="accent">Reporte</button>
+    <button mat-button routerLink="/resources" color="accent">Atras</button>
+    <button mat-button routerLink="/resources/report" color="accent">Reportes</button>
   </div>
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <form novalidate [formGroup]="resourceForm" (ngSubmit)="onSubmit()" id="form">
-      <p>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="detail"  placeholder="Detalle" type="text" required>
-          <mat-hint>
-                <span [hidden]="!(resourceForm.get('detail').hasError('required') && resourceForm.get('detail').touched)">
-                  Detalle es requerido</span>
-          </mat-hint>
-        </mat-input-container>
+  <mat-card>
+    <form [formGroup]="resourceForm" (ngSubmit)="saveData()" id="form">
+      <mat-card-content>
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
 
-      </p>
-      <p>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="cost" placeholder="Costo" type="cost" required>
-          <mat-hint>
-                <span [hidden]="!(resourceForm.get('cost').hasError('required') && resourceForm.get('cost').touched)">
-                  Costo es requerido</span>
-          </mat-hint>
-        </mat-input-container>
+          <mat-form-field fxFlex="50%">
+            <input matInput name="code" formCostResource="costResource" placeholder="costo del recurso">
+          </mat-form-field>
 
-      </p>
+          <mat-form-field fxFlex="50%">
+            <mat-select placeholder="Selecciona una Actividad" formControlName="activityDetail">
+              <mat-option *ngFor="let activity " [value]="activity.activityDetail">
+                {{ activity.activityDetail }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <button type="submit"  mat-raised-button color="primary" [disabled]="resourceForm.invalid">Enviar</button>
+
+        <div fxFlex="100%" fxLayout="row">
+          <mat-form-field fxFlex="100%">
+            <textarea matInput formControlName="detailResource" placeholder="Description" rows="2"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="cancelForm()" type="button">Cancelar</button>
+        <button class="mat-background-primary" mat-raised-button
+                [disabled]="resourceForm.invalid" type="submit" color="primary">Guardar</button>
+      </mat-card-actions>
     </form>
-  </div>
+  </mat-card>
 </div>
+<ssi-footer></ssi-footer>

@@ -1,0 +1,56 @@
+<ssi-header></ssi-header>
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <h1>Actividades</h1>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button mat-button routerLink="/activities/create" color="primary">Agregar actividad</button>
+  </div>
+  <div fxFlex>
+    <div>
+
+      <mat-table #table [dataSource]="activity">
+
+        <ng-container matColumnDef="activityId">
+          <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+          <mat-cell *matCellDef="let activity">{{activity.activityId}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activityNumber">
+          <mat-header-cell *matHeaderCellDef>Numero de Actividad</mat-header-cell>
+          <mat-cell *matCellDef="let activity">{{activity.activityNumber}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activityDetail">
+          <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
+          <mat-cell *matCellDef="let activity">{{activity.activityDetail}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activityGoal">
+          <mat-header-cell *matHeaderCellDef>Meta</mat-header-cell>
+          <mat-cell *matCellDef="let activity">{{activity.activityGoal}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activityTime">
+          <mat-header-cell *matHeaderCellDef> Tiempo de Duracion </mat-header-cell>
+          <mat-cell *matCellDef="let activity"> {{activity.fecha | date:'HH:mm'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="activityType">
+          <mat-header-cell *matHeaderCellDef>Tipo de Actividad</mat-header-cell>
+          <mat-cell *matCellDef="let activity">{{activity.activityType}}</mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let activity; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
+
+<ssi-footer></ssi-footer>
+

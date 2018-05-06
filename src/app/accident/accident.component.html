@@ -24,6 +24,11 @@
           <mat-cell *matCellDef="let row"> {{row.personal}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Reportado">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Reportado por </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.reportadopor}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="Fecha">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.fecha | date:'dd-MM-yyyy'}} </mat-cell>
@@ -34,9 +39,29 @@
           <mat-cell *matCellDef="let row"> {{row.fecha | date:'HH:mm'}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="Bajamedica">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Baja Medica/dias </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.bajamedica}} </mat-cell>
+        <ng-container matColumnDef="FormAccident">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Forma de Accidente </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.formadeaccidente}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="TypeLesion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de lesion </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.tipodelesion}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="BodyLesion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Parte del Cuerpo lesionada </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.partedelcuerpolesionada}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="Agente">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Agente Causante </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.agentecausante}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="TypeAccident">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Accidente </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.tipodeaccidente}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Lugaratencion">
@@ -44,10 +69,17 @@
           <mat-cell *matCellDef="let row"> {{row.lugaratencion}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="Bajamedica">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Baja Medica/dias </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.bajamedica}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="Descripcion">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.descripcion}} </mat-cell>
         </ng-container>
+        
+        
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
