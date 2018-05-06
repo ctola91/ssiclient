@@ -9,7 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ResourcesComponent implements OnInit {
   resources: any = [];
-  displayedColumns = ['code', 'cost', 'detail', 'action'];
+  displayedColumns = ['cost', 'detail', 'action'];
 
   constructor(
     private resourceService: ResourceService,

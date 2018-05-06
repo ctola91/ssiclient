@@ -14,10 +14,6 @@
       <mat-card>
         <mat-card-content>
           <mat-table #table [dataSource]="resources">
-            <ng-container matColumnDef="code">
-              <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-              <mat-cell *matCellDef="let resource">{{resource.idResource}}</mat-cell>
-            </ng-container>
 
             <ng-container matColumnDef="cost">
               <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>

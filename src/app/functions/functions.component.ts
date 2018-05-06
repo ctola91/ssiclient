@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import {Router} from '@angular/router';
-import {RequirementsService} from '../services/requirements.service';
-import {RequirementsDataParameters} from '../shared/RequirementsDataParameters';
 import {FunctionsData} from '../shared/FunctionsData';
 import {Functions} from '../shared/Functions';
 import {FunctionsService} from '../services/functions.service';
 import {FunctionsDataParameters} from '../shared/FunctionsDataParameters';
-import {Contract} from '../shared/Contract';
+
 
 @Component({
   selector: 'ssi-function',
@@ -15,7 +13,7 @@ import {Contract} from '../shared/Contract';
   styleUrls: ['./functions.component.scss']
 })
 export class FunctionsComponent implements OnInit {
-  displayedColumns = ['Nombre', 'Descripcion', 'Cargo', 'Accion'];
+  displayedColumns = ['Nombre', 'Descripcion', 'Posicion', 'Accion'];
   dataSource: MatTableDataSource<FunctionsData>;
   functionss: FunctionsData[] = [];
   functions: Functions;

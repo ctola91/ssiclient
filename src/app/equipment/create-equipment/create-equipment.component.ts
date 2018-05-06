@@ -22,7 +22,7 @@ export class CreateEquipmentComponent implements OnInit {
               private equipmentService: EquipmentService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.createForm();
+    //this.createForm();
   }
 
   ngOnInit() {

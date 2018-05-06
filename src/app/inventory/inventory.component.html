@@ -7,18 +7,29 @@
   </div>
   <mat-divider></mat-divider>
   <div fxFlex>
-    <button mat-button routerLink="/inventory/create" color="primary"><span
+    <button mat-button routerLink="/home" color="primary"><span
       class="fa fa-chevron-right fa-lg"></span>
-      Crear nuevo Inventario
+      Aceptar
     </button>
   </div>
   <mat-divider></mat-divider>
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="50%">
+    <div fxFlex="80%">
       <div>
         <mat-table #table [dataSource]="inventories">
+
+          <ng-container matColumnDef="personal">
+            <mat-header-cell *matHeaderCellDef>Cod. Personal</mat-header-cell>
+            <mat-cell *matCellDef="let inventory">{{inventory.idPersonal}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="equipment">
+            <mat-header-cell *matHeaderCellDef>Cod. Equip</mat-header-cell>
+            <mat-cell *matCellDef="let inventory">{{inventory.idEquipament}}</mat-cell>
+          </ng-container>
+
           <ng-container matColumnDef="status">
             <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
             <mat-cell *matCellDef="let inventory">{{inventory.status}}</mat-cell>
@@ -50,10 +61,6 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
-    </div>
-    <div fxFlex="50%">
-      <!--<ssi-detail-inventory [inventoryDetail]="selectedEqui"></ssi-detail-inventory>-->
-
     </div>
   </div>
 </div>

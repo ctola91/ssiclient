@@ -1,7 +1,7 @@
 export interface Resource {
-  idResource: number;
-  costResource: number;
-  detailResource: string;
+  id: number;
+  cost: number;
+  detail: string;
   activities: number;
 }
 

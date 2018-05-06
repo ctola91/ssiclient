@@ -3,72 +3,71 @@
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>{{title}}</h1>
+    <h1>Crear nuevo Kardex</h1>
   </div>
+  <mat-divider></mat-divider>
   <div fxFlex>
-    <button mat-button routerLink="/trainers" color="accent">Atras</button>
-    <button mat-button routerLink="/trainers/report" color="accent">Reporte</button>
+    <button mat-raised-button routerLink="/kardex" color="primary">
+      <span class="fa fa-arrow-left fa-lg"></span> Atras</button>
   </div>
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <form novalidate [formGroup]="trainerForm" (ngSubmit)="onSubmit()" id="form">
+  <mat-divider></mat-divider>
+  <div fxFlex>
+    <form novalidate [formGroup]="kardexForm" (ngSubmit)="onSubmit()" id="form">
       <p>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+        <mat-form-field  dividerColor="{{(kardexForm.get('idEquipament').hasError('required') && kardexForm.get('idEquipament').touched) ? 'warn' : 'primary'}}">
+          <mat-select formControlName="idEquipament" placeholder="Seleccione tipo">
+            <mat-option *ngFor="let dato of equipments" [value]="dato.id">
+              {{ dato.name }}
+            </mat-option>
+          </mat-select>
           <mat-hint>
-                <span [hidden]="!(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched)">
-                  Nombre es requerido</span>
+              <span [hidden]="!(kardexForm.get('idEquipament').hasError('required') && kardexForm.get('idEquipament').touched)">
+                El tipo es requerido</span>
+          </mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field fxFlex="50%">
+          <input matInput [matDatepicker]="picker" formControlName="dateKardex" placeholder="Fecha de Ingreso"  required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-input-container fxFlex="30%" class="half-width" dividerColor="{{(kardexForm.get('entryKardex').hasError('required') && kardexForm.get('entryKardex').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="entryKardex"  placeholder="Cant. ingreso" type="number" required>
+          <mat-hint>
+                <span [hidden]="!(kardexForm.get('entryKardex').hasError('required') && kardexForm.get('entryKardex').touched)">
+                  Cant. Ingreso requerido</span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="ci"  placeholder="Cedula identidad" type="text" required>
+      </p>
+      <!---->
+      <p>
+        <mat-input-container fxFlex="30%" class="half-width" dividerColor="{{(kardexForm.get('outlayKardex').hasError('required') && kardexForm.get('outlayKardex').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="outlayKardex"  placeholder="0 de Inicio" type="number" required>
           <mat-hint>
-                <span [hidden]="!(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched)">
-                  Cedula identidad es requerido</span>
+                <span [hidden]="!(kardexForm.get('outlayKardex').hasError('required') && kardexForm.get('outlayKardex').touched)">
+                  Cant. despachada requerido</span>
           </mat-hint>
         </mat-input-container>
       </p>
       <p>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="speciality" placeholder="Especialidad" type="email" required>
+        <mat-input-container fxFlex="30%" class="half-width" dividerColor="{{(kardexForm.get('balanceKardex').hasError('required')&& kardexForm.get('balanceKardex').touched) ? 'warn' : 'primary'}}">
+          <input matInput formControlName="balanceKardex"  placeholder="Saldo" type="text" required>
           <mat-hint>
-                <span [hidden]="!(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched)">
-                  Especialidad es requerido</span>
+                <span [hidden]="!(kardexForm.get('balanceKardex').hasError('required') && kardexForm.get('balanceKardex').touched)">
+                  Saldo es requerido</span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container class="half-width"
-                             dividerColor="{{(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="skillsDescriptions" placeholder="Descripción de habilidades" type="text" required>
-          <mat-hint>
-                <span [hidden]="!(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched)">
-                  Descripción de habilidades es required</span>
-          </mat-hint>
-        </mat-input-container>
-
       </p>
-      <!-- <p>
-         <mat-input-container class="half-width"
-                              dividerColor="{{(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched) ? 'warn' : 'primary'}}">
-           <input matInput formControlName="cellphone"  placeholder="Telefono" type="tel" required>
-           <mat-hint>
-               <span [hidden]="!(trainerForm.get('cellphone').hasError('required') && trainerForm.get('cellphone').touched)">
-                 Email es requerido</span>
-           </mat-hint>
-         </mat-input-container>
-         <mat-form-field>
-           <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="Fecha Nacimiento"  required>
-           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-           <mat-datepicker #picker></mat-datepicker>
-         </mat-form-field>
+      <button type="submit"  mat-raised-button color="primary" [disabled]="kardexForm.invalid">Enviar</button>
 
-       </p>-->
-
-      <button type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">Enviar</button>
     </form>
   </div>
+  <mat-divider></mat-divider>
 </div>
 
 
 <ssi-footer></ssi-footer>
+

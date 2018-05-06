@@ -27,7 +27,7 @@ export class ActivityService {
 
   deleteActivity(activity: Activity): Observable<any> {
     const params = JSON.stringify(activity);
-    return this.http.delete(baseURL + API_URL + '/activities/' + activity.activityId, { headers: this.appUtil.getHeader()});
+    return this.http.delete(baseURL + API_URL + '/activities/' + activity.id, { headers: this.appUtil.getHeader()});
   }
 
   findActivityById(id: number): Observable<any> {
@@ -72,6 +72,6 @@ export class ActivityService {
     const headers = new HttpHeaders()
       .set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/resources', data, { headers: headers } );
+    return this.http.post(baseURL + API_URL + '/activities', data, { headers: headers } );
   }
 }
