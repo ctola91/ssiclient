@@ -8,6 +8,10 @@ import {ProgramssoService} from '../../services/programsso.service';
 import {ProgramSso} from '../../shared/programSso';
 import {Trainer} from '../../shared/trainer';
 import {TrainerService} from '../../services/trainer.service';
+import {Resource} from '../../shared/resource';
+import {Personal} from '../../shared/Personal';
+import {ResourceService} from '../../services/resource.service';
+import {PersonalService} from '../../services/personal.service';
 
 @Component({
   selector: 'ssi-create-activity',
@@ -23,6 +27,8 @@ export class CreateActivityComponent implements OnInit {
   isUpdate: boolean;
   programs: ProgramSso[];
   trainers: Trainer[];
+  resources: Resource[];
+  personals: Personal[];
 
 
   constructor(private fb: FormBuilder,
@@ -32,6 +38,8 @@ export class CreateActivityComponent implements OnInit {
               private toastr: ToastrService,
               private programSsoService: ProgramssoService,
               private trainersService: TrainerService,
+              private resourceService: ResourceService,
+              private personalService: PersonalService,
               private formBuilder: FormBuilder) {
   }
 
@@ -56,6 +64,12 @@ export class CreateActivityComponent implements OnInit {
 
     this.trainersService.getTrainers().subscribe(
       trainers => this.trainers = trainers);
+
+    this.resourceService.getListResources().subscribe(
+      resources => this.resources = resources.data);
+
+    this.personalService.getListPersonals().subscribe(
+      personals => this.personals = personals.data);
   }
 
   private findResource() {
@@ -87,7 +101,7 @@ export class CreateActivityComponent implements OnInit {
 
   onSubmit() {
     if (this.isUpdate) {
-      this.activityService.updateActivity(this.activityForm.value, this.activity.id)
+      this.activityService.updateActivity(this.activityForm.value, this.activity.activityId)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
       this.activityService.saveActivity(this.activityForm.value)
