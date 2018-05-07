@@ -43,13 +43,6 @@ export class AssignComponent implements OnInit {
   //                                 activitiesSsos: []};
   currentPersonal = '';
 
-  /**
-   *
-   * @param {FormBuilder} fb
-   * @param {EquipmentService} equipamentService
-   * @param {PersonalService} personalService
-   * @param {ToastrService} toastService
-   */
   constructor(private fb: FormBuilder,
               private equipamentService: EquipmentService,
               private personalService: PersonalService,
@@ -106,7 +99,7 @@ export class AssignComponent implements OnInit {
   }
 
   private processEquipamentService(equipament: any): void {
-    if( equipament !== null){
+    if( equipament !== null) {
       this.dataSource.data = equipament;
     }
   }

@@ -8,7 +8,7 @@ import {UtilityService} from '../services/utility.service';
 })
 export class HeaderComponent implements OnInit {
   showMenu: boolean;
-  openStatus: boolean;
+  openStatus = false;
 
   @Input()
   menuActive: string;

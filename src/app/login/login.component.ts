@@ -4,6 +4,8 @@ import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginResult } from '../shared/LoginResult';
 import { HttpErrorResponse } from '@angular/common/http';
+import {ToastrService} from "ngx-toastr";
+import {ERROR_MSG, ERROR_UNKNOW, MSG_LOGIN_CORRECTO, TITLE_MSG_LOGIN} from "../shared/Messages";
 
 @Component({
   selector: 'ssi-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastService: ToastrService) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -34,8 +37,8 @@ export class LoginComponent implements OnInit {
   }
 
   private getLoginData(loginResult: LoginResult) {
-    console.log();
     if (loginResult.success === 'true') {
+      this.toastService.success(MSG_LOGIN_CORRECTO, TITLE_MSG_LOGIN);
       localStorage.setItem('token', loginResult.token);
       this.router.navigate(['home']);
     }
@@ -43,13 +46,12 @@ export class LoginComponent implements OnInit {
 
   private catchError(err) {
     if (err instanceof HttpErrorResponse) {
-      // this.message = `Http Error: ${err.status}, text: ${err.statusText}`;
+      this.toastService.error(ERROR_MSG, TITLE_MSG_LOGIN);
       console.log(err);
     } else {
-      // this.message = `Unknown error, text: ${err.message}`;
+      this.toastService.error(ERROR_UNKNOW, TITLE_MSG_LOGIN);
       console.log(err);
     }
-    // this.fullError = err;
   }
 
 }

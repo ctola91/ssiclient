@@ -54,6 +54,8 @@ import {UpdateRequirementsComponent} from '../requirements/update-requirements/u
 import {CreateActivityComponent} from '../activities/create/create.activity.component';
 import {ReportResourceComponent} from '../resources/report/report.resource.component';
 import {ReportActivityComponent} from '../activities/report/report.activity.component';
+import {ReportePersonalComponent} from '../personal/reporte-personal/reporte-personal.component';
+import {ReportePersonalAreaComponent} from '../personal/reporte-personal-area/reporte-personal-area.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -105,7 +107,8 @@ export const routes: Routes = [
   { path: 'logout', component: LogoutComponent},
   { path: 'reporte/cargos-empresa', component: ReportPositionsComponent},
   { path: 'reporte/manual-funciones', component: ReportManualFunctionsComponent},
-  { path: 'reporte/personal', component: TreeComponent},
+  { path: 'reporte/personal', component: ReportePersonalComponent},
+  { path: 'reporte/area', component: ReportePersonalAreaComponent},
   { path: 'reporte/iperc', component: TreeComponent},
   { path: 'reporte/programa-sso', component: TreeComponent},
   { path: 'reporte/recursos-sso', component: TreeComponent},
