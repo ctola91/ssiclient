@@ -1,7 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Position} from '../shared/position';
 import {PositionService} from '../services/position.service';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {PositionData} from '../shared/PositionData';
+import {ToastrService} from 'ngx-toastr';
+import {ERROR_MSG} from '../shared/Messages';
 
 @Component({
   selector: 'ssi-positions',
@@ -9,21 +12,23 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./positions.component.scss']
 })
 export class PositionsComponent implements OnInit {
-  positions: MatTableDataSource<Position>;
+  displayedColumns = ['name', 'level', 'nameParentPosition', 'actions'];
+  dataSource: MatTableDataSource<PositionData>;
+  positions: PositionData[] = [];
+  selectedPosition: PositionData;
+  deletePosition: PositionData;
 
-  selectedPosition: Position;
-  deletePosition: Position;
   haveChildren = false;
 
-  displayedColumns = ['name', 'level', 'nameParentPosition', 'actions'];
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private positionService: PositionService) {
+  constructor(private positionService: PositionService,
+              private toastService: ToastrService) {
+    this.loadDataTable();
   }
 
   ngOnInit() {
-    this.loadData();
   }
 
   onDelete(position: Position) {
@@ -40,8 +45,30 @@ export class PositionsComponent implements OnInit {
     this.deletePosition = null;
   }
 
+  private loadDataTable(): void {
+    this.positionService.getPositions()
+      .subscribe(this.processData.bind(this),
+        this.processErrorData.bind(this));
+  }
+
   loadData() {
     this.positionService.getPositions().subscribe(
       positions => this.positions = positions);
+  }
+
+  private processData(positions: any) {
+    this.positions = positions;
+    this.dataSource = new MatTableDataSource(this.positions);
+    this.initDatatable();
+  }
+
+  initDatatable() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  private processErrorData(err) {
+    console.log(err);
+    this.toastService.error(err, ERROR_MSG);
   }
 }
