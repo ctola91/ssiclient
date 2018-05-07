@@ -1,9 +1,14 @@
 <ssi-header menuActive="incident"></ssi-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" opened="{{statusOpened}}">
+    <ssi-sidenav-list></ssi-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Incidentes</h1>
+    <h1>Reporte de Incidentes</h1>
   </div>
   <div fxFlex fxLayout="row">
     <button mat-button routerLink="/incidents/create">Agregar nuevo Incidente</button>
@@ -91,4 +96,6 @@
     </div>
   </div>
 </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 <ssi-footer></ssi-footer>

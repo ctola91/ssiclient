@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidentService } from './shared/incident.service';
 import {ToastrService} from 'ngx-toastr';
+import {UtilityService} from '../services/utility.service';
 
 @Component({
   selector: 'ssi-incidents',
@@ -9,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class IncidentsComponent implements OnInit {
   incidents: any = [];
+  statusOpened: boolean;
   displayedColumns = [
     'dateAt',
     'code',
@@ -24,12 +26,14 @@ export class IncidentsComponent implements OnInit {
 
   constructor(
     private incidentService: IncidentService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private utilityService: UtilityService
   ) {
     this.loadData();
   }
 
   ngOnInit() {
+    this.utilityService.currentState.subscribe(status => this.statusOpened = status);
   }
 
   loadData() {

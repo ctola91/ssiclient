@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceService} from '../../services/resource.service';
 import {ToastrService} from 'ngx-toastr';
 import {ActivityService} from '../../services/activity.service';
+import {Activity} from '../../shared/Activity';
 
 @Component({
   selector: 'ssi-create-resource',
@@ -18,7 +19,7 @@ export class CreateResourceComponent implements OnInit {
   title: String;
   idResource: number;
   isUpdate: boolean;
-  activities: any[];
+  activities: Activity[];
 
 
   constructor(private fb: FormBuilder,
@@ -46,7 +47,8 @@ export class CreateResourceComponent implements OnInit {
 
     this.createForm();
 
-
+    this.activityService.getListActivities().subscribe(
+      activitySso => this.activities = activitySso.data);
   }
 
   private findResource() {
@@ -72,7 +74,7 @@ export class CreateResourceComponent implements OnInit {
 
   onSubmit() {
     if (this.isUpdate) {
-      this.resourceService.updateResource(this.resourceForm.value, this.resource.id)
+      this.resourceService.updateResource(this.resourceForm.value, this.resource.resourceId)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
       this.resourceService.saveResource(this.resourceForm.value)
