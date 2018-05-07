@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TreeModule} from 'angular-tree-component';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -130,6 +131,10 @@ import {CreateActivityComponent} from './activities/create/create.activity.compo
 import {ReportResourceComponent} from './resources/report/report.resource.component';
 import {ReportActivityComponent} from './activities/report/report.activity.component';
 
+import 'hammerjs';
+import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
+import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -199,7 +204,9 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
     ActivitiesComponent,
     ReportResourceComponent,
     ReportActivityComponent,
-    CreateActivityComponent
+    CreateActivityComponent,
+    ReportePersonalComponent,
+    ReportePersonalAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -220,7 +227,8 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
     HttpClientModule,
     TreeModule,
     ToastrModule.forRoot(),
-    NgxChartsModule
+    NgxChartsModule,
+    RoundProgressModule
   ],
   providers: [UserService
     , PersonalService

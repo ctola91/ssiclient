@@ -2,31 +2,43 @@
 <div class="container"
      fxLayoutGap="10px">
     <div fxFlex="100%">
-      <h1>Asignacion de Equipo al Personal</h1>
+      <h1><i class="material-icons">perm_data_setting</i>Asignacion de Equipo al Personal</h1>
     </div>
   <hr>
   <mat-card>
     <mat-card-content>
-      <h1>Datos del Personal</h1>
+      <h1><i class="material-icons">perm_identity</i>Datos del Personal</h1>
       <hr>
-      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30%">
-            <input matInput placeholder="Input">
-        </mat-form-field>
-        <mat-form-field fxFlex="30%">
-            <input matInput placeholder="Input">
-        </mat-form-field>
-        <mat-form-field fxFlex="30%">
-          <input matInput placeholder="Input">
-        </mat-form-field>
-      </div>
-      <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
-        <mat-form-field fxFlex="30%">
-          <input matInput placeholder="Input">
-        </mat-form-field>
+      <form #f="ngForm" (ngSubmit)="onSubmit()" id="form">
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
 
-      </div>
-      <h1>List de equipos</h1>
+            <mat-form-field fxFlex="30%">
+              <input matInput placeholder="Personal" [matAutocomplete]="auto" name="personal" #personal="ngModel" [(ngModel)]="currentPersonal" (ngModelChange)="doFilterPersonal()">
+            </mat-form-field>
+
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let personal of personals | async" [value]="personal.name">
+                <img style="vertical-align:middle;" aria-hidden src="../assets/images/daniel.png" height="25" />
+                <span>{{ personal.name }}</span> |
+                <small>Apellido: {{personal.lastName}}</small>
+              </mat-option>
+            </mat-autocomplete>
+
+          <mat-form-field fxFlex="30%">
+              <input matInput placeholder="Apellido">
+          </mat-form-field>
+          <mat-form-field fxFlex="30%">
+            <input matInput placeholder="email">
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="30%">
+            <input matInput placeholder="Area">
+          </mat-form-field>
+
+        </div>
+      </form>
+      <h1><i class="material-icons">settings_input_hdmi</i>List de equipos</h1>
       <hr>
       <mat-form-field>
         <input matInput type="text" (keypress)="doFilter($event.target.value)" placeholder="Buscar Equipo">
