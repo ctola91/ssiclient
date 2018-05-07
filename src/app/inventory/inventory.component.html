@@ -2,9 +2,6 @@
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
-  <div fxFlex>
-    <h1>Inventarios</h1>
-  </div>
   <mat-divider></mat-divider>
   <div fxFlex>
     <button mat-button routerLink="/home" color="primary"><span
@@ -16,7 +13,16 @@
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="80%">
+    <div fxFlex="100%">
+      <mat-card fxFlex="100%">
+        <mat-card-header>
+          <img mat-card-avatar src="../../assets/images/ssi.png" width="250px"/>
+          <mat-card-title>EMPRESA CONSTRUCTORA "G & D"</mat-card-title>
+          <mat-card-subtitle>Departamento de inventarios</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content align="center"><h1 aling="center">REPORTE DE EXISTENCIAS DE EQUIPAMIENTOS DE H.S.I</h1></mat-card-content>
+        <mat-card-title-group align="left">A LA FECHA: </mat-card-title-group>
+      </mat-card >
       <div>
         <mat-table #table [dataSource]="inventories">
 

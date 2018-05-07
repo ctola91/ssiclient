@@ -27,7 +27,7 @@ export class ResourceService {
 
   deleteResource(resource: Resource): Observable<any> {
     const params = JSON.stringify(resource);
-    return this.http.delete(baseURL + API_URL + '/resources/' + resource.id, { headers: this.appUtil.getHeader()});
+    return this.http.delete(baseURL + API_URL + '/resources/' + resource.resourceId, { headers: this.appUtil.getHeader()});
 }
 
   findResourceById(id: number): Observable<any> {

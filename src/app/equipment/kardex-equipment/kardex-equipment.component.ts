@@ -4,6 +4,7 @@ import {MatTableDataSource} from '@angular/material';
 import {Kardex} from '../../shared/Kardex';
 import {KardexService} from '../../services/kardex.service';
 import {ActivatedRoute} from '@angular/router';
+import {EquipmentService} from '../../services/equipment.service';
 
 @Component({
   selector: 'ssi-kardex-equipment',
@@ -12,23 +13,27 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class KardexEquipmentComponent implements OnInit {
   id_Equipment: number;
+  equi: Equipment;
   public nuevo: Kardex [] = new Array();
   private numero = 0;
 
   kardexs: Kardex [];
   kardexsTable: MatTableDataSource<Kardex>;
-  displayedColumns = ['date', 'entry', 'outlay', 'balance'];
+  displayedColumns = ['date', 'voucher', 'department', 'entry', 'outlay', 'balance'];
 
-  constructor(private kardexService: KardexService, private route: ActivatedRoute) {}
+  constructor(private kardexService: KardexService,
+              private equipService: EquipmentService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id_Equipment = this.route.snapshot.params['id'];
-     this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
-    // this.kardexsTable = new MatTableDataSource(this.kardexs);
-    //this.kardexService.getListKardexById(this.id_Equipment).subscribe(value => this.kardexs = value );
+    this.equipService.getEquipmentById(this.id_Equipment).subscribe(value => this.equi = value );
+    this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
+    this.kardexsTable = new MatTableDataSource(this.kardexs);
+    /*this.kardexService.getListKardexByIdEquip(this.id_Equipment).subscribe(value => this.kardexs = value );*/
   }
 
-  changeMatriz(kardexViejo: Kardex []): Kardex [] {
+  private changeMatriz(kardexViejo: Kardex []): Kardex [] {
     this.nuevo = kardexViejo;
     this.numero = this.id_Equipment;
     console.log('id de equipment' + this.numero);
@@ -43,4 +48,11 @@ export class KardexEquipmentComponent implements OnInit {
      return kardexViejo;
   }
 
+  getTypo(): string {
+    if (this.equi.type === 1) {
+      return 'Implemento';
+    } else {
+      return 'Equipo';
+    }
+  }
 }

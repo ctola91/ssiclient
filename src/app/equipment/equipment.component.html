@@ -3,8 +3,8 @@
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
-  <div fxFlex>
-    <h1>Equipamientos</h1>
+  <div fxFlex="100%">
+    <h1>Lista de Equipamientos</h1>
   </div>
   <mat-divider></mat-divider>
   <div fxFlex>
@@ -16,9 +16,10 @@
   <mat-divider></mat-divider>
   <div class="container"
        fxLayout="row"
+       fxFlex="100%"
        fxLayoutGap="10px">
-    <div fxFlex="80%">
-      <div>
+    <div fxFlex="100%">
+      <div fxFlex="100%">
         <mat-table #table [dataSource]="equipments">
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
@@ -38,9 +39,9 @@
           <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
             <mat-cell *matCellDef="let equipment">
-              <a mat-button [routerLink]="['detail', equipment.id]">Ver</a> |
-              <a mat-button [routerLink]="['update', equipment.id]"> Modificar</a> |
-              <a mat-button [routerLink]="['kardex', equipment.id]"> Ver Kardex</a> |
+              <a mat-button color="primary" [routerLink]="['detail', equipment.id]">Ver</a> |
+              <a mat-button color="warn" [routerLink]="['update', equipment.id]"> Modificar</a> |
+              <a mat-button color="primary"[routerLink]="['kardex', equipment.id]"> Ver Kardex</a> |
             </mat-cell>
           </ng-container>
 

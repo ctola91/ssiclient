@@ -6,8 +6,8 @@
     <h1 *ngIf="isUpdate">Editar Recurso</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/resources" color="accent">Atras</button>
-    <button mat-button routerLink="/resources/report" color="accent">Reportes</button>
+    <button mat-raised-button routerLink="/resources" color="accent">Atras</button>
+    <button mat-raised-button routerLink="/resources/report" color="accent">Reportes</button>
   </div>
   <mat-card>
     <form [formGroup]="resourceForm" (ngSubmit)="saveData()" id="form">
@@ -20,7 +20,7 @@
 
           <mat-form-field fxFlex="50%">
             <mat-select placeholder="Selecciona una Actividad" formControlName="activityDetail">
-              <mat-option *ngFor="let activity " [value]="activity.activityDetail">
+              <mat-option *ngFor="let activity of activities" [value]="activity.activityDetail">
                 {{ activity.activityDetail }}
               </mat-option>
             </mat-select>

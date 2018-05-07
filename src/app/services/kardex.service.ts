@@ -27,7 +27,7 @@ export class KardexService {
   getListKardexById(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/kardexequipament/equip/' + id, { headers: headers}).map((res) => {
+    return this.http.get(baseURL + API_URL + '/kardexequipament/' + id, { headers: headers}).map((res) => {
       return res;
     }).catch(error => {
       console.log('error: ' + error);
@@ -39,7 +39,7 @@ export class KardexService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
                                      .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/kardex', params, { headers: headers}).map((res) => {
+    return this.http.post(baseURL + API_URL + '/kardexequipament', params, { headers: headers}).map((res) => {
       return res;
     }).catch(error => {
       console.log('error: ' + error);
@@ -51,11 +51,21 @@ export class KardexService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.delete(baseURL + API_URL + '/kardex/' + kardex.id, { headers: headers}).map((res) => {
+    return this.http.delete(baseURL + API_URL + '/kardexequipament/' + kardex.id, { headers: headers}).map((res) => {
       return res;
     }).catch(err => {
       console.log('error:' + err);
       return err;
+    });
+  }
+  getListKardexByIdEquip(idEqui: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/kardexequipament/equip/' + idEqui, { headers: headers}).map((res) => {
+      return res;
+    }).catch(error => {
+      console.log('error: ' + error);
+      return error;
     });
   }
 }

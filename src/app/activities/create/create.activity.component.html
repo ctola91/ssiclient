@@ -6,8 +6,8 @@
     <h1 *ngIf="isUpdate">Editar Actividad</h1>
   </div>
   <div fxFlex>
-    <button mat-button routerLink="/activities" color="accent">Atras</button>
-    <button mat-button routerLink="/activities/report" color="accent">Reportes</button>
+    <button mat-raised-button routerLink="/activities" color="accent">Atras</button>
+    <button mat-raised-button routerLink="/activities/report" color="accent">Reportes</button>
   </div>
   <mat-card>
     <form [formGroup]="activityForm" (ngSubmit)="saveData()" id="form">
@@ -23,33 +23,71 @@
           </mat-form-field>
 
         </div>
-
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex="50%">
             <input matInput name="code" formActivityGoal="activityGoal" placeholder="Meta de Actividad">
           </mat-form-field>
-
           <mat-form-field fxFlex="50%">
             <input matInput name="code" formActivityTime="activityTime" placeholder="Duracion de la actividad">
           </mat-form-field>
-
+        </div>
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
-
-
           <mat-form-field fxFlex="50%">
             <input matInput name="code" formActivityType="activityType" placeholder="Tipo de actividad">
           </mat-form-field>
-
           <mat-form-field fxFlex="50%">
             <mat-select placeholder="Selecciona un Programa" formControlName="programsSo">
-              <mat-option *ngFor="let programsso" [value]="programsso.ssoObjetive">
-                {{ programsso.ssoObjetive }}
+              <mat-option *ngFor="let program of programs" [value]="0">
+                {{ program.ssoObjetive }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="50%">
+            <mat-select placeholder="Selecciona un capacitador" formControlName="programsSo">
+              <mat-option *ngFor="let trainer of trainers" [value]="0">
+                {{ trainer.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
+        <div fxFlex="100%" fxLayout="row">
+          <mat-card fxFlex="90%">
+            <mat-card-title>Recursos Requeridos</mat-card-title>
+            <mat-card-content>
+              <div>
+                <mat-selection-list #resourceList>
+                  <mat-list-option *ngFor="let resource of resources">
+                    {{resource.ssoDetail}}
+                  </mat-list-option>
+                </mat-selection-list>
+                <p>
+                  Actividades seleccionadas: {{resourceList.selectedOptions.selected.length}}
+                </p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
 
         <div fxFlex="100%" fxLayout="row">
+          <mat-card fxFlex="90%">
+            <mat-card-title>Personal Asiste</mat-card-title>
+            <mat-card-content>
+              <div>
+                <mat-selection-list #personalList>
+                  <mat-list-option *ngFor="let personal of personals">
+                    {{personal.firstname}}
+                  </mat-list-option>
+                </mat-selection-list>
+                <p>
+                  Personal asiste: {{personalList.selectedOptions.selected.length}}
+                </p>
+              </div>
+            </mat-card-content>
+          </mat-card>
 
         </div>
       </mat-card-content>
