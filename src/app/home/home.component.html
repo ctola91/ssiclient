@@ -9,6 +9,8 @@
       <h1><mat-icon>home</mat-icon> Sistema de seguridad industrial - Grupo D</h1>
     </div>
     <mat-divider></mat-divider>
+    <button mat-raised-button utton routerLink="/organizational-structure" color="primary">Estructura organizacional de la empresa</button>
+    <mat-divider></mat-divider>
     <div class="container"
          fxLayout="row"
          fxLayout.sm="column"
@@ -26,7 +28,8 @@
             </mat-card-title>
           </mat-card-title-group>
           <!--<img matCardImage data-src="data:image/png;base64,{{item.image}}" alt={{item.name}}>-->
-          <img matCardImage data-src="{{item.image}} | secure" alt={{item.name}}>
+          <img matCardImage data-src="{{item.image}}" alt={{item.name}}>
+          <img matCardImage src="../../assets/images/safety.png" width="250px"/>
           <mat-card-content>
             <p>{{item.description}}
             </p>
