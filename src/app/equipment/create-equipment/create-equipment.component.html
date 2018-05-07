@@ -47,13 +47,16 @@
         </mat-input-container>
       </p>
       <p>
-        <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('image').hasError('required')&& newEquiForm.get('image').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>
+        <!--<mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('image').hasError('required')&& newEquiForm.get('image').touched) ? 'warn' : 'primary'}}">-->
+          <!--<input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>-->
+          <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
+          <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">limpiar imagen</button>
           <mat-hint>
                 <span [hidden]="!(newEquiForm.get('image').hasError('required') && newEquiForm.get('image').touched)">
                   Imagen es requerido</span>
           </mat-hint>
-        </mat-input-container>
+        <!--</mat-input-container>-->
+        <img data-src="preview" />
       </p>
       <button type="submit"  mat-raised-button color="primary" [disabled]="newEquiForm.invalid">Enviar</button>
 

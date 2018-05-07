@@ -1,0 +1,84 @@
+<ssi-header menuActive="report"></ssi-header>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <div fxFlex>
+      <h1><i class="material-icons">recent_actors</i> Reporte Personal</h1>
+    </div>
+    <hr>
+    <div class="button-row">
+      <button mat-raised-button color="primary" routerLink="../../reporte/personal">Reporte de Personal</button>
+      <button mat-raised-button color="primary" routerLink="../../reporte/area">Reporte Personal por Area</button>
+      <button mat-raised-button color="warn">Exportar</button>
+    </div>
+    <hr>
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar personal">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="Nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Apellido">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container matColumnDef="Direccion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="Telefono">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.cellphone }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Area">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
+          <mat-cell *matCellDef="let row"><i class="material-icons" style="yellow">account_balance</i> {{row.area.name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Estado">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <span *ngIf="row.active" style="color: #4CAF50">
+                <i class="material-icons">check_circle</i>
+            </span>
+            <span *ngIf="!row.active" style="color: #ee4433">
+                <i class="material-icons">highlight_off</i>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  <ssi-footer></ssi-footer>

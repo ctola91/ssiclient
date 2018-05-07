@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Equipment} from '../../shared/Equipment';
@@ -22,7 +22,8 @@ export class UpdateComponent implements OnInit {
   constructor(private equipmentService: EquipmentService,
               private fb: FormBuilder,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -36,17 +37,25 @@ export class UpdateComponent implements OnInit {
     });
     this.createForm();
   }
+
   onSubmit() {
-    this.equipmentService.updateEquipment(this.upEquiForm.value, this.equipment.id)
+    this.equipment = {
+      id: this.equipment.id,
+      image: this.equipment.image,
+      name: this.upEquiForm.value.name,
+      description: this.upEquiForm.value.description,
+      type: this.upEquiForm.value.type
+    };
+
+    this.equipmentService.updateEquipment(this.equipment, this.equipment.id)
       .subscribe(this.processData.bind(this), this.processError.bind(this));
   }
 
   private createForm() {
     this.upEquiForm = this.fb.group({
-      name: ['', Validators.required ],
-      type: ['', Validators.required ],
-      description: ['', Validators.required ],
-      image: [''],
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      description: ['', Validators.required]
     });
   }
 
@@ -56,11 +65,11 @@ export class UpdateComponent implements OnInit {
       this.upEquiForm.patchValue({
         name: equi.name,
         type: equi.type,
-        description: equi.description,
-        image: equi.image
+        description: equi.description
       });
     });
   }
+
   private processData(response: any) {
     if (response !== null) {
       this.router.navigate(['equipments']);

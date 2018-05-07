@@ -15,8 +15,8 @@
             <h4>Tipo: {{getType()}}</h4>
           </mat-card-title>
         </mat-card-title-group>
+        <img matCardImage data-src="data:image/png;base64,{{equipmentDetail.image}}" alt={{equipmentDetail.name}}>
         <!--<img matCardImage src={{equipmentDetail.image}} alt={{equipmentDetail.name}}>-->
-        <!--<img matCardImage src={{image}} alt={{equipmentDetail.name}}>-->
         <img matCardImage src="../../assets/images/safety.png" width="250px"/>
         <mat-card-content>
           <p>{{equipmentDetail.description}}

@@ -133,6 +133,11 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
 
 import 'hammerjs';
 
+import {UtilityService} from './services/utility.service';
+import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
+import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
+import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -202,7 +207,10 @@ import 'hammerjs';
     ActivitiesComponent,
     ReportResourceComponent,
     ReportActivityComponent,
-    CreateActivityComponent
+    CreateActivityComponent,
+    SidenavListComponent,
+    ReportePersonalComponent,
+    ReportePersonalAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -253,7 +261,8 @@ import 'hammerjs';
     , RequirementsService
     , RequirementsDataParameters
     , FunctionsService
-    , FunctionsDataParameters
+    , FunctionsDataParameters,
+    UtilityService
 
   ],
   bootstrap: [AppComponent]

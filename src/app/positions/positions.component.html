@@ -13,7 +13,7 @@
         <span class="fa fa-chevron-right fa-lg"></span>
         Crear nuevo cargo
       </button>
-      <button mat-raised-button routerLink="/positions/report" color="primary">
+      <button mat-raised-button routerLink="/reporte/cargos-empresa" color="primary">
         <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
     </div>
     <mat-divider></mat-divider>
@@ -24,7 +24,7 @@
          fxLayoutAlign.gt-md="space-around center"
          fxLayoutGap="10px">
       <div fxFlex="65">
-        <mat-table #table [dataSource]="positions">
+        <mat-table #table [dataSource]="dataSource">
 
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef fxFlex="30">Nombre cargo</mat-header-cell>

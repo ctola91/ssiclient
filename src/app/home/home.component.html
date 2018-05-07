@@ -9,19 +9,72 @@
       <h1><mat-icon>home</mat-icon> Sistema de seguridad industrial - Grupo D</h1>
     </div>
     <mat-divider></mat-divider>
+    <button mat-raised-button utton routerLink="/organizational-structure" color="primary">Estructura organizacional de la empresa</button>
+    <mat-divider></mat-divider>
     <div class="container"
          fxLayout="row"
          fxLayout.sm="column"
          fxLayout.xs="column"
          fxLayoutAlign.gt-md="space-around center"
          fxLayoutGap="10px">
-      <div fxFlex="50">
-        <p>mostrar imagenes de equipamento</p>
-        <p>< atras - adelante ></p>
+      <div fxFlex="50" align="top">
+        <div fxFlex>
+          <h2>Equipamiento de seguridad</h2>
+        </div>
+        <mat-card *ngIf="item">
+          <mat-card-title-group>
+            <mat-card-title>
+              <h3>{{item.name | uppercase}}</h3>
+            </mat-card-title>
+          </mat-card-title-group>
+          <!--<img matCardImage data-src="data:image/png;base64,{{item.image}}" alt={{item.name}}>-->
+          <img matCardImage data-src="{{item.image}}" alt={{item.name}}>
+          <img matCardImage src="../../assets/images/safety.png" width="250px"/>
+          <mat-card-content>
+            <p>{{item.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="center">
+            <button mat-button (click)="loadEquipament(prev)"><span class="fa fa-chevron-left fa-lg"> Anterior</span>
+            </button>
+            <button mat-button (click)="loadEquipament(next)">Siguiente <span class="fa fa-chevron-right fa-lg"></span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
       </div>
 
-      <div fxFlex="40">
-        mostrar los reportes de incidentes que tiene hechos cristian en incident
+      <div fxFlex="50 ">
+        <mat-card>
+          <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex>
+              <h2>Incidentes registrados en la empresa</h2>
+            </div>
+            <div fxFlex="100%">
+              <ngx-charts-bar-vertical
+                [view]="view"
+                [results]="data"
+                xAxis="true"
+                yAxis="true"
+                legend="true"
+                legendTitle="Tipos de Incidente"
+                showXAxisLabel="true"
+                showYAxisLabel="true"
+                xAxisLabel="Cantidad"
+                yAxisLabel="Numero de Incidentes">
+              </ngx-charts-bar-vertical>
+            </div>
+            <div fxFlex>
+              <!--<h2>Grafico de Torta</h2>-->
+            </div>
+            <div fxFlex="100%">
+              <ngx-charts-pie-chart
+                [view]="view"
+                [results]="data"
+                legendTitle="Tipos de Incidente">
+              </ngx-charts-pie-chart>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
     <mat-divider></mat-divider>
