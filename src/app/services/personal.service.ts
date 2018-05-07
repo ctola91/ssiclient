@@ -39,6 +39,10 @@ export class PersonalService {
     return this.http.put(baseURL + API_URL + '/personal/update/' + id, params, { headers: this.appUtil.getHeader() });
   }
 
+  getListAllPersonal(): Observable<any> {
+    return this.http.get(baseURL + API_URL + '/personal/listPersonal', { headers: this.appUtil.getHeader() });
+  }
+
   getIfHavePersonalByArea(id: number): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

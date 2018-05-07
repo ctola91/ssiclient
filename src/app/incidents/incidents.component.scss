@@ -1,0 +1,33 @@
+.current span {
+  position: absolute;
+  transform: translate(10px, 82%);
+}
+
+@media (max-width: 799px) {
+  .current {
+    text-align: center;
+  }
+  .current span {
+    position: relative;
+  }
+  round-progress {
+    padding: 0 10px;
+  }
+}
+
+.severity {
+  width: calc(100% - 10px);
+  color: #fff;
+  padding: 8px 0;
+  text-align: center;
+  &.alta {
+    background: #F44336;
+  }
+  &.media {
+    background: #4CAF50;
+  }
+  &.baja {
+    background: #FFC107;
+  }
+
+}

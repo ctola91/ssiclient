@@ -13,6 +13,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class CreateComponent implements OnInit {
   id: number;
+  current = 40;
+  showTicks = false;
+  autoTicks = false;
   incidentForm: FormGroup;
   areas: any[];
   personalList: any[];
@@ -23,6 +26,9 @@ export class CreateComponent implements OnInit {
   statusList = [
     'reportado', 'pendiente', 'entregado', 'rechazado'
   ];
+  severities = ['alta', 'media', 'baja'];
+
+  private _tickInterval = 1;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,6 +71,14 @@ export class CreateComponent implements OnInit {
     });
   }
 
+  updateRecurrence(event) {
+    if (event.value !== undefined && typeof event.value === 'number') {
+      this.current = event.value;
+      this.incidentForm.patchValue({
+        recurrence: event.value
+      });
+    }
+  }
   createForm() {
     this.incidentForm = this.formBuilder.group({
       code: ['', Validators.required],
@@ -74,6 +88,8 @@ export class CreateComponent implements OnInit {
       reportedBy: ['', Validators.required],
       reincident: [''],
       treatment: [''],
+      recurrence: ['', [Validators.required, Validators.max(100), Validators.min(0)]],
+      severity: ['', Validators.required],
       description: ['', Validators.required]
     });
   }
@@ -85,6 +101,8 @@ export class CreateComponent implements OnInit {
       area: this.incidentForm.value.area,
       reincident: this.incidentForm.value.reincident,
       treatment: this.incidentForm.value.treatment,
+      recurrence: this.incidentForm.value.recurrence,
+      severity: this.incidentForm.value.severity,
       incidentNumber: 4,
       incidentTypeName: this.incidentForm.value.type,
       description: this.incidentForm.value.description,
@@ -116,11 +134,14 @@ export class CreateComponent implements OnInit {
   }
 
   loadIncident(data: any) {
+    this.current = data.recurrence;
     this.incidentForm.patchValue({
       code: data.code,
       reportedBy: data.reportedBy,
       area: data.area,
       reincident: data.reincident,
+      recurrence: data.recurrence,
+      severity: data.severity,
       treatment: data.treatment,
       type: data.incidentType.incidentTypeName,
       description: data.incidentDetail.incidentDetailName,
@@ -133,5 +154,27 @@ export class CreateComponent implements OnInit {
     const form: HTMLFormElement =
       <HTMLFormElement>document.getElementById('form');
     form.reset();
+    this.router.navigateByUrl('/incidents');
+  }
+  get tickInterval(): number | 'auto' {
+    return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
+  }
+  set tickInterval(v) {
+    this._tickInterval = Number(v);
+  }
+
+  getColor(num: number): string {
+    if (num < 30 ) {
+      return '#F44336';
+    }
+    if (num >= 31 && num < 50) {
+      return '#FFC107';
+    }
+    if (num >= 50 && num < 74) {
+      return '#4CAF50';
+    }
+    if (num >= 75 && num <= 100) {
+      return '#3F51B5';
+    }
   }
 }

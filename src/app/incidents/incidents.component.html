@@ -3,7 +3,7 @@
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Incidents</h1>
+    <h1>Incidentes</h1>
   </div>
   <div fxFlex fxLayout="row">
     <button mat-button routerLink="/incidents/create">Agregar nuevo Incidente</button>
@@ -13,52 +13,79 @@
     <div>
       <mat-card>
         <mat-card-content>
-          <mat-table #table [dataSource]="incidents">
-            <ng-container matColumnDef="incidentId">
-              <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.incidentId}}</mat-cell>
-            </ng-container>
+          <div class="responsive_table">
+            <mat-table #table [dataSource]="incidents">
+              <ng-container matColumnDef="dateAt">
+                <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.dateAt | date:short}}</mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="code">
-              <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.code}}</mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="code">
+                <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.code}}</mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="area">
-              <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.area}}</mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="area">
+                <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.area}}</mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="incidentDetailName">
-              <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailName}}</mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="severity">
+                <mat-header-cell *matHeaderCellDef>Gravedad</mat-header-cell>
+                <mat-cell *matCellDef="let incident">
+                  <div class="severity" ngClass="{{incident.severity}}">{{ incident.severity | uppercase }}</div>
+                </mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="incidentDetailStatus">
-              <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailStatus}}</mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="incidentDetailName">
+                <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailName}}</mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="incidentTypeName">
-              <mat-header-cell *matHeaderCellDef>Tipo de Incident</mat-header-cell>
-              <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="incidentDetailStatus">
+                <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.incidentDetail.incidentDetailStatus}}</mat-cell>
+              </ng-container>
 
-            <ng-container matColumnDef="Accion">
-              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-              <mat-cell *matCellDef="let incident">
-                <button mat-raised-button routerLink="/incidents/update/{{incident.incidentId}}" color="primary">
-                  Editar
-                </button>
-                <button mat-raised-button (click)="deleteIncident(incident)" color="warn">
-                  Eliminar
-                </button>
-              </mat-cell>
-            </ng-container>
+              <ng-container matColumnDef="incidentTypeName">
+                <mat-header-cell *matHeaderCellDef>Tipo de Incidente</mat-header-cell>
+                <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
+              </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
+              <ng-container matColumnDef="Recurrence">
+                <mat-header-cell *matHeaderCellDef> Probabilidad de Recurrencia</mat-header-cell>
+                <mat-cell *matCellDef="let incident">
+                  <div class="current">
+                    <span>{{incident.recurrence}}%</span>
+                    <round-progress
+                      [current]="incident.recurrence"
+                      [max]="max"
+                      [color]="getColor(incident.recurrence)"
+                      [radius]="25"
+                      [stroke]="5"
+                      [duration]="800"
+                      [animation]="'easeInOutQuart'"
+                      [animationDelay]="0"></round-progress>
+                  </div>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Accion">
+                <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+                <mat-cell *matCellDef="let incident">
+                  <button mat-icon-button routerLink="/incidents/update/{{incident.incidentId}}" color="primary">
+                    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Editar">edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="deleteIncident(incident)" color="warn">
+                    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Eliminar">delete</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

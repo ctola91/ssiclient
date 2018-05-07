@@ -78,7 +78,7 @@ export class EquipmentService {
     return this.http.put(baseURL + API_URL + '/equipament/' + id, params, {headers: headers}).map((res) => {
       return res;
     }).catch(err => {
-      console.log('error:' + err);
+      console.log('error:' + err.toString());
       return err;
     });
   }
