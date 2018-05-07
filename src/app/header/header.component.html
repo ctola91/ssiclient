@@ -1,6 +1,12 @@
 <div fxFlex>
 <mat-toolbar color="primary">
+  <button mat-icon-button class="menu-sidenav">
+    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Open Menu" (click)="toogleStatus()">menu</mat-icon>
+  </button>
   <span style="margin-right: 10px;">SSI-D</span>
+  <div class="hide-in-mobile">
+
+
   <button mat-button routerLink="/home" *ngIf="showMenu"
           [ngClass]="{'Active': menuActive=='home'}"><span class="fa fa-bullhorn"></span> Inicio
   </button>
@@ -18,18 +24,6 @@
   <button mat-button routerLink="/incidents"  *ngIf="showMenu"
           [ngClass]="{'Active': menuActive=='incident'}"><span class="fa fa-bullhorn"></span> Incidentes
   </button>
-  <!--<button mat-button [matMenuTriggerFor]="incidentsMenu" *ngIf="showMenu"-->
-          <!--[ngClass]="{'Active': menuActive=='incident'}"><span class="fa fa-bullhorn"></span> Incidentes-->
-  <!--</button>-->
-  <!--<button mat-button><span class="fa fa-bullhorn"></span> Incidentes</button>-->
-  <!--<mat-menu #incidentsMenu="matMenu">-->
-    <!--<button routerLink="/incidents" mat-menu-item>Incidentes</button>-->
-    <!--<button routerLink="/accident" mat-menu-item>Accidentes</button>-->
-  <!--</mat-menu>-->
-
-  <!--<button mat-button routerLink="/contracts" *ngIf="showMenu"-->
-          <!--[ngClass]="{'Active': menuActive=='contract'}"><span class="fa fa-bullhorn"></span> Contratos-->
-  <!--</button>-->
 
   <!--Menu Equipments-->
   <button mat-button [matMenuTriggerFor]="equipments" *ngIf="showMenu"
@@ -88,10 +82,12 @@
   <span class="flex-spacer"></span>
 
   <button mat-button [matMenuTriggerFor]="session" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='logout'}"><span class="fa fa-align-justify"></span>
+          [ngClass]="{'Active': menuActive=='logout'}"><span class="fa fa-sign-out fa-align-justify"></span>
   </button>
   <mat-menu #session="matMenu">
     <button mat-menu-item routerLink="/logout"><span class="fa fa-power-off"></span> Cerrar sesión</button>
   </mat-menu>
+  </div>
 </mat-toolbar>
 </div>
+
