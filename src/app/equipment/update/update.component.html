@@ -48,13 +48,14 @@
           </mat-input-container>
         </p>
         <p>
-          <mat-input-container class="half-width" dividerColor="{{(upEquiForm.get('image').hasError('required')&& upEquiForm.get('image').touched) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>
-            <mat-hint>
-                <span [hidden]="!(upEquiForm.get('image').hasError('required') && upEquiForm.get('image').touched)">
-                  Imagen es requerido</span>
-            </mat-hint>
-          </mat-input-container>
+          <!--<mat-input-container class="half-width" dividerColor="{{(upEquiForm.get('image').hasError('required')&& upEquiForm.get('image').touched) ? 'warn' : 'primary'}}">-->
+            <!--<input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>-->
+            <!--<mat-hint>-->
+                <!--<span [hidden]="!(upEquiForm.get('image').hasError('required') && upEquiForm.get('image').touched)">-->
+                  <!--Imagen es requerido</span>-->
+            <!--</mat-hint>-->
+          <!--</mat-input-container>-->
+          <a>cambiar imagen</a>
         </p>
         <button type="submit"  mat-raised-button color="primary" [disabled]="upEquiForm.invalid">Enviar</button>
 
