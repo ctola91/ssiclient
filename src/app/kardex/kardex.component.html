@@ -3,9 +3,6 @@
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
-  <div fxFlex>
-    <h1>Kardex</h1>
-  </div>
   <mat-divider></mat-divider>
   <div fxFlex>
     <button mat-button routerLink="/kardex/create" color="primary"><span
@@ -17,9 +14,23 @@
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
-    <div fxFlex="80%">
+    <div fxFlex="100%">
+          <mat-card fxFlex="100%">
+            <mat-card-header>
+              <img mat-card-avatar src="../../assets/images/ssi.png" width="250px"/>
+              <mat-card-title>EMPRESA CONSTRUCTORA "G & D"</mat-card-title>
+              <mat-card-subtitle>Almacenes de HSI</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content align="center"><h1 aling="center">REPORTE DE EXISTENCIAS</h1></mat-card-content>
+            <mat-card-title-group align="left">A LA FECHA: </mat-card-title-group>
+          </mat-card >
       <div>
         <mat-table #table [dataSource]="kardexs">
+          <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef>Cod. Equipamiento</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.idEquipament}}</mat-cell>
+          </ng-container>
+
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.dateKardex | date}}</mat-cell>
@@ -49,24 +60,8 @@
             <mat-header-cell *matHeaderCellDef>Saldo en Existencia</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.balanceKardex}}</mat-cell>
           </ng-container>
-
-          <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <button mat-raised-button routerLink="/row/update/{{row.id}}" color="primary">
-                Editar
-              </button>
-              <button mat-raised-button (click)="onSelect(row)" color="primary">
-                Ver
-              </button>
-            </mat-cell>
-          </ng-container>
-          <h3>hla a todos</h3>
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
-    </div>
-  </div>
-</div>
 <ssi-footer></ssi-footer>

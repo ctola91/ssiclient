@@ -54,7 +54,7 @@
       </p>
       <p>
         <mat-input-container fxFlex="30%" class="half-width" dividerColor="{{(kardexForm.get('balanceKardex').hasError('required')&& kardexForm.get('balanceKardex').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="balanceKardex"  placeholder="Saldo" type="text" required>
+          <input matInput formControlName="balanceKardex"  placeholder="Saldo" type="number" required>
           <mat-hint>
                 <span [hidden]="!(kardexForm.get('balanceKardex').hasError('required') && kardexForm.get('balanceKardex').touched)">
                   Saldo es requerido</span>

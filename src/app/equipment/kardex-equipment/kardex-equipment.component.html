@@ -1,43 +1,66 @@
 <ssi-header></ssi-header>
-<div class="container"
-     fxLayout="column"
-     fxLayoutGap="10px">
-  <div fxFlex>
-    <h1>Tarjeta de existencias</h1>
-  </div>
-  <mat-divider></mat-divider>
   <div class="container"
        fxLayout="row"
        fxLayoutGap="10px">
     <div fxFlex="100%">
-      <div>
-        <!--<mat-table #table [dataSource]="changeMatriz(kardexs)">-->
-        <mat-table #table [dataSource]="kardexs">
-          <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let kardex">{{kardex.dateKardex | date}}</mat-cell>
-          </ng-container>
+      <mat-card>
+        <mat-card-header>
+        <mat-card fxFlex="100%">
+           <mat-card-header>
+             <img mat-card-avatar src="../../assets/images/ssi.png" width="250px"/>
+             <mat-card-title>EMPRESA CONSTRUCTORA "G & D"</mat-card-title>
+             <mat-card-subtitle>Almacenes de HSI</mat-card-subtitle>
+           </mat-card-header>
+           <mat-card-content align="center"><h1 aling="center">TARJETA DE EXISTENCIA</h1></mat-card-content>
+         </mat-card >
+        </mat-card-header>
+        <mat-card-content>
+          <p><h2 align="left">Equipamiento:{{equi.name}}</h2>
+          <p><h3 align="rigth">Tipo:{{getTypo()}}</h3>
+          <p><h3 align="rigth">Codigo:{{equi.id}}</h3>
+        </mat-card-content>
+        <mat-card-title-group>Descriptio:{{equi.description}}</mat-card-title-group>
+        <mat-card-actions align="start">
+          <button mat-raised-button="prymary"  color= "prymary" [routerLink]="['/equipments']">Aceptar</button>
+        </mat-card-actions>
+      </mat-card>
+          <div>
+            <!--<mat-table #table [dataSource]="changeMatriz(kardexs)">-->
+            <mat-table #table [dataSource]="kardexs">
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.dateKardex | date}}</mat-cell>
+              </ng-container>
 
-          <ng-container matColumnDef="entry">
-            <mat-header-cell *matHeaderCellDef>Entradas</mat-header-cell>
-            <mat-cell *matCellDef="let kardex">{{kardex.entryKardex}}</mat-cell>
-          </ng-container>
+              <ng-container matColumnDef="voucher">
+                <mat-header-cell *matHeaderCellDef>N° de Vale</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.entryKardex+89}}</mat-cell>
+              </ng-container>
 
-          <ng-container matColumnDef="outlay">
-            <mat-header-cell *matHeaderCellDef>Salidas</mat-header-cell>
-            <mat-cell *matCellDef="let kardex">{{kardex.outlayKardex}}</mat-cell>
-          </ng-container>
+              <ng-container matColumnDef="department">
+                <mat-header-cell *matHeaderCellDef>Cod. Area</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.entryKardex}}</mat-cell>
+              </ng-container>
 
-          <ng-container matColumnDef="balance">
-            <mat-header-cell *matHeaderCellDef>Saldo en Existencia</mat-header-cell>
-            <mat-cell *matCellDef="let kardex">{{kardex.balanceKardex}}</mat-cell>
-          </ng-container>
+              <ng-container matColumnDef="entry">
+                <mat-header-cell *matHeaderCellDef>Entradas</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.entryKardex}}</mat-cell>
+              </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let kardex; columns: displayedColumns;"></mat-row>
-        </mat-table>
-      </div>
+              <ng-container matColumnDef="outlay">
+                <mat-header-cell *matHeaderCellDef>Salidas</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.outlayKardex}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="balance">
+                <mat-header-cell *matHeaderCellDef>Saldo en Existencia</mat-header-cell>
+                <mat-cell *matCellDef="let kardex">{{kardex.balanceKardex}}</mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let kardex; columns: displayedColumns;" ></mat-row>
+            </mat-table>
+        </div>
     </div>
   </div>
-</div>
 <ssi-footer></ssi-footer>
