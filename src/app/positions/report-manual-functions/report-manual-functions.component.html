@@ -1,14 +1,76 @@
-<ssi-header menuActive="report"></ssi-header>
-<p>
-  Titulo
-</p>
-<p>
-  opcion a seleccionar un cargo para generar su reporte  - boton -> Cargar datos reporte
-</p>
-<p>
-  vista previa del reporte del cargo seleccionado
-</p>
-<p>
-  Boton -> Exportar reporte
-</p>
-<ssi-footer></ssi-footer>
+
+
+<ssi-header menuActive="structure"></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Funciones y Requisitos por Cargo</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/requirements" color="accent">Atras</button>
+
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex>
+    <form novalidate [formGroup]="contractForm" (ngSubmit)="onSubmit()" id="form">
+
+      <p>
+        <mat-select placeholder="Seleccionar Cargo" formControlName="position_position_id">
+          <mat-option *ngFor="let position of positions" [value]="position.id">
+            {{ position.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+                <span [hidden]="!(contractForm.get('position_position_id').hasError('required') && contractForm.get('position_position_id').touched)">
+                  Posicion</span>
+        </mat-hint>
+      </p>
+
+
+      <button type="submit"  mat-raised-button color="primary" [disabled]="contractForm.invalid">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<p></p>
+<p></p>
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="60%">
+  <tr align="left">
+    <th colspan="2"><h3>Funciones</h3></th>
+  </tr>
+  <tr bgcolor="#2A38B0">
+    <th width="30%"><font color="white">Nombre Funcion</font></th>
+    <th width="70%"><font color="white">Descripcion</font></th>
+  iptr>
+  <tr *ngFor="let item of functions; let i = index">
+
+    <th  align="left">
+      * {{item.name}}
+    </th>
+    <th  align="left">
+      * {{item.description}}
+    </th>
+
+  </tr>
+</table>
+<p></p><p></p>
+<table cellspacing="0" cellpadding="0" border="0"  align="center" width="60%">
+  <tr align="left">
+    <th colspan="2"><h3>Requisitos</h3></th>
+  </tr>
+  <tr bgcolor="#2A38B0">
+    <th width="30%"><font color="white">Nombre Requisito</font></th>
+    <th width="70%"><font color="white">Descripcion</font></th>
+  </tr>
+  <tr *ngFor="let datos of requirements; let i = index">
+
+    <th align="left">
+      * {{datos.name}}
+    </th>
+    <th  align="left">
+      * {{datos.description}}
+    </th>
+
+
+  </tr>
+</table>

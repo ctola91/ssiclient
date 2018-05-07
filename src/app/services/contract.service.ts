@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Contract} from '../shared/Contract';
-import {Requirements} from '../shared/Requirements';
 
 @Injectable()
 export class ContractService {
