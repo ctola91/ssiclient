@@ -57,7 +57,7 @@ export class EquipmentService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.delete(baseURL + API_URL + '/equipment/' + equipment.id, { headers: headers}).map((res) => {
+    return this.http.delete(baseURL + API_URL + '/equipament/' + equipment.id, { headers: headers}).map((res) => {
       return res;
     }).catch(err => {
       console.log('error:' + err);
@@ -69,7 +69,7 @@ export class EquipmentService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/equipment/' + id, params, {headers: headers}).map((res) => {
+    return this.http.put(baseURL + API_URL + '/equipament/' + id, params, {headers: headers}).map((res) => {
       return res;
     }).catch(err => {
       console.log('error:' + err.toString());
