@@ -23,7 +23,7 @@ export class CreateEquipmentComponent implements OnInit {
               private equipmentService: EquipmentService,
               private route: ActivatedRoute,
               private router: Router) {
-    //this.createForm();
+    this.createForm();
   }
 
   ngOnInit() {
@@ -65,7 +65,6 @@ export class CreateEquipmentComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       reader.readAsDataURL(file);
-      console.log('value', reader.result);
       reader.onload = () => {
         this.newEquiForm.get('image').setValue({
           filename: file.name,
