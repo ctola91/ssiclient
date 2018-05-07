@@ -132,6 +132,8 @@ import {ReportResourceComponent} from './resources/report/report.resource.compon
 import {ReportActivityComponent} from './activities/report/report.activity.component';
 
 import 'hammerjs';
+import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
+import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
 
 @NgModule({
   declarations: [
@@ -202,7 +204,9 @@ import 'hammerjs';
     ActivitiesComponent,
     ReportResourceComponent,
     ReportActivityComponent,
-    CreateActivityComponent
+    CreateActivityComponent,
+    ReportePersonalComponent,
+    ReportePersonalAreaComponent
   ],
   imports: [
     BrowserModule,
