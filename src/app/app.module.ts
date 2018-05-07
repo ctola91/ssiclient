@@ -132,6 +132,9 @@ import {ReportResourceComponent} from './resources/report/report.resource.compon
 import {ReportActivityComponent} from './activities/report/report.activity.component';
 
 import 'hammerjs';
+
+import {UtilityService} from './services/utility.service';
+import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
 import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
 import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
 
@@ -205,6 +208,7 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     ReportResourceComponent,
     ReportActivityComponent,
     CreateActivityComponent,
+    SidenavListComponent,
     ReportePersonalComponent,
     ReportePersonalAreaComponent
   ],
@@ -257,7 +261,8 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     , RequirementsService
     , RequirementsDataParameters
     , FunctionsService
-    , FunctionsDataParameters
+    , FunctionsDataParameters,
+    UtilityService
 
   ],
   bootstrap: [AppComponent]
