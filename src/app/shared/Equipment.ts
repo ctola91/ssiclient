@@ -3,5 +3,5 @@ export interface Equipment {
   name: string;
   description: string;
   type: number;
-  image: string;
+  image: string|any;
 }
