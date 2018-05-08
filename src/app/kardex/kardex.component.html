@@ -32,13 +32,13 @@
           </ng-container>
 
           <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.dateKardex | date}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef>Unidad</mat-header-cell>
+            <mat-cell *matCellDef="let row">PZA.</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="voucher">
-            <mat-header-cell *matHeaderCellDef>N° de Vale</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.entryKardex+89}}</mat-cell>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Descripcion</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{getEquip(row.idEquipament)}}</mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="department">
