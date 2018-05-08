@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProgramSso} from '../../shared/programSso';
+import {ProgramssoService} from '../../services/programsso.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ssi-report-programsso',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportProgramssoComponent implements OnInit {
 
-  constructor() { }
+  programsso: ProgramSso;
+  idProgramsso: number;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute,
+              private programssoService: ProgramssoService) {
   }
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params['id'] !== undefined) {
+        this.idProgramsso = +params['id'];
+        this.findProgramSSO();
+      }
+    });
+  }
+
+  private findProgramSSO() {
+    this.programssoService.findProgramSsoById(this.idProgramsso).subscribe(programsso => {
+      this.programsso = programsso;
+    });
+  }
+
+  private print() {
+    console.log('imprimir');
+  }
 }
