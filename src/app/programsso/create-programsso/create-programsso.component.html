@@ -9,11 +9,11 @@
     <button mat-raised-button routerLink="/programsso" color="accent">
       <span class="fa fa-chevron-circle-left fa-lg"></span>
       Atras</button>
-    <button mat-raised-button routerLink="/programsso/report" color="accent">
+    <button mat-raised-button *ngIf="isUpdate" routerLink="/programsso/reportprogramsso/{{idProgramsso}}" color="accent">
       <span class="fa fa-pie-chart fa-lg"></span>
       Reporte</button>
   </div>
-  <div fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="80%">
     <form novalidate [formGroup]="programssoForm" (ngSubmit)="onSubmit()" id="form">
       <p>
         <mat-input-container class="half-width"

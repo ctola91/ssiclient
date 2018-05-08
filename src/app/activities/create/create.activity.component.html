@@ -15,25 +15,25 @@
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
 
           <mat-form-field fxFlex="50%">
-            <input matInput name="code" formActivityNumber="activityNumber" placeholder="numero de Actividad">
+            <input matInput name="code" formActivityNumber="activityNumber" placeholder="numero de Actividad" required>
           </mat-form-field>
 
           <mat-form-field fxFlex="50%">
-            <input matInput name="code" formActivityDetail="activityDetail" placeholder="Detalle de Actividad">
+            <input matInput name="code" formActivityDetail="activityDetail" placeholder="Detalle de Actividad" required>
           </mat-form-field>
 
         </div>
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex="50%">
-            <input matInput name="code" formActivityGoal="activityGoal" placeholder="Meta de Actividad">
+            <input matInput name="code" formActivityGoal="activityGoal" placeholder="Meta de Actividad" required>
           </mat-form-field>
           <mat-form-field fxFlex="50%">
-            <input matInput name="code" formActivityTime="activityTime" placeholder="Duracion de la actividad">
+            <input matInput name="code" formActivityTime="activityTime" placeholder="Duracion de la actividad" required>
           </mat-form-field>
         </div>
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex="50%">
-            <input matInput name="code" formActivityType="activityType" placeholder="Tipo de actividad">
+            <input matInput name="code" formActivityType="activityType" placeholder="Tipo de actividad" required>
           </mat-form-field>
           <mat-form-field fxFlex="50%">
             <mat-select placeholder="Selecciona un Programa" formControlName="programsSo">
@@ -46,7 +46,7 @@
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex="50%">
             <mat-select placeholder="Selecciona un capacitador" formControlName="programsSo">
-              <mat-option *ngFor="let trainer of trainers" [value]="0">
+              <mat-option *ngFor="let trainer of trainers" [value]="trainer.id">
                 {{ trainer.name }}
               </mat-option>
             </mat-select>
