@@ -124,5 +124,8 @@ export const routes: Routes = [
   { path: 'requirements/update',  component: UpdateRequirementsComponent},
   { path: 'activities/create', component: CreateActivityComponent},
   { path: 'resources/report', component: ReportResourceComponent},
-  { path: 'activities/report', component: ReportActivityComponent}
+  { path: 'activities/report', component: ReportActivityComponent},
+
+  { path: 'resources/update/:id', component: CreateResourceComponent},
+  { path: 'activities/update/:id', component: CreateActivityComponent}
 ];

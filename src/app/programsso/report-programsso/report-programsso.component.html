@@ -1,7 +1,79 @@
 <ssi-header></ssi-header>
 
-<p>
-  report-programsso works!
-</p>
+
+<h1 style="background-color:#cccccc; padding:6px">
+  Programa de Seguridad y Salud Ocupacional
+  <br/>
+   </h1>
+
+<head>
+
+  <style>
+    table, th , td  {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+  </style>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+
+
+  <table align="center" border="1" height=60 width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+  <td width="50" height="30" valign="top" COLSPAN=2>Objetivo: </td>
+  <td width="50" height="30" valign="top" COLSPAN=3>Indicador: </td>
+  <td width="50" height="30" valign="top" COLSPAN=2>Meta: </td>
+  </tr>
+    <tr>
+
+    <td width="50" height="30" valign="top" COLSPAN=3>Plazo de Ejecucion: </td>
+    <td width="50" height="30" valign="top" COLSPAN=4>Responsable: </td>
+
+    </tr>
+    <tr>
+
+      <td width="50" height="30" valign="top">Numero: </td>
+      <td width="50" height="30" valign="top">Actividades: </td>
+      <td width="50" height="30" valign="top">Responsable: </td>
+      <td width="50" height="30" valign="top">Meta: </td>
+      <td width="50" height="30" valign="top">Recursos: </td>
+      <td width="50" height="30" valign="top">Costos ($us): </td>
+      <td width="50" height="30" valign="top">Plazo: </td>
+
+    </tr>
+    <tr ng-repeat="x in programsso | orderBy : 'id'">
+      <td>{{ x.ssoObjetive }}</td>
+      <td>{{ x.ssoIndicator }}</td>
+      <td>{{ x.ssoGoal | uppercase}}</td>
+      <td>{{ x.ssoObjetive }}</td>
+      <td>{{ x.ssoIndicator }}</td>
+      <td>{{ x.ssoGoal | uppercase}}</td>
+      <td>{{ x.ssoIndicator }}</td>
+    </tr>
+  </table>
+
+</div>
+
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('customersCtrl', function($scope, $http) {
+    $http.get("http://www.w3schools.com/angular/customers.php")
+      .success(function (response) {$scope.names = response.records;});
+  });
+</script>
+
+</body>
+
 
 <ssi-footer></ssi-footer>

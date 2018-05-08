@@ -10,6 +10,7 @@ import {Resource} from '../shared/resource';
 import {ResponseService} from '../shared/responseService';
 import {AppUtil} from '../shared/AppUtil';
 
+
 @Injectable()
 export class ResourceService {
 
@@ -22,7 +23,18 @@ export class ResourceService {
 
   saveResource(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    return this.http.post(baseURL + API_URL + '/resources/save', params, { headers: this.appUtil.getHeader()} );
+    return this.http.post(baseURL + API_URL + '/resources', params, { headers: this.appUtil.getHeader()})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
   }
 
   deleteResource(resource: Resource): Observable<any> {
@@ -53,7 +65,7 @@ export class ResourceService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.put(baseURL + API_URL + '/resources/' + id, params, { headers: headers})
+    return this.http.put(baseURL + API_URL + '/resources/' + id, params, { headers: this.appUtil.getHeader()})
       .map((res: ResponseService) => {
         if (res.status === 'ok') {
           return res.data;
@@ -72,6 +84,6 @@ export class ResourceService {
     const headers = new HttpHeaders()
       .set('Authorization', token)
       .set('Content-Type', 'application/json');
-    return this.http.post(baseURL + API_URL + '/resources', data, { headers: headers } );
+    return this.http.post(baseURL + API_URL + '/resources', data, { headers: this.appUtil.getHeader() } );
   }
 }

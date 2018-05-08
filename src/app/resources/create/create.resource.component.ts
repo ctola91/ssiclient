@@ -34,10 +34,10 @@ export class CreateResourceComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
-      if (params['idResource'] !== undefined) {
+      if (params['id'] !== undefined) {
         this.title = 'Modificar recurso';
         this.isUpdate = true;
-        this.idResource = +params['idResource'];
+        this.idResource = +params['id'];
         this.findResource();
       } else {
         this.title = 'Crear recurso';
@@ -46,11 +46,9 @@ export class CreateResourceComponent implements OnInit {
     });
 
     this.createForm();
-
     this.activityService.getListActivities().subscribe(
       activitySso => this.activities = activitySso.data);
   }
-
   private findResource() {
     this.resourceService.findResourceById(this.idResource).subscribe(resource  => {
       this.resource = resource;
@@ -82,17 +80,20 @@ export class CreateResourceComponent implements OnInit {
     }
 
   }
+
   saveData() {
     const data = {
       idResource: this.resourceForm.value.id,
       costResource: this.resourceForm.value.costResource,
       detailResource: this.resourceForm.value.detailResource,
-      activityType: this.resourceForm.value.activityType
+      versionResource: 1,
+      activity: this.resourceForm.value.activityDetail,
+      status: this.resourceForm.value.status
     };
     if (!this.isUpdate) {
       this.resourceService.createNewResource(data)
-        .subscribe((resourc: any) => {
-          this.toastr.success('El recurso se guardo satisfactoriamente', resourc.status);
+        .subscribe((resource: any) => {
+          this.toastr.success('El recurso se guardo satisfactoriamente', resource.status);
         }, (error) => {
           console.log(error);
           this.toastr.error(error, 'Ha ocurrido un error inesperado');
