@@ -5,5 +5,7 @@ export interface Activity {
   activityGoal: string;
   activityTime: string;
   activityType: string;
+  idTrainer: number;
+  idProgram: number;
 }
 
