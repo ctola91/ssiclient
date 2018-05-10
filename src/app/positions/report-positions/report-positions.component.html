@@ -1,13 +1,47 @@
 <ssi-header menuActive="report"></ssi-header>
 
-<p>
-  Reporte de cargos existentes en la empresa
-</p>
-<p>
-  Boton -> Exportar reporte
-</p>
-<p>
-  vista previa del reporte del cargo seleccionado
-</p>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <div fxFlex>
+      <h1><i class="material-icons"></i> Reporte de cargos existentes en la empresa</h1>
+    </div>
+    <hr>
+    <div class="button-row">
+      <button mat-raised-button color="warn">Exportar</button>
+    </div>
+    <hr>
 
-<ssi-footer></ssi-footer>
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="Nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Descripcion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Nivel">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nivel</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.level}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="NameParentPosition">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre cargo padre </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.nameParentPosition}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  <ssi-footer></ssi-footer>

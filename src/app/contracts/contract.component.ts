@@ -5,7 +5,7 @@ import {ContractData} from '../shared/ContractData';
 import {Contract} from '../shared/Contract';
 import {Router} from '@angular/router';
 import {ContractDataParameters} from '../shared/ContractDataParameters';
-import {Requirements} from '../shared/Requirements';
+
 
 @Component({
   selector: 'ssi-contract',

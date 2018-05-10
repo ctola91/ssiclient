@@ -1,7 +1,30 @@
 <ssi-header></ssi-header>
 
-<p>
-  report-programsso works!
-</p>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Programa de Seguridad Salud Ocupacional</h1>
+  </div>
+  <div fxFlex>
+    <button mat-raised-button routerLink="/programsso" color="accent">
+      <span class="fa fa-chevron-circle-left fa-lg"></span>
+      Atras</button>
+    <button mat-raised-button color="accent" (click)="print()">
+      <span class="fa fa-print fa-lg"></span>
+      Imprimir</button>
+  </div>
+  <!--<div fxLayout="column" fxLayoutAlign="center center">
+        <mat-grid-list>
+          <mat-grid-tile>
+            <mat-grid-list [cols]="3">
+              <mat-grid-tile> <span>Objetivo: </span>{{programsso.ssoObjetive}}</mat-grid-tile>
+              <mat-grid-tile> <span>Indicador: </span>{{programsso.ssoIndicator}}</mat-grid-tile>
+              <mat-grid-tile> <span>Meta: </span>{{programsso.ssoGoal}}</mat-grid-tile>
+            </mat-grid-list>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+  </div>-->
+</div>
 
 <ssi-footer></ssi-footer>

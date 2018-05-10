@@ -25,7 +25,6 @@ export class CreateProgramssoComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params);
       if (params['id'] !== undefined) {
         this.title = 'Modificar Programa SSO';
         this.isUpdate = true;
