@@ -32,10 +32,10 @@ export class UpdateContractComponent implements OnInit {
       id: [this.contractDataParameters.contractUpdate.id, Validators.required ],
       code: [this.contractDataParameters.contractUpdate.code, Validators.required ],
       city: [this.contractDataParameters.contractUpdate.city, Validators.required ],
-      date: [this.contractDataParameters.contractUpdate.date, Validators.required ],
+      type: [this.contractDataParameters.contractUpdate.type, Validators.required],
       description: [this.contractDataParameters.contractUpdate.description, Validators.required ],
       salary: [this.contractDataParameters.contractUpdate.salary, Validators.required],
-      type: [this.contractDataParameters.contractUpdate.type, Validators.required]
+      date: [this.contractDataParameters.contractUpdate.date, Validators.required ]
     });
   }
 

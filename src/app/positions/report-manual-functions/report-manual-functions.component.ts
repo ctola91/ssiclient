@@ -20,6 +20,8 @@ export class ReportManualFunctionsComponent implements OnInit, OnChanges {
   functions: Functions[];
   positions: Position[];
  contractForm: FormGroup;
+  post: Position[];
+  cargo: string;
 
 
   constructor(private positionService: PositionService,
@@ -43,6 +45,14 @@ export class ReportManualFunctionsComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.positionService.getPositions().subscribe(
       positions => this.positions = positions);
+    this.requirementsService.getListRequirements().subscribe(
+      requirements => {
+        this.requirements = requirements.data;
+      });
+    this.functionsService.getAllFunctionPositions().subscribe(
+      functions => {
+        this.functions = functions.data;
+      });
   }
   private createForm() {
        this.contractForm = this.fb.group({

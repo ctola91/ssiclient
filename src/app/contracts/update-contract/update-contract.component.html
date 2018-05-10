@@ -61,14 +61,14 @@
     <p>
       <mat-input-container class="half-width"
                            dividerColor="{{(contractForm.get('salary').hasError('required') && contractForm.get('salary').touched) ? 'warn' : 'primary'}}">
-        <input matInput formControlName="salary"  placeholder="Salario" type="tel" required>
+        <input matInput formControlName="salary"  placeholder="Salario" type="text" required>
         <mat-hint>
               <span [hidden]="!(contractForm.get('salary').hasError('required') && contractForm.get('salary').touched)">
                 Salario es requerido</span>
         </mat-hint>
       </mat-input-container>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha Contrato"  required>
+      <mat-form-field >
+        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha Contrato"   required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

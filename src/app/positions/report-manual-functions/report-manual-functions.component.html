@@ -5,7 +5,7 @@
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>Funciones y Requisitos por Cargo</h1>
+    <h2>Funciones y Requisitos por Cargo</h2>
   </div>
   <div fxFlex>
     <button mat-button routerLink="/requirements" color="accent">Atras</button>
@@ -31,17 +31,24 @@
     </form>
   </div>
 </div>
+<table cellspacing="0" cellpadding="0" border="0"  align="center" width="60%">
+  <tr align="left">
+    <th colspan="2"><h3>Empresa de Seguidad SSI-D</h3></th>
+  </tr>
+</table>
 
 <p></p>
 <p></p>
+
 <table cellspacing="0" cellpadding="0" border="0" align="center" width="60%">
   <tr align="left">
     <th colspan="2"><h3>Funciones</h3></th>
   </tr>
   <tr bgcolor="#2A38B0">
     <th width="30%"><font color="white">Nombre Funcion</font></th>
-    <th width="70%"><font color="white">Descripcion</font></th>
-  iptr>
+    <th width="50%"><font color="white">Descripcion</font></th>
+    <th width="20%"><font color="white">Cargo</font></th>
+
   <tr *ngFor="let item of functions; let i = index">
 
     <th  align="left">
@@ -50,6 +57,9 @@
     <th  align="left">
       * {{item.description}}
     </th>
+  <th  align="left">
+    * {{item.positionName}}
+  </th>
 
   </tr>
 </table>
@@ -60,7 +70,8 @@
   </tr>
   <tr bgcolor="#2A38B0">
     <th width="30%"><font color="white">Nombre Requisito</font></th>
-    <th width="70%"><font color="white">Descripcion</font></th>
+    <th width="50%"><font color="white">Descripcion</font></th>
+    <th width="20%"><font color="white">Cargo</font></th>
   </tr>
   <tr *ngFor="let datos of requirements; let i = index">
 
@@ -69,6 +80,9 @@
     </th>
     <th  align="left">
       * {{datos.description}}
+    </th>
+    <th  align="left">
+      * {{datos.positionName}}
     </th>
 
 
