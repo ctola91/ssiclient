@@ -18,7 +18,14 @@ export class RequirementsService {
     const headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(baseURL + API_URL + '/requirement', { headers: headers});
   }
+  getRequirementById(personal: number): Observable<any> {
+    const params = JSON.stringify(personal);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
 
+    return this.http.get(baseURL + API_URL + '/requirement/' + personal, { headers: headers});
+  }
   saveRequirements(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');

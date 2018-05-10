@@ -18,7 +18,14 @@ export class FunctionsService {
     const headers = new HttpHeaders().set('Authorization', token);
     return this.http.get(baseURL + API_URL + '/function', { headers: headers});
   }
+  getFunctionById(personal: number): Observable<any> {
+    const params = JSON.stringify(personal);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token)
+      .set('Content-Type', 'application/json');
 
+    return this.http.get(baseURL + API_URL + '/function/' + personal, { headers: headers});
+  }
     saveFunctions(data: any): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
