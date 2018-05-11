@@ -68,10 +68,12 @@
         </mat-hint>
       </mat-input-container>
       <mat-form-field >
-        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha Contrato"   required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="date" formControlName="date" placeholder="Fecha Contrato"   required>
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
       </mat-form-field>
+
+
 
     </p>
 
