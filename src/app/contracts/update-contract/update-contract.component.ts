@@ -28,6 +28,9 @@ export class UpdateContractComponent implements OnInit {
   }
 
   private createForm() {
+
+    console.log(this.contractDataParameters.contractUpdate.date);
+
     this.contractForm = this.fb.group({
       id: [this.contractDataParameters.contractUpdate.id, Validators.required ],
       code: [this.contractDataParameters.contractUpdate.code, Validators.required ],
@@ -35,7 +38,7 @@ export class UpdateContractComponent implements OnInit {
       type: [this.contractDataParameters.contractUpdate.type, Validators.required],
       description: [this.contractDataParameters.contractUpdate.description, Validators.required ],
       salary: [this.contractDataParameters.contractUpdate.salary, Validators.required],
-      date: [this.contractDataParameters.contractUpdate.date, Validators.required ]
+      date: [new Date(this.contractDataParameters.contractUpdate.date).toISOString(), Validators.required ]
     });
   }
 
