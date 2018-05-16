@@ -3,9 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Resource} from '../../shared/resource';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceService} from '../../services/resource.service';
-import {ToastrService} from 'ngx-toastr';
-import {ActivityService} from '../../services/activity.service';
-import {Activity} from '../../shared/Activity';
 
 @Component({
   selector: 'ssi-create-resource',
@@ -17,18 +14,13 @@ export class CreateResourceComponent implements OnInit {
   resourceForm: FormGroup;
   resource: Resource;
   title: String;
-  idResource: number;
+  resourceId: number;
   isUpdate: boolean;
-  activities: Activity[];
-
 
   constructor(private fb: FormBuilder,
               private resourceService: ResourceService,
               private route: ActivatedRoute,
-              private router: Router,
-              private toastr: ToastrService,
-              private activityService: ActivityService,
-              private formBuilder: FormBuilder) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -37,7 +29,7 @@ export class CreateResourceComponent implements OnInit {
       if (params['id'] !== undefined) {
         this.title = 'Modificar recurso';
         this.isUpdate = true;
-        this.idResource = +params['id'];
+        this.resourceId = +params['id'];
         this.findResource();
       } else {
         this.title = 'Crear recurso';
@@ -46,27 +38,24 @@ export class CreateResourceComponent implements OnInit {
     });
 
     this.createForm();
-    this.activityService.getListActivities().subscribe(
-      activitySso => this.activities = activitySso.data);
   }
+
   private findResource() {
-    this.resourceService.findResourceById(this.idResource).subscribe(resource  => {
+    this.resourceService.findResourceById(this.resourceId).subscribe(resource  => {
       this.resource = resource;
       if (this.isUpdate) {
         this.resourceForm.patchValue({
-          idResource: resource.idResource,
-          costResource: resource.costResource,
-          detailResource: resource.detailResource});
+          resourceCost: resource.resourceCost,
+          resourceDetail: resource.resourceDetail
+        });
       }
     });
   }
 
-  createForm() {
-    this.resourceForm = this.formBuilder.group({
-      idResource: ['', Validators.required],
-      costResource: ['', Validators.required],
-      detailResource: ['', Validators.required],
-      activityDetail: ['', Validators.required]
+  private createForm() {
+    this.resourceForm = this.fb.group({
+      resourceCost: ['', Validators.required],
+      resourceDetail: ['', Validators.required]
     });
   }
 
@@ -80,49 +69,9 @@ export class CreateResourceComponent implements OnInit {
     }
 
   }
-
-  saveData() {
-    const data = {
-      idResource: this.resourceForm.value.id,
-      costResource: this.resourceForm.value.costResource,
-      detailResource: this.resourceForm.value.detailResource,
-      versionResource: 1,
-      activity: this.resourceForm.value.activityDetail,
-      status: this.resourceForm.value.status
-    };
-    if (!this.isUpdate) {
-      this.resourceService.createNewResource(data)
-        .subscribe((resource: any) => {
-          this.toastr.success('El recurso se guardo satisfactoriamente', resource.status);
-        }, (error) => {
-          console.log(error);
-          this.toastr.error(error, 'Ha ocurrido un error inesperado');
-        });
-    } else {
-      this.resourceService.updateResource(data, this.idResource)
-        .subscribe(response => {
-          this.toastr.success('El recurso fue actualizado satisfactoriamente', response.status);
-          this.router.navigateByUrl('/resources');
-        }, error => {
-          console.log(error);
-          this.toastr.error(error, 'Ha ocurrido un error inesperado');
-        });
-    }
-    this.resourceForm.reset();
-    const form: HTMLFormElement =
-      <HTMLFormElement>document.getElementById('form');
-    form.reset();
-  }
-
-  cancelForm() {
-    this.resourceForm.reset();
-    const form: HTMLFormElement =
-      <HTMLFormElement>document.getElementById('form');
-    form.reset();
-  }
   private processData(response: any) {
     if (response !== null) {
-      this.router.navigate(['resource']);
+      this.router.navigate(['resources']);
     }
   }
 
