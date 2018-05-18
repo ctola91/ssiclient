@@ -46,11 +46,11 @@ export class CreateActivityComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
-      if (params['activityId'] !== undefined) {
+      if (params['id'] !== undefined) {
         this.title = 'Modificar actividad';
         this.isUpdate = true;
-        this.activityId = +params['activityId'];
-        this.findResource();
+        this.activityId = +params['id'];
+        this.findActivity();
       } else {
         this.title = 'Crear actividad';
         this.isUpdate = false;
@@ -72,30 +72,33 @@ export class CreateActivityComponent implements OnInit {
       personals => this.personals = personals.data);
   }
 
-  private findResource() {
+  private findActivity() {
     this.activityService.findActivityById(this.activityId).subscribe(activity  => {
       this.activity = activity;
       if (this.isUpdate) {
         this.activityForm.patchValue({
-          activityId: activity.activityId,
           activityNumber : activity.activityNumber,
           activityDetail : activity.activityDetail,
           activityGoal : activity.activityGoal,
           activityTime : activity.activityTime,
-          activityType : activity.activityType});
+          activityType : activity.activityType,
+          programsSo : activity.programsSo,
+          activityTrainer: activity.trainer,
+
+        });
       }
     });
   }
 
   createForm() {
     this.activityForm = this.formBuilder.group({
-      activityId: ['', Validators.required],
       activityNumber: ['', Validators.required],
       activityDetail: ['', Validators.required],
       activityGoal: ['', Validators.required],
       activityTime: ['', Validators.required],
       activityType: ['', Validators.required],
-      programsSo: ['', Validators.required]
+      programsSo: ['', Validators.required],
+      trainer: ['', Validators.required]
     });
   }
 
@@ -113,12 +116,15 @@ export class CreateActivityComponent implements OnInit {
     const data = {
 
 
-  activityId: this.activityForm.value.activityId,
-  activityNumber: this.activityForm.value.activityNumber,
-  activityDetail: this.activityForm.value.activityDetail,
-  activityTime: this.activityForm.value.activityTime,
-  activityType: this.activityForm.value.activityType
-    };
+      activityNumber: this.activityForm.value.activityNumber,
+      activityDetail: this.activityForm.value.activityDetail,
+      activityGoal: this.activityForm.value.activityGoal,
+      activityTime: this.activityForm.value.activityTime,
+      activityType: this.activityForm.value.activityType,
+      programsSo: this.activityForm.value.programsSo,
+      activityTrainer: this.activityForm.value.activityTrainer
+
+ };
     if (!this.isUpdate) {
       this.activityService.createNewActivity(data)
         .subscribe((activ: any) => {

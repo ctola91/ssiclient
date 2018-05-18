@@ -43,7 +43,7 @@
             <ng-container matColumnDef="Action">
               <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
               <mat-cell *matCellDef="let activity">
-                <button mat-raised-button routerLink="/activities/update/{{activity.activityId}}" color="primary">
+                <button mat-raised-button routerLink="/activities/update/{{activity.id}}" color="primary">
                   Editar
                 </button>
                 <button mat-raised-button (click)="deleteActivity(activity)" color="warn">

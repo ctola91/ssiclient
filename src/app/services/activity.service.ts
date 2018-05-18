@@ -22,7 +22,18 @@ export class ActivityService {
 
   saveActivity(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    return this.http.post(baseURL + API_URL + '/activities/save', params, { headers: this.appUtil.getHeader()} );
+    return this.http.post(baseURL + API_URL + '/activities', params, { headers: this.appUtil.getHeader()})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
   }
 
   deleteActivity(activity: Activity): Observable<any> {

@@ -3,4 +3,3 @@ export interface Resource {
   resourceCost: number;
   resourceDetail: string;
 }
-
