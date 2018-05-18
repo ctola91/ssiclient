@@ -5,4 +5,5 @@ export interface Position {
   level: number;
   nameParentPosition: string;
   idParentPosition: number;
+  nombreFunctions: string;
 }

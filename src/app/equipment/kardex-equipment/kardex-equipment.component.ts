@@ -28,9 +28,9 @@ export class KardexEquipmentComponent implements OnInit {
   ngOnInit() {
     this.id_Equipment = this.route.snapshot.params['id'];
     this.equipService.getEquipmentById(this.id_Equipment).subscribe(value => this.equi = value );
-    this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
+    //this.kardexService.getListKardex().subscribe(value => this.kardexs = value);
     this.kardexsTable = new MatTableDataSource(this.kardexs);
-    /*this.kardexService.getListKardexByIdEquip(this.id_Equipment).subscribe(value => this.kardexs = value );*/
+    this.kardexService.getListKardexByIdEquip(this.id_Equipment).subscribe(value => this.kardexs = value );
   }
 
   private changeMatriz(kardexViejo: Kardex []): Kardex [] {

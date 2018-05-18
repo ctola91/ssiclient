@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {ProgramSso} from '../../shared/programSso';
-import {ActivatedRoute, Router} from '@angular/router';
-//import {ProgramSsoService} from '../../services/programsso.service';
-import {ToastrService} from 'ngx-toastr';
-import {ActivityService} from '../../services/activity.service';
+import {ProgramssoService} from '../../services/programsso.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ssi-report-programsso',
@@ -12,68 +9,30 @@ import {ActivityService} from '../../services/activity.service';
   styleUrls: ['./report-programsso.component.scss']
 })
 export class ReportProgramssoComponent implements OnInit {
-  programForm: FormGroup;
-  programsso: ProgramSso;
-  title: String;
-  idResource: number;
-  isUpdate: boolean;
-  activities: any[];
 
-  constructor(private fb: FormBuilder,
-             // private programService: ProgramSsoService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private toastr: ToastrService,
-              private activityService: ActivityService,
-              private formBuilder: FormBuilder) {
+  programsso: ProgramSso;
+  idProgramsso: number;
+
+  constructor(private route: ActivatedRoute,
+              private programssoService: ProgramssoService) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params);
-      if (params['idResource'] !== undefined) {
-        this.title = 'Modificar recurso';
-        this.isUpdate = true;
-        this.idResource = +params['idResource'];
-        //this.findResource();
-      } else {
-        this.title = 'Crear recurso';
-        this.isUpdate = false;
-      }
-    });
-
-    //this.createForm();
-
-
-  }
-  /*private findResource() {
-    this.resourceService.findResourceById(this.idResource).subscribe(resource  => {
-      this.resource = resource;
-      if (this.isUpdate) {
-        this.resourceForm.patchValue({
-          idResource: resource.idResource,
-          costResource: resource.costResource,
-          detailResource: resource.detailResource});
+      if (params['id'] !== undefined) {
+        this.idProgramsso = +params['id'];
+        this.findProgramSSO();
       }
     });
   }
 
-  createForm() {
-    this.programFormForm = this.formBuilder.group({
-      idResource: ['', Validators.required],
-      costResource: ['', Validators.required],
-      detailResource: ['', Validators.required],
-      activityDetail: ['', Validators.required]
+  private findProgramSSO() {
+    this.programssoService.findProgramSsoById(this.idProgramsso).subscribe(programsso => {
+      this.programsso = programsso;
     });
   }
-  private processData(response: any) {
-    if (response !== null) {
-      this.router.navigate(['resource']);
-    }
+
+  private print() {
+    console.log('imprimir');
   }
-
-  private processError(err) {
-    console.log(err);
-  }*/
-
 }

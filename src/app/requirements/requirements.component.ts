@@ -29,7 +29,7 @@ export class RequirementsComponent implements OnInit {
   ngOnInit() {
   }
 
-  private loadDataTable(): void {
+  public loadDataTable(): void {
     this.requirementsService.getListRequirements()
       .subscribe(this.processRequirementsData.bind(this),
         this.processErrorData.bind(this));
