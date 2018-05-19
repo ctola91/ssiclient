@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Resource} from '../../shared/resource';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceService} from '../../services/resource.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'ssi-create-resource',
@@ -14,13 +15,14 @@ export class CreateResourceComponent implements OnInit {
   resourceForm: FormGroup;
   resource: Resource;
   title: String;
-  resourceId: number;
+  id: number;
   isUpdate: boolean;
 
   constructor(private fb: FormBuilder,
               private resourceService: ResourceService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class CreateResourceComponent implements OnInit {
       if (params['id'] !== undefined) {
         this.title = 'Modificar recurso';
         this.isUpdate = true;
-        this.resourceId = +params['id'];
+        this.id = +params['id'];
         this.findResource();
       } else {
         this.title = 'Crear recurso';
@@ -41,7 +43,7 @@ export class CreateResourceComponent implements OnInit {
   }
 
   private findResource() {
-    this.resourceService.findResourceById(this.resourceId).subscribe(resource  => {
+    this.resourceService.findResourceById(this.id).subscribe(resource  => {
       this.resource = resource;
       if (this.isUpdate) {
         this.resourceForm.patchValue({
@@ -52,19 +54,20 @@ export class CreateResourceComponent implements OnInit {
     });
   }
 
-  private createForm() {
+createForm() {
     this.resourceForm = this.fb.group({
       resourceCost: ['', Validators.required],
       resourceDetail: ['', Validators.required]
     });
   }
 
+
   onSubmit() {
     if (this.isUpdate) {
-      this.resourceService.updateResource(this.resourceForm.value, this.resource.resourceId)
+      this.resourceService.updateResourceSso(this.resourceForm.value, this.resource.id)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
-      this.resourceService.saveResource(this.resourceForm.value)
+      this.resourceService.saveResourceSso(this.resourceForm.value)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     }
 
