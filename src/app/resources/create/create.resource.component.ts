@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Resource} from '../../shared/resource';
+import {Resource} from '../../shared/Resource';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResourceService} from '../../services/resource.service';
 import {ToastrService} from 'ngx-toastr';
+
 
 @Component({
   selector: 'ssi-create-resource',
@@ -22,7 +23,8 @@ export class CreateResourceComponent implements OnInit {
               private resourceService: ResourceService,
               private route: ActivatedRoute,
               private router: Router,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -55,12 +57,11 @@ export class CreateResourceComponent implements OnInit {
   }
 
 createForm() {
-    this.resourceForm = this.fb.group({
+    this.resourceForm = this.formBuilder.group({
       resourceCost: ['', Validators.required],
       resourceDetail: ['', Validators.required]
     });
   }
-
 
   onSubmit() {
     if (this.isUpdate) {
