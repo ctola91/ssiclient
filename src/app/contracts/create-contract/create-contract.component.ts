@@ -4,6 +4,9 @@ import { PersonalService } from '../../services/personal.service';
 import { Personal } from '../../shared/Personal';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ContractService} from '../../services/contract.service';
+import { City } from '../models/City';
+import { Type } from '../models/Type';
+import { FUNCTION_TYPE } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'ssi-create-contract',
@@ -14,7 +17,8 @@ export class CreateContractComponent implements OnInit {
 
   contractForm: FormGroup;
   personal: Personal;
-
+  listCities: City[];
+  listTipies: Type[];
   constructor(private fb: FormBuilder,
               private contractService: ContractService,
               private route: ActivatedRoute,
@@ -23,6 +27,30 @@ export class CreateContractComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadListOfCities();
+    this.loadTipies();
+  }
+
+  private loadListOfCities(){
+    this.listCities = [
+      { name : 'COCHABAMBA'},
+      { name : 'SANTA CRUZ'},
+      { name : 'LA PAZ'},
+      { name : 'TARIJA'},
+      { name : 'CHUQUISACA'},
+      { name : 'POTOSI'},
+      { name : 'BENI'},
+      { name : 'PANDO'},
+      { name : 'ORURO'}
+    ];
+  }
+
+  private loadTipies() {
+    this.listTipies = [
+      { name: 'IDEFINIDO' },
+      { name: 'SEMESTRAL' },
+      { name: 'MENSUAL' },
+    ]
   }
 
   private createForm() {
