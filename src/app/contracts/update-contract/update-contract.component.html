@@ -1,0 +1,91 @@
+<ssi-header menuActive="personal"></ssi-header>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1>Nuevo Contrato</h1>
+  </div>
+  <div fxFlex>
+    <button mat-button routerLink="/contracts" color="accent">Atras</button>
+    <button mat-button routerLink="/contracts/report" color="accent">Reporte</button>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form novalidate [formGroup]="contractForm" (ngSubmit)="onSubmit()" id="form">
+
+
+      <div style="display:none;">
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('code').hasError('required') && contractForm.get('code').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="id"  placeholder="Id" type="text" required>
+
+      </mat-input-container>
+      </div>
+
+
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('code').hasError('required') && contractForm.get('code').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="code"  placeholder="Codigo" type="text" required>
+        <mat-hint>
+                <span [hidden]="!(contractForm.get('code').hasError('required') && contractForm.get('code').touched)">
+                  Codigo es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('city').hasError('required') && contractForm.get('city').touched) ? 'warn' : 'primary'}}">
+          <mat-select placeholder="Seleccionar ciudad" formControlName="city">
+          <mat-option *ngFor="let city of listCities" [value]="city.name">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>
+                <span [hidden]="!(contractForm.get('city').hasError('required') && contractForm.get('city').touched)">
+                  Ciudad es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+    </p>
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('description').hasError('required') && contractForm.get('description').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="description" placeholder="description" type="description" required>
+        <mat-hint>
+                <span [hidden]="!(contractForm.get('description').hasError('required') && contractForm.get('description').touched)">
+                  description es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('type').hasError('required') && contractForm.get('type').touched) ? 'warn' : 'primary'}}">
+              <mat-select placeholder="Seleccionar Tipo" formControlName="type">
+              <mat-option *ngFor="let type of listTipies" [value]="type.name">
+                {{ type.name }}
+              </mat-option>
+          </mat-select>
+        <mat-hint>
+                <span [hidden]="!(contractForm.get('type').hasError('required') && contractForm.get('type').touched)">
+                  Tipo es required</span>
+        </mat-hint>
+      </mat-input-container>
+
+    </p>
+    <p>
+      <mat-input-container class="half-width"
+                           dividerColor="{{(contractForm.get('salary').hasError('required') && contractForm.get('salary').touched) ? 'warn' : 'primary'}}">
+        <input matInput formControlName="salary"  placeholder="Salario" type="text" required>
+        <mat-hint>
+              <span [hidden]="!(contractForm.get('salary').hasError('required') && contractForm.get('salary').touched)">
+                Salario es requerido</span>
+        </mat-hint>
+      </mat-input-container>
+      <mat-form-field >
+        <input matInput [matDatepicker]="date" formControlName="date" placeholder="Fecha Contrato"   required>
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+      </mat-form-field>
+
+
+
+    </p>
+
+    <button type="submit"  mat-raised-button color="primary" [disabled]="contractForm.invalid">Enviar</button>
+  </form>
+  </div>
+</div>
