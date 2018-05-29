@@ -15,10 +15,6 @@
         <mat-card-content>
           <mat-table #table [dataSource]="activities">
 
-            <ng-container matColumnDef="activityNumber">
-              <mat-header-cell *matHeaderCellDef>Numero de Actividad</mat-header-cell>
-              <mat-cell *matCellDef="let activity">{{activity.activityNumber}}</mat-cell>
-            </ng-container>
 
             <ng-container matColumnDef="activityDetail">
               <mat-header-cell *matHeaderCellDef>Detalle</mat-header-cell>
@@ -30,10 +26,6 @@
               <mat-cell *matCellDef="let activity">{{activity.activityGoal}}</mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="activityTime">
-              <mat-header-cell *matHeaderCellDef>Duracion de la actividad</mat-header-cell>
-              <mat-cell *matCellDef="let activity">{{activity.activityTime}}</mat-cell>
-            </ng-container>
 
             <ng-container matColumnDef="activityType">
               <mat-header-cell *matHeaderCellDef>Tipo de Actividad</mat-header-cell>
@@ -43,7 +35,7 @@
             <ng-container matColumnDef="Action">
               <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
               <mat-cell *matCellDef="let activity">
-                <button mat-raised-button routerLink="/activities/update/{{activity.activityId}}" color="primary">
+                <button mat-raised-button routerLink="/activities/update/{{activity.id}}" color="primary">
                   Editar
                 </button>
                 <button mat-raised-button (click)="deleteActivity(activity)" color="warn">

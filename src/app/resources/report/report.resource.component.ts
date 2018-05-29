@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ResourceService} from '../../services/resource.service';
 import {ToastrService} from 'ngx-toastr';
+import {Activity} from '../../shared/Activity';
+import {Resource} from '../../shared/resource';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'ssi-report-resource',
@@ -10,6 +13,12 @@ import {ToastrService} from 'ngx-toastr';
 export class ReportResourceComponent implements OnInit {
   view: number[] = [700, 300];
   data: any[];
+  resource: Resource;
+  title: String;
+  idResource: number;
+  resourceCost: number;
+  resourceDetail: string;
+  isUpdate: boolean;
 
   constructor(
     private resourceService: ResourceService,

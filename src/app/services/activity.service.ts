@@ -20,14 +20,25 @@ export class ActivityService {
     return this.http.get(baseURL + API_URL + '/activities', { headers: this.appUtil.getHeader()});
   }
 
-  saveActivity(data: any): Observable<any> {
+  saveActivitySso(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    return this.http.post(baseURL + API_URL + '/activities/save', params, { headers: this.appUtil.getHeader()} );
+    return this.http.post(baseURL + API_URL + '/activities', params, { headers: this.appUtil.getHeader()})
+      .map((res: ResponseService) => {
+        if (res.status === 'ok') {
+          return res.data;
+        } else {
+          console.log('error: ' + res.status);
+          return [];
+        }
+      }).catch(error => {
+        console.log('error: ' + error);
+        return error;
+      });
   }
 
   deleteActivity(activity: Activity): Observable<any> {
     const params = JSON.stringify(activity);
-    return this.http.delete(baseURL + API_URL + '/activities/' + activity.activityId, { headers: this.appUtil.getHeader()});
+    return this.http.delete(baseURL + API_URL + '/activities/' + activity.id, { headers: this.appUtil.getHeader()});
   }
 
   findActivityById(id: number): Observable<any> {
@@ -48,7 +59,7 @@ export class ActivityService {
       });
   }
 
-  updateActivity(data: any, id: number): Observable<any> {
+  updateActivitySso(data: any, id: number): Observable<any> {
     const params = JSON.stringify(data);
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token)
@@ -67,7 +78,7 @@ export class ActivityService {
       });
   }
 
-  createNewActivity(data: any): Observable<any> {
+  createNewActivitySso(data: any): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders()
       .set('Authorization', token)

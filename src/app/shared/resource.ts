@@ -1,6 +1,5 @@
 export interface Resource {
-  resourceId: number;
-  resourceCost: number;
+  id: number;
+  resourceCost: string;
   resourceDetail: string;
 }
-

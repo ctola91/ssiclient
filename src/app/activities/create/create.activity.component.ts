@@ -23,7 +23,7 @@ export class CreateActivityComponent implements OnInit {
   activityForm: FormGroup;
   activity: Activity;
   title: String;
-  activityId: number;
+  id: number;
   isUpdate: boolean;
   programs: ProgramSso[];
   trainers: Trainer[];
@@ -46,11 +46,11 @@ export class CreateActivityComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params);
-      if (params['activityId'] !== undefined) {
+      if (params['id'] !== undefined) {
         this.title = 'Modificar actividad';
         this.isUpdate = true;
-        this.activityId = +params['activityId'];
-        this.findResource();
+        this.id = +params['id'];
+        this.findActivity();
       } else {
         this.title = 'Crear actividad';
         this.isUpdate = false;
@@ -72,86 +72,52 @@ export class CreateActivityComponent implements OnInit {
       personals => this.personals = personals.data);
   }
 
-  private findResource() {
-    this.activityService.findActivityById(this.activityId).subscribe(activity  => {
+  private findActivity() {
+    this.activityService.findActivityById(this.id).subscribe(activity  => {
       this.activity = activity;
       if (this.isUpdate) {
         this.activityForm.patchValue({
-          activityId: activity.activityId,
-          activityNumber : activity.activityNumber,
           activityDetail : activity.activityDetail,
           activityGoal : activity.activityGoal,
-          activityTime : activity.activityTime,
-          activityType : activity.activityType});
+          // activityNumber : activity.activityNumber,
+          // activityTime : activity.activityTime,
+          activityType : activity.activityType,
+          programsSo : activity.programsSo,
+          trainer: activity.trainer,
+
+        });
       }
     });
   }
 
+
   createForm() {
     this.activityForm = this.formBuilder.group({
-      activityId: ['', Validators.required],
-      activityNumber: ['', Validators.required],
       activityDetail: ['', Validators.required],
       activityGoal: ['', Validators.required],
-      activityTime: ['', Validators.required],
+      // activityNumber: ['', Validators.required],
+      // activityTime: ['', Validators.required],
       activityType: ['', Validators.required],
-      programsSo: ['', Validators.required]
+      programsSo: ['', Validators.required],
+      trainer: ['', Validators.required]
     });
   }
 
+
+
   onSubmit() {
     if (this.isUpdate) {
-      this.activityService.updateActivity(this.activityForm.value, this.activity.activityId)
+      this.activityService.updateActivitySso(this.activityForm.value, this.activity.id)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
-      this.activityService.saveActivity(this.activityForm.value)
+      this.activityService.saveActivitySso(this.activityForm.value)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     }
 
-  }
-  saveData() {
-    const data = {
-
-
-  activityId: this.activityForm.value.activityId,
-  activityNumber: this.activityForm.value.activityNumber,
-  activityDetail: this.activityForm.value.activityDetail,
-  activityTime: this.activityForm.value.activityTime,
-  activityType: this.activityForm.value.activityType
-    };
-    if (!this.isUpdate) {
-      this.activityService.createNewActivity(data)
-        .subscribe((activ: any) => {
-          this.toastr.success('La actividad se guardo satisfactoriamente', activ.status);
-        }, (error) => {
-          console.log(error);
-          this.toastr.error(error, 'Ha ocurrido un error inesperado');
-        });
-    } else {
-      this.activityService.updateActivity(data, this.activityId)
-        .subscribe(response => {
-          this.toastr.success('La actividad fue actualizado satisfactoriamente', response.status);
-          this.router.navigateByUrl('/resources');
-        }, error => {
-          console.log(error);
-          this.toastr.error(error, 'Ha ocurrido un error inesperado');
-        });
-    }
-    this.activityForm.reset();
-    const form: HTMLFormElement =
-      <HTMLFormElement>document.getElementById('form');
-    form.reset();
-  }
-
-  cancelForm() {
-    this.activityForm.reset();
-    const form: HTMLFormElement =
-      <HTMLFormElement>document.getElementById('form');
-    form.reset();
   }
   private processData(response: any) {
     if (response !== null) {
-      this.router.navigate(['activity']);
+      this.router.navigate(['activities']);
     }
   }
 

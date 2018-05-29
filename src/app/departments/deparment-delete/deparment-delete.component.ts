@@ -34,8 +34,7 @@ export class DeparmentDeleteComponent implements OnInit {
   }
 
   private processData(response: ResponseService) {
-    console.log(response.status);
-    if (response.status === 'deleted') {
+    if (response.status) {
       this.delete('deleted');
     }
   }

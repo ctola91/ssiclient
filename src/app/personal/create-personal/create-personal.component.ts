@@ -46,7 +46,7 @@ export class CreatePersonalComponent implements OnInit {
       email: ['', Validators.required ],
       cellphone: ['', Validators.required ],
       address: ['', Validators.required],
-      birthdate: ['', Validators.required],
+     // birthdate: ['', Validators.required],
       area: ['', Validators.required]
     });
   }
@@ -79,12 +79,13 @@ export class CreatePersonalComponent implements OnInit {
       cellphone: personal.cellphone,
       address: personal.address,
       birthdate: (new Date(personal.birthdate)).toJSON(),
-      area: personal.area.name
+     // area: personal.area.name
     });
   }
 
   onSubmit() {
     if (!this.isUpdate) {
+      console.log(this.personalForm.value);
       this.personalService.savePersonal(this.personalForm.value)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {

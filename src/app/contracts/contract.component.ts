@@ -5,7 +5,7 @@ import {ContractData} from '../shared/ContractData';
 import {Contract} from '../shared/Contract';
 import {Router} from '@angular/router';
 import {ContractDataParameters} from '../shared/ContractDataParameters';
-import {Requirements} from '../shared/Requirements';
+
 
 @Component({
   selector: 'ssi-contract',
@@ -47,8 +47,8 @@ export class ContractComponent implements OnInit {
   }
 
   private processContractData(personal: any) {
-    if ( personal.status === 'ok') {
-      this.contracts = personal.data;
+    if ( personal !== null) {
+      this.contracts = personal
       this.dataSource = new MatTableDataSource(this.contracts);
       this.initDatatable();
     }

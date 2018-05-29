@@ -32,10 +32,12 @@
           <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
         </ng-container>
 
+
+
         <!-- Name Column -->
         <ng-container matColumnDef="Fecha">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+          <mat-cell *matCellDef="let row"> {{row.date | date}} </mat-cell>
         </ng-container>
 
         <!-- Color Column -->

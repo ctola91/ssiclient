@@ -1,9 +1,7 @@
 export interface Activity {
-  activityId: number;
-  activityNumber: number;
-  activityDetail: string;
-  activityGoal: string;
-  activityTime: string;
-  activityType: string;
+  id: number;
+  detailActivities: string;
+  detailGoal: string;
+  detailType: string;
 }
 

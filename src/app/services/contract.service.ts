@@ -7,33 +7,33 @@ import 'rxjs/add/operator/map';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { baseURL, API_URL } from '../shared/baseurl';
 import {Contract} from '../shared/Contract';
-import {Requirements} from '../shared/Requirements';
+import {AppUtil} from '../shared/AppUtil';
+import {ToastrService} from 'ngx-toastr';
+import { TITLE_MSG_CONTRACT, MSG_CONTRACT_BODY_DELETE } from '../shared/Messages';
 
 @Injectable()
 export class ContractService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private appUtil: AppUtil,
+              private toastService: ToastrService) { }
 
   getListContracts(): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/contract', { headers: headers});
+    return this.http.get(baseURL + API_URL + '/contract', { headers: this.appUtil.getHeader()});
   }
 
   saveContract(data: any): Observable<any> {
     const params = JSON.stringify(data);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-                                     .set('Content-Type', 'application/json');
-    console.log(params);
-    return this.http.post(baseURL + API_URL + '/contract', params, { headers: headers} );
+    return this.http.post(baseURL + API_URL + '/contract', params, { headers: this.appUtil.getHeader()} );
   }
-  deleteContract(personal: Contract): Observable<any> {
-    const params = JSON.stringify(personal);
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', token)
-      .set('Content-Type', 'application/json');
+  deleteContract(contract: Contract): Observable<any> {
+    this.toastService.info(MSG_CONTRACT_BODY_DELETE, TITLE_MSG_CONTRACT);
+    const params = JSON.stringify(contract);
+    return this.http.delete(baseURL + API_URL + '/contract/' + contract.id, { headers: this.appUtil.getHeader()});
+  }
 
-    return this.http.delete(baseURL + API_URL + '/contract/' + personal.id, { headers: headers});
+  updateContract(contract: Contract){
+    const params = JSON.stringify(contract);
+    return this.http.put(baseURL + API_URL + '/contract/update/' + contract.id, params, { headers: this.appUtil.getHeader()});
   }
 }
