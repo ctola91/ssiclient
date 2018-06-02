@@ -1,0 +1,75 @@
+<ssi-header></ssi-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" opened="{{statusOpened}}">
+    <ssi-sidenav-list></ssi-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div fxFlex>
+      <div>
+        <mat-card>
+          <mat-card-content>
+            <div class="responsive_table">
+              <mat-table #table [dataSource]="elements">
+                <ng-container matColumnDef="AuditHistoryId">
+                  <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="TableName">
+                  <mat-header-cell *matHeaderCellDef>Nombre de Tabla</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ColumnDate">
+                  <mat-header-cell *matHeaderCellDef>Columna</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ID">
+                  <mat-header-cell *matHeaderCellDef>ID Tupla</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Date">
+                  <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="OldValue">
+                  <mat-header-cell *matHeaderCellDef>Antiguo Valor</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="NewValue">
+                  <mat-header-cell *matHeaderCellDef>Nuevo Valor</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ModifiedDate">
+                  <mat-header-cell *matHeaderCellDef> Fecha de Modificación</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ModifiedBy">
+                  <mat-header-cell *matHeaderCellDef> Modificado Por </mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Action">
+                  <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    <button mat-raised-button (click)="openDialog()" color="primary">Ver</button>
+                  </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<ssi-footer></ssi-footer>

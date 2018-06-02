@@ -137,6 +137,7 @@ import {UtilityService} from './services/utility.service';
 import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
 import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
 import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
+import { AuditComponent } from './audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -210,7 +211,8 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     CreateActivityComponent,
     SidenavListComponent,
     ReportePersonalComponent,
-    ReportePersonalAreaComponent
+    ReportePersonalAreaComponent,
+    AuditComponent
   ],
   imports: [
     BrowserModule,

@@ -56,6 +56,7 @@ import {ReportResourceComponent} from '../resources/report/report.resource.compo
 import {ReportActivityComponent} from '../activities/report/report.activity.component';
 import {ReportePersonalComponent} from '../personal/reporte-personal/reporte-personal.component';
 import {ReportePersonalAreaComponent} from '../personal/reporte-personal-area/reporte-personal-area.component';
+import {AuditComponent} from '../audit/audit.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -127,5 +128,6 @@ export const routes: Routes = [
   { path: 'activities/report', component: ReportActivityComponent},
 
   { path: 'resources/update/:id', component: CreateResourceComponent},
-  { path: 'activities/update/:id', component: CreateActivityComponent}
+  { path: 'activities/update/:id', component: CreateActivityComponent},
+  { path: 'audit', component: AuditComponent}
 ];
