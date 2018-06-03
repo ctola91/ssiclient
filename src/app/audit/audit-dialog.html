@@ -4,12 +4,9 @@
     <h3 mat-subheader>Registros</h3>
     <mat-list-item *ngFor="let element of data.elements">
       <mat-icon mat-list-icon>assignment</mat-icon>
-      <h4 mat-line>Tabla: {{element.TableName}}</h4>
-      <p mat-line>Columna: {{element.ColumnName}} </p>
-      <p mat-line>Fecha de Modificacion: {{element.ModifiedDate}}</p>
-      <p mat-line>Modificado Por: {{element.ModifiedBy}}</p>
-      <p mat-line>Antiguo Valor: {{element.OldValue}}</p>
-      <p mat-line>Nuevo Valor: {{element.NewValue}}</p>
+      <h4 mat-line>Tabla: {{element.TableName}} - Columna: {{element.ColumnName}} </h4>
+      <p mat-line>Antiguo Valor: {{element.OldValue}} - Nuevo Valor: {{element.NewValue}}</p>
+      <p mat-line>Modificado Por: {{element.ModifiedBy}} - Fecha: {{element.ModifiedDate}}</p>
     </mat-list-item>
   </mat-list>
 </div>
