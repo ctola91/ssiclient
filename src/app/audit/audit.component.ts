@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UtilityService} from '../services/utility.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'ssi-audit',
@@ -7,18 +8,46 @@ import {UtilityService} from '../services/utility.service';
   styleUrls: ['./audit.component.scss']
 })
 export class AuditComponent implements OnInit {
+  selectedElement: any = {
+    AuditHistoryId: 1,
+    TableName: 'User',
+    ColumnName: 'Username',
+    ID: 'admin',
+    Date: '05-01-2018',
+    OldValue: 'test',
+    NewValue: 'Test2',
+    ModifiedDate: '06-01-2018',
+    ModifiedBy: 'admin',
+  };
+
   elements: any = [
     {
-      test: 'hola'
+      AuditHistoryId: 1,
+      TableName: 'User',
+      ColumnName: 'Username',
+      ID: 'admin',
+      Date: '05-01-2018',
+      OldValue: 'test',
+      NewValue: 'Test2',
+      ModifiedDate: '06-01-2018',
+      ModifiedBy: 'admin',
     },
     {
-      test: 'hi'
+      AuditHistoryId: 1,
+      TableName: 'User',
+      ColumnName: 'Username',
+      ID: 'admin',
+      Date: '05-01-2018',
+      OldValue: 'test',
+      NewValue: 'Test2',
+      ModifiedDate: '06-01-2018',
+      ModifiedBy: 'admin',
     }
   ];
   displayedColumns = [
     'AuditHistoryId',
     'TableName',
-    'ColumnDate',
+    'ColumnName',
     'ID',
     'Date',
     'OldValue',
@@ -30,7 +59,8 @@ export class AuditComponent implements OnInit {
   statusOpened: boolean;
 
   constructor(
-    private utilityService: UtilityService
+    private utilityService: UtilityService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -39,6 +69,33 @@ export class AuditComponent implements OnInit {
 
   openDialog(): void {
     console.log('opened');
+    let dialogRef = this.dialog.open(AuditDialogComponent, {
+      width: '80%',
+      data: {
+        id: this.selectedElement,
+        elements: this.elements
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+}
+
+@Component({
+  selector: 'ssi-audit-dialog',
+  templateUrl: 'audit-dialog.html',
+})
+export class AuditDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<AuditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

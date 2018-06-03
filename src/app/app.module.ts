@@ -137,7 +137,7 @@ import {UtilityService} from './services/utility.service';
 import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
 import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
 import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
-import { AuditComponent } from './audit/audit.component';
+import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +212,8 @@ import { AuditComponent } from './audit/audit.component';
     SidenavListComponent,
     ReportePersonalComponent,
     ReportePersonalAreaComponent,
-    AuditComponent
+    AuditComponent,
+    AuditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -267,7 +268,8 @@ import { AuditComponent } from './audit/audit.component';
     UtilityService
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AuditDialogComponent]
 })
 export class AppModule {
 }
