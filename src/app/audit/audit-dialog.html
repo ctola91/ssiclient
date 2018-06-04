@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>USER  {{data.ID | uppercase}}</h1>
+<div mat-dialog-content>
+  <mat-list>
+    <h3 mat-subheader>Registros</h3>
+    <mat-list-item *ngFor="let element of data.elements">
+      <mat-icon mat-list-icon>assignment</mat-icon>
+      <h4 mat-line>Tabla: {{element.TableName}} - Columna: {{element.ColumnName}} </h4>
+      <p mat-line>Antiguo Valor: {{element.OldValue}} - Nuevo Valor: {{element.NewValue}}</p>
+      <p mat-line>Modificado Por: {{element.ModifiedBy}} - Fecha: {{element.ModifiedDate}}</p>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>
