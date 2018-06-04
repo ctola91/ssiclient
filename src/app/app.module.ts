@@ -94,7 +94,6 @@ import {CreateEquipmentComponent} from './equipment/create-equipment/create-equi
 import {DetailEquipmentComponent} from './equipment/detail-equipment/detail-equipment.component';
 import {KardexEquipmentComponent} from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
-import {AccidentService} from './services/accident.service';
 import {AppUtil} from './shared/AppUtil';
 import {ResourcesComponent} from './resources/resources.component';
 import {ResourceService} from './services/resource.service';
@@ -254,7 +253,6 @@ import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
     , ContractDataParameters
     , ProgramssoService
     , DepartmentService
-    , AccidentService
     , AppUtil
     , ResourceService
     , InventoryService
