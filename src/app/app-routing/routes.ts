@@ -26,7 +26,6 @@ import {UpdateContractComponent} from '../contracts/update-contract/update-contr
 import {PositionCreateComponent} from '../positions/position-create/position-create.component';
 import {PositionEditComponent} from '../positions/position-edit/position-edit.component';
 import {CreateEquipmentComponent} from '../equipment/create-equipment/create-equipment.component';
-import {AccidentComponent} from '../accident/accident.component';
 import {ResourcesComponent} from '../resources/resources.component';
 import {CreateResourceComponent} from '../resources/create/create.resource.component';
 import {AreasComponent} from '../areas/areas.component';
@@ -92,7 +91,6 @@ export const routes: Routes = [
   { path: 'contracts/create',  component: CreateContractComponent },
   { path: 'contracts/update',  component: UpdateContractComponent },
   { path: 'equipments/create',  component: CreateEquipmentComponent },
-  { path: 'reporte/accident',  component: AccidentComponent },
   { path: 'resources',  component: ResourcesComponent },
   { path: 'resources/create', component: CreateResourceComponent},
   { path: 'areas',  component: AreasComponent },
