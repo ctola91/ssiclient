@@ -115,7 +115,6 @@ export class AuditComponent implements OnInit {
     // this.applyFilter('');
     this.paginator.pageSize = 5;
     this.dataSource.paginator = this.paginator;
-    // this.dataSource.paginator.pageSize = 5;
     this.utilityService.currentState.subscribe(status => this.statusOpened = status);
   }
 
@@ -134,8 +133,8 @@ export class AuditComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
