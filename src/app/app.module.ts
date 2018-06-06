@@ -94,8 +94,6 @@ import {CreateEquipmentComponent} from './equipment/create-equipment/create-equi
 import {DetailEquipmentComponent} from './equipment/detail-equipment/detail-equipment.component';
 import {KardexEquipmentComponent} from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
-import {AccidentComponent} from './accident/accident.component';
-import {AccidentService} from './services/accident.service';
 import {AppUtil} from './shared/AppUtil';
 import {ResourcesComponent} from './resources/resources.component';
 import {ResourceService} from './services/resource.service';
@@ -137,6 +135,7 @@ import {UtilityService} from './services/utility.service';
 import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
 import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
 import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
+import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +176,6 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent,
     ResourcesComponent,
     CreateResourceComponent,
     AreasComponent,
@@ -210,7 +208,9 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     CreateActivityComponent,
     SidenavListComponent,
     ReportePersonalComponent,
-    ReportePersonalAreaComponent
+    ReportePersonalAreaComponent,
+    AuditComponent,
+    AuditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -253,7 +253,6 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     , ContractDataParameters
     , ProgramssoService
     , DepartmentService
-    , AccidentService
     , AppUtil
     , ResourceService
     , InventoryService
@@ -265,7 +264,8 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     UtilityService
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AuditDialogComponent]
 })
 export class AppModule {
 }
