@@ -2,6 +2,7 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {UtilityService} from '../services/utility.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatTableDataSource, MatDatepickerInputEvent} from '@angular/material';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { AuditService } from './shared/audit.service';
 
 @Component({
   selector: 'ssi-audit',
@@ -111,6 +112,7 @@ export class AuditComponent implements OnInit {
   statusOpened: boolean;
 
   constructor(
+    private auditService: AuditService,
     private formBuilder: FormBuilder,
     private utilityService: UtilityService,
     public dialog: MatDialog
