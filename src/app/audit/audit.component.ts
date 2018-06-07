@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {UtilityService} from '../services/utility.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatTableDataSource} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatTableDataSource, MatDatepickerInputEvent} from '@angular/material';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'ssi-audit',
@@ -8,6 +9,11 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatTableDataSour
   styleUrls: ['./audit.component.scss']
 })
 export class AuditComponent implements OnInit {
+  startDate = new FormControl(new Date());
+  endDate = new FormControl(new Date());
+  auditForm: FormGroup;
+  events: string[] = [];
+
   selectedElement: any = {
     AuditHistoryId: 1,
     TableName: 'User',
@@ -105,9 +111,12 @@ export class AuditComponent implements OnInit {
   statusOpened: boolean;
 
   constructor(
+    private formBuilder: FormBuilder,
     private utilityService: UtilityService,
     public dialog: MatDialog
-  ) { }
+  ) {
+    this.createForm();
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -118,18 +127,16 @@ export class AuditComponent implements OnInit {
     this.utilityService.currentState.subscribe(status => this.statusOpened = status);
   }
 
-  openDialog(): void {
-    let dialogRef = this.dialog.open(AuditDialogComponent, {
-      width: '80%',
-      data: {
-        id: this.selectedElement,
-        elements: this.elements
-      }
+  createForm() {
+    this.auditForm = this.formBuilder.group({
+      startDate: [''],
+      endDate: ['']
     });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  applyFilterDate() {
+    console.log(this.auditForm.value);
+
   }
 
   applyFilter(filterValue: string) {
