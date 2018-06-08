@@ -12,14 +12,14 @@ export class IncidentsComponent implements OnInit {
   incidents: any = [];
   statusOpened: boolean;
   displayedColumns = [
-    'dateAt',
-    'code',
-    'severity',
+    'incidentRegisteredDate',
+    'incidentCode',
+    'incidentSeverity',
     'area',
     'incidentDetailName',
     'incidentDetailStatus',
     'incidentTypeName',
-    'Recurrence',
+    // 'Recurrence',
     'Accion'];
   current = 76;
   max = 100;

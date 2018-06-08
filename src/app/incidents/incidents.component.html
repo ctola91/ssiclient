@@ -20,25 +20,25 @@
         <mat-card-content>
           <div class="responsive_table">
             <mat-table #table [dataSource]="incidents">
-              <ng-container matColumnDef="dateAt">
+              <ng-container matColumnDef="incidentRegisteredDate">
                 <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
-                <mat-cell *matCellDef="let incident">{{incident.dateAt | date:short}}</mat-cell>
+                <mat-cell *matCellDef="let incident">{{incident.incidentRegisteredDate | date: 'short'}}</mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="code">
+              <ng-container matColumnDef="incidentCode">
                 <mat-header-cell *matHeaderCellDef>Codigo</mat-header-cell>
-                <mat-cell *matCellDef="let incident">{{incident.code}}</mat-cell>
+                <mat-cell *matCellDef="let incident">{{incident.incidentCode}}</mat-cell>
               </ng-container>
 
               <ng-container matColumnDef="area">
                 <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
-                <mat-cell *matCellDef="let incident">{{incident.area}}</mat-cell>
+                <mat-cell *matCellDef="let incident">{{incident.personal.area.name}}</mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="severity">
+              <ng-container matColumnDef="incidentSeverity">
                 <mat-header-cell *matHeaderCellDef>Gravedad</mat-header-cell>
                 <mat-cell *matCellDef="let incident">
-                  <div class="severity" ngClass="{{incident.severity}}">{{ incident.severity | uppercase }}</div>
+                  <div class="severity" ngClass="{{incident.incidentSeverity}}">{{ incident.incidentSeverity | uppercase }}</div>
                 </mat-cell>
               </ng-container>
 
@@ -57,7 +57,7 @@
                 <mat-cell *matCellDef="let incident">{{incident.incidentType.incidentTypeName}}</mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="Recurrence">
+              <!-- <ng-container matColumnDef="Recurrence">
                 <mat-header-cell *matHeaderCellDef> Probabilidad de Recurrencia</mat-header-cell>
                 <mat-cell *matCellDef="let incident">
                   <div class="current">
@@ -73,7 +73,7 @@
                       [animationDelay]="0"></round-progress>
                   </div>
                 </mat-cell>
-              </ng-container>
+              </ng-container> -->
 
               <ng-container matColumnDef="Accion">
                 <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
