@@ -136,6 +136,7 @@ import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-l
 import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
 import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
 import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
+import { AuditService } from './audit/shared/audit.service';
 
 @NgModule({
   declarations: [
@@ -261,7 +262,8 @@ import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
     , RequirementsDataParameters
     , FunctionsService
     , FunctionsDataParameters,
-    UtilityService
+    UtilityService,
+    AuditService
 
   ],
   bootstrap: [AppComponent],
