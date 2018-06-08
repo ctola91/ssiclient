@@ -14,10 +14,16 @@ export class AuditService {
 
   }
 
-  getAuditItems(id: number): Observable<any> {
+  getAuditItems(startDate: string, endDate: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', token);
-    return this.http.get(baseURL + API_URL + '/' + id, {headers: headers});
+    return this.http.get(baseURL + API_URL + '/audit/filter?startDate=' + startDate + '&endDate=' + endDate, {headers: headers});
+  }
+
+  getAllAuditItems(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', token);
+    return this.http.get(baseURL + API_URL + '/audit', {headers: headers});
   }
 
 }
