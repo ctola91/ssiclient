@@ -88,7 +88,8 @@ export class CreateComponent implements OnInit {
       reportedBy: ['', Validators.required],
       reincident: [''],
       treatment: [''],
-      recurrence: ['', [Validators.required, Validators.max(100), Validators.min(0)]],
+      // recurrence: [''],
+      // recurrence: ['', [Validators.required, Validators.max(100), Validators.min(0)]],
       severity: ['', Validators.required],
       description: ['', Validators.required]
     });
@@ -101,7 +102,7 @@ export class CreateComponent implements OnInit {
       area: this.incidentForm.value.area,
       reincident: this.incidentForm.value.reincident,
       treatment: this.incidentForm.value.treatment,
-      recurrence: this.incidentForm.value.recurrence,
+      // recurrence: this.incidentForm.value.recurrence,
       severity: this.incidentForm.value.severity,
       incidentNumber: 4,
       incidentTypeName: this.incidentForm.value.type,
