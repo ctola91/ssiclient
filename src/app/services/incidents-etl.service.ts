@@ -19,4 +19,12 @@ export class IncidentsEtlService {
   getIncidentsByType(): Observable<any> {
     return this.http.get(baseURLETL + API_URL + '/report/chart/incidents/amounts/type/');
   }
+
+  getIncidentsByArea(startDate: string, endDate: string): Observable<any> {
+    return this.http.get(baseURLETL + API_URL + '/report/chart/incidents/area?startDate=' + startDate + '&endDate=' + endDate);
+  }
+
+  getDetailIncidentsByDate(startDate: string, endDate: string): Observable<any> {
+    return this.http.get(baseURLETL + API_URL + '/report/table/incidents?startDate=' + startDate + '&endDate=' + endDate);
+  }
 }
