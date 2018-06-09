@@ -138,6 +138,7 @@ import {ReportePersonalAreaComponent} from './personal/reporte-personal-area/rep
 import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
 import {AuditService} from './audit/shared/audit.service';
 import {IncidentsEtlService} from './services/incidents-etl.service';
+import { EtlComponent } from './etl/etl.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +213,8 @@ import {IncidentsEtlService} from './services/incidents-etl.service';
     ReportePersonalComponent,
     ReportePersonalAreaComponent,
     AuditComponent,
-    AuditDialogComponent
+    AuditDialogComponent,
+    EtlComponent
   ],
   imports: [
     BrowserModule,

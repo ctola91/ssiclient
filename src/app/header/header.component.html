@@ -69,6 +69,7 @@
           [ngClass]="{'Active': menuActive=='report'}"><span class="fa fa-print"></span> Reportes
   </button>
   <mat-menu #reports="matMenu">
+    <button mat-menu-item routerLink="/reporte/etl">Reportes - ETL</button>
     <button mat-menu-item routerLink="/reporte/cargos-empresa">Reporte - Cargos en la empresa</button>
     <button mat-menu-item routerLink="/reporte/manual-funciones">Reporte - Manual de funciones</button>
     <button mat-menu-item routerLink="/reporte/personal">Reporte - Personal</button>
