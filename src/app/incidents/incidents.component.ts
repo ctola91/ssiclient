@@ -15,7 +15,7 @@ export class IncidentsComponent implements OnInit {
     'incidentRegisteredDate',
     'incidentCode',
     'incidentSeverity',
-    'area',
+    //'area',
     'incidentDetailName',
     'incidentDetailStatus',
     'incidentTypeName',
@@ -40,7 +40,7 @@ export class IncidentsComponent implements OnInit {
     this.incidentService.getIncidentList()
       .subscribe(result => {
           this.incidents = result.data;
-          console.log(this.incidents);
+          //console.log(this.incidents);
       }, err => {
         console.log(err);
         this.toastr.error(err, 'Ha ocurrido un error inesperado');
