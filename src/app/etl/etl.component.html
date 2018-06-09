@@ -9,7 +9,7 @@
   <mat-card>
     <mat-card-title>Filtros</mat-card-title>
     <mat-card-content>
-      <form novalidate [formGroup]="reportFilterForm" (ngSubmit)="onSubmit()" onsubmit="updateData()" id="form">
+      <form novalidate [formGroup]="reportFilterForm" (ngSubmit)="onSubmit()" id="form">
         <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
           <mat-form-field fxFlex="30%">
             <mat-select placeholder="Tipo de reporte" formControlName="typeReport">

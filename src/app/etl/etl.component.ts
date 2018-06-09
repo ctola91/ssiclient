@@ -63,7 +63,7 @@ export class EtlComponent implements OnInit {
 
       this.incidentsEtlService.getDetailIncidentsByDate( this.reportFilterForm.value.pickerStart.toLocaleDateString(),
         this.reportFilterForm.value.pickerEnd.toLocaleDateString())
-        .subscribe(res => this.dataType =  res.data);
+        .subscribe(res => this.incidentesEtl =  res.data);
 
     } else {
       if (this.reportFilterForm.value.typeReport === '1') {
@@ -79,10 +79,6 @@ export class EtlComponent implements OnInit {
         this.isChart = false;
       }
     }
-  }
-
-  private updateData(){
-
   }
 
   formatData(data: any[], result: any[]): any[] {
