@@ -30,10 +30,10 @@
                 <mat-cell *matCellDef="let incident">{{incident.incidentCode}}</mat-cell>
               </ng-container>
 
-              <ng-container matColumnDef="area">
+              <!-- <ng-container matColumnDef="area">
                 <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
-                <mat-cell *matCellDef="let incident">{{incident.personal.area.name}}</mat-cell>
-              </ng-container>
+                <mat-cell *matCellDef="let incident" >{{incident.personal.area | json}}</mat-cell>
+              </ng-container> -->
 
               <ng-container matColumnDef="incidentSeverity">
                 <mat-header-cell *matHeaderCellDef>Gravedad</mat-header-cell>
