@@ -60,6 +60,7 @@ export class AuditComponent implements OnInit {
       .subscribe(result => {
         this.elements = result;
         this.dataSource = new MatTableDataSource(this.elements);
+        console.log(this.dataSource);
         this.paginator.pageSize = 5;
         this.dataSource.paginator = this.paginator;
         this.utilityService.currentState.subscribe(status => this.statusOpened = status);
