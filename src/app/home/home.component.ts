@@ -12,8 +12,12 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  view: number[] = [700, 300];
-  data: any[];
+  viewSeverity: number[] = [700, 300];
+  dataSeverity: any[];
+  viewType: number[] = [700, 300];
+  dataType: any[];
+  resultSeverity: any[];
+  resultType: any[];
 
   item: Equipment;
   itemIds: number[];
@@ -33,45 +37,89 @@ export class HomeComponent implements OnInit {
   }
 
   private loadDataIncidents() {
-    this.incidentService.getIncidentList()
+    // this.incidentService.getIncidentList()
+    //   .subscribe((res) => {
+    //     this.data = this.formatData(res.data);
+    //   }, (err) => {
+    //     console.log(err);
+    //     this.toastr.error(err, 'Ha ocurrido un error inesperado');
+    //   });
+
+    this.incidentService.getIncidentsBySeverity()
       .subscribe((res) => {
-        this.data = this.formatData(res.data);
+        this.dataSeverity = this.formatData(res.data, this.resultSeverity);
+      }, (err) => {
+        console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
+      });
+
+    this.incidentService.getIncidentsByType()
+      .subscribe((res) => {
+        this.dataType = this.formatData(res.data, this.resultType);
       }, (err) => {
         console.log(err);
         this.toastr.error(err, 'Ha ocurrido un error inesperado');
       });
   }
 
-  formatData(data: any[]): any[] {
+  formatData(data: any[], result: any[]): any[] {
     console.log(data);
-    let countAccidents = 0;
-    let countIncidents = 0;
-    let countDisease = 0;
-    data.forEach((el) => {
-      if (el.incidentType.incidentTypeName.indexOf('accidente') > -1) {
-        countAccidents++;
-      }
-      if (el.incidentType.incidentTypeName.indexOf('incidente') > -1) {
-        countIncidents++;
-      }
-      if (el.incidentType.incidentTypeName.indexOf('enfermedad') > -1) {
-        countDisease++;
-      }
-    });
-    return [
-      {
+
+    if (data.length > 0) {
+      result = [data.length];
+      data.forEach((el) => {
+        result.fill({
+          'name': el.incidentType.incidentDescription,
+          'value': el.incidentType.incidentAmount
+        });
+      });
+    } else {
+      result = [3];
+      result.fill({
         'name': 'Accidente',
-        'value': countAccidents
-      },
-      {
-        'name': 'Enfermedad',
-        'value': countDisease
-      },
-      {
+        'value': 0
+      });
+      result.fill({
+        'name': 'Enfermendad',
+        'value': 0
+      });
+      result.fill({
         'name': 'Incidentes Otros',
-        'value': countIncidents
-      }
-    ];
+        'value': 0
+      });
+    }
+    console.log('formatedIncidents', result);
+
+    return result;
+    // let countAccidents = 0;
+    // let countIncidents = 0;
+    // let countDisease = 0;
+    //
+    // data.forEach((el) => {
+    //   if (el.incidentType.incidentTypeName.indexOf('accidente') > -1) {
+    //     countAccidents++;
+    //   }
+    //   if (el.incidentType.incidentTypeName.indexOf('incidente') > -1) {
+    //     countIncidents++;
+    //   }
+    //   if (el.incidentType.incidentTypeName.indexOf('enfermedad') > -1) {
+    //     countDisease++;
+    //   }
+    // });
+    // return [
+    //   {
+    //     'name': 'Accidente',
+    //     'value': countAccidents
+    //   },
+    //   {
+    //     'name': 'Enfermedad',
+    //     'value': countDisease
+    //   },
+    //   {
+    //     'name': 'Incidentes Otros',
+    //     'value': countIncidents
+    //   }
+    // ];
   }
 
   private loadDataEquipment() {

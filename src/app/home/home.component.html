@@ -47,12 +47,45 @@
         <mat-card>
           <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
             <div fxFlex>
-              <h2>Incidentes registrados en la empresa</h2>
+              <h2>OHSAS 18001</h2>
+            </div>
+            <div fxFlex="100%">
+              <p>Las organizaciones deben gerenciar la seguridad en el lugar de trabajo para mantener bajos costos y reducir el tiempo perdido del personal. La norma OHSAS 18001 es una especificación reconocida internacionalmente que regula los sistemas de gestión de la salud ocupacional y seguridad industrial (Occupational Health and Safety — OHS).
+              </p>
+                <p>La norma forma parte del sistema OHSAS (Occupational Health and Safety Assessment Series) 18000, el cual está orientado a la reducción y prevención de accidentes y pérdidas de vidas, tiempo y recursos a causa de accidentes. La norma OHSAS 18001 puede aplicarse a cualquier negocio, organización o industria.
+                </p>
+                <p>Los beneficios de adoptar la norma podrían incluir:
+                </p>
+              <p>Reducción en los riesgos legales de la organización y de los gerentes</p>
+              <p>Reducción en la posibilidad de accidentes</p>
+              <p>Optimización de recursos</p>
+              <p>Demostración de la conformidad y diligencia adecuada</p>
+                <p>Elaboración de un sistema coherente y comprobado para gerenciar los riesgos relacionados con la salud ocupacional y seguridad industrial</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="container"
+         fxLayout="row"
+         fxLayout.sm="column"
+         fxLayout.xs="column"
+         fxLayoutAlign.gt-md="space-around center"
+         fxLayoutGap="10px">
+      <div fxFlex="50" align="top">
+        <!--<div fxFlex>-->
+          <!--<h2>Cantidad de Incidentes agrupados por severidad</h2>-->
+        <!--</div>-->
+        <mat-card>
+          <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex>
+              <h2>Cantidad de Incidentes agrupados por severidad</h2>
             </div>
             <div fxFlex="100%">
               <ngx-charts-bar-vertical
-                [view]="view"
-                [results]="data"
+                [view]="viewSeverity"
+                [results]="dataSeverity"
                 xAxis="true"
                 yAxis="true"
                 legend="true"
@@ -68,8 +101,42 @@
             </div>
             <div fxFlex="100%">
               <ngx-charts-pie-chart
-                [view]="view"
-                [results]="data"
+                [view]="viewSeverity"
+                [results]="dataSeverity"
+                legendTitle="Tipos de Incidente">
+              </ngx-charts-pie-chart>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div fxFlex="50 ">
+        <mat-card>
+          <mat-card-content fxFlex fxLayout="column" fxLayoutAlign="center center">
+            <div fxFlex>
+              <h2>Cantidad de Incidentes agrupados por Tipo</h2>
+            </div>
+            <div fxFlex="100%">
+              <ngx-charts-bar-vertical
+                [view]="viewType"
+                [results]="dataType"
+                xAxis="true"
+                yAxis="true"
+                legend="true"
+                legendTitle="Tipos de Incidente"
+                showXAxisLabel="true"
+                showYAxisLabel="true"
+                xAxisLabel="Cantidad"
+                yAxisLabel="Numero de Incidentes">
+              </ngx-charts-bar-vertical>
+            </div>
+            <div fxFlex>
+              <!--<h2>Grafico de Torta</h2>-->
+            </div>
+            <div fxFlex="100%">
+              <ngx-charts-pie-chart
+                [view]="viewType"
+                [results]="dataType"
                 legendTitle="Tipos de Incidente">
               </ngx-charts-pie-chart>
             </div>
@@ -77,7 +144,6 @@
         </mat-card>
       </div>
     </div>
-    <mat-divider></mat-divider>
   </div>
 
   <ssi-footer></ssi-footer>
