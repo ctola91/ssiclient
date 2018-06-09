@@ -48,12 +48,4 @@ export class IncidentService {
       .set('Content-Type', 'application/json');
     return this.http.delete(baseURL + API_URL + '/incidents/' + data.incidentId, {headers: headers});
   }
-
-  getIncidentsBySeverity(): Observable<any> {
-        return this.http.get(baseURLETL + API_URL + '/report/chart/incidents/amounts/severity/');
-  }
-
-  getIncidentsByType(): Observable<any> {
-    return this.http.get(baseURLETL + API_URL + '/report/chart/incidents/amounts/type/');
-  }
 }
