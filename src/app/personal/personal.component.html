@@ -20,10 +20,10 @@
 
     <div class="example-container mat-elevation-z8">
 
-      <mat-table [dataSource]="dataSource" matSort>
+      <mat-table [dataSource]="dataSource" matSort name="tablePersonal">
 
         <!-- ID Column -->
-        <ng-container matColumnDef="Nombre">
+        <ng-container matColumnDef="Nombre" name="columnNombre">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.firstname}} </mat-cell>
         </ng-container>

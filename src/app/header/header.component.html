@@ -11,11 +11,15 @@
           [ngClass]="{'Active': menuActive=='home'}"><span class="fa fa-home"></span> Inicio
   </button>
 
-  <button mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
+  <button mat-button routerLink="/audit" *ngIf="showMenu"
+    [ngClass]="{'Active': menuActive=='audit'}"><span class="fa fa-address-card"></span> Auditoria
+  </button>
+
+  <button name="menuPersonal" mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
           [ngClass]="{'Active': menuActive=='personal'}"><span class="fa fa-user fa-lg"></span> Personal
   </button>
-  <mat-menu #personalMenu="matMenu">
-    <button routerLink="/personal" mat-menu-item>Personal</button>
+  <mat-menu name="subMenuPersonal"#personalMenu="matMenu">
+    <button name="personal" routerLink="/personal" mat-menu-item>Personal</button>
     <button routerLink="/assign" mat-menu-item>Asignación</button>
     <button routerLink="/contracts" mat-menu-item>Contratos</button>
   </mat-menu>
@@ -65,6 +69,7 @@
           [ngClass]="{'Active': menuActive=='report'}"><span class="fa fa-print"></span> Reportes
   </button>
   <mat-menu #reports="matMenu">
+    <button mat-menu-item routerLink="/reporte/etl">Reportes - ETL</button>
     <button mat-menu-item routerLink="/reporte/cargos-empresa">Reporte - Cargos en la empresa</button>
     <button mat-menu-item routerLink="/reporte/manual-funciones">Reporte - Manual de funciones</button>
     <button mat-menu-item routerLink="/reporte/personal">Reporte - Personal</button>
