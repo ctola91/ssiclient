@@ -15,11 +15,11 @@
     [ngClass]="{'Active': menuActive=='audit'}"><span class="fa fa-address-card"></span> Auditoria
   </button>
 
-  <button mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
+  <button name="menuPersonal" mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
           [ngClass]="{'Active': menuActive=='personal'}"><span class="fa fa-user fa-lg"></span> Personal
   </button>
-  <mat-menu #personalMenu="matMenu">
-    <button routerLink="/personal" mat-menu-item>Personal</button>
+  <mat-menu name="subMenuPersonal"#personalMenu="matMenu">
+    <button name="personal" routerLink="/personal" mat-menu-item>Personal</button>
     <button routerLink="/assign" mat-menu-item>Asignación</button>
     <button routerLink="/contracts" mat-menu-item>Contratos</button>
     <button routerLink="/users" mat-menu-item> Users </button>
