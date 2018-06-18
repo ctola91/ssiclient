@@ -14,7 +14,7 @@
           <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
             <mat-input-container fxFlex="30%"
                                  dividerColor="{{(userForm.get('username').hasError('required') && userForm.get('username').touched) ? 'warn' : 'primary'}}">
-              <input matInput formControlName="username"  placeholder="User Name" type="text" required>
+              <input matInput id="username-form" formControlName="username"  placeholder="User Name" type="text" required>
               <mat-hint>
                       <span [hidden]="!(userForm.get('username').hasError('required') && userForm.get('username').touched)">
                         User Name es requerido</span>
@@ -22,19 +22,19 @@
             </mat-input-container>
             <mat-input-container fxFlex="30%"
                                  dividerColor="{{(userForm.get('password').hasError('required') && userForm.get('password').touched) ? 'warn' : 'primary'}}">
-              <input matInput formControlName="password"  placeholder="Password" type="password" required>
+              <input matInput id="password-form" formControlName="password"  placeholder="Password" type="password" required>
               <mat-hint>
                       <span [hidden]="!(userForm.get('password').hasError('required') && userForm.get('password').touched)">
                         Password es requerido</span>
               </mat-hint>
             </mat-input-container>
             <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
-                <mat-checkbox name="userActive" formControlName="userActive" fxFlex="50%">Active</mat-checkbox>
+                <mat-checkbox id="userActive-form" formControlName="userActive" fxFlex="50%">Active</mat-checkbox>
             </div>
 
           </div>
 
-        <button type="submit"  mat-raised-button color="primary">Guardar</button>
+        <button type="submit" id="save-user-form" mat-raised-button color="primary">Guardar</button>
       </form>
     </mat-card-content>
   </mat-card>
