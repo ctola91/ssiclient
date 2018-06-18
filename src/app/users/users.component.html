@@ -37,7 +37,15 @@
         <!-- Name Column -->
         <ng-container matColumnDef="Active">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Activo </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.userActive}} </mat-cell>
+      
+          <mat-cell *matCellDef="let row">
+            <span *ngIf="row.userActive" style="color: #4CAF50">
+                <i class="material-icons">check_circle</i>
+            </span>
+            <span *ngIf="!row.userActive" style="color: #ee4433">
+                <i class="material-icons">highlight_off</i>
+            </span>
+          </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="Accion">
