@@ -9,7 +9,11 @@ export const ERROR_UNKNOW = 'Error desconocido';
 
 export const TITLE_MSG_CONTRACT = 'CONTRACT';
 export const MSG_CONTRACT_BODY_DELETE  = 'El contrato ha sido eliminado con exito';
-export const MSG_CONTRACT_BODY_UPDATE  = 'El contrato ha sido modificado con exito'; 
+export const MSG_CONTRACT_BODY_UPDATE  = 'El contrato ha sido modificado con exito';
+export const TITLE_MSG_USER = 'USER';
+export const MSG_USER_BODY_CREATED = 'El usuarios a sido creado con exito';
+export const MSG_USER_BODY_UPDATE = 'El usuarios a sido actualizado con exito'; 
+export const MSG_USER_BODY_DELETE = 'El usuarios a sido eliminado con exito'; 
 
 
 
