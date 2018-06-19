@@ -1,0 +1,88 @@
+<ssi-header menuActive="audit"></ssi-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" opened="{{statusOpened}}">
+    <ssi-sidenav-list></ssi-sidenav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div fxFlex>
+      <div>
+        <mat-card>
+          <mat-card-content>
+            <div fxFlex>
+              <form [formGroup]="auditForm" (ngSubmit)="applyFilterDate()" id="form">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="startDate" placeholder="Fecha de Inicio" formControlName="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="endDate" placeholder="Fecha de Fin" formControlName="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                  <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit">Filtrar</button>
+              </form>
+            </div>
+
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro">
+            </mat-form-field>
+            <div class="responsive_table">
+              <mat-table #table [dataSource]="dataSource">
+                <ng-container matColumnDef="audit_id">
+                  <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.audit_id}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="tableName">
+                  <mat-header-cell *matHeaderCellDef>Nombre de Tabla</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.tableName}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="columnName">
+                  <mat-header-cell *matHeaderCellDef>Columna</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.columnName}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ids">
+                  <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.ids}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                  <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.date | date: 'short'}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="oldvalue">
+                  <mat-header-cell *matHeaderCellDef>Antiguo Valor</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.oldvalue}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="newvalue">
+                  <mat-header-cell *matHeaderCellDef>Nuevo Valor</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.newvalue}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="modifiedDate">
+                  <mat-header-cell *matHeaderCellDef> Fecha de Modificación</mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.modifiedDate | date: 'short'}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="modifiedBy">
+                  <mat-header-cell *matHeaderCellDef> Modificado Por </mat-header-cell>
+                  <mat-cell *matCellDef="let element">{{element.modifiedBy}}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<ssi-footer></ssi-footer>

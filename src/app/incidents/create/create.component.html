@@ -53,7 +53,7 @@
       <div fxFlex fxLayout="row" fxLayout.xs="column">
         <mat-form-field fxFlex="50%">
           <mat-select placeholder="Reportado por:" formControlName="reportedBy">
-            <mat-option *ngFor="let personal of personalList" [value]="personal.firstname">
+            <mat-option *ngFor="let personal of personalList" [value]="personal.id">
               {{ personal.firstname }}
             </mat-option>
           </mat-select>
@@ -63,7 +63,7 @@
           <mat-checkbox name="treatment" formControlName="treatment" fxFlex="50%">Tratamiento</mat-checkbox>
         </div>
       </div>
-      <div fxFlex fxLayout="row" fxLayout.xs="column">
+      <!-- <div fxFlex fxLayout="row" fxLayout.xs="column">
         <div fxFlex="50%" fxLayout="row">
           <mat-form-field fxFlex="30%">
             <input type="number" matInput id="recurrence" name="recurrence" formControlName="recurrence" placeholder="Probabilidad de recurrencia" value="40" [readonly]="true">
@@ -95,7 +95,7 @@
               [animationDelay]="0"></round-progress>
           </div>
         </div>
-      </div>
+      </div> -->
       <div fxFlex="100%" fxLayout="row">
         <mat-form-field fxFlex="100%">
           <textarea matInput formControlName="description" placeholder="Descripción" rows="6"></textarea>

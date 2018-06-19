@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TreeModule} from 'angular-tree-component';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
@@ -94,8 +94,6 @@ import {CreateEquipmentComponent} from './equipment/create-equipment/create-equi
 import {DetailEquipmentComponent} from './equipment/detail-equipment/detail-equipment.component';
 import {KardexEquipmentComponent} from './equipment/kardex-equipment/kardex-equipment.component';
 import {KardexService} from './services/kardex.service';
-import {AccidentComponent} from './accident/accident.component';
-import {AccidentService} from './services/accident.service';
 import {AppUtil} from './shared/AppUtil';
 import {ResourcesComponent} from './resources/resources.component';
 import {ResourceService} from './services/resource.service';
@@ -111,19 +109,19 @@ import {CreateInventoryComponent} from './inventory/create-inventory/create-inve
 import {CrateKardexComponent} from './kardex/crate-kardex/crate-kardex.component';
 import {InventoryService} from './services/inventory.service';
 import {ActivityService} from './services/activity.service';
-import { ActivitiesComponent } from './activities/activities.component';
-import { AddPersonalActivitiesComponent } from './activities/add-personal-activities/add-personal-activities.component';
-import { ReportProgramssoComponent } from './programsso/report-programsso/report-programsso.component';
-import { UpdateComponent } from './equipment/update/update.component';
-import { LogoutComponent } from './logout/logout.component';
-import { ReportManualFunctionsComponent } from './positions/report-manual-functions/report-manual-functions.component';
-import { ReportPositionsComponent } from './positions/report-positions/report-positions.component';
-import { PersonalContractPositionComponent } from './personal/personal-contract-position/personal-contract-position.component';
-import { RequirementsService } from './services/requirements.service';
+import {ActivitiesComponent} from './activities/activities.component';
+import {AddPersonalActivitiesComponent} from './activities/add-personal-activities/add-personal-activities.component';
+import {ReportProgramssoComponent} from './programsso/report-programsso/report-programsso.component';
+import {UpdateComponent} from './equipment/update/update.component';
+import {LogoutComponent} from './logout/logout.component';
+import {ReportManualFunctionsComponent} from './positions/report-manual-functions/report-manual-functions.component';
+import {ReportPositionsComponent} from './positions/report-positions/report-positions.component';
+import {PersonalContractPositionComponent} from './personal/personal-contract-position/personal-contract-position.component';
+import {RequirementsService} from './services/requirements.service';
 import {RequirementsDataParameters} from './shared/RequirementsDataParameters';
 import {UpdateRequirementsComponent} from './requirements/update-requirements/update-requirements.component';
 import {CreateRequirementsComponent} from './requirements/create-requirements/create-requirements.component';
-import { FunctionsService } from './services/functions.service';
+import {FunctionsService} from './services/functions.service';
 import {FunctionsDataParameters} from './shared/FunctionsDataParameters';
 import {CreateFunctionsComponent} from './functions/create-functions/create-functions.component';
 import {UpdateFunctionsComponent} from './functions/update-functions/update-functions.component';
@@ -134,9 +132,15 @@ import {ReportActivityComponent} from './activities/report/report.activity.compo
 import 'hammerjs';
 
 import {UtilityService} from './services/utility.service';
-import { SidenavListComponent } from './shared/components/sidenav-list/sidenav-list.component';
-import { ReportePersonalComponent } from './personal/reporte-personal/reporte-personal.component';
-import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/reporte-personal-area.component';
+import {SidenavListComponent} from './shared/components/sidenav-list/sidenav-list.component';
+import {ReportePersonalComponent} from './personal/reporte-personal/reporte-personal.component';
+import {ReportePersonalAreaComponent} from './personal/reporte-personal-area/reporte-personal-area.component';
+import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
+import {AuditService} from './audit/shared/audit.service';
+import {IncidentsEtlService} from './services/incidents-etl.service';
+import { EtlComponent } from './etl/etl.component';
+import { UsersComponent } from './users/users.component';
+import { CreateUsersComponent} from './users/create-user/create-users.component';
 
 @NgModule({
   declarations: [
@@ -177,7 +181,6 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     KardexEquipmentComponent,
     CreateProgramssoComponent,
     DeparmentDeleteComponent,
-    AccidentComponent,
     ResourcesComponent,
     CreateResourceComponent,
     AreasComponent,
@@ -210,7 +213,12 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     CreateActivityComponent,
     SidenavListComponent,
     ReportePersonalComponent,
-    ReportePersonalAreaComponent
+    ReportePersonalAreaComponent,
+    AuditComponent,
+    AuditDialogComponent,
+    EtlComponent,
+    UsersComponent,
+    CreateUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -253,7 +261,6 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     , ContractDataParameters
     , ProgramssoService
     , DepartmentService
-    , AccidentService
     , AppUtil
     , ResourceService
     , InventoryService
@@ -261,11 +268,13 @@ import { ReportePersonalAreaComponent } from './personal/reporte-personal-area/r
     , RequirementsService
     , RequirementsDataParameters
     , FunctionsService
-    , FunctionsDataParameters,
-    UtilityService
-
+    , FunctionsDataParameters
+    , UtilityService
+    , AuditService
+    , IncidentsEtlService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AuditDialogComponent]
 })
 export class AppModule {
 }

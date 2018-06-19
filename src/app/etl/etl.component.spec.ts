@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccidentComponent } from './accident.component';
+import { EtlComponent } from './etl.component';
 
-describe('AccidentComponent', () => {
-  let component: AccidentComponent;
-  let fixture: ComponentFixture<AccidentComponent>;
+describe('EtlComponent', () => {
+  let component: EtlComponent;
+  let fixture: ComponentFixture<EtlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccidentComponent ]
+      declarations: [ EtlComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccidentComponent);
+    fixture = TestBed.createComponent(EtlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -12,14 +12,14 @@ export class IncidentsComponent implements OnInit {
   incidents: any = [];
   statusOpened: boolean;
   displayedColumns = [
-    'dateAt',
-    'code',
-    'severity',
-    'area',
+    'incidentRegisteredDate',
+    'incidentCode',
+    'incidentSeverity',
+    //'area',
     'incidentDetailName',
     'incidentDetailStatus',
     'incidentTypeName',
-    'Recurrence',
+    // 'Recurrence',
     'Accion'];
   current = 76;
   max = 100;
@@ -40,7 +40,7 @@ export class IncidentsComponent implements OnInit {
     this.incidentService.getIncidentList()
       .subscribe(result => {
           this.incidents = result.data;
-          console.log(this.incidents);
+          //console.log(this.incidents);
       }, err => {
         console.log(err);
         this.toastr.error(err, 'Ha ocurrido un error inesperado');

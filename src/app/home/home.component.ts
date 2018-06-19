@@ -5,6 +5,7 @@ import {Equipment} from '../shared/Equipment';
 import {EquipmentService} from '../services/equipment.service';
 
 import {DomSanitizer} from '@angular/platform-browser';
+import {IncidentsEtlService} from '../services/incidents-etl.service';
 
 @Component({
   selector: 'ssi-home',
@@ -12,15 +13,19 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  view: number[] = [700, 300];
-  data: any[];
+  viewSeverity: number[] = [700, 300];
+  dataSeverity: any[];
+  viewType: number[] = [700, 300];
+  dataType: any[];
+  resultSeverity: any[];
+  resultType: any[];
 
   item: Equipment;
   itemIds: number[];
   prev: number;
   next: number;
 
-  constructor(private incidentService: IncidentService,
+  constructor(private incidentService: IncidentsEtlService,
               private toastr: ToastrService,
               private equipamentService: EquipmentService
     , private domSanitizer: DomSanitizer
@@ -33,45 +38,50 @@ export class HomeComponent implements OnInit {
   }
 
   private loadDataIncidents() {
-    this.incidentService.getIncidentList()
+    this.incidentService.getIncidentsBySeverity()
       .subscribe((res) => {
-        this.data = this.formatData(res.data);
+        this.dataSeverity = this.formatData(res.data, this.resultSeverity);
+      }, (err) => {
+        console.log(err);
+        this.toastr.error(err, 'Ha ocurrido un error inesperado');
+      });
+
+    this.incidentService.getIncidentsByType()
+      .subscribe((res) => {
+        this.dataType = this.formatData(res.data, this.resultType);
       }, (err) => {
         console.log(err);
         this.toastr.error(err, 'Ha ocurrido un error inesperado');
       });
   }
 
-  formatData(data: any[]): any[] {
+  formatData(data: any[], result: any[]): any[] {
     console.log(data);
-    let countAccidents = 0;
-    let countIncidents = 0;
-    let countDisease = 0;
-    data.forEach((el) => {
-      if (el.incidentType.incidentTypeName.indexOf('accidente') > -1) {
-        countAccidents++;
-      }
-      if (el.incidentType.incidentTypeName.indexOf('incidente') > -1) {
-        countIncidents++;
-      }
-      if (el.incidentType.incidentTypeName.indexOf('enfermedad') > -1) {
-        countDisease++;
-      }
-    });
-    return [
-      {
+    result = [];
+
+    if (data.length > 0) {
+      data.forEach((el) => {
+        result.push({
+            'name': '' + el.description,
+          'value': el.amount
+        });
+      });
+    } else {
+      result.push({
         'name': 'Accidente',
-        'value': countAccidents
-      },
-      {
-        'name': 'Enfermedad',
-        'value': countDisease
-      },
-      {
+        'value': 0
+      });
+      result.push({
+        'name': 'Enfermendad',
+        'value': 0
+      });
+      result.push({
         'name': 'Incidentes Otros',
-        'value': countIncidents
-      }
-    ];
+        'value': 0
+      });
+    }
+
+    return result;
   }
 
   private loadDataEquipment() {

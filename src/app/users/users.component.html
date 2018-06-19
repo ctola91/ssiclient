@@ -1,0 +1,75 @@
+<ssi-header menuActive="personal"></ssi-header>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <div fxFlex>
+      <h1><i class="material-icons">perm_identity</i> Users </h1>
+    </div>
+    <hr>
+    <div fxFlex fxLayout="row">
+      <button mat-raised-button routerLink="/users/create" color="primary">Agregar Nuevo Usuario</button>
+
+    </div>
+    <br>
+    <div >
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Usuario">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="UserName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> User Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Password">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Password </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.password}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Active">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Activo </mat-header-cell>
+
+          <mat-cell *matCellDef="let row">
+            <span *ngIf="row.userActive" style="color: #4CAF50">
+                <i class="material-icons">check_circle</i>
+            </span>
+            <span *ngIf="!row.userActive" style="color: #ee4433">
+                <i class="material-icons">highlight_off</i>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button (click)="deleteUser(row)" color="warn">
+              Eliminar
+            </button>
+            <button mat-raised-button routerLink="/users/update/{{row.id}}" color="primary">
+              Editar
+            </button>
+            <!--<button mat-raised-button (click)="assignPersonal(row)" color="accent">-->
+              <!--Asignar-->
+            <!--</button>-->
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+
+</div>
+<ssi-footer></ssi-footer>

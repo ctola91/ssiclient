@@ -47,8 +47,8 @@ export class ContractComponent implements OnInit {
   }
 
   private processContractData(personal: any) {
-    if ( personal.status === 'ok') {
-      this.contracts = personal.data;
+    if ( personal !== null) {
+      this.contracts = personal
       this.dataSource = new MatTableDataSource(this.contracts);
       this.initDatatable();
     }
