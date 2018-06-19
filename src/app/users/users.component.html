@@ -1,4 +1,4 @@
-<ssi-header menuActive="UserActive"></ssi-header>
+<ssi-header menuActive="personal"></ssi-header>
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
@@ -37,7 +37,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="Active">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Activo </mat-header-cell>
-      
+
           <mat-cell *matCellDef="let row">
             <span *ngIf="row.userActive" style="color: #4CAF50">
                 <i class="material-icons">check_circle</i>
