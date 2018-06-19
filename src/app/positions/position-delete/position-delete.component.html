@@ -26,7 +26,7 @@
         Seguro que quiere eliminar el cargo?</p>
       <p style="color: blue;" mat-line *ngIf="haveChildren == true">
         No se permite borrar porque contiene Cargos hijos asociados</p>
-      <button *ngIf="haveChildren == false" mat-raised-button
+      <button id="btnDeletePosition" *ngIf="haveChildren == false" mat-raised-button
               (click)="deletePosition(positionDelete)" color="warn">Eliminar</button>
     </mat-card-content>
   </mat-card>
