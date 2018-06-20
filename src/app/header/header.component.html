@@ -30,7 +30,7 @@
   </button>
 
   <!--Menu Equipments-->
-  <button mat-button [matMenuTriggerFor]="equipments" *ngIf="showMenu"
+  <button mat-button [matMenuTriggerFor]="equipments" name="equipments" *ngIf="showMenu"
           [ngClass]="{'Active': menuActive=='equipament'}"><span class="fa fa-wrench"></span> Equipamiento
   </button>
   <mat-menu #equipments="matMenu">
