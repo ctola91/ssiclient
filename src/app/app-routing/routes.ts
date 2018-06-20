@@ -56,6 +56,9 @@ import {ReportActivityComponent} from '../activities/report/report.activity.comp
 import {ReportePersonalComponent} from '../personal/reporte-personal/reporte-personal.component';
 import {ReportePersonalAreaComponent} from '../personal/reporte-personal-area/reporte-personal-area.component';
 import {AuditComponent} from '../audit/audit.component';
+import {EtlComponent} from '../etl/etl.component';
+import {UsersComponent} from '../users/users.component';
+import {CreateUsersComponent} from '../users/create-user/create-users.component';
 
 export const routes: Routes = [
   { path: 'login',  component: LoginComponent },
@@ -124,8 +127,12 @@ export const routes: Routes = [
   { path: 'activities/create', component: CreateActivityComponent},
   { path: 'resources/report', component: ReportResourceComponent},
   { path: 'activities/report', component: ReportActivityComponent},
+  { path: 'reporte/etl', component: EtlComponent},
 
   { path: 'resources/update/:id', component: CreateResourceComponent},
   { path: 'activities/update/:id', component: CreateActivityComponent},
-  { path: 'audit', component: AuditComponent}
+  { path: 'audit', component: AuditComponent},
+  { path: 'users', component: UsersComponent },
+  { path: 'users/create', component: CreateUsersComponent },
+  { path: 'users/update/:id', component: CreateUsersComponent }
 ];

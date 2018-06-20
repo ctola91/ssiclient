@@ -9,11 +9,11 @@
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-raised-button routerLink="/departments/create" color="primary">
+      <button id="btnCreateDepartment" mat-raised-button routerLink="/departments/create" color="primary">
         <span class="fa fa-chevron-right fa-lg"></span>
         Crear nuevo departamento
       </button>
-      <button mat-raised-button routerLink="/departments/report" color="primary">
+      <button id="btnReportDepartment" mat-raised-button routerLink="/departments/report" color="primary">
         <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
     </div>
     <mat-divider></mat-divider>
@@ -45,8 +45,8 @@
       </div>
 
       <div fxFlex="40">
-        <ssi-deparment-detail [departmentDetail]="selectedDepartment"></ssi-deparment-detail>
-        <ssi-deparment-delete [departmentDelete]="deleteDepartment" (onDelete)="doSomething($event)"></ssi-deparment-delete>
+        <ssi-deparment-detail name="pnlDetail" [departmentDetail]="selectedDepartment"></ssi-deparment-detail>
+        <ssi-deparment-delete name="pnlDelete" [departmentDelete]="deleteDepartment" (onDelete)="doSomething($event)"></ssi-deparment-delete>
       </div>
     </div>
     <mat-divider></mat-divider>

@@ -9,15 +9,15 @@
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-raised-button [routerLink]="['/departments']" color="primary"><span
+      <button id="btnDepartments" mat-raised-button [routerLink]="['/departments']" color="primary"><span
         class="fa fa-chevron-right fa-lg"></span>
         Departamentos
       </button>
-      <button mat-raised-button [routerLink]="['/positions']" color="primary"><span
+      <button id="btnPositions" mat-raised-button [routerLink]="['/positions']" color="primary"><span
         class="fa fa-chevron-right fa-lg"></span>
         Cargos laborales
       </button>
-      <button mat-raised-button [routerLink]="['/areas']" color="primary"><span
+      <button id="btnAreas" mat-raised-button [routerLink]="['/areas']" color="primary"><span
         class="fa fa-chevron-right fa-lg"></span>
         Areas de trabajo
       </button>
@@ -32,7 +32,7 @@
       <!-- Arbol de Departamentos -->
       <div fxFlex="33">
         <h2 style="magin-top: 0px;" color="primar">Departamentos</h2>
-        <div style="height: 420px">
+        <div name="divDepartments" style="height: 420px">
           <tree-root [nodes]="nodesDptos" [options]="options">
             <ng-template #treeNodeTemplate let-node>
               <span class="fa fa-user-circle-o fa-lg"></span>
@@ -45,7 +45,7 @@
       <!-- Arbol de Cargos -->
       <div fxFlex="33">
         <h2 style="magin-top: 0px;">Cargos laborales</h2>
-        <div style="height: 400px">
+        <div name="divPositions" style="height: 400px">
           <tree-root [nodes]="nodes" [options]="options">
             <ng-template #treeNodeTemplate let-node>
               <span class="fa fa-user-circle-o fa-lg"></span>
@@ -58,7 +58,7 @@
       <!-- Arbol de Areas de Trabajo -->
       <div fxFlex="33">
         <h2 style="magin-top: 0px;">Areas de trabajo</h2>
-        <div style="height: 420px">
+        <div name="divAreas" style="height: 420px">
           <tree-root [nodes]="nodesAreas" [options]="options">
             <ng-template #treeNodeTemplate let-node>
               <span class="fa fa-user-circle-o fa-lg"></span>
