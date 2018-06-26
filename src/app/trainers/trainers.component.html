@@ -4,10 +4,10 @@
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Capacitadores</h1>
+    <h1 id="trainerTitle">Capacitadores</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-raised-button routerLink="/trainers/create" color="primary">
+    <button id="btnCreate" mat-raised-button routerLink="/trainers/create" color="primary">
       <span class="fa fa-floppy-o fa-lg"></span>
       Agregar capacitador</button>
   </div>
@@ -53,11 +53,11 @@
         <ng-container matColumnDef="Accion">
           <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
           <mat-cell *matCellDef="let trainer">
-            <button mat-raised-button (click)="deleteTrainer(trainer)" color="warn">
+            <button id="btnDelete" mat-raised-button (click)="deleteTrainer(trainer)" color="warn">
               <span class="fa fa-trash fa-lg"></span>
               Eliminar
             </button>
-            <button mat-raised-button routerLink="/trainers/update/{{trainer.id}}" color="primary">
+            <button id="btnUpdate"  mat-raised-button routerLink="/trainers/update/{{trainer.id}}" color="primary">
               <span class="fa fa-edit fa-lg"></span>
               Modificar
             </button>
