@@ -55,6 +55,7 @@ export class EtlComponent implements OnInit {
   }
 
   private onSubmit() {
+    console.log('hola mundo');
     console.log(this.reportFilterForm.value.pickerStart.toLocaleString());
     console.log(this.reportFilterForm.value.pickerEnd.toLocaleString());
     if (this.reportFilterForm.value.typeReport === '0') {
@@ -72,7 +73,7 @@ export class EtlComponent implements OnInit {
 
         this.incidentsEtlService.getIncidentsByArea( this.reportFilterForm.value.pickerStart.toLocaleDateString(),
           this.reportFilterForm.value.pickerEnd.toLocaleDateString())
-          .subscribe(res => this.incidentsArea = this.formatData(res.data, this.resultType));
+          .subscribe(res => this.incidentsArea = res.data); //this.formatData(res.data, this.resultType));
         console.log(this.incidentsArea);
       } else {
         this.isTable = false;
