@@ -238,7 +238,9 @@ import { CreateUsersComponent} from './users/create-user/create-users.component'
     ReactiveFormsModule,
     HttpClientModule,
     TreeModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 5000
+    }),
     NgxChartsModule,
     RoundProgressModule
   ],
