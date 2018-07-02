@@ -1,98 +1,98 @@
-<div fxFlex>
-<mat-toolbar color="primary">
-  <button mat-icon-button class="menu-sidenav">
-    <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Open Menu" (click)="toogleStatus()">menu</mat-icon>
-  </button>
-  <span style="margin-right: 10px;">SSI-D</span>
-  <div class="hide-in-mobile">
+<div fxFlex id="menuHeader">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="menu-sidenav">
+      <mat-icon aria-label="Example icon-button with a heart icon" matTooltip="Open Menu" (click)="toogleStatus()">menu</mat-icon>
+    </button>
+    <span style="margin-right: 10px;">SSI-D</span>
+    <div class="hide-in-mobile">
 
 
-  <button id="menuHome" mat-button routerLink="/home" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='home'}"><span class="fa fa-home"></span> Inicio
-  </button>
+      <button id="menuHome" mat-button routerLink="/home" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='home'}"><span class="fa fa-home"></span> Inicio
+      </button>
 
-  <button id="menuAudit" mat-button routerLink="/audit" *ngIf="showMenu"
-    [ngClass]="{'Active': menuActive=='audit'}"><span class="fa fa-address-card"></span> Auditoria
-  </button>
+      <button id="menuAudit" mat-button routerLink="/audit" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='audit'}"><span class="fa fa-address-card"></span> Auditoria
+      </button>
 
-  <button id="menuPersonal" mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='personal'}"><span class="fa fa-user fa-lg"></span> Personal
-  </button>
-  <mat-menu id="subMenuPersonal"#personalMenu="matMenu">
-    <button id="personal" routerLink="/personal" mat-menu-item>Personal</button>
-    <button id="smAssign" routerLink="/assign" mat-menu-item>Asignación</button>
-    <button id="smContract" routerLink="/contracts" mat-menu-item>Contratos</button>
-    <button id="users" routerLink="/users" mat-menu-item> Users </button>
-  </mat-menu>
+      <button id="menuPersonal" mat-button [matMenuTriggerFor]="personalMenu" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='personal'}"><span class="fa fa-user fa-lg"></span> Personal
+      </button>
+      <mat-menu id="subMenuPersonal"#personalMenu="matMenu">
+        <button id="personal" routerLink="/personal" mat-menu-item>Personal</button>
+        <button id="smAssign" routerLink="/assign" mat-menu-item>Asignación</button>
+        <button id="smContract" routerLink="/contracts" mat-menu-item>Contratos</button>
+        <button id="users" routerLink="/users" mat-menu-item> Users </button>
+      </mat-menu>
 
-  <!--Menu Incidentes -->
-  <button id="menuIncidents" mat-button routerLink="/incidents"  *ngIf="showMenu" id="incident-lnk"
-          [ngClass]="{'Active': menuActive=='incident'}"><span class="fa fa-bullhorn"></span> Incidentes
-  </button>
+      <!--Menu Incidentes -->
+      <button id="menuIncidents" mat-button routerLink="/incidents"  *ngIf="showMenu" id="incident-lnk"
+              [ngClass]="{'Active': menuActive=='incident'}"><span class="fa fa-bullhorn"></span> Incidentes
+      </button>
 
-  <!--Menu Equipments-->
-  <button id="menuEquipament" mat-button [matMenuTriggerFor]="equipments" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='equipament'}"><span class="fa fa-wrench"></span> Equipamiento
-  </button>
-  <mat-menu id="subMenuEquipament" #equipments="matMenu">
-    <button id="smEquipament" routerLink="/equipments" mat-menu-item>Equipamiento</button>
-    <button id="smInventory" routerLink="/inventory" mat-menu-item>Inventario</button>
-    <button id="smKardex" routerLink="/kardex" mat-menu-item>Kardex</button>
-  </mat-menu>
+      <!--Menu Equipments-->
+      <button id="menuEquipament" mat-button [matMenuTriggerFor]="equipments" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='equipament'}"><span class="fa fa-wrench"></span> Equipamiento
+      </button>
+      <mat-menu id="subMenuEquipament" #equipments="matMenu">
+        <button id="smEquipament" routerLink="/equipments" mat-menu-item>Equipamiento</button>
+        <button id="smInventory" routerLink="/inventory" mat-menu-item>Inventario</button>
+        <button id="smKardex" routerLink="/kardex" mat-menu-item>Kardex</button>
+      </mat-menu>
 
-  <!--Menu program Sso-->
-  <button id="menuProgramSSO" mat-button [matMenuTriggerFor]="programSSO" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='programsso'}"><span class="fa fa-shield"></span> Progama SSO
-  </button>
-  <mat-menu id="subMenuProgramSSO" #programSSO="matMenu">
-    <button id="smTrainers" routerLink="/trainers" mat-menu-item>Capacitadores</button>
-    <button id="smPrograms" routerLink="/programsso" mat-menu-item>Programas</button>
-    <button id="smActivities" routerLink="/activities" mat-menu-item>Actividades</button>
-    <button id="smResources" routerLink="/resources" mat-menu-item>Recursos</button>
-  </mat-menu>
+      <!--Menu program Sso-->
+      <button id="menuProgramSSO" mat-button [matMenuTriggerFor]="programSSO" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='programsso'}"><span class="fa fa-shield"></span> Progama SSO
+      </button>
+      <mat-menu id="subMenuProgramSSO" #programSSO="matMenu">
+        <button id="smTrainers" routerLink="/trainers" mat-menu-item>Capacitadores</button>
+        <button id="smPrograms" routerLink="/programsso" mat-menu-item>Programas</button>
+        <button id="smActivities" routerLink="/activities" mat-menu-item>Actividades</button>
+        <button id="smResources" routerLink="/resources" mat-menu-item>Recursos</button>
+      </mat-menu>
 
-  <!--Menu Organizational structure-->
-  <button id="menuStructure" mat-button [matMenuTriggerFor]="organizationalStructure" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='structure'}">
-    <span class="fa fa-building-o"></span> Estructura organizacional
-  </button>
-  <mat-menu id="subMenuStructure" #organizationalStructure="matMenu">
-    <button id="smOrganizationalStructure" routerLink="/organizational-structure" mat-menu-item>Estructura organizacional</button>
-    <button id="smDepartments" routerLink="/departments" mat-menu-item>Departamentos de la empresa</button>
-    <button id="smPositions" mat-menu-item routerLink="/positions">Cargos de la empresa</button>
-    <button id="smAreas" mat-menu-item routerLink="/areas">Areas de trabajo</button>
-    <button id="smFunctions" mat-menu-item routerLink="/functions">Funciones de cargos</button>
-    <button id="smRequirements" mat-menu-item routerLink="/requirements">Requisitos de cargos</button>
-  </mat-menu>
+      <!--Menu Organizational structure-->
+      <button id="menuStructure" mat-button [matMenuTriggerFor]="organizationalStructure" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='structure'}">
+        <span class="fa fa-building-o"></span> Estructura organizacional
+      </button>
+      <mat-menu id="subMenuStructure" #organizationalStructure="matMenu">
+        <button id="smOrganizationalStructure" routerLink="/organizational-structure" mat-menu-item>Estructura organizacional</button>
+        <button id="smDepartments" routerLink="/departments" mat-menu-item>Departamentos de la empresa</button>
+        <button id="smPositions" mat-menu-item routerLink="/positions">Cargos de la empresa</button>
+        <button id="smAreas" mat-menu-item routerLink="/areas">Areas de trabajo</button>
+        <button id="smFunctions" mat-menu-item routerLink="/functions">Funciones de cargos</button>
+        <button id="smRequirements" mat-menu-item routerLink="/requirements">Requisitos de cargos</button>
+      </mat-menu>
 
-  <!--Reports-->
-  <button id="menuReports" mat-button [matMenuTriggerFor]="reports" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='report'}"><span class="fa fa-print"></span> Reportes
-  </button>
-  <mat-menu id="subMenuReports" #reports="matMenu">
-    <button id="smRepETL" mat-menu-item routerLink="/reporte/etl">Reportes - ETL</button>
-    <button id="smRepPositions" mat-menu-item routerLink="/reporte/cargos-empresa">Reporte - Cargos en la empresa</button>
-    <button id="smRepManualFunctions" mat-menu-item routerLink="/reporte/manual-funciones">Reporte - Manual de funciones</button>
-    <button id="smRepPersonal" mat-menu-item routerLink="/reporte/personal">Reporte - Personal</button>
-    <button id="smRepAccidents" mat-menu-item routerLink="/reporte/accident/">Reporte - Accidentes</button>
-    <button id="smRepIPERC" mat-menu-item routerLink="/reporte/iperc">Reporte - IPERC</button>
-    <button id="smRepProgramSSO" mat-menu-item routerLink="/reporte/programa-sso">Reporte - Programa SSO</button>
-    <button id="smRepResources" mat-menu-item routerLink="/reporte/recursos-sso">Reporte - Recursos SSO</button>
-    <button id="smRepEquipments" mat-menu-item routerLink="/reporte/equipamiento">Reporte - Equipamiento</button>
-    <button id="smRepIntentory" mat-menu-item routerLink="/reporte/inventario">Reporte - Inventarios</button>
-  </mat-menu>
+      <!--Reports-->
+      <button id="menuReports" mat-button [matMenuTriggerFor]="reports" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='report'}"><span class="fa fa-print"></span> Reportes
+      </button>
+      <mat-menu id="subMenuReports" #reports="matMenu">
+        <button id="smRepETL" mat-menu-item routerLink="/reporte/etl">Reportes - ETL</button>
+        <button id="smRepPositions" mat-menu-item routerLink="/reporte/cargos-empresa">Reporte - Cargos en la empresa</button>
+        <button id="smRepManualFunctions" mat-menu-item routerLink="/reporte/manual-funciones">Reporte - Manual de funciones</button>
+        <button id="smRepPersonal" mat-menu-item routerLink="/reporte/personal">Reporte - Personal</button>
+        <button id="smRepAccidents" mat-menu-item routerLink="/reporte/accident/">Reporte - Accidentes</button>
+        <button id="smRepIPERC" mat-menu-item routerLink="/reporte/iperc">Reporte - IPERC</button>
+        <button id="smRepProgramSSO" mat-menu-item routerLink="/reporte/programa-sso">Reporte - Programa SSO</button>
+        <button id="smRepResources" mat-menu-item routerLink="/reporte/recursos-sso">Reporte - Recursos SSO</button>
+        <button id="smRepEquipments" mat-menu-item routerLink="/reporte/equipamiento">Reporte - Equipamiento</button>
+        <button id="smRepIntentory" mat-menu-item routerLink="/reporte/inventario">Reporte - Inventarios</button>
+      </mat-menu>
 
-  <a id="menuAbout" mat-button routerLink="/about" *ngIf="showMenu"
-     [ngClass]="{'Active': menuActive=='about'}"><span class="fa fa-info-circle fa-lg"></span> About</a>
+      <a id="menuAbout" mat-button routerLink="/about" *ngIf="showMenu"
+         [ngClass]="{'Active': menuActive=='about'}"><span class="fa fa-info-circle fa-lg"></span> About</a>
 
-  <span class="flex-spacer"></span>
+      <span class="flex-spacer"></span>
 
-  <button id="menuLogout" mat-button [matMenuTriggerFor]="session" *ngIf="showMenu"
-          [ngClass]="{'Active': menuActive=='logout'}"><span class="fa fa-sign-out fa-align-justify"></span>
-  </button>
-  <mat-menu id="subMenuLogout" #session="matMenu">
-    <button id="smLogout" mat-menu-item routerLink="/logout"><span class="fa fa-power-off"></span> Cerrar sesión</button>
-  </mat-menu>
-  </div>
-</mat-toolbar>
+      <button id="menuLogout" mat-button [matMenuTriggerFor]="session" *ngIf="showMenu"
+              [ngClass]="{'Active': menuActive=='logout'}"><span class="fa fa-sign-out fa-align-justify"></span>
+      </button>
+      <mat-menu id="subMenuLogout" #session="matMenu">
+        <button id="smLogout" mat-menu-item routerLink="/logout"><span class="fa fa-power-off"></span> Cerrar sesión</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
 </div>

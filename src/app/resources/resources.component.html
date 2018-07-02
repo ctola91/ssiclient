@@ -3,17 +3,17 @@
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
-    <h1>Recursos</h1>
+    <h1 id="titleResource">Recursos</h1>
   </div>
   <div fxFlex fxLayout="row">
-    <button mat-button routerLink="/resources/create">Agregar nuevo recurso</button>
-    <button mat-button routerLink="/resources/report">Reportes</button>
+    <button mat-button routerLink="/resources/create" id="btnAddResource">Agregar nuevo recurso</button>
+    <button mat-button routerLink="/resources/report" id="btnReport">Reportes</button>
   </div>
   <div fxFlex>
     <div>
       <mat-card>
         <mat-card-content>
-          <mat-table #table [dataSource]="resources">
+          <mat-table #table [dataSource]="resources" id="resourceList">
 
             <ng-container matColumnDef="cost">
               <mat-header-cell *matHeaderCellDef>Costo</mat-header-cell>
@@ -26,7 +26,7 @@
             </ng-container>
 
             <ng-container matColumnDef="action">
-              <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef>Accion</mat-header-cell>
               <mat-cell *matCellDef="let resource">
                 <button mat-raised-button routerLink="/resources/update/{{resource.id}}" color="primary">
                   Editar
