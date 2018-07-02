@@ -1,0 +1,78 @@
+<ssi-header menuActive="personal"></ssi-header>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex fxFlexOffset="20px" class="form-size">
+    <div fxFlex>
+      <h1><i class="material-icons">perm_identity</i> Personal</h1>
+    </div>
+    <hr>
+    <div fxFlex fxLayout="row">
+      <button mat-raised-button routerLink="/personal/create" color="primary">Agregar nuevo persnal</button>
+
+    </div>
+    <br>
+    <div >
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Personal">
+      </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="Nombre">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.firstname}} </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="Apellido">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.lastname}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container matColumnDef="Direccion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Telefono">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.cellphone}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-raised-button (click)="deletePersonal(row)" color="warn">
+              Eliminar
+            </button>
+            <button mat-raised-button routerLink="/personal/update/{{row.id}}" color="primary">
+              Editar
+            </button>
+            <!--<button mat-raised-button (click)="assignPersonal(row)" color="accent">-->
+              <!--Asignar-->
+            <!--</button>-->
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+
+</div>
+<ssi-footer></ssi-footer>
