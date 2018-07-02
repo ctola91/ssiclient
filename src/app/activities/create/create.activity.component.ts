@@ -8,7 +8,7 @@ import {ProgramssoService} from '../../services/programsso.service';
 import {ProgramSso} from '../../shared/programSso';
 import {Trainer} from '../../shared/trainer';
 import {TrainerService} from '../../services/trainer.service';
-import {Resource} from '../../shared/Resource';
+import {Resource} from '../../shared/resource';
 import {Personal} from '../../shared/Personal';
 import {ResourceService} from '../../services/resource.service';
 import {PersonalService} from '../../services/personal.service';

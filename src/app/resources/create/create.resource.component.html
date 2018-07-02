@@ -1,4 +1,4 @@
-<ssi-header></ssi-header>
+<ssi-header menuActive="programsso"></ssi-header>
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
@@ -10,8 +10,6 @@
     <button mat-raised-button routerLink="/resources/report" color="accent" id="btnReportResource">Reportes</button>
   </div>
   <mat-card>
-
-
     <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()" id="form">
       <mat-card-content>
 
@@ -20,11 +18,7 @@
 
           <mat-input-container fxFlex="30%"
                                dividerColor="{{(resourceForm.get('resourceCost').hasError('required') && resourceForm.get('resourceCost').touched) ? 'warn' : 'primary'}}">
-<<<<<<< HEAD
-            <input matInput formControlName="resourceCost"  placeholder="Costo" type="float" required>
-=======
             <input class="txtCost" matInput formControlName="resourceCost"  placeholder="Costo" type="number" required>
->>>>>>> a40028de15a9f81bad37d8ac1f95e40d3949b0ba
             <mat-hint>
                 <span id="msgCost" [hidden]="!(resourceForm.get('resourceCost').hasError('required') && resourceForm.get('resourceCost').touched)">
                   Costo es requerido</span>
@@ -33,7 +27,10 @@
 
         </div>
 
-        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+
+        <div fxFlex="100%" fxLayout="row">
+
+
 
           <mat-input-container fxFlex="30%"
                                dividerColor="{{(resourceForm.get('resourceDetail').hasError('required') && resourceForm.get('resourceDetail').touched) ? 'warn' : 'primary'}}">

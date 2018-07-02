@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ResourceService} from '../../services/resource.service';
 import {ToastrService} from 'ngx-toastr';
 import {Activity} from '../../shared/Activity';
-import {Resource} from '../../shared/Resource';
+import {Resource} from '../../shared/resource';
 import {FormGroup} from '@angular/forms';
 
 @Component({
