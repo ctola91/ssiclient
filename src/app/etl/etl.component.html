@@ -1,0 +1,124 @@
+<ssi-header menuActive="report"></ssi-header>
+
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1><i class="material-icons">build</i>Reportes ETL</h1>
+  </div>
+  <hr>
+  <mat-card>
+    <mat-card-title>Filtros</mat-card-title>
+    <mat-card-content>
+      <form novalidate [formGroup]="reportFilterForm" (ngSubmit)="onSubmit()" id="form">
+        <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+          <mat-form-field fxFlex="30%">
+            <mat-select placeholder="Tipo de reporte" formControlName="typeReport">
+              <mat-option *ngFor="let report of reports" [value]="report.value">
+                {{ report.viewValue }}
+              </mat-option>
+            </mat-select>
+            <mat-hint>
+              <span [hidden]="!(reportFilterForm.get('typeReport').hasError('required') && reportFilterForm.get('typeReport').touched)">
+                        Tipo de reporte es requerido</span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="30%">
+            <input matInput [matDatepicker]="pickerStart" placeholder="Seleccione fecha inicial" formControlName="pickerStart">
+            <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+            <mat-hint>
+              <span [hidden]="!(reportFilterForm.get('pickerStart').hasError('required') && reportFilterForm.get('pickerStart').touched)">
+                        Fecha Inicial de reporte es requerido</span>
+            </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="30%">
+            <input matInput [matDatepicker]="pickerEnd" placeholder="Seleccione fecha final" formControlName="pickerEnd">
+            <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+            <mat-hint>
+              <span [hidden]="!(reportFilterForm.get('pickerEnd').hasError('required') && reportFilterForm.get('pickerEnd').touched)">
+                        Fecha Final de reporte es requerido</span>
+            </mat-hint>
+          </mat-form-field>
+
+        </div>
+        <button type="submit"  mat-raised-button color="primary" [disabled]="reportFilterForm.invalid">Buscar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <hr>
+  <mat-card *ngIf="isTable">
+    <mat-card-title>Reporte Detalle Incidentes</mat-card-title>
+    <mat-card-content>
+      <mat-table #table [dataSource]="incidentesEtl">
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Fecha Incidente</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.incidentDate}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Empleado</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.personalFullName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Estado</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.personalStatus}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="age">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Edad</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.personalAge}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Tipo incidente</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.type}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="area">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Area</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.areaName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="detail">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Detalle</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.incidentDetail}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="severity">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Severidad</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.incidentSeverity}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="reportedBy">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Reportado por</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.incidentReportedBy}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef fxFlex="10">Posicion</mat-header-cell>
+          <mat-cell *matCellDef="let incident" fxFlex="10">{{incident.positionName}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" fxFlex></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" fxFlex></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="isChart">
+    <mat-card-title>Reporte Incidentes por Area</mat-card-title>
+    <mat-card-content>
+      <div fxFlex="100%">
+        <ngx-charts-bar-vertical
+          [view]="viewType"
+          [results]="incidentsArea"
+          xAxis="true"
+          yAxis="true"
+          legend="true"
+          legendTitle="Incidentes por Area"
+          showXAxisLabel="true"
+          showYAxisLabel="true"
+          xAxisLabel="Cantidad"
+          yAxisLabel="Areas">
+        </ngx-charts-bar-vertical>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ssi-footer></ssi-footer>

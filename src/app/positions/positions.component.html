@@ -9,12 +9,13 @@
     </div>
     <mat-divider></mat-divider>
     <div fxFlex>
-      <button mat-raised-button routerLink="/positions/create" color="primary">
+      <button id="btnCreatePosition" mat-raised-button routerLink="/positions/create" color="primary">
         <span class="fa fa-chevron-right fa-lg"></span>
         Crear nuevo cargo
       </button>
-      <button mat-raised-button routerLink="/reporte/cargos-empresa" color="primary">
-        <span class="fa fa-pie-chart fa-lg"></span> Reporte</button>
+      <button id="btnReportPositions" mat-raised-button routerLink="/reporte/cargos-empresa" color="primary">
+        <span class="fa fa-pie-chart fa-lg"></span> Reporte
+      </button>
     </div>
     <mat-divider></mat-divider>
     <div class="container"
@@ -24,26 +25,30 @@
          fxLayoutAlign.gt-md="space-around center"
          fxLayoutGap="10px">
       <div fxFlex="65">
-        <mat-table #table [dataSource]="dataSource">
+        <mat-table name="tblPositions" #table [dataSource]="dataSource">
 
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef fxFlex="30">Nombre cargo</mat-header-cell>
+            <mat-header-cell name="colName" *matHeaderCellDef fxFlex="30">Nombre cargo</mat-header-cell>
             <mat-cell *matCellDef="let position" fxFlex="30">{{position.name}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="level">
-            <mat-header-cell *matHeaderCellDef fxFlex="5">Nivel</mat-header-cell>
+            <mat-header-cell name="colLevel" *matHeaderCellDef fxFlex="5">Nivel</mat-header-cell>
             <mat-cell *matCellDef="let position" fxFlex="5">{{position.level}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="nameParentPosition">
-            <mat-header-cell *matHeaderCellDef fxFlex="20">Depende de</mat-header-cell>
+            <mat-header-cell name="colParent" *matHeaderCellDef fxFlex="20">Depende de</mat-header-cell>
             <mat-cell *matCellDef="let position" fxFlex="20">{{position.nameParentPosition}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="actions">
-            <mat-header-cell *matHeaderCellDef fxFlex="40">Acciones</mat-header-cell>
+            <mat-header-cell name="colActions" *matHeaderCellDef fxFlex="40">Acciones</mat-header-cell>
             <mat-cell *matCellDef="let position" fxFlex="40">
-              <a mat-raised-button routerLink="/positions/detail/{{position.id}}" color="primary"><span class="fa fa-eye fa-lg"></span> Ver</a> |
-              <a mat-raised-button *ngIf="position.idParentPosition > 0" routerLink="/positions/update/{{position.id}}"><span class="fa fa-edit fa-lg"></span> Editar</a> |
-              <a mat-raised-button (click)="onDelete(position)" color="warn"><span class="fa fa-trash fa-lg"></span> Eliminar</a>
+              <a class="linkDetail" mat-raised-button routerLink="/positions/detail/{{position.id}}" color="primary">
+                <span class="fa fa-eye fa-lg"></span> Ver</a> |
+              <a class="linkEdit" mat-raised-button *ngIf="position.idParentPosition > 0" routerLink="/positions/update/{{position.id}}">
+                <span class="fa fa-edit fa-lg"></span> Editar</a> |
+              <a class="linkDeleted" mat-raised-button (click)="onDelete(position)" color="warn">
+                <span class="fa fa-trash fa-lg"></span>
+                Eliminar</a>
             </mat-cell>
           </ng-container>
 
@@ -54,7 +59,8 @@
       </div>
 
       <div fxFlex="35">
-        <ssi-position-delete [positionDelete]="deletePosition" [haveChildren]="haveChildren" (onDelete)="doSomething($event)"></ssi-position-delete>
+        <ssi-position-delete [positionDelete]="deletePosition" [haveChildren]="haveChildren"
+                             (onDelete)="doSomething($event)"></ssi-position-delete>
       </div>
     </div>
     <mat-divider></mat-divider>

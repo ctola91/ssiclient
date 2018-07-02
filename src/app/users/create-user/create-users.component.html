@@ -1,0 +1,42 @@
+<ssi-header menuActive="personal"></ssi-header>
+<div class="container"
+     fxLayoutGap="10px">
+  <div fxFlex="100%">
+    <h1><i class="material-icons">build</i> Nuevo User</h1>
+  </div>
+  <hr>
+  <div fxFlex>
+    <button mat-button routerLink="/users" color="accent">Atras</button>
+  </div>
+  <mat-card>
+    <mat-card-content>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" id="form">
+          <div fxFlex="100%" fxLayout="row" fxLayoutGap="10px">
+            <mat-input-container fxFlex="30%"
+                                 dividerColor="{{(userForm.get('username').hasError('required') && userForm.get('username').touched) ? 'warn' : 'primary'}}">
+              <input matInput id="username-form" formControlName="username"  placeholder="User Name" type="text" required>
+              <mat-hint>
+                      <span [hidden]="!(userForm.get('username').hasError('required') && userForm.get('username').touched)">
+                        User Name es requerido</span>
+              </mat-hint>
+            </mat-input-container>
+            <mat-input-container fxFlex="30%"
+                                 dividerColor="{{(userForm.get('password').hasError('required') && userForm.get('password').touched) ? 'warn' : 'primary'}}">
+              <input matInput id="password-form" formControlName="password"  placeholder="Password" type="password" required>
+              <mat-hint>
+                      <span [hidden]="!(userForm.get('password').hasError('required') && userForm.get('password').touched)">
+                        Password es requerido</span>
+              </mat-hint>
+            </mat-input-container>
+            <div fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
+                <mat-checkbox id="userActive-form" formControlName="userActive" fxFlex="50%">Active</mat-checkbox>
+            </div>
+
+          </div>
+
+        <button type="submit" id="save-user-form" mat-raised-button color="primary">Guardar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ssi-footer></ssi-footer>

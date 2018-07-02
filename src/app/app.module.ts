@@ -139,6 +139,8 @@ import {AuditComponent, AuditDialogComponent} from './audit/audit.component';
 import {AuditService} from './audit/shared/audit.service';
 import {IncidentsEtlService} from './services/incidents-etl.service';
 import { EtlComponent } from './etl/etl.component';
+import { UsersComponent } from './users/users.component';
+import { CreateUsersComponent} from './users/create-user/create-users.component';
 
 @NgModule({
   declarations: [
@@ -214,7 +216,9 @@ import { EtlComponent } from './etl/etl.component';
     ReportePersonalAreaComponent,
     AuditComponent,
     AuditDialogComponent,
-    EtlComponent
+    EtlComponent,
+    UsersComponent,
+    CreateUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -234,7 +238,9 @@ import { EtlComponent } from './etl/etl.component';
     ReactiveFormsModule,
     HttpClientModule,
     TreeModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 5000
+    }),
     NgxChartsModule,
     RoundProgressModule
   ],

@@ -17,7 +17,7 @@
     <form novalidate [formGroup]="newEquiForm" (ngSubmit)="onSubmit()" id="form">
       <p>
         <mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('name').hasError('required') && newEquiForm.get('name').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+          <input id="nombreEquipment" matInput formControlName="name"  placeholder="Nombre" type="text" required>
           <mat-hint>
                 <span [hidden]="!(newEquiForm.get('name').hasError('required') && newEquiForm.get('name').touched)">
                   Nombre es requerido</span>
@@ -26,7 +26,7 @@
       </p>
       <p>
         <mat-form-field  dividerColor="{{(newEquiForm.get('type').hasError('required') && newEquiForm.get('type').touched) ? 'warn' : 'primary'}}">
-          <mat-select formControlName="type" placeholder="Seleccione tipo">
+          <mat-select id="typeEquipment" formControlName="type" placeholder="Seleccione tipo">
             <mat-option *ngFor="let dato of datos" [value]="dato.value">
               {{ dato.name }}
             </mat-option>
@@ -39,7 +39,7 @@
       </p>
       <p>
         <mat-input-container class="full-width" dividerColor="{{(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched) ? 'warn' : 'primary'}}">
-          <textarea matInput formControlName="description" placeholder="Descripcion corta" rows=5></textarea>
+          <textarea id="descEquipment" matInput formControlName="description" placeholder="Descripcion corta" rows=5></textarea>
             <mat-hint>
               <span [hidden]="!(newEquiForm.get('description').hasError('required') && newEquiForm.get('description').touched)">
                 Descripcion es requerido</span>
@@ -49,7 +49,7 @@
       <p>
         <!--<mat-input-container class="half-width" dividerColor="{{(newEquiForm.get('image').hasError('required')&& newEquiForm.get('image').touched) ? 'warn' : 'primary'}}">-->
           <!--<input matInput formControlName="image"  placeholder="Dir. de Imagen" type="text" required>-->
-          <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
+          <input id="imageEquipment" type="file" (change)="onFileChange($event)" #fileInput>
           <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">limpiar imagen</button>
           <mat-hint>
                 <span [hidden]="!(newEquiForm.get('image').hasError('required') && newEquiForm.get('image').touched)">
@@ -58,7 +58,7 @@
         <!--</mat-input-container>-->
         <img data-src="preview" />
       </p>
-      <button type="submit"  mat-raised-button color="primary" [disabled]="newEquiForm.invalid">Enviar</button>
+      <button id="newEquipment" type="submit"  mat-raised-button color="primary" [disabled]="newEquiForm.invalid">Enviar</button>
 
     </form>
   </div>

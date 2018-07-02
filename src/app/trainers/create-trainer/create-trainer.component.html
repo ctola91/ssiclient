@@ -3,22 +3,22 @@
 <div class="container"
      fxLayoutGap="10px">
   <div fxFlex="100%">
-    <h1>{{title}}</h1>
+    <h1 id="trainerTitle">{{title}}</h1>
   </div>
   <div fxFlex>
-    <button mat-raised-button routerLink="/trainers" color="accent">
+    <button id="btnAtras" mat-raised-button routerLink="/trainers" color="accent">
       <span class="fa fa-chevron-circle-left fa-lg"></span>
       Atras</button>
-    <button mat-raised-button routerLink="/trainers/report" color="accent">
+    <button id="btnReporte" mat-raised-button routerLink="/trainers/report" color="accent">
       <span class="fa fa-pie-chart fa-lg"></span>
       Reporte</button>
   </div>
   <div fxLayout="column" fxLayoutAlign="center center">
     <form novalidate [formGroup]="trainerForm" (ngSubmit)="onSubmit()" id="form">
       <p>
-        <mat-input-container class="half-width"
+        <mat-input-container  class="half-width"
                              dividerColor="{{(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="name"  placeholder="Nombre" type="text" required>
+          <input id="Nombre" matInput formControlName="name"  placeholder="Nombre" type="text" required>
           <mat-hint>
                 <span [hidden]="!(trainerForm.get('name').hasError('required') && trainerForm.get('name').touched)">
                   Nombre es requerido</span>
@@ -26,7 +26,7 @@
         </mat-input-container>
         <mat-input-container class="half-width"
                              dividerColor="{{(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="ci"  placeholder="Cedula identidad" type="text" required>
+          <input id="Cedula" matInput formControlName="ci"  placeholder="Cedula identidad" type="text" required>
           <mat-hint>
                 <span [hidden]="!(trainerForm.get('ci').hasError('required') && trainerForm.get('ci').touched)">
                   Cedula identidad es requerido</span>
@@ -34,17 +34,17 @@
         </mat-input-container>
       </p>
       <p>
-        <mat-input-container class="half-width"
+        <mat-input-container  class="half-width"
                              dividerColor="{{(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="speciality" placeholder="Especialidad" type="email" required>
+          <input id="Especialidad" matInput formControlName="speciality" placeholder="Especialidad" type="email" required>
           <mat-hint>
                 <span [hidden]="!(trainerForm.get('speciality').hasError('required') && trainerForm.get('speciality').touched)">
                   Especialidad es requerido</span>
           </mat-hint>
         </mat-input-container>
-        <mat-input-container class="half-width"
+        <mat-input-container  class="half-width"
                              dividerColor="{{(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched) ? 'warn' : 'primary'}}">
-          <input matInput formControlName="skillsDescriptions" placeholder="Descripción de habilidades" type="text" required>
+          <input id="Descripcion" matInput formControlName="skillsDescriptions" placeholder="Descripción de habilidades" type="text" required>
           <mat-hint>
                 <span [hidden]="!(trainerForm.get('skillsDescriptions').hasError('required') && trainerForm.get('skillsDescriptions').touched)">
                   Descripción de habilidades es requerido</span>
@@ -52,7 +52,7 @@
         </mat-input-container>
 
       </p>
-      <button type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">
+      <button id="btnGuardar" type="submit"  mat-raised-button color="primary" [disabled]="trainerForm.invalid">
         <span class="fa fa-floppy-o fa-lg"></span>
         Guardar</button>
     </form>
