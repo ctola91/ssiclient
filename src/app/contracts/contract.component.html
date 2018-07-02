@@ -7,18 +7,18 @@
       <h1>Contratos</h1>
     </div>
     <div fxFlex fxLayout="row">
-      <button mat-raised-button routerLink="/contracts/create" color="primary">Agregar nuevo contrato</button>
+      <button mat-raised-button routerLink="/contracts/create" color="primary" id="btnAgregarContrato">Agregar nuevo contrato</button>
 
     </div>
     <div class="example-header">
       <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        <input id="find-contract" matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Contrato">
       </mat-form-field>
     </div>
 
     <div class="example-container mat-elevation-z8">
 
-      <mat-table [dataSource]="dataSource" matSort>
+      <mat-table [dataSource]="dataSource" matSort id="ContractTable">
 
         <!-- ID Column -->
         <ng-container matColumnDef="Codigo">
@@ -54,10 +54,10 @@
         <ng-container matColumnDef="Accion">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Accion </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <button mat-raised-button (click)="deleteContract(row)" color="warn">
+            <button mat-raised-button (click)="deleteContract(row)" color="warn" id="eliminarContract">
               Eliminar
             </button>
-            <button mat-raised-button (click)="editContract(row)" color="primary">
+            <button mat-raised-button (click)="editContract(row)" color="primary" id="editarContract">
               Editar
             </button>
           </mat-cell>
