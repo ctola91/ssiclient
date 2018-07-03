@@ -114,6 +114,7 @@ export class CreateComponent implements OnInit {
       this.incidentService.createNewIncident(data)
         .subscribe((incident: any) => {
           this.toastr.success('El incidente se guardo satisfactoriamente', incident.status);
+          this.router.navigate(['incidents']);
         }, (error) => {
           console.log(error);
           this.toastr.error(error, 'Ha ocurrido un error inesperado');
