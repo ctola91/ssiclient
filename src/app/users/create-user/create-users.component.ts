@@ -76,6 +76,9 @@ export class CreateUsersComponent implements OnInit {
   onSubmit() {
     if (!this.isUpdate) {
       console.log(this.userForm.value);
+      if(this.userForm.value.userActive == "") {
+        this.userForm.value.userActive = false;
+      }
       this.userService.saveUser(this.userForm.value)
         .subscribe(this.processData.bind(this), this.processError.bind(this));
     } else {
