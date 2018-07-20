@@ -54,7 +54,7 @@ export class EtlComponent implements OnInit {
     });
   }
 
-  private onSubmit() {
+  onSubmit() {
     console.log('hola mundo');
     console.log(this.reportFilterForm.value.pickerStart.toLocaleString());
     console.log(this.reportFilterForm.value.pickerEnd.toLocaleString());

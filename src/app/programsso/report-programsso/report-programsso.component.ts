@@ -32,7 +32,7 @@ export class ReportProgramssoComponent implements OnInit {
     });
   }
 
-  private print() {
+  print() {
     console.log('imprimir');
   }
 }

@@ -64,7 +64,7 @@ export class AssignComponent implements OnInit {
       this.processError.bind(this));
   }
 
-  private doFilterPersonal(): void {
+  doFilterPersonal(): void {
     console.log(this.currentPersonal);
     this.personals = this.personalService.getListAllPersonal()
       .pipe(map(personals => this.filter(personals)));
@@ -109,10 +109,13 @@ export class AssignComponent implements OnInit {
     this.toastService.error(err, ERROR_MSG);
   }
 
-  private doFilter(filterValue: any) {
+  doFilter(filterValue: any) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
 
+  onSubmit() {
+    console.log('submit');
+  }
 }
